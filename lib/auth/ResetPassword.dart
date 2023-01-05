@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:p2ptraffic/auth/PreLogin.dart';
 
-class SIGNUPScreen extends StatefulWidget {
-  const SIGNUPScreen({super.key});
+class RESETPASSWORDScreen extends StatefulWidget {
+  const RESETPASSWORDScreen({super.key});
 
   @override
-  State<SIGNUPScreen> createState() => _SIGNUPScreenState();
+  State<RESETPASSWORDScreen> createState() => _RESETPASSWORDScreenState();
 }
 
-class _SIGNUPScreenState extends State<SIGNUPScreen> {
+class _RESETPASSWORDScreenState extends State<RESETPASSWORDScreen> {
   bool isChecked = false;
   bool isChecked2 = false;
   @override
@@ -42,7 +42,7 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
           elevation: 0,
           automaticallyImplyLeading: false,
           title: Text(
-            "SIGNUP",
+            "RESET PASSWORD",
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16.sp),
           ),
           centerTitle: true,
@@ -61,62 +61,17 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
                     child: Image.asset("assets/images/Group 1370.png"),
                   ),
                   119.verticalSpace,
-                  Names("Email/Phone"),
-                  4.verticalSpace,
-                  TextField("martin.smith@email.com"),
-                  20.verticalSpace,
                   Names("Password"),
                   4.verticalSpace,
                   TextField1("Martinsmith@80**", "assets/images/Icon ionic-md-eye-off.png"),
                   20.verticalSpace,
-                  Names("Confirm Password"),
+                  Names("Confirm New Password"),
                   4.verticalSpace,
-                  TextField1("Martinsmith@80**", "assets/images/Icon ionic-md-eye.png"),
+                  TextField1("Martinsmith@80**", "assets/images/Icon ionic-md-eye-off.png"),
                   50.verticalSpace,
-                  // Row(
-                  //   children: [
-                  //     Container(
-                  //       height: 20.h,
-                  //       width: 210.w,
-                  //       child: Row(
-                  //         children: [
-                  //           Checkbox(
-                  //               side: AlwaysActiveBorderSide(),
-                  //               shape: RoundedRectangleBorder(
-                  //                 borderRadius: BorderRadius.circular(5.r),
-                  //               ),
-                  //               checkColor: Colors.black,
-                  //               activeColor: Colors.white,
-                  //               value: isChecked,
-                  //               onChanged: (bool? value) {
-                  //                 setState(() {
-                  //                   isChecked = value!;
-                  //                 });
-                  //               }),
-                  //           Text(
-                  //             "Remember Me",
-                  //             style: TextStyle(
-                  //               fontSize: 14.sp,
-                  //               color: Colors.white,
-                  //               decoration: TextDecoration.underline,
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //     TextButton(
-                  //       onPressed: null,
-                  //       child: Text(
-                  //         "Forgot Password?",
-                  //         style: TextStyle(color: Colors.white, decoration: TextDecoration.underline),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed("/VERIFICATIONSignupScreen");
+                      Get.toNamed("/LOGINScreen");
                     },
                     child: Container(
                       width: 348.w,
@@ -142,7 +97,7 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Signup",
+                              "Reset",
                               style: TextStyle(color: Colors.white, fontSize: 18.sp),
                             ),
                           ],
@@ -151,34 +106,6 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
                     ),
                   ),
                   130.verticalSpace,
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed("/LOGINScreen");
-                    },
-                    child: Container(
-                      child: Center(
-                        child: RichText(
-                          text: const TextSpan(
-                            style: TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.black,
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(text: 'Already have an account? ', style: TextStyle(color: Colors.white, fontSize: 14)),
-                              TextSpan(
-                                  text: 'Login',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    decoration: TextDecoration.underline,
-                                  )),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),

@@ -10,9 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:p2ptraffic/auth/ForgotPassword.dart';
 import 'package:p2ptraffic/auth/Login.dart';
 import 'package:p2ptraffic/auth/PreLogin.dart';
+import 'package:p2ptraffic/auth/ResetPassword.dart';
 import 'package:p2ptraffic/auth/Signup.dart';
+import 'package:p2ptraffic/auth/Verification.dart';
+import 'package:p2ptraffic/auth/VerificationSignup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,6 +58,18 @@ class _MyAppState extends State<MyApp> {
             GetPage(
               name: '/SIGNUPScreen',
               page: (() => SIGNUPScreen()),
+            ),
+            GetPage(
+              name: '/FORGOTPASSWORDScreen',
+              page: (() => FORGOTPASSWORDScreen()),
+            ),
+            GetPage(
+              name: '/VERIFICATIONScreen',
+              page: (() => VERIFICATIONScreen()),
+            ),
+            GetPage(
+              name: '/VERIFICATIONSignupScreen',
+              page: (() => VERIFICATIONSignupScreen()),
             ),
           ],
         );
