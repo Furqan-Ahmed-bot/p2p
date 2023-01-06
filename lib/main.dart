@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:p2ptraffic/Home/Setting.dart';
+import 'package:p2ptraffic/auth/CreateProfile.dart';
 import 'package:p2ptraffic/auth/ForgotPassword.dart';
 import 'package:p2ptraffic/auth/Login.dart';
 import 'package:p2ptraffic/auth/PreLogin.dart';
@@ -41,7 +43,7 @@ class _MyAppState extends State<MyApp> {
           ),
           debugShowCheckedModeBanner: false,
           // home: SplashScreen(),
-          initialRoute: '/SplashScreen',
+          initialRoute: '/SETTINGSScreen',
           getPages: [
             GetPage(
               name: '/SplashScreen',
@@ -70,6 +72,18 @@ class _MyAppState extends State<MyApp> {
             GetPage(
               name: '/VERIFICATIONSignupScreen',
               page: (() => VERIFICATIONSignupScreen()),
+            ),
+            GetPage(
+              name: '/RESETPASSWORDScreen',
+              page: (() => RESETPASSWORDScreen()),
+            ),
+            GetPage(
+              name: '/CREATEPROFILEScreen',
+              page: (() => CREATEPROFILEScreen()),
+            ),
+            GetPage(
+              name: '/SETTINGSScreen',
+              page: (() => SETTINGSScreen()),
             ),
           ],
         );

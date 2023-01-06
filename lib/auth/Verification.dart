@@ -126,7 +126,20 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
                       },
                     ),
                   ),
-                  60.verticalSpace,
+                  // 60.verticalSpace,
+                  // 155.verticalSpace,
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     Get.toNamed("/RESETPASSWORDScreen");
+                  //   },
+                  //   child: Container(
+                  //     child: Image.asset(
+                  //       "assets/images/Component.png",
+                  //       scale: 5,
+                  //     ),
+                  //   ),
+                  // ),
+                  // 105.verticalSpace,
                   GestureDetector(
                     onTap: () {
                       Get.toNamed("/RESETPASSWORDScreen");
@@ -160,10 +173,10 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
                       },
                     ),
                   ),
-                  // Text(
-                  //   "data",
-                  //   style: TextStyle(color: Colors.white),
-                  // ),
+                  Text(
+                    "data",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   Container(
                     child: Center(
                       child: RichText(
