@@ -10,7 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:p2ptraffic/Home/CheckOut.dart';
+import 'package:p2ptraffic/Home/Notifications.dart';
+import 'package:p2ptraffic/Home/PrivacyPolicy.dart';
 import 'package:p2ptraffic/Home/Setting.dart';
+import 'package:p2ptraffic/Home/Terms&Conditions.dart';
+import 'package:p2ptraffic/Home/TrafficUpdates.dart';
+import 'package:p2ptraffic/Home/UpdatesDetails.dart';
 import 'package:p2ptraffic/auth/CreateProfile.dart';
 import 'package:p2ptraffic/auth/ForgotPassword.dart';
 import 'package:p2ptraffic/auth/Login.dart';
@@ -43,7 +49,7 @@ class _MyAppState extends State<MyApp> {
           ),
           debugShowCheckedModeBanner: false,
           // home: SplashScreen(),
-          initialRoute: '/SETTINGSScreen',
+          initialRoute: '/SplashScreen',
           getPages: [
             GetPage(
               name: '/SplashScreen',
@@ -84,6 +90,30 @@ class _MyAppState extends State<MyApp> {
             GetPage(
               name: '/SETTINGSScreen',
               page: (() => SETTINGSScreen()),
+            ),
+            GetPage(
+              name: '/CHECKOUTScreen',
+              page: (() => CHECKOUTScreen()),
+            ),
+            GetPage(
+              name: '/NOTIFICATIONSScreen',
+              page: (() => NOTIFICATIONSScreen()),
+            ),
+            GetPage(
+              name: '/TRAFFICUPDATESScreen',
+              page: (() => TRAFFICUPDATESScreen()),
+            ),
+            GetPage(
+              name: '/UPDATESDETAILSScreen',
+              page: (() => UPDATESDETAILSScreen()),
+            ),
+            GetPage(
+              name: '/TERMSAndCONDITIONSScreen',
+              page: (() => TERMSAndCONDITIONSScreen()),
+            ),
+            GetPage(
+              name: '/PRIVACYPOLICYScreen',
+              page: (() => PRIVACYPOLICYScreen()),
             ),
           ],
         );
