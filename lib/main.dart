@@ -11,9 +11,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:p2ptraffic/Home/CheckOut.dart';
+import 'package:p2ptraffic/Home/ChnageSettings.dart';
+import 'package:p2ptraffic/Home/Friends.dart';
+import 'package:p2ptraffic/Home/HELP&FEEDBACK.dart';
 import 'package:p2ptraffic/Home/Notifications.dart';
+import 'package:p2ptraffic/Home/PaymentMethod.dart';
 import 'package:p2ptraffic/Home/PrivacyPolicy.dart';
+import 'package:p2ptraffic/Home/Profile.dart';
+import 'package:p2ptraffic/Home/Search.dart';
 import 'package:p2ptraffic/Home/Setting.dart';
+import 'package:p2ptraffic/Home/Subscribtions.dart';
 import 'package:p2ptraffic/Home/Terms&Conditions.dart';
 import 'package:p2ptraffic/Home/TrafficUpdates.dart';
 import 'package:p2ptraffic/Home/UpdatesDetails.dart';
@@ -49,7 +56,7 @@ class _MyAppState extends State<MyApp> {
           ),
           debugShowCheckedModeBanner: false,
           // home: SplashScreen(),
-          initialRoute: '/SplashScreen',
+          initialRoute: '/PROFILE2Screen',
           getPages: [
             GetPage(
               name: '/SplashScreen',
@@ -114,6 +121,34 @@ class _MyAppState extends State<MyApp> {
             GetPage(
               name: '/PRIVACYPOLICYScreen',
               page: (() => PRIVACYPOLICYScreen()),
+            ),
+            GetPage(
+              name: '/FRIENDSScreen',
+              page: (() => FRIENDSScreen()),
+            ),
+            GetPage(
+              name: '/SEARCHScreen',
+              page: (() => SEARCHScreen()),
+            ),
+            GetPage(
+              name: '/SUBSCRIPTIONScreen',
+              page: (() => SUBSCRIPTIONScreen()),
+            ),
+            GetPage(
+              name: '/PAYMENTMETHODScreen',
+              page: (() => PAYMENTMETHODScreen()),
+            ),
+            GetPage(
+              name: '/ChnageSETTINGSScreen',
+              page: (() => ChnageSETTINGSScreen()),
+            ),
+            GetPage(
+              name: '/HELPAndFEEDBACKScreen',
+              page: (() => HELPAndFEEDBACKScreen()),
+            ),
+            GetPage(
+              name: '/PROFILE2Screen',
+              page: (() => PROFILE2Screen()),
             ),
           ],
         );

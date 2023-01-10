@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class SETTINGSScreen extends StatefulWidget {
   const SETTINGSScreen({super.key});
@@ -61,13 +62,21 @@ class _SETTINGSScreenState extends State<SETTINGSScreen> {
               20.verticalSpace,
               Cupertino(),
               10.verticalSpace,
-              Drop("Changes Password", "assets/images/Icon ionic-ios-lock.png", () {}),
+              Drop("Changes Password", "assets/images/Icon ionic-ios-lock.png", () {
+                Get.toNamed("/ChnageSETTINGSScreen");
+              }),
               10.verticalSpace,
-              Drop("Card Details", "assets/images/Icon metro-credit-card.png", () {}),
+              Drop("Card Details", "assets/images/Icon metro-credit-card.png", () {
+                Get.toNamed("/PAYMENTMETHODScreen");
+              }),
               10.verticalSpace,
-              Drop("Terms & Conditions", "assets/images/Group 976.png", () {}),
+              Drop("Terms & Conditions", "assets/images/Group 976.png", () {
+                Get.toNamed("/TERMSAndCONDITIONSScreen");
+              }),
               10.verticalSpace,
-              Drop("Privacy Policy", "assets/images/Group 977.png", () {}),
+              Drop("Privacy Policy", "assets/images/Group 977.png", () {
+                Get.toNamed("/PRIVACYPOLICYScreen");
+              }),
             ],
           ),
         )),
