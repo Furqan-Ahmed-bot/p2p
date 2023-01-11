@@ -109,7 +109,7 @@ class _PROFIL2EScreenState extends State<PROFILE2Screen> {
                 ),
                 15.verticalSpace,
                 contts(
-                  "assets/images/location.png",
+                  "assets/images/Icon material-location-onn.png",
                   "20 Cooper Square",
                 ),
                 15.verticalSpace,

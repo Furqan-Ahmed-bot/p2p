@@ -21,7 +21,8 @@ class _UPDATESDETAILSStateScreen extends State<UPDATESDETAILSScreen> {
               onTap: () {
 // Get.to(() => AddChildScreen());
               },
-              child: Container(
+              child: 
+              Container(
                 width: 388.w,
                 height: 55.h,
                 decoration: BoxDecoration(

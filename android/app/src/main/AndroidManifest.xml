@@ -1,9 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.p2ptraffic">
    <application
+
+ 
         android:label="p2ptraffic"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+          <meta-data android:name="com.google.android.geo.API_KEY"
+android:value="AIzaSyCSmWWeMDDtvYpoUSc_Jb8CMj3Cx-hhOGI"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

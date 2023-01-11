@@ -12,8 +12,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:p2ptraffic/Home/CheckOut.dart';
 import 'package:p2ptraffic/Home/ChnageSettings.dart';
+import 'package:p2ptraffic/Home/Drawer.dart';
 import 'package:p2ptraffic/Home/Friends.dart';
 import 'package:p2ptraffic/Home/HELP&FEEDBACK.dart';
+import 'package:p2ptraffic/Home/Navbar.dart';
 import 'package:p2ptraffic/Home/Notifications.dart';
 import 'package:p2ptraffic/Home/PaymentMethod.dart';
 import 'package:p2ptraffic/Home/PrivacyPolicy.dart';
@@ -24,6 +26,7 @@ import 'package:p2ptraffic/Home/Subscribtions.dart';
 import 'package:p2ptraffic/Home/Terms&Conditions.dart';
 import 'package:p2ptraffic/Home/TrafficUpdates.dart';
 import 'package:p2ptraffic/Home/UpdatesDetails.dart';
+import 'package:p2ptraffic/Home/homeS.dart';
 import 'package:p2ptraffic/auth/CreateProfile.dart';
 import 'package:p2ptraffic/auth/ForgotPassword.dart';
 import 'package:p2ptraffic/auth/Login.dart';
@@ -56,7 +59,7 @@ class _MyAppState extends State<MyApp> {
           ),
           debugShowCheckedModeBanner: false,
           // home: SplashScreen(),
-          initialRoute: '/PROFILE2Screen',
+          initialRoute: '/MainScreen',
           getPages: [
             GetPage(
               name: '/SplashScreen',
@@ -149,6 +152,14 @@ class _MyAppState extends State<MyApp> {
             GetPage(
               name: '/PROFILE2Screen',
               page: (() => PROFILE2Screen()),
+            ),
+            GetPage(
+              name: '/HomeScreen',
+              page: (() => HomeScreen()),
+            ),
+            GetPage(
+              name: '/MainScreen',
+              page: (() => MainScreen()),
             ),
           ],
         );
