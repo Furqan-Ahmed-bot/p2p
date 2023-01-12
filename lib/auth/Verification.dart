@@ -153,6 +153,7 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
                       ringColor: Colors.transparent,
                       ringGradient: null,
                       fillColor: Color(0xff21CDFB),
+
                       // fillGradient: LinearGradient(colors: [Color(0xff21CDFB), Color(0xff010118)]),
                       backgroundGradient: LinearGradient(colors: [Color(0xff21CDFB), Color(0xff004DF2)]),
                       strokeWidth: 5.0,

@@ -1,20 +1,16 @@
+import "package:flutter/material.dart";
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
-import 'Drawer.dart';
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class Mymap extends StatefulWidget {
+  const Mymap({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Mymap> createState() => _MymapState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MymapState extends State<Mymap> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   final Completer<GoogleMapController> _mapcontroller = Completer();
@@ -55,70 +51,8 @@ class _HomeScreenState extends State<HomeScreen> {
     _marker.addAll(_branch);
     return Scaffold(
       key: _key,
-      drawer: DrawerScreen(),
       backgroundColor: Colors.transparent,
       // extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: Text(
-          "HOME",
-          style: TextStyle(fontSize: 16.sp),
-        ),
-        centerTitle: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(18),
-          ),
-        ),
-        elevation: 0,
-        leading: GestureDetector(
-          onTap: () {
-            _key.currentState!.openDrawer();
-          },
-          child: Container(
-              child: Image.asset(
-            "assets/images/Group 16.png",
-            scale: 4,
-          )),
-        ),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            ),
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [
-                Color(0xff004DF2),
-                Color(0xff1CC8FB),
-              ],
-            ),
-            // backgroundBlendMode: BlendMode.colorBurn,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                Container(
-                  child: Image.asset(
-                    "assets/images/Icon feather-search.png",
-                    scale: 4,
-                  ),
-                ),
-                8.horizontalSpace,
-                Container(
-                  child: Image.asset(
-                    "assets/images/Group 1377.png",
-                    scale: 4,
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
 
       body: Stack(
         children: [
@@ -289,6 +223,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ))
         ],
       ),
+    
+    
     );
   }
 }

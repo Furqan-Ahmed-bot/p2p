@@ -12,9 +12,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:p2ptraffic/Home/CheckOut.dart';
 import 'package:p2ptraffic/Home/ChnageSettings.dart';
-import 'package:p2ptraffic/Home/Drawer.dart';
+import 'package:p2ptraffic/Home/FeedUpdatesDetails.dart';
+import 'package:p2ptraffic/Home/Feeds.dart';
+
 import 'package:p2ptraffic/Home/Friends.dart';
 import 'package:p2ptraffic/Home/HELP&FEEDBACK.dart';
+import 'package:p2ptraffic/Home/History.dart';
 import 'package:p2ptraffic/Home/Navbar.dart';
 import 'package:p2ptraffic/Home/Notifications.dart';
 import 'package:p2ptraffic/Home/PaymentMethod.dart';
@@ -35,6 +38,9 @@ import 'package:p2ptraffic/auth/ResetPassword.dart';
 import 'package:p2ptraffic/auth/Signup.dart';
 import 'package:p2ptraffic/auth/Verification.dart';
 import 'package:p2ptraffic/auth/VerificationSignup.dart';
+
+import 'Home/drawer.dart';
+import 'Home/mymap.dart';
 
 void main() {
   runApp(const MyApp());
@@ -61,6 +67,10 @@ class _MyAppState extends State<MyApp> {
           // home: SplashScreen(),
           initialRoute: '/MainScreen',
           getPages: [
+            GetPage(
+              name: '/Mymap',
+              page: (() => Mymap()),
+            ),
             GetPage(
               name: '/SplashScreen',
               page: (() => SplashScreen()),
@@ -160,6 +170,22 @@ class _MyAppState extends State<MyApp> {
             GetPage(
               name: '/MainScreen',
               page: (() => MainScreen()),
+            ),
+            GetPage(
+              name: '/HISTORYScreen',
+              page: (() => HISTORYScreen()),
+            ),
+            GetPage(
+              name: '/DrawerScreen',
+              page: (() => DrawerScreen()),
+            ),
+            GetPage(
+              name: '/FEEDSScreen',
+              page: (() => FEEDSScreen()),
+            ),
+            GetPage(
+              name: '/FeedUPDATESDETAILSScreen',
+              page: (() => FeedUPDATESDETAILSScreen()),
             ),
           ],
         );

@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:p2ptraffic/Home/BottomController.dart';
+import 'package:p2ptraffic/Home/Feeds.dart';
+import 'package:p2ptraffic/Home/History.dart';
 import 'package:p2ptraffic/Home/Notifications.dart';
 import 'package:p2ptraffic/Home/homeS.dart';
 
@@ -19,9 +21,9 @@ class _MainScreenState extends State<MainScreen> {
 
   final pages = [
     HomeScreen(),
+    FEEDSScreen(),
     Container(),
-    Container(),
-    Container(),
+    HISTORYScreen(),
     Container(),
   ];
   void _onItemTapped(int index) {
