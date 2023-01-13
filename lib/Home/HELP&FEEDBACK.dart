@@ -52,7 +52,7 @@ class _HELPAndFEEDBACKStateScreen extends State<HELPAndFEEDBACKScreen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),

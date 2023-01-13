@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class TRAFFICUPDATESScreen extends StatefulWidget {
   const TRAFFICUPDATESScreen({super.key});
@@ -26,10 +27,15 @@ class _TRAFFICUPDATESStateScreen extends State<TRAFFICUPDATESScreen> {
           ),
         ),
         elevation: 0,
-        leading: Container(
-          child: Image.asset(
-            "assets/images/Icon ionic-ios-arrow-round-back.png",
-            scale: 5,
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Container(
+            child: Image.asset(
+              "assets/images/Icon ionic-ios-arrow-round-back.png",
+              scale: 5,
+            ),
           ),
         ),
         flexibleSpace: Container(
@@ -45,7 +51,7 @@ class _TRAFFICUPDATESStateScreen extends State<TRAFFICUPDATESScreen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),

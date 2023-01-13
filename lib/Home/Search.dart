@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class SEARCHScreen extends StatefulWidget {
   const SEARCHScreen({super.key});
@@ -36,10 +37,15 @@ class _SEARCHScreenState extends State<SEARCHScreen> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10),
-            child: Container(
-              width: 18.w,
-              height: 18.h,
-              child: Image.asset("assets/images/Icon ionic-ios-close.png"),
+            child: GestureDetector(
+              onTap: () {
+                Get.back();
+              },
+              child: Container(
+                width: 18.w,
+                height: 18.h,
+                child: Image.asset("assets/images/Icon ionic-ios-close.png"),
+              ),
             ),
           )
         ],
@@ -96,38 +102,43 @@ class _SEARCHScreenState extends State<SEARCHScreen> {
   martin(
     img,
   ) {
-    return Row(
-      children: [
-        Container(
-          height: 60.h,
-          width: 60.w,
-          child: Image.asset(
-            img,
-          ),
-        ),
-        22.horizontalSpace,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Martin Smith",
-              style: TextStyle(fontSize: 18.sp, color: Color(0xffFFFFFF)),
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed("/MartinProfileScreen");
+      },
+      child: Row(
+        children: [
+          Container(
+            height: 60.h,
+            width: 60.w,
+            child: Image.asset(
+              img,
             ),
-            Text(
-              "New York",
-              style: TextStyle(fontSize: 14.sp, color: Color(0xffFFFFFF)),
-            ),
-          ],
-        ),
-        151.horizontalSpace,
-        Container(
-          height: 26.h,
-          width: 26.w,
-          child: Image.asset(
-            "assets/images/Group 1683.png",
           ),
-        ),
-      ],
+          22.horizontalSpace,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Martin Smith",
+                style: TextStyle(fontSize: 18.sp, color: Color(0xffFFFFFF)),
+              ),
+              Text(
+                "New York",
+                style: TextStyle(fontSize: 14.sp, color: Color(0xffFFFFFF)),
+              ),
+            ],
+          ),
+          151.horizontalSpace,
+          Container(
+            height: 26.h,
+            width: 26.w,
+            child: Image.asset(
+              "assets/images/Group 1683.png",
+            ),
+          ),
+        ],
+      ),
     );
   }
 

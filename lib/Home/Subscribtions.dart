@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class SUBSCRIPTIONScreen extends StatefulWidget {
   const SUBSCRIPTIONScreen({super.key});
@@ -26,10 +27,15 @@ class _SUBSCRIPTIONScreenState extends State<SUBSCRIPTIONScreen> {
           ),
         ),
         elevation: 0,
-        leading: Container(
-          child: Image.asset(
-            "assets/images/Icon ionic-ios-arrow-round-back.png",
-            scale: 5,
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Container(
+            child: Image.asset(
+              "assets/images/Icon ionic-ios-arrow-round-back.png",
+              scale: 5,
+            ),
           ),
         ),
         flexibleSpace: Container(
@@ -45,7 +51,7 @@ class _SUBSCRIPTIONScreenState extends State<SUBSCRIPTIONScreen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),
@@ -90,34 +96,39 @@ class _SUBSCRIPTIONScreenState extends State<SUBSCRIPTIONScreen> {
                 14.verticalSpace,
                 Dividerr(),
                 320.verticalSpace,
-                Container(
-                  width: 388.w,
-                  height: 60.h,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color(0xff1CC8FB),
-                        Color(0xff004DF2),
-                      ],
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 0),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed("/SUBSCRIBEScreen");
+                  },
+                  child: Container(
+                    width: 388.w,
+                    height: 60.h,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Color(0xff1CC8FB),
+                          Color(0xff004DF2),
+                        ],
                       ),
-                    ],
-                    borderRadius: BorderRadius.circular(30.r),
-                  ),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Upgrade",
-                          style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 0),
                         ),
                       ],
+                      borderRadius: BorderRadius.circular(30.r),
+                    ),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Upgrade",
+                            style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

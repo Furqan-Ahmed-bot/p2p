@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:p2ptraffic/Home/BottomController.dart';
+import 'package:p2ptraffic/Home/DrawerProfile.dart';
+import 'package:p2ptraffic/Home/Friends.dart';
+import 'package:p2ptraffic/Home/HELP&FEEDBACK.dart';
+import 'package:p2ptraffic/Home/Notifications.dart';
+import 'package:p2ptraffic/Home/Profile.dart';
+import 'package:p2ptraffic/Home/Setting.dart';
+import 'package:p2ptraffic/Home/Subscribtions.dart';
+import 'package:p2ptraffic/auth/Login.dart';
+
+import 'Navbar.dart';
 
 class DrawerScreen extends StatelessWidget {
   const DrawerScreen({
@@ -46,9 +57,16 @@ class DrawerScreen extends StatelessWidget {
                             topRight: Radius.circular(30.r),
                           ),
                         ),
-                        child: Image.asset(
-                          "assets/images/Icon ionic-ios-close.png",
-                          scale: 5,
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: Container(
+                            child: Image.asset(
+                              "assets/images/Icon ionic-ios-close.png",
+                              scale: 5,
+                            ),
+                          ),
                         ),
                       )
                     ],
@@ -88,9 +106,16 @@ class DrawerScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      child: Image.asset(
-                        "assets/images/NoPath.png",
-                        scale: 4.3,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed("/DrawerProfileScreen");
+                        },
+                        child: Container(
+                          child: Image.asset(
+                            "assets/images/NoPath.png",
+                            scale: 4.3,
+                          ),
+                        ),
                       ),
                     ),
                   ),
@@ -132,7 +157,9 @@ class DrawerScreen extends StatelessWidget {
                       ),
                       title: GestureDetector(
                         onTap: () {
-                          Get.back();
+                          final bottomcontroller = Get.put(BottomController());
+                          bottomcontroller.navBarChange(0);
+                          Get.to(() => MainScreen());
                         },
                         child: Text(
                           "Home",
@@ -155,7 +182,7 @@ class DrawerScreen extends StatelessWidget {
                       ),
                       title: GestureDetector(
                         onTap: () {
-                          // Get.to(() => toplocationsscreen());
+                          Get.to(() => DrawerProfileScreen());
                         },
                         child: Text(
                           "My Profile",
@@ -178,7 +205,9 @@ class DrawerScreen extends StatelessWidget {
                       ),
                       title: GestureDetector(
                         onTap: () {
-                          // Get.to(() => MyRecordings());
+                          final bottomcontroller = Get.put(BottomController());
+                          bottomcontroller.navBarChange(1);
+                          Get.to(() => MainScreen());
                         },
                         child: Text(
                           "Feeds",
@@ -224,7 +253,7 @@ class DrawerScreen extends StatelessWidget {
                       ),
                       title: GestureDetector(
                         onTap: () {
-                          // Get.to(() => notifications());
+                          Get.to(() => FRIENDSScreen());
                         },
                         child: Text(
                           "Friends",
@@ -247,10 +276,10 @@ class DrawerScreen extends StatelessWidget {
                       ),
                       title: GestureDetector(
                         onTap: () {
-                          // Get.to(() => Subscription());
+                          Get.to(() => NOTIFICATIONSScreen());
                         },
                         child: Text(
-                          "Subscription",
+                          "Notifications",
                           style: TextStyle(color: Colors.white, fontSize: 15),
                         ),
                       ),
@@ -270,7 +299,7 @@ class DrawerScreen extends StatelessWidget {
                       ),
                       title: GestureDetector(
                         onTap: () {
-                          // Get.to(() => settings());
+                          Get.to(() => SUBSCRIPTIONScreen());
                         },
                         child: Text(
                           "My Subscription",
@@ -293,7 +322,9 @@ class DrawerScreen extends StatelessWidget {
                       ),
                       title: GestureDetector(
                         onTap: () {
-                          // Get.to(() => reportissue());
+                          final bottomcontroller = Get.put(BottomController());
+                          bottomcontroller.navBarChange(3);
+                          Get.to(() => MainScreen());
                         },
                         child: Text(
                           "My History",
@@ -316,7 +347,7 @@ class DrawerScreen extends StatelessWidget {
                       ),
                       title: GestureDetector(
                         onTap: () {
-                          // Get.to(() => reportissue());
+                          Get.to(() => SETTINGSScreen());
                         },
                         child: Text(
                           "Settings",
@@ -339,7 +370,7 @@ class DrawerScreen extends StatelessWidget {
                       ),
                       title: GestureDetector(
                         onTap: () {
-                          // Get.to(() => reportissue());
+                          Get.to(() => HELPAndFEEDBACKScreen());
                         },
                         child: Text(
                           "Help & Feedback",
@@ -370,12 +401,12 @@ class DrawerScreen extends StatelessWidget {
                                 "assets/images/Icon metro-exit.png",
                               ),
                               size: 20,
-                              // color: Colors.white,
+                              color: Color(0xff004DF2),
                             ),
                           ),
                           title: GestureDetector(
                             onTap: () {
-                              // Get.to(() => loginscreen());
+                              Get.to(() => LOGINScreen());
                             },
                             child: Text(
                               "Signout",

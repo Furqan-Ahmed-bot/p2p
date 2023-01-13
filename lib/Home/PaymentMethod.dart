@@ -12,6 +12,9 @@ class PAYMENTMETHODScreen extends StatefulWidget {
 
 class _PAYMENTMETHODScreenState extends State<PAYMENTMETHODScreen> {
   bool _value = false;
+  bool _value1 = false;
+  bool _value2 = false;
+  bool _value3 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,14 +68,266 @@ class _PAYMENTMETHODScreenState extends State<PAYMENTMETHODScreen> {
             child: Column(
               children: [
                 15.verticalSpace,
-                paymentt("assets/images/Rectangle 364.png"),
-                15.verticalSpace,
-                paymentt("assets/images/paypal.png"),
-                15.verticalSpace,
-                paymentt("assets/images/apple-pay.png"),
-                15.verticalSpace,
-                paymentt("assets/images/Rectangle 363.png"),
-                29.verticalSpace,
+                Container(
+                  width: 388.w,
+                  height: 57,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(255, 0, 0, 0.06),
+                        spreadRadius: 0,
+                        blurRadius: 7,
+                        offset: Offset(0, 1), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _value = !_value;
+                            });
+                          },
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle, border: Border.all(color: _value ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                            child: Icon(
+                              Icons.circle_rounded,
+                              color: _value ? Color(0xff303030) : Colors.white,
+                              size: 18,
+                            ),
+                          ),
+                        ),
+                        20.horizontalSpace,
+                        Container(
+                          width: 32.w,
+                          height: 25.h,
+                          child: Image.asset(
+                            "assets/images/Rectangle 364.png",
+                          ),
+                        ),
+                        29.horizontalSpace,
+                        Text(
+                          "456751******4566",
+                          style: TextStyle(
+                            color: Color(0xff878B9E),
+                            fontSize: 17.sp,
+                          ),
+                        ),
+                        65.horizontalSpace,
+                        Container(
+                          width: 15.w,
+                          height: 19.h,
+                          child: Image.asset("assets/images/Icon material-delete-forever.png"),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                20.verticalSpace,
+                Container(
+                  width: 388.w,
+                  height: 57,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(255, 0, 0, 0.06),
+                        spreadRadius: 0,
+                        blurRadius: 7,
+                        offset: Offset(0, 1), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _value1 = !_value1;
+                            });
+                          },
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle, border: Border.all(color: _value1 ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                            child: Icon(
+                              Icons.circle_rounded,
+                              color: _value1 ? Color(0xff303030) : Colors.white,
+                              size: 18,
+                            ),
+                          ),
+                        ),
+                        20.horizontalSpace,
+                        Container(
+                          width: 32.w,
+                          height: 25.h,
+                          child: Image.asset(
+                            "assets/images/paypal.png",
+                          ),
+                        ),
+                        29.horizontalSpace,
+                        Text(
+                          "456751******4566",
+                          style: TextStyle(
+                            color: Color(0xff878B9E),
+                            fontSize: 17.sp,
+                          ),
+                        ),
+                        65.horizontalSpace,
+                        Container(
+                          width: 15.w,
+                          height: 19.h,
+                          child: Image.asset("assets/images/Icon material-delete-forever.png"),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                20.verticalSpace,
+                Container(
+                  width: 388.w,
+                  height: 57,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(255, 0, 0, 0.06),
+                        spreadRadius: 0,
+                        blurRadius: 7,
+                        offset: Offset(0, 1), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _value2 = !_value2;
+                            });
+                          },
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle, border: Border.all(color: _value2 ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                            child: Icon(
+                              Icons.circle_rounded,
+                              color: _value2 ? Color(0xff303030) : Colors.white,
+                              size: 18,
+                            ),
+                          ),
+                        ),
+                        20.horizontalSpace,
+                        Container(
+                          width: 32.w,
+                          height: 25.h,
+                          child: Image.asset(
+                            "assets/images/apple-pay.png",
+                          ),
+                        ),
+                        29.horizontalSpace,
+                        Text(
+                          "456751******4566",
+                          style: TextStyle(
+                            color: Color(0xff878B9E),
+                            fontSize: 17.sp,
+                          ),
+                        ),
+                        65.horizontalSpace,
+                        Container(
+                          width: 15.w,
+                          height: 19.h,
+                          child: Image.asset("assets/images/Icon material-delete-forever.png"),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                20.verticalSpace,
+                Container(
+                  width: 388.w,
+                  height: 57,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(255, 0, 0, 0.06),
+                        spreadRadius: 0,
+                        blurRadius: 7,
+                        offset: Offset(0, 1), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _value3 = !_value3;
+                            });
+                          },
+                          child: Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle, border: Border.all(color: _value3 ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                            child: Icon(
+                              Icons.circle_rounded,
+                              color: _value3 ? Color(0xff303030) : Colors.white,
+                              size: 18,
+                            ),
+                          ),
+                        ),
+                        20.horizontalSpace,
+                        Container(
+                          width: 32.w,
+                          height: 25.h,
+                          child: Image.asset(
+                            "assets/images/Rectangle 363.png",
+                          ),
+                        ),
+                        29.horizontalSpace,
+                        Text(
+                          "456751******4566",
+                          style: TextStyle(
+                            color: Color(0xff878B9E),
+                            fontSize: 17.sp,
+                          ),
+                        ),
+                        65.horizontalSpace,
+                        Container(
+                          width: 15.w,
+                          height: 19.h,
+                          child: Image.asset("assets/images/Icon material-delete-forever.png"),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                30.verticalSpace,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -93,10 +348,11 @@ class _PAYMENTMETHODScreenState extends State<PAYMENTMETHODScreen> {
                     ),
                   ],
                 ),
-                320.verticalSpace,
-                GestureDetector(onTap: () {
-                  Get.back();
-                },
+                380.verticalSpace,
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
                   child: Container(
                     width: 388.w,
                     height: 60.h,
@@ -121,7 +377,7 @@ class _PAYMENTMETHODScreenState extends State<PAYMENTMETHODScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Save",
+                            "Pay Now",
                             style: TextStyle(color: Colors.white, fontSize: 18.sp),
                           ),
                         ],

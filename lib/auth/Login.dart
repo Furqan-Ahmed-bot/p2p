@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:p2ptraffic/Home/BottomController.dart';
+import 'package:p2ptraffic/Home/Navbar.dart';
 import 'package:p2ptraffic/auth/PreLogin.dart';
 
 class LOGINScreen extends StatefulWidget {
@@ -112,34 +114,41 @@ class _LOGINScreenState extends State<LOGINScreen> {
                     ],
                   ),
                   51.verticalSpace,
-                  Container(
-                    width: 348.w,
-                    height: 60.h,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Color(0xff1CC8FB),
-                          Color(0xff004DF2),
-                        ],
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0, 0),
+                  GestureDetector(
+                    onTap: () {
+                      final bottomcontroller = Get.put(BottomController());
+                      bottomcontroller.navBarChange(0);
+                      Get.to(() => MainScreen());
+                    },
+                    child: Container(
+                      width: 348.w,
+                      height: 60.h,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomRight,
+                          end: Alignment.bottomLeft,
+                          colors: [
+                            Color(0xff1CC8FB),
+                            Color(0xff004DF2),
+                          ],
                         ),
-                      ],
-                      borderRadius: BorderRadius.circular(30.r),
-                    ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Login",
-                            style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(0, 0),
                           ),
                         ],
+                        borderRadius: BorderRadius.circular(30.r),
+                      ),
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Login",
+                              style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -189,7 +198,6 @@ class _LOGINScreenState extends State<LOGINScreen> {
       height: 55.h,
       decoration: BoxDecoration(
         color: Colors.white,
-       
         border: Border.all(color: Color(0xffDCDFE2), width: 2.sp),
         borderRadius: BorderRadius.circular(30.r),
       ),

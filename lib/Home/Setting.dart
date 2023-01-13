@@ -29,10 +29,15 @@ class _SETTINGSScreenState extends State<SETTINGSScreen> {
           ),
         ),
         elevation: 0,
-        leading: Container(
-          child: Image.asset(
-            "assets/images/Icon ionic-ios-arrow-round-back.png",
-            scale: 5,
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Container(
+            child: Image.asset(
+              "assets/images/Icon ionic-ios-arrow-round-back.png",
+              scale: 5,
+            ),
           ),
         ),
         flexibleSpace: Container(

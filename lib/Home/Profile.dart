@@ -51,7 +51,7 @@ class _PROFIL2EScreenState extends State<PROFILE2Screen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),
@@ -179,34 +179,39 @@ class _PROFIL2EScreenState extends State<PROFILE2Screen> {
                   ],
                 ),
                 50.verticalSpace,
-                Container(
-                  width: 387.w,
-                  height: 60.h,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color(0xff1CC8FB),
-                        Color(0xff004DF2),
-                      ],
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 0),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed("/EditProfileScreen");
+                  },
+                  child: Container(
+                    width: 387.w,
+                    height: 60.h,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Color(0xff1CC8FB),
+                          Color(0xff004DF2),
+                        ],
                       ),
-                    ],
-                    borderRadius: BorderRadius.circular(30.r),
-                  ),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Edit Profile",
-                          style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 0),
                         ),
                       ],
+                      borderRadius: BorderRadius.circular(30.r),
+                    ),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Edit Profile",
+                            style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

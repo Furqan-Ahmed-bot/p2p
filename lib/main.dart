@@ -12,19 +12,23 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:p2ptraffic/Home/CheckOut.dart';
 import 'package:p2ptraffic/Home/ChnageSettings.dart';
+import 'package:p2ptraffic/Home/DrawerProfile.dart';
 import 'package:p2ptraffic/Home/FeedUpdatesDetails.dart';
 import 'package:p2ptraffic/Home/Feeds.dart';
 
 import 'package:p2ptraffic/Home/Friends.dart';
 import 'package:p2ptraffic/Home/HELP&FEEDBACK.dart';
 import 'package:p2ptraffic/Home/History.dart';
+import 'package:p2ptraffic/Home/MartinProfile.dart';
 import 'package:p2ptraffic/Home/Navbar.dart';
 import 'package:p2ptraffic/Home/Notifications.dart';
+import 'package:p2ptraffic/Home/PayNow.dart';
 import 'package:p2ptraffic/Home/PaymentMethod.dart';
 import 'package:p2ptraffic/Home/PrivacyPolicy.dart';
 import 'package:p2ptraffic/Home/Profile.dart';
 import 'package:p2ptraffic/Home/Search.dart';
 import 'package:p2ptraffic/Home/Setting.dart';
+import 'package:p2ptraffic/Home/Subscribe.dart';
 import 'package:p2ptraffic/Home/Subscribtions.dart';
 import 'package:p2ptraffic/Home/Terms&Conditions.dart';
 import 'package:p2ptraffic/Home/TrafficUpdates.dart';
@@ -39,6 +43,7 @@ import 'package:p2ptraffic/auth/Signup.dart';
 import 'package:p2ptraffic/auth/Verification.dart';
 import 'package:p2ptraffic/auth/VerificationSignup.dart';
 
+import 'Home/EditProfile.dart';
 import 'Home/drawer.dart';
 import 'Home/mymap.dart';
 
@@ -65,7 +70,7 @@ class _MyAppState extends State<MyApp> {
           ),
           debugShowCheckedModeBanner: false,
           // home: SplashScreen(),
-          initialRoute: '/MainScreen',
+          initialRoute: '/PayNowScreen',
           getPages: [
             GetPage(
               name: '/Mymap',
@@ -186,6 +191,26 @@ class _MyAppState extends State<MyApp> {
             GetPage(
               name: '/FeedUPDATESDETAILSScreen',
               page: (() => FeedUPDATESDETAILSScreen()),
+            ),
+            GetPage(
+              name: '/MartinProfileScreen',
+              page: (() => MartinProfileScreen()),
+            ),
+            GetPage(
+              name: '/DrawerProfileScreen',
+              page: (() => DrawerProfileScreen()),
+            ),
+            GetPage(
+              name: '/EditProfileScreen',
+              page: (() => EditProfileScreen()),
+            ),
+            GetPage(
+              name: '/SUBSCRIBEScreen',
+              page: (() => SUBSCRIBEScreen()),
+            ),
+            GetPage(
+              name: '/PayNowScreen',
+              page: (() => PayNowScreen()),
             ),
           ],
         );

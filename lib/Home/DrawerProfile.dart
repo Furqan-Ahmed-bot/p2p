@@ -8,14 +8,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:p2ptraffic/Home/Drawer.dart';
 import 'package:p2ptraffic/main.dart';
 
-class FEEDSScreen extends StatefulWidget {
-  const FEEDSScreen({super.key});
+class DrawerProfileScreen extends StatefulWidget {
+  const DrawerProfileScreen({super.key});
 
   @override
-  State<FEEDSScreen> createState() => _FEEDSScreenState();
+  State<DrawerProfileScreen> createState() => _DrawerProfileScreenState();
 }
 
-class _FEEDSScreenState extends State<FEEDSScreen> {
+class _DrawerProfileScreenState extends State<DrawerProfileScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   bool _value = false;
   bool _value1 = false;
@@ -65,7 +65,7 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
       // extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(
-          "FEEDS",
+          "PROFILE",
           style: TextStyle(fontSize: 16.sp),
         ),
         centerTitle: true,
@@ -77,11 +77,11 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
         elevation: 0,
         leading: GestureDetector(
           onTap: () {
-            _key.currentState!.openDrawer();
+            Get.back();
           },
           child: Container(
               child: Image.asset(
-            "assets/images/Group 16.png",
+            "assets/images/Icon ionic-ios-arrow-round-back.png",
             scale: 4,
           )),
         ),
@@ -101,593 +101,612 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
             // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed("/SEARCHScreen");
-                  },
-                  child: Container(
-                    child: Image.asset(
-                      "assets/images/Icon feather-search.png",
-                      scale: 4,
-                    ),
-                  ),
-                ),
-                8.horizontalSpace,
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed("/NOTIFICATIONSScreen");
-                  },
-                  child: Container(
-                    child: Image.asset(
-                      "assets/images/Group 1377.png",
-                      scale: 4,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+        // actions: [
+        //   Padding(
+        //     padding: const EdgeInsets.symmetric(horizontal: 10),
+        //     child: Row(
+        //       children: [
+        //         Container(
+        //           child: Image.asset(
+        //             "assets/images/Icon feather-search.png",
+        //             scale: 4,
+        //           ),
+        //         ),
+        //         8.horizontalSpace,
+        //         Container(
+        //           child: Image.asset(
+        //             "assets/images/Group 1377.png",
+        //             scale: 4,
+        //           ),
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // ],
       ),
       body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                22.verticalSpace,
-
-                Container(
-                  width: 388.w,
-                  height: 392,
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      20.verticalSpace,
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 47.w,
-                              height: 47.h,
-                              child: Image.asset("assets/images/1.png"),
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Martin Smith",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
-                                ),
-                                Text(
-                                  "50min ago",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
-                                ),
-                                15.verticalSpace,
-                                Text(
-                                  "Lorem ipsum dolor sit amet.",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                ),
-                              ],
-                            ),
-                            Container(
-                              child: Image.asset(
-                                "assets/images/Group 1657.png",
-                                scale: 5,
-                              ),
-                            ),
-                          ],
-                        ),
+        // width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+              22.verticalSpace,
+              Row(
+                children: [
+                  Container(
+                    width: 352.w,
+                    height: 115.h,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        bottomLeft: Radius.circular(10),
                       ),
-                      30.verticalSpace,
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              children: [
-                                Container(
-                                  child: Image.asset(
-                                    "assets/images/Icon material-location-on.png",
-                                    scale: 5,
-                                  ),
-                                ),
-                                10.horizontalSpace,
-                                Container(
-                                  child: Text(
-                                    "Lorem ipsum dolor sit amet.",
-                                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          10.verticalSpace,
-                          GestureDetector(
-                            onTap: () {
-                              Get.toNamed("/FeedUPDATESDETAILSScreen");
-                            },
-                            child: Container(
-                              child: Image.asset(
-                                "assets/images/Rectangle 1339.png",
-                                scale: 1,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                15.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.thumb_up,
-                            color: Color(0xff21CDFB),
-                          ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
                         ),
-                        7.horizontalSpace,
-                        Container(
-                          child: Text(
-                            "Like",
-                            style: TextStyle(fontSize: 14.sp),
-                          ),
-                        )
                       ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed("/FeedUPDATESDETAILSScreen");
-                      },
-                      child: Row(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                              child: Image.asset(
-                            "assets/images/Icon awesome-comment-dots.png",
-                            scale: 5,
-                          )),
-                          7.horizontalSpace,
-                          Container(
-                            child: Text(
-                              "326 Comments",
-                              style: TextStyle(fontSize: 14.sp),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Share();
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                              child: Image.asset(
-                            "assets/images/Icon awesome-share.png",
-                            scale: 5,
-                          )),
-                          7.horizontalSpace,
-                          Container(
-                            child: Text(
-                              "Share",
-                              style: TextStyle(fontSize: 14.sp),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                15.verticalSpace,
-
-                Dividerr(),
-
-                20.verticalSpace,
-                Column(
-                  children: [
-                    20.verticalSpace,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 47.w,
-                            height: 47.h,
-                            child: Image.asset("assets/images/1.png"),
-                          ),
-                          // 50.verticalSpace,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Row(
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                "Martin Smith",
-                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
+                              Container(
+                                width: 85.w,
+                                height: 85.h,
+                                child: Image.asset("assets/images/NoPath - Copy (3).png"),
                               ),
-                              Text(
-                                "50min ago",
-                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
-                              ),
-                              // 15.verticalSpace,
-                              // Text(
-                              //   "Lorem ipsum dolor sit amet.",
-                              //   style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                              // ),
+                              10.horizontalSpace,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Martin Smith",
+                                    style: TextStyle(color: Color(0xff3A3A3A), fontSize: 20.sp),
+                                  ),
+                                  79.horizontalSpace,
+                                  Text(
+                                    "22 - Female",
+                                    style: TextStyle(color: Color(0xff3A3A3A), fontSize: 16.sp),
+                                  ),
+                                  Text(
+                                    "New York",
+                                    style: TextStyle(color: Color(0xff3A3A3A), fontSize: 16.sp),
+                                  ),
+                                ],
+                              )
                             ],
                           ),
-                          10.horizontalSpace,
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              right: 10,
-                              bottom: 20,
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 100.w,
-                                  height: 35.h,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xffDFE1EC),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                      )),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Report();
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                            width: 13.w,
-                                            height: 13.h,
-                                            child: Image.asset("assets/images/Icon material-report.png"),
-                                          ),
-                                          Text(
-                                            "Report",
-                                            style: TextStyle(fontSize: 14),
-                                          ),
-                                          Container(
-                                            child: Image.asset(
-                                              "assets/images/Group 1657.png",
-                                              scale: 5,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                1.verticalSpace,
-                                GestureDetector(
-                                  onTap: () {
-                                    Block();
-                                  },
-                                  child: Container(
-                                    width: 100.w,
-                                    height: 35.h,
-                                    decoration: BoxDecoration(
-                                        color: Color(0xffDFE1EC),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(10),
-                                          bottomRight: Radius.circular(10),
-                                        )),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                                      child: Row(
-                                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Container(
-                                            width: 13.w,
-                                            height: 13.h,
-                                            child: Image.asset("assets/images/Icon metro-blocked.png"),
-                                          ),
-                                          5.horizontalSpace,
-                                          Text(
-                                            "Block",
-                                            style: TextStyle(fontSize: 14),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                         ],
                       ),
                     ),
-                    30.verticalSpace,
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              children: [
-                                Container(
-                                  child: Image.asset(
-                                    "assets/images/Icon material-location-on.png",
-                                    scale: 5,
-                                  ),
-                                ),
-                                10.horizontalSpace,
-                                Container(
-                                  child: Text(
-                                    "Lorem ipsum dolor sit amet.",
-                                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Stack(
-                      children: [
-                        Container(
-                          width: 388.w,
-                          height: 369.h,
-                          child: GoogleMap(
-                            compassEnabled: true,
-                            myLocationButtonEnabled: true,
-                            zoomGesturesEnabled: true,
-                            initialCameraPosition: _center,
-                            markers: Set<Marker>.of(_marker),
-                            onMapCreated: (GoogleMapController controller) {
-                              _mapcontroller.complete(controller);
-                            },
-                          ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed("/PROFILE2Screen");
+                    },
+                    child: Container(
+                      width: 26.w,
+                      height: 115.h,
+                      decoration: BoxDecoration(
+                        color: Color(0xffDFE0E9),
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-                17.verticalSpace,
-
-                15.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.thumb_up,
-                            color: Color(0xff21CDFB),
-                          ),
-                        ),
-                        7.horizontalSpace,
-                        Container(
-                          child: Text(
-                            "Like",
-                            style: TextStyle(fontSize: 14.sp),
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                            child: Image.asset(
-                          "assets/images/Icon awesome-comment-dots.png",
-                          scale: 5,
-                        )),
-                        7.horizontalSpace,
-                        Container(
-                          child: Text(
-                            "326 Comments",
-                            style: TextStyle(fontSize: 14.sp),
-                          ),
-                        )
-                      ],
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Share();
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                              child: Image.asset(
-                            "assets/images/Icon awesome-share.png",
-                            scale: 5,
-                          )),
-                          7.horizontalSpace,
-                          Container(
-                            child: Text(
-                              "Share",
-                              style: TextStyle(fontSize: 14.sp),
-                            ),
-                          )
-                        ],
                       ),
-                    )
-                  ],
-                ),
-                15.verticalSpace,
-                Dividerr(), 22.verticalSpace,
-                Container(
-                  width: 388.w,
-                  height: 392,
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
+                      child: Image.asset(
+                        "assets/images/Icon ionic-ios-arrow-Go.png",
+                        scale: 5,
+                      ),
                     ),
-                  ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                  )
+                ],
+              ),
+              22.verticalSpace,
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.7,
+                child: SingleChildScrollView(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      20.verticalSpace,
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      Container(
+                        width: 388.w,
+                        height: 392,
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.2),
+
+                            spreadRadius: 5,
+
+                            blurRadius: 7,
+
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Container(
-                              width: 47.w,
-                              height: 47.h,
-                              child: Image.asset("assets/images/1.png"),
+                            20.verticalSpace,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 47.w,
+                                    height: 47.h,
+                                    child: Image.asset("assets/images/NoPath - Copy (3).png"),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Martin Smith",
+                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
+                                      ),
+                                      Text(
+                                        "50min ago",
+                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
+                                      ),
+                                      15.verticalSpace,
+                                      Text(
+                                        "Lorem ipsum dolor sit amet.",
+                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    child: Image.asset(
+                                      "assets/images/Group 1657.png",
+                                      scale: 5,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
+                            30.verticalSpace,
                             Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  "Martin Smith",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        child: Image.asset(
+                                          "assets/images/Icon material-location-on.png",
+                                          scale: 5,
+                                        ),
+                                      ),
+                                      10.horizontalSpace,
+                                      Container(
+                                        child: Text(
+                                          "Lorem ipsum dolor sit amet.",
+                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                Text(
-                                  "50min ago",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
-                                ),
-                                15.verticalSpace,
-                                Text(
-                                  "Lorem ipsum dolor sit amet.",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                                10.verticalSpace,
+                                GestureDetector(
+                                  // onTap: () {
+
+                                  //   Get.toNamed("/FeedUPDATESDETAILSScreen");
+
+                                  // },
+
+                                  child: Container(
+                                    child: Image.asset(
+                                      "assets/images/Rectangle 1339.png",
+                                      scale: 1,
+                                    ),
+                                  ),
                                 ),
                               ],
-                            ),
-                            Container(
-                              child: Image.asset(
-                                "assets/images/Group 1657.png",
-                                scale: 5,
-                              ),
                             ),
                           ],
                         ),
                       ),
-                      30.verticalSpace,
-                      Column(
+                      15.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                          Row(
+                            children: [
+                              Container(
+                                child: Icon(
+                                  Icons.thumb_up,
+                                  color: Color(0xff21CDFB),
+                                ),
+                              ),
+                              7.horizontalSpace,
+                              Container(
+                                child: Text(
+                                  "Like",
+                                  style: TextStyle(fontSize: 14.sp),
+                                ),
+                              )
+                            ],
+                          ),
+                          GestureDetector(
+                            // onTap: () {
+
+                            //   Get.toNamed("/FeedUPDATESDETAILSScreen");
+
+                            // },
+
                             child: Row(
                               children: [
                                 Container(
-                                  child: Image.asset(
-                                    "assets/images/Icon material-location-on.png",
-                                    scale: 5,
-                                  ),
-                                ),
-                                10.horizontalSpace,
+                                    child: Image.asset(
+                                  "assets/images/Icon awesome-comment-dots.png",
+                                  scale: 5,
+                                )),
+                                7.horizontalSpace,
                                 Container(
                                   child: Text(
-                                    "Lorem ipsum dolor sit amet.",
-                                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                                    "326 Comments",
+                                    style: TextStyle(fontSize: 14.sp),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          GestureDetector(
+                            // onTap: () {
+
+                            //   Share();
+
+                            // },
+
+                            child: Row(
+                              children: [
+                                Container(
+                                    child: Image.asset(
+                                  "assets/images/Icon awesome-share.png",
+                                  scale: 5,
+                                )),
+                                7.horizontalSpace,
+                                Container(
+                                  child: Text(
+                                    "Share",
+                                    style: TextStyle(fontSize: 14.sp),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                      15.verticalSpace,
+                      Dividerr(),
+                      20.verticalSpace,
+                      Column(
+                        children: [
+                          20.verticalSpace,
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              20.verticalSpace,
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: 47.w,
+                                      height: 47.h,
+                                      child: Image.asset("assets/images/NoPath - Copy (3).png"),
+                                    ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Martin Smith",
+                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
+                                        ),
+                                        Text(
+                                          "50min ago",
+                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
+                                        ),
+                                        15.verticalSpace,
+                                        Text(
+                                          "Lorem ipsum dolor sit amet.",
+                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      child: Image.asset(
+                                        "assets/images/Group 1657.png",
+                                        scale: 5,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              30.verticalSpace,
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        child: Image.asset(
+                                          "assets/images/Icon material-location-on.png",
+                                          scale: 5,
+                                        ),
+                                      ),
+                                      10.horizontalSpace,
+                                      Container(
+                                        child: Text(
+                                          "Lorem ipsum dolor sit amet.",
+                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          10.verticalSpace,
-                          Image.asset(
-                            "assets/images/Rectangle 1339.png",
-                            scale: 1,
+                          Stack(
+                            children: [
+                              Container(
+                                width: 388.w,
+                                height: 369.h,
+                                child: GoogleMap(
+                                  compassEnabled: true,
+                                  myLocationButtonEnabled: true,
+                                  zoomGesturesEnabled: true,
+                                  initialCameraPosition: _center,
+                                  markers: Set<Marker>.of(_marker),
+                                  onMapCreated: (GoogleMapController controller) {
+                                    _mapcontroller.complete(controller);
+                                  },
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
+                      17.verticalSpace,
+                      15.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                child: Icon(
+                                  Icons.thumb_up,
+                                  color: Color(0xff21CDFB),
+                                ),
+                              ),
+                              7.horizontalSpace,
+                              Container(
+                                child: Text(
+                                  "Like",
+                                  style: TextStyle(fontSize: 14.sp),
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                  child: Image.asset(
+                                "assets/images/Icon awesome-comment-dots.png",
+                                scale: 5,
+                              )),
+                              7.horizontalSpace,
+                              Container(
+                                child: Text(
+                                  "326 Comments",
+                                  style: TextStyle(fontSize: 14.sp),
+                                ),
+                              )
+                            ],
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Share();
+                            },
+                            child: Row(
+                              children: [
+                                Container(
+                                    child: Image.asset(
+                                  "assets/images/Icon awesome-share.png",
+                                  scale: 5,
+                                )),
+                                7.horizontalSpace,
+                                Container(
+                                  child: Text(
+                                    "Share",
+                                    style: TextStyle(fontSize: 14.sp),
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                      15.verticalSpace,
+                      Dividerr(),
+                      22.verticalSpace,
+                      Container(
+                        width: 388.w,
+                        height: 392,
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.2),
+
+                            spreadRadius: 5,
+
+                            blurRadius: 7,
+
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            20.verticalSpace,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 47.w,
+                                    height: 47.h,
+                                    child: Image.asset("assets/images/NoPath - Copy (3).png"),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Martin Smith",
+                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
+                                      ),
+                                      Text(
+                                        "50min ago",
+                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
+                                      ),
+                                      15.verticalSpace,
+                                      Text(
+                                        "Lorem ipsum dolor sit amet.",
+                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    child: Image.asset(
+                                      "assets/images/Group 1657.png",
+                                      scale: 5,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            30.verticalSpace,
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        child: Image.asset(
+                                          "assets/images/Icon material-location-on.png",
+                                          scale: 5,
+                                        ),
+                                      ),
+                                      10.horizontalSpace,
+                                      Container(
+                                        child: Text(
+                                          "Lorem ipsum dolor sit amet.",
+                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                10.verticalSpace,
+                                Image.asset(
+                                  "assets/images/Rectangle 1339.png",
+                                  scale: 1,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      15.verticalSpace,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                child: Icon(
+                                  Icons.thumb_up,
+                                  color: Color(0xff21CDFB),
+                                ),
+                              ),
+                              7.horizontalSpace,
+                              Container(
+                                child: Text(
+                                  "Like",
+                                  style: TextStyle(fontSize: 14.sp),
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                  child: Image.asset(
+                                "assets/images/Icon awesome-comment-dots.png",
+                                scale: 5,
+                              )),
+                              7.horizontalSpace,
+                              Container(
+                                child: Text(
+                                  "326 Comments",
+                                  style: TextStyle(fontSize: 14.sp),
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                  child: Image.asset(
+                                "assets/images/Icon awesome-share.png",
+                                scale: 5,
+                              )),
+                              7.horizontalSpace,
+                              Container(
+                                child: Text(
+                                  "Share",
+                                  style: TextStyle(fontSize: 14.sp),
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      15.verticalSpace,
+                      Dividerr(),
+                      50.verticalSpace,
                     ],
                   ),
                 ),
-                15.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          child: Icon(
-                            Icons.thumb_up,
-                            color: Color(0xff21CDFB),
-                          ),
-                        ),
-                        7.horizontalSpace,
-                        Container(
-                          child: Text(
-                            "Like",
-                            style: TextStyle(fontSize: 14.sp),
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                            child: Image.asset(
-                          "assets/images/Icon awesome-comment-dots.png",
-                          scale: 5,
-                        )),
-                        7.horizontalSpace,
-                        Container(
-                          child: Text(
-                            "326 Comments",
-                            style: TextStyle(fontSize: 14.sp),
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                            child: Image.asset(
-                          "assets/images/Icon awesome-share.png",
-                          scale: 5,
-                        )),
-                        7.horizontalSpace,
-                        Container(
-                          child: Text(
-                            "Share",
-                            style: TextStyle(fontSize: 14.sp),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-                15.verticalSpace,
+              ),
 
-                Dividerr(),
-
-                50.verticalSpace,
-
-                // Dividerr()
-              ],
-            ),
+              // Dividerr()
+            ],
           ),
         ),
       ),

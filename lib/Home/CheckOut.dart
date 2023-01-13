@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class CHECKOUTScreen extends StatefulWidget {
   const CHECKOUTScreen({super.key});
@@ -45,7 +46,7 @@ class _CHECKOUTScreenState extends State<CHECKOUTScreen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),
@@ -169,34 +170,39 @@ class _CHECKOUTScreenState extends State<CHECKOUTScreen> {
                       10.verticalSpace,
                       Dividerr(),
                       418.verticalSpace,
-                      Container(
-                        width: 388.w,
-                        height: 60.h,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.bottomRight,
-                            end: Alignment.bottomLeft,
-                            colors: [
-                              Color(0xff1CC8FB),
-                              Color(0xff004DF2),
-                            ],
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(0, 0),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed("/PAYMENTMETHODScreen");
+                        },
+                        child: Container(
+                          width: 388.w,
+                          height: 60.h,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.bottomRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                Color(0xff1CC8FB),
+                                Color(0xff004DF2),
+                              ],
                             ),
-                          ],
-                          borderRadius: BorderRadius.circular(30.r),
-                        ),
-                        child: Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Checkout",
-                                style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                            boxShadow: [
+                              BoxShadow(
+                                offset: Offset(0, 0),
                               ),
                             ],
+                            borderRadius: BorderRadius.circular(30.r),
+                          ),
+                          child: Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Checkout",
+                                  style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

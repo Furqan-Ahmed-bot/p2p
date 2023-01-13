@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class FRIENDSScreen extends StatefulWidget {
   const FRIENDSScreen({super.key});
@@ -27,10 +28,15 @@ class _FRIENDSScreenState extends State<FRIENDSScreen> {
           ),
         ),
         elevation: 0,
-        leading: Container(
-          child: Image.asset(
-            "assets/images/Icon ionic-ios-arrow-round-back.png",
-            scale: 5,
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Container(
+            child: Image.asset(
+              "assets/images/Icon ionic-ios-arrow-round-back.png",
+              scale: 5,
+            ),
           ),
         ),
         flexibleSpace: Container(
@@ -46,7 +52,7 @@ class _FRIENDSScreenState extends State<FRIENDSScreen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),
@@ -88,38 +94,43 @@ class _FRIENDSScreenState extends State<FRIENDSScreen> {
   martin(
     img,
   ) {
-    return Row(
-      children: [
-        Container(
-          height: 60.h,
-          width: 60.w,
-          child: Image.asset(
-            img,
-          ),
-        ),
-        22.horizontalSpace,
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Martin Smith",
-              style: TextStyle(fontSize: 18.sp, color: Color(0xff3A3A3A)),
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed("/MartinProfileScreen");
+      },
+      child: Row(
+        children: [
+          Container(
+            height: 60.h,
+            width: 60.w,
+            child: Image.asset(
+              img,
             ),
-            Text(
-              "New York",
-              style: TextStyle(fontSize: 14.sp, color: Color(0xff3A3A3A)),
-            ),
-          ],
-        ),
-        151.horizontalSpace,
-        Container(
-          height: 26.h,
-          width: 26.w,
-          child: Image.asset(
-            "assets/images/Icon ionic-ios-close-circle.png",
           ),
-        ),
-      ],
+          22.horizontalSpace,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Martin Smith",
+                style: TextStyle(fontSize: 18.sp, color: Color(0xff3A3A3A)),
+              ),
+              Text(
+                "New York",
+                style: TextStyle(fontSize: 14.sp, color: Color(0xff3A3A3A)),
+              ),
+            ],
+          ),
+          151.horizontalSpace,
+          Container(
+            height: 26.h,
+            width: 26.w,
+            child: Image.asset(
+              "assets/images/Icon ionic-ios-close-circle.png",
+            ),
+          ),
+        ],
+      ),
     );
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import 'Drawer.dart';
 
@@ -54,16 +55,21 @@ class _HISTORYScreenState extends State<HISTORYScreen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: Container(
-              child: Image.asset(
-                "assets/images/Group 1377.png",
-                scale: 4,
+            child: GestureDetector(
+              onTap: () {
+                Get.toNamed("/NOTIFICATIONSScreen");
+              },
+              child: Container(
+                child: Image.asset(
+                  "assets/images/Group 1377.png",
+                  scale: 4,
+                ),
               ),
             ),
           )

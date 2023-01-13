@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:p2ptraffic/Home/BottomController.dart';
+import 'package:p2ptraffic/Home/Navbar.dart';
 
 class CREATEPROFILEScreen extends StatefulWidget {
   const CREATEPROFILEScreen({super.key});
@@ -157,7 +159,9 @@ class _CREATEPROFILEStateScreen extends State<CREATEPROFILEScreen> {
                   40.verticalSpace,
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed("/VERIFICATIONSignupScreen");
+                      final bottomcontroller = Get.put(BottomController());
+                      bottomcontroller.navBarChange(0);
+                      Get.to(() => MainScreen());
                     },
                     child: Container(
                       width: 348.w,

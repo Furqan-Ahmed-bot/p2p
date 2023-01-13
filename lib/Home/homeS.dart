@@ -101,17 +101,27 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               children: [
-                Container(
-                  child: Image.asset(
-                    "assets/images/Icon feather-search.png",
-                    scale: 4,
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed("/SEARCHScreen");
+                  },
+                  child: Container(
+                    child: Image.asset(
+                      "assets/images/Icon feather-search.png",
+                      scale: 4,
+                    ),
                   ),
                 ),
                 8.horizontalSpace,
-                Container(
-                  child: Image.asset(
-                    "assets/images/Group 1377.png",
-                    scale: 4,
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed("/NOTIFICATIONSScreen");
+                  },
+                  child: Container(
+                    child: Image.asset(
+                      "assets/images/Group 1377.png",
+                      scale: 4,
+                    ),
                   ),
                 ),
               ],
@@ -217,31 +227,53 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     267.verticalSpace,
-                    Container(
-                      width: 124.w,
-                      height: 64.h,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            10.verticalSpace,
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 8),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed("/TRAFFICUPDATESScreen");
+                      },
+                      child: Container(
+                        width: 124.w,
+                        height: 64.h,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              10.verticalSpace,
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 8),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      width: 6.w,
+                                      height: 6.h,
+                                      decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+                                    ),
+                                    Text(
+                                      "Traffic Notification",
+                                      style: TextStyle(
+                                        fontSize: 10.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
                                   Container(
-                                    width: 6.w,
-                                    height: 6.h,
-                                    decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+                                    width: 15.w,
+                                    height: 14.h,
+                                    child: Image.asset("assets/images/Icon material-notifications-active.png"),
                                   ),
                                   Text(
-                                    "Traffic Notification",
+                                    "(5) Updates",
                                     style: TextStyle(
                                       fontSize: 10.sp,
                                       fontWeight: FontWeight.bold,
@@ -249,25 +281,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ],
                               ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Container(
-                                  width: 15.w,
-                                  height: 14.h,
-                                  child: Image.asset("assets/images/Icon material-notifications-active.png"),
-                                ),
-                                Text(
-                                  "(5) Updates",
-                                  style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
