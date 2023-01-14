@@ -83,7 +83,10 @@ class _PRELOGINStateScreen extends State<PRELOGINScreen> {
                               child: Container(
                                 width: 16.w,
                                 height: 13.h,
-                                child: Image.asset("assets/images/Icon material-email.png"),
+                                child: Image.asset(
+                                  "assets/images/Icon material-email.png",
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                             // SizedBox(width: 17.h),

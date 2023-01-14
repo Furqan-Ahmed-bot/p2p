@@ -219,10 +219,15 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: 50.w,
-                          height: 50.h,
-                          child: Image.asset("assets/images/Group 1383.png"),
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed('/SHARELIVELOCATIONsCREEN');
+                          },
+                          child: Container(
+                            width: 50.w,
+                            height: 50.h,
+                            child: Image.asset("assets/images/Group 1383.png"),
+                          ),
                         ),
                       ],
                     ),

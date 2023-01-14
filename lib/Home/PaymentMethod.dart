@@ -339,11 +339,16 @@ class _PAYMENTMETHODScreenState extends State<PAYMENTMETHODScreen> {
                       ),
                     ),
                     9.horizontalSpace,
-                    Text(
-                      "Add Card",
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        fontSize: 12.sp,
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed("/PAYMENTMETHODDScreen");
+                      },
+                      child: Text(
+                        "Add Card",
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontSize: 12.sp,
+                        ),
                       ),
                     ),
                   ],
@@ -351,7 +356,7 @@ class _PAYMENTMETHODScreenState extends State<PAYMENTMETHODScreen> {
                 380.verticalSpace,
                 GestureDetector(
                   onTap: () {
-                    Get.back();
+                    Get.toNamed("/PayNowScreen");
                   },
                   child: Container(
                     width: 388.w,

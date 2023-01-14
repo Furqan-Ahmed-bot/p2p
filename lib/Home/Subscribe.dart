@@ -238,13 +238,13 @@ class _SUBSCRIBEScreenState extends State<SUBSCRIBEScreen> {
                                               children: subs == 1
                                                   ? <TextSpan>[
                                                       TextSpan(
-                                                          text: '9.99',
+                                                          text: '24',
                                                           style: TextStyle(fontWeight: FontWeight.w700, fontSize: 70, color: Color(0xff878B9E))),
                                                       // TextSpan(text: '.00', style: TextStyle(color: Colors.black, fontSize: 25.sp)),
                                                     ]
                                                   : <TextSpan>[
                                                       TextSpan(
-                                                          text: '24',
+                                                          text: '9.99',
                                                           style: TextStyle(fontWeight: FontWeight.w700, fontSize: 70, color: Color(0xff878B9E))),
                                                       TextSpan(text: '.00', style: TextStyle(color: Colors.black, fontSize: 25.sp)),
                                                     ]),

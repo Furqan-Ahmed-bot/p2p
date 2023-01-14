@@ -1,6 +1,5 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'dart:async';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:p2ptraffic/Home/Camera.dart';
 import 'package:p2ptraffic/Home/CheckOut.dart';
 import 'package:p2ptraffic/Home/ChnageSettings.dart';
 import 'package:p2ptraffic/Home/DrawerProfile.dart';
@@ -22,10 +22,13 @@ import 'package:p2ptraffic/Home/History.dart';
 import 'package:p2ptraffic/Home/MartinProfile.dart';
 import 'package:p2ptraffic/Home/Navbar.dart';
 import 'package:p2ptraffic/Home/Notifications.dart';
+import 'package:p2ptraffic/Home/POST.dart';
 import 'package:p2ptraffic/Home/PayNow.dart';
 import 'package:p2ptraffic/Home/PaymentMethod.dart';
+import 'package:p2ptraffic/Home/Paymentmethhod.dart';
 import 'package:p2ptraffic/Home/PrivacyPolicy.dart';
 import 'package:p2ptraffic/Home/Profile.dart';
+import 'package:p2ptraffic/Home/SHARELIVELOCATION.dart';
 import 'package:p2ptraffic/Home/Search.dart';
 import 'package:p2ptraffic/Home/Setting.dart';
 import 'package:p2ptraffic/Home/Subscribe.dart';
@@ -70,7 +73,7 @@ class _MyAppState extends State<MyApp> {
           ),
           debugShowCheckedModeBanner: false,
           // home: SplashScreen(),
-          initialRoute: '/PayNowScreen',
+          initialRoute: '/MainScreen',
           getPages: [
             GetPage(
               name: '/Mymap',
@@ -211,6 +214,22 @@ class _MyAppState extends State<MyApp> {
             GetPage(
               name: '/PayNowScreen',
               page: (() => PayNowScreen()),
+            ),
+            GetPage(
+              name: '/PAYMENTMETHODDScreen',
+              page: (() => PAYMENTMETHODDScreen()),
+            ),
+            GetPage(
+              name: '/SHARELIVELOCATIONsCREEN',
+              page: (() => SHARELIVELOCATIONsCREEN()),
+            ),
+            GetPage(
+              name: '/POSTScreen',
+              page: (() => POSTScreen()),
+            ),
+            GetPage(
+              name: '/CamScreen',
+              page: (() => CamScreen()),
             ),
           ],
         );
