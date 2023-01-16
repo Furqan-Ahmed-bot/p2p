@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:p2ptraffic/Home/BottomController.dart';
+import 'package:p2ptraffic/Home/Navbar.dart';
 
 class ChnageSETTINGSScreen extends StatefulWidget {
   const ChnageSETTINGSScreen({super.key});
@@ -70,34 +72,41 @@ class _ChnageSETTINGSScreenState extends State<ChnageSETTINGSScreen> {
                 15.verticalSpace,
                 TextField1("Confirm New Password"),
                 50.verticalSpace,
-                Container(
-                  width: 388.w,
-                  height: 60.h,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color(0xff1CC8FB),
-                        Color(0xff004DF2),
-                      ],
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 0),
+                GestureDetector(
+                  onTap: () {
+                    final bottomcontroller = Get.put(BottomController());
+                    bottomcontroller.navBarChange(0);
+                    Get.to(() => MainScreen());
+                  },
+                  child: Container(
+                    width: 388.w,
+                    height: 60.h,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Color(0xff1CC8FB),
+                          Color(0xff004DF2),
+                        ],
                       ),
-                    ],
-                    borderRadius: BorderRadius.circular(30.r),
-                  ),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Change",
-                          style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 0),
                         ),
                       ],
+                      borderRadius: BorderRadius.circular(30.r),
+                    ),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Change",
+                            style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

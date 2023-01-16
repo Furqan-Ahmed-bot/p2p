@@ -507,9 +507,9 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                             ],
                           ),
                           GestureDetector(
-                            onTap: () {
-                              Share();
-                            },
+                            // onTap: () {
+                            //   Share();
+                            // },
                             child: Row(
                               children: [
                                 Container(

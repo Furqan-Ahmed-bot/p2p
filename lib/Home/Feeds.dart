@@ -316,10 +316,13 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            width: 47.w,
-                            height: 47.h,
-                            child: Image.asset("assets/images/1.png"),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 13),
+                            child: Container(
+                              width: 47.w,
+                              height: 47.h,
+                              child: Image.asset("assets/images/1.png"),
+                            ),
                           ),
                           // 50.verticalSpace,
                           Column(
@@ -340,87 +343,81 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                               // ),
                             ],
                           ),
-                          10.horizontalSpace,
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              right: 10,
-                              bottom: 20,
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
+                          16.horizontalSpace,
+                          Column(
+                            children: [
+                              Container(
+                                width: 100.w,
+                                height: 35.h,
+                                decoration: BoxDecoration(
+                                    color: Color(0xffDFE1EC),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10),
+                                    )),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Report();
+                                    },
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Container(
+                                          width: 13.w,
+                                          height: 13.h,
+                                          child: Image.asset("assets/images/Icon material-report.png"),
+                                        ),
+                                        Text(
+                                          "Report",
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                        Container(
+                                          child: Image.asset(
+                                            "assets/images/Group 1657.png",
+                                            scale: 5,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              1.verticalSpace,
+                              GestureDetector(
+                                onTap: () {
+                                  Block();
+                                },
+                                child: Container(
                                   width: 100.w,
                                   height: 35.h,
                                   decoration: BoxDecoration(
                                       color: Color(0xffDFE1EC),
                                       borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
+                                        bottomLeft: Radius.circular(10),
+                                        bottomRight: Radius.circular(10),
                                       )),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Report();
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                            width: 13.w,
-                                            height: 13.h,
-                                            child: Image.asset("assets/images/Icon material-report.png"),
-                                          ),
-                                          Text(
-                                            "Report",
-                                            style: TextStyle(fontSize: 14),
-                                          ),
-                                          Container(
-                                            child: Image.asset(
-                                              "assets/images/Group 1657.png",
-                                              scale: 5,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                                    child: Row(
+                                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Container(
+                                          width: 13.w,
+                                          height: 13.h,
+                                          child: Image.asset("assets/images/Icon metro-blocked.png"),
+                                        ),
+                                        5.horizontalSpace,
+                                        Text(
+                                          "Block",
+                                          style: TextStyle(fontSize: 14),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
-                                1.verticalSpace,
-                                GestureDetector(
-                                  onTap: () {
-                                    Block();
-                                  },
-                                  child: Container(
-                                    width: 100.w,
-                                    height: 35.h,
-                                    decoration: BoxDecoration(
-                                        color: Color(0xffDFE1EC),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(10),
-                                          bottomRight: Radius.circular(10),
-                                        )),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                                      child: Row(
-                                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Container(
-                                            width: 13.w,
-                                            height: 13.h,
-                                            child: Image.asset("assets/images/Icon metro-blocked.png"),
-                                          ),
-                                          5.horizontalSpace,
-                                          Text(
-                                            "Block",
-                                            style: TextStyle(fontSize: 14),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -683,7 +680,7 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
 
                 Dividerr(),
 
-                50.verticalSpace,
+                120.verticalSpace,
 
                 // Dividerr()
               ],

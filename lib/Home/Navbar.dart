@@ -105,11 +105,11 @@ class _MainScreenState extends State<MainScreen> {
                 // topRight: Radius.circular(70),
                 ),
             gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               colors: [
-                Color(0xff004DF2),
                 Color(0xff1CC8FB),
+                Color(0xff004DF2),
               ],
             ),
           ),
@@ -134,14 +134,14 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon awesome-home.png",
-                          color: bottomcontroller.navigationBarIndexValue == 0 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 0 ? Colors.white : Color(0xff80c1fa),
                         ),
                       ),
                       Text(
                         "Home",
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: bottomcontroller.navigationBarIndexValue == 0 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 0 ? Colors.white : Color(0xff80c1fa),
                         ),
                       )
                     ],
@@ -161,7 +161,7 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon material-rss-feed.png",
-                          color: bottomcontroller.navigationBarIndexValue == 1 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 1 ? Colors.white : Color(0xff80c1fa),
                         ),
                       ),
                     ),
@@ -169,7 +169,7 @@ class _MainScreenState extends State<MainScreen> {
                       "Feeds",
                       style: TextStyle(
                         fontSize: 12.sp,
-                        color: bottomcontroller.navigationBarIndexValue == 1 ? Colors.white : Colors.grey.withOpacity(0.7),
+                        color: bottomcontroller.navigationBarIndexValue == 1 ? Colors.white : Color(0xff80c1fa),
                       ),
                     )
                   ],
@@ -191,14 +191,14 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon awesome-history.png",
-                          color: bottomcontroller.navigationBarIndexValue == 3 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 3 ? Colors.white : Color(0xff80c1fa),
                         ),
                       ),
                       Text(
                         "History",
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: bottomcontroller.navigationBarIndexValue == 3 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 3 ? Colors.white : Color(0xff80c1fa),
                         ),
                       )
                     ],
@@ -389,7 +389,11 @@ class _MainScreenState extends State<MainScreen> {
                                               height: 1,
                                               color: Colors.grey,
                                             ),
-                                            Positioned(
+                                            GestureDetector(
+                                              onTap: () {
+                                                Get.toNamed("/SPOTIFYScreen");
+                                              },
+                                              child: Positioned(
                                                 top: -20,
                                                 child: Container(
                                                   width: 142.w,
@@ -421,7 +425,9 @@ class _MainScreenState extends State<MainScreen> {
                                                       ],
                                                     ),
                                                   ),
-                                                ))
+                                                ),
+                                              ),
+                                            )
                                           ],
                                         )
                                       ],
@@ -447,14 +453,14 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon awesome-spotify.png",
-                          color: bottomcontroller.navigationBarIndexValue == 4 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 4 ? Colors.white : Color(0xff80c1fa),
                         ),
                       ),
                       Text(
                         "Spotify",
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: bottomcontroller.navigationBarIndexValue == 4 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 4 ? Colors.white : Color(0xff80c1fa),
                         ),
                       )
                     ],
