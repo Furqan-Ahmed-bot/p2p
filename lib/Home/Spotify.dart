@@ -53,7 +53,7 @@ class _SPOTIFYScreenState extends State<SPOTIFYScreen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),

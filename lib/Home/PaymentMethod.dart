@@ -56,7 +56,7 @@ class _PAYMENTMETHODScreenState extends State<PAYMENTMETHODScreen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),

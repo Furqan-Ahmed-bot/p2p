@@ -54,7 +54,7 @@ class _ChnageSETTINGSScreenState extends State<ChnageSETTINGSScreen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),

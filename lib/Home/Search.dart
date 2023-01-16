@@ -59,7 +59,7 @@ class _SEARCHScreenState extends State<SEARCHScreen> {
                 Colors.black,
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),
