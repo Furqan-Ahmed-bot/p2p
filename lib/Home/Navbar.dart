@@ -231,7 +231,7 @@ class _MainScreenState extends State<MainScreen> {
                               children: [
                                 Container(
                                   width: 427.w,
-                                  height: 247.h,
+                                  height: 280.h,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(15.r),
@@ -429,7 +429,8 @@ class _MainScreenState extends State<MainScreen> {
                                               ),
                                             )
                                           ],
-                                        )
+                                        ),
+                                        20.verticalSpace,
                                       ],
                                     ),
                                   ),

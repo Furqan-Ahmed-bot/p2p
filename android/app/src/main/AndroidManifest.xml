@@ -3,7 +3,7 @@
    <application
 
  
-        android:label="p2ptraffic"
+        android:label="P2P Traffic"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 
