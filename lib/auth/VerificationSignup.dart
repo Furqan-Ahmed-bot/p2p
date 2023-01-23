@@ -102,6 +102,7 @@ class _VERIFICATIONSignupScreenState extends State<VERIFICATIONSignupScreen> {
                         setState(() {});
                       },
                       // controller: otpController,
+
                       otpFieldStyle: OtpFieldStyle(
                           disabledBorderColor: Color(0xff1CC8FB),
                           focusBorderColor: Color(0xff1CC8FB),
@@ -122,7 +123,9 @@ class _VERIFICATIONSignupScreenState extends State<VERIFICATIONSignupScreen> {
                       textFieldAlignment: MainAxisAlignment.spaceBetween,
                       fieldStyle: FieldStyle.box,
                       onCompleted: (pin) {
-                        print("Completed: " + pin);
+                        Get.toNamed("/CREATEPROFILEScreen");
+
+                        // print("Completed: " + pin);
                       },
                     ),
                   ),

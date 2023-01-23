@@ -125,7 +125,11 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   Text(
                     "Martin Smith",
-                    style: TextStyle(fontSize: 18.sp, color: Color(0xff02045C)),
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      color: Color(0xff02045C),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     "martinSmith@email.com",

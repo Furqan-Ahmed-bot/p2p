@@ -122,6 +122,7 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
                       textFieldAlignment: MainAxisAlignment.spaceBetween,
                       fieldStyle: FieldStyle.box,
                       onCompleted: (pin) {
+                        Get.toNamed("/RESETPASSWORDScreen");
                         print("Completed: " + pin);
                       },
                     ),
@@ -145,7 +146,7 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
                       Get.toNamed("/RESETPASSWORDScreen");
                     },
                     child: CircularCountDownTimer(
-                      duration: 60,
+                      duration: 3,
                       initialDuration: 0,
                       controller: _CountDownController,
                       width: MediaQuery.of(context).size.width / 3,
@@ -168,16 +169,14 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
                         print('Countdown Started');
                       },
                       onComplete: () {
+                        Get.toNamed("/RESETPASSWORDScreen");
                         setState(() {
                           // resend = 1;
                         });
                       },
                     ),
                   ),
-                  Text(
-                    "data",
-                    style: TextStyle(color: Colors.white),
-                  ),
+
                   Container(
                     child: Center(
                       child: RichText(

@@ -341,7 +341,7 @@ class _SettingsPaymentmethodsScreenState extends State<SettingsPaymentmethodsScr
                     9.horizontalSpace,
                     GestureDetector(
                       onTap: () {
-                        // Get.toNamed("/PAYMENTMETHODDScreen");
+                        Get.toNamed("/PAYMENTMETHODDScreen");
                       },
                       child: Text(
                         "Add Card",
