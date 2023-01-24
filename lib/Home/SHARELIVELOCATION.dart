@@ -1,6 +1,8 @@
 import 'dart:async';
-import 'dart:ffi';
 
+import 'dart:io';
+
+import 'package:camera_camera/camera_camera.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +21,38 @@ class SHARELIVELOCATIONsCREEN extends StatefulWidget {
 }
 
 class _SHARELIVELOCATIONsCREENState extends State<SHARELIVELOCATIONsCREEN> {
+  late List<CameraDescription> cameras; //list out the camera available
+  late CameraController controller; //controller for camera
+  XFile? image;
+  File? imageFile;
+
+  var photos; //for caputred image
+
+  @override
+  // void initState() {
+  //   startCamera();
+  //   super.initState();
+  // }
+
+  void startCamera() async {
+    cameras = await availableCameras();
+    if (cameras != null) {
+      controller = CameraController(cameras![0], ResolutionPreset.max);
+//cameras[0] = first camera, change to 1 to another camera
+
+      controller!.initialize().then((_) {
+        if (!mounted) {
+          return;
+        }
+        setState(() {});
+      });
+    } else {
+      print("NO any camera found");
+    }
+  }
+
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+
   bool _value = false;
   bool _value1 = false;
   bool _value2 = false;
@@ -43,9 +76,11 @@ class _SHARELIVELOCATIONsCREENState extends State<SHARELIVELOCATIONsCREEN> {
       ),
     ),
   ];
+
   @override
   void initState() {
 // TODO: implement initState
+    startCamera();
     super.initState();
     _marker.addAll(_branch);
   }
@@ -153,23 +188,40 @@ class _SHARELIVELOCATIONsCREENState extends State<SHARELIVELOCATIONsCREEN> {
                       26.verticalSpace,
                       Imgss(),
                       15.verticalSpace,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            child: Image.asset(
-                              "assets/images/Group 16588.png",
-                              scale: 4,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => CameraCamera(
+                                onFile: (file) {
+                                  photos.add(file);
+                                  //When take foto you should close camera
+                                  Navigator.pop(context);
+                                  setState(() {});
+                                },
+                              ),
                             ),
-                          ),
-                          8.horizontalSpace,
-                          Text(
-                            "More Photo",
-                            style: TextStyle(
-                              fontSize: 12.sp,
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Container(
+                              child: Image.asset(
+                                "assets/images/Group 16588.png",
+                                scale: 4,
+                              ),
                             ),
-                          )
-                        ],
+                            8.horizontalSpace,
+                            Text(
+                              "More Photo",
+                              style: TextStyle(
+                                fontSize: 12.sp,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                       29.verticalSpace,
                       Row(

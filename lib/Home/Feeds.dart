@@ -170,6 +170,7 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                               height: 47.h,
                               child: Image.asset("assets/images/1.png"),
                             ),
+                            6.horizontalSpace,
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -188,10 +189,59 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                                 ),
                               ],
                             ),
-                            Container(
-                              child: Image.asset(
-                                "assets/images/Group 1657.png",
-                                scale: 5,
+                            DropdownButton<String>(
+                              dropdownColor: Color(0xffDFE1EC),
+                              menuMaxHeight: 120.h,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(
+                                  10,
+                                ),
+                                topLeft: Radius.circular(
+                                  10,
+                                ),
+                                bottomRight: Radius.circular(
+                                  10,
+                                ),
+                              ),
+                              onTap: () {},
+                              underline: Container(),
+                              items: <String>['Report', 'Block'].map((String value) {
+                                return DropdownMenuItem<String>(
+                                  // alignment: AlignmentDirectional.Cen,
+                                  onTap: () {},
+                                  value: value,
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 13.w,
+                                        height: 13.h,
+                                        child: Image.asset(
+                                            value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
+                                      ),
+                                      8.horizontalSpace,
+                                      Text(
+                                        value,
+                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (value) {
+                                print("value is : " + value.toString());
+                                if (value.toString() == "Report") {
+                                  Report();
+                                } else {
+                                  Block();
+                                }
+                              },
+                              icon: Padding(
+                                padding: const EdgeInsets.only(bottom: 30),
+                                child: Icon(
+                                  Icons.more_vert,
+                                  size: 25,
+                                  color: Colors.grey,
+                                ),
                               ),
                             ),
                           ],
@@ -311,7 +361,7 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                   children: [
                     20.verticalSpace,
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -321,7 +371,7 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                             height: 47.h,
                             child: Image.asset("assets/images/1.png"),
                           ),
-                          // 50.verticalSpace,
+                          6.horizontalSpace,
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -333,93 +383,66 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                                 "50min ago",
                                 style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
                               ),
-                              // 15.verticalSpace,
-                              // Text(
-                              //   "Lorem ipsum dolor sit amet.",
-                              //   style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                              // ),
+                              15.verticalSpace,
+                              Text(
+                                "Lorem ipsum dolor sit amet.",
+                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                              ),
                             ],
                           ),
-                          10.horizontalSpace,
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              right: 10,
-                              bottom: 20,
+                          DropdownButton<String>(
+                            dropdownColor: Color(0xffDFE1EC),
+                            menuMaxHeight: 120.h,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(
+                                10,
+                              ),
+                              topLeft: Radius.circular(
+                                10,
+                              ),
+                              bottomRight: Radius.circular(
+                                10,
+                              ),
                             ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  width: 100.w,
-                                  height: 35.h,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xffDFE1EC),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                      )),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Report();
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                            width: 13.w,
-                                            height: 13.h,
-                                            child: Image.asset("assets/images/Icon material-report.png"),
-                                          ),
-                                          Text(
-                                            "Report",
-                                            style: TextStyle(fontSize: 14),
-                                          ),
-                                          Container(
-                                            child: Image.asset(
-                                              "assets/images/Group 1657.png",
-                                              scale: 5,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                            onTap: () {},
+                            underline: Container(),
+                            items: <String>['Report', 'Block'].map((String value) {
+                              return DropdownMenuItem<String>(
+                                // alignment: AlignmentDirectional.Cen,
+                                onTap: () {},
+                                value: value,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 13.w,
+                                      height: 13.h,
+                                      child: Image.asset(
+                                          value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
                                     ),
-                                  ),
-                                ),
-                                1.verticalSpace,
-                                GestureDetector(
-                                  onTap: () {
-                                    Block();
-                                  },
-                                  child: Container(
-                                    width: 100.w,
-                                    height: 35.h,
-                                    decoration: BoxDecoration(
-                                        color: Color(0xffDFE1EC),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(10),
-                                          bottomRight: Radius.circular(10),
-                                        )),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                                      child: Row(
-                                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Container(
-                                            width: 13.w,
-                                            height: 13.h,
-                                            child: Image.asset("assets/images/Icon metro-blocked.png"),
-                                          ),
-                                          5.horizontalSpace,
-                                          Text(
-                                            "Block",
-                                            style: TextStyle(fontSize: 14),
-                                          ),
-                                        ],
-                                      ),
+                                    8.horizontalSpace,
+                                    Text(
+                                      value,
+                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ],
+                              );
+                            }).toList(),
+                            onChanged: (value) {
+                              print("value is : " + value.toString());
+                              if (value.toString() == "Report") {
+                                Report();
+                              } else {
+                                Block();
+                              }
+                            },
+                            icon: Padding(
+                              padding: const EdgeInsets.only(bottom: 30),
+                              child: Icon(
+                                Icons.more_vert,
+                                size: 25,
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
                         ],
@@ -496,21 +519,26 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                         )
                       ],
                     ),
-                    Row(
-                      children: [
-                        Container(
-                            child: Image.asset(
-                          "assets/images/Icon awesome-comment-dots.png",
-                          scale: 5,
-                        )),
-                        7.horizontalSpace,
-                        Container(
-                          child: Text(
-                            "326 Comments",
-                            style: TextStyle(fontSize: 14.sp),
-                          ),
-                        )
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed("/FeedUPDATESDETAILSScreen");
+                      },
+                      child: Row(
+                        children: [
+                          Container(
+                              child: Image.asset(
+                            "assets/images/Icon awesome-comment-dots.png",
+                            scale: 5,
+                          )),
+                          7.horizontalSpace,
+                          Container(
+                            child: Text(
+                              "326 Comments",
+                              style: TextStyle(fontSize: 14.sp),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -564,6 +592,7 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                               height: 47.h,
                               child: Image.asset("assets/images/1.png"),
                             ),
+                            6.horizontalSpace,
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -582,10 +611,59 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                                 ),
                               ],
                             ),
-                            Container(
-                              child: Image.asset(
-                                "assets/images/Group 1657.png",
-                                scale: 5,
+                            DropdownButton<String>(
+                              dropdownColor: Color(0xffDFE1EC),
+                              menuMaxHeight: 120.h,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(
+                                  10,
+                                ),
+                                topLeft: Radius.circular(
+                                  10,
+                                ),
+                                bottomRight: Radius.circular(
+                                  10,
+                                ),
+                              ),
+                              onTap: () {},
+                              underline: Container(),
+                              items: <String>['Report', 'Block'].map((String value) {
+                                return DropdownMenuItem<String>(
+                                  // alignment: AlignmentDirectional.Cen,
+                                  onTap: () {},
+                                  value: value,
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        width: 13.w,
+                                        height: 13.h,
+                                        child: Image.asset(
+                                            value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
+                                      ),
+                                      8.horizontalSpace,
+                                      Text(
+                                        value,
+                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (value) {
+                                print("value is : " + value.toString());
+                                if (value.toString() == "Report") {
+                                  Report();
+                                } else {
+                                  Block();
+                                }
+                              },
+                              icon: Padding(
+                                padding: const EdgeInsets.only(bottom: 30),
+                                child: Icon(
+                                  Icons.more_vert,
+                                  size: 25,
+                                  color: Colors.grey,
+                                ),
                               ),
                             ),
                           ],
@@ -645,37 +723,47 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                         )
                       ],
                     ),
-                    Row(
-                      children: [
-                        Container(
-                            child: Image.asset(
-                          "assets/images/Icon awesome-comment-dots.png",
-                          scale: 5,
-                        )),
-                        7.horizontalSpace,
-                        Container(
-                          child: Text(
-                            "326 Comments",
-                            style: TextStyle(fontSize: 14.sp),
-                          ),
-                        )
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed("/FeedUPDATESDETAILSScreen");
+                      },
+                      child: Row(
+                        children: [
+                          Container(
+                              child: Image.asset(
+                            "assets/images/Icon awesome-comment-dots.png",
+                            scale: 5,
+                          )),
+                          7.horizontalSpace,
+                          Container(
+                            child: Text(
+                              "326 Comments",
+                              style: TextStyle(fontSize: 14.sp),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                    Row(
-                      children: [
-                        Container(
-                            child: Image.asset(
-                          "assets/images/Icon awesome-share.png",
-                          scale: 5,
-                        )),
-                        7.horizontalSpace,
-                        Container(
-                          child: Text(
-                            "Share",
-                            style: TextStyle(fontSize: 14.sp),
-                          ),
-                        )
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        Share();
+                      },
+                      child: Row(
+                        children: [
+                          Container(
+                              child: Image.asset(
+                            "assets/images/Icon awesome-share.png",
+                            scale: 5,
+                          )),
+                          7.horizontalSpace,
+                          Container(
+                            child: Text(
+                              "Share",
+                              style: TextStyle(fontSize: 14.sp),
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -683,7 +771,7 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
 
                 Dividerr(),
 
-                50.verticalSpace,
+                120.verticalSpace,
 
                 // Dividerr()
               ],
@@ -1080,7 +1168,7 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "Yes",
+                                    "No",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),
@@ -1114,7 +1202,7 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "No",
+                                    "Yes",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),

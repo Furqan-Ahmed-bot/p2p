@@ -273,6 +273,11 @@ class _SUBSCRIBEScreenState extends State<SUBSCRIBEScreen> {
                     ),
                   ),
                 ),
+              
+              
+              
+              
+              
                 Column(
                   children: [
                     Row(

@@ -12,6 +12,7 @@ import 'package:p2ptraffic/Home/Subscribtions.dart';
 import 'package:p2ptraffic/auth/Login.dart';
 
 import 'Navbar.dart';
+import 'Spotify.dart';
 
 class DrawerScreen extends StatelessWidget {
   const DrawerScreen({
@@ -124,7 +125,11 @@ class DrawerScreen extends StatelessWidget {
                   ),
                   Text(
                     "Martin Smith",
-                    style: TextStyle(fontSize: 18.sp, color: Color(0xff02045C)),
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      color: Color(0xff02045C),
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     "martinSmith@email.com",
@@ -230,7 +235,7 @@ class DrawerScreen extends StatelessWidget {
                       ),
                       title: GestureDetector(
                         onTap: () {
-                          // Get.to(() => promotionsscreen());
+                          Get.to(() => SPOTIFYScreen());
                         },
                         child: Text(
                           "Spotify",

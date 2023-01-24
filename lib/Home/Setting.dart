@@ -53,7 +53,7 @@ class _SETTINGSScreenState extends State<SETTINGSScreen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),
@@ -72,7 +72,7 @@ class _SETTINGSScreenState extends State<SETTINGSScreen> {
               }),
               10.verticalSpace,
               Drop("Card Details", "assets/images/Icon metro-credit-card.png", () {
-                Get.toNamed("/PAYMENTMETHODScreen");
+                Get.toNamed("/SettingsPaymentmethodsScreen");
               }),
               10.verticalSpace,
               Drop("Terms & Conditions", "assets/images/Group 976.png", () {

@@ -51,7 +51,7 @@ class _TERMSAndCONDITIONSScreenState extends State<TERMSAndCONDITIONSScreen> {
                 Color(0xff1CC8FB),
               ],
             ),
-            backgroundBlendMode: BlendMode.colorBurn,
+            // backgroundBlendMode: BlendMode.colorBurn,
           ),
         ),
       ),

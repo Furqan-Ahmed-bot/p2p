@@ -239,9 +239,9 @@ class _PRELOGINStateScreen extends State<PRELOGINScreen> {
                   ),
                   256.verticalSpace,
                   GestureDetector(
-                    // onTap: () {
-                    //   Get.toNamed('/SignupScreen');
-                    // },
+                    onTap: () {
+                      Get.toNamed('/SIGNUPScreen');
+                    },
                     child: Container(
                       child: Center(
                         child: RichText(

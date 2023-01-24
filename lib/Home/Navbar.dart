@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:p2ptraffic/Home/BottomController.dart';
 import 'package:p2ptraffic/Home/Camera.dart';
+import 'package:p2ptraffic/Home/CameraController.dart';
 import 'package:p2ptraffic/Home/Feeds.dart';
 import 'package:p2ptraffic/Home/History.dart';
 import 'package:p2ptraffic/Home/Notifications.dart';
 import 'package:p2ptraffic/Home/homeS.dart';
 import 'package:audio_manager/audio_manager.dart';
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
+import 'package:camera_camera/camera_camera.dart';
+import 'package:camera_camera/camera_camera.dart';
+import 'package:camera/camera.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -19,13 +25,43 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  late List<CameraDescription> cameras; //list out the camera available
+  late CameraController controller; //controller for camera
+  XFile? image;
+  File? imageFile;
+
+  var photos; //for caputred image
+
+  @override
+  void initState() {
+    startCamera();
+    super.initState();
+  }
+
+  void startCamera() async {
+    cameras = await availableCameras();
+    if (cameras != null) {
+      controller = CameraController(cameras![0], ResolutionPreset.max);
+//cameras[0] = first camera, change to 1 to another camera
+
+      controller!.initialize().then((_) {
+        if (!mounted) {
+          return;
+        }
+        setState(() {});
+      });
+    } else {
+      print("NO any camera found");
+    }
+  }
+
   final bottomcontroller = Get.put(BottomController());
   int pageIndex = 0;
 
   final pages = [
     HomeScreen(),
     FEEDSScreen(),
-    CamScreen(),
+    // CamScreen(),
     HISTORYScreen(),
     Container(),
   ];
@@ -37,6 +73,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     double res_height = MediaQuery.of(context).size.height;
     double res_width = MediaQuery.of(context).size.width;
+    final cameractrl = Get.put(CameraGetController());
     return Container(
       // decoration:
       //     BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -51,29 +88,62 @@ class _MainScreenState extends State<MainScreen> {
         bottomNavigationBar: GetBuilder<BottomController>(
           builder: (_) => buildMyNavBar(context),
         ),
-        floatingActionButton: GestureDetector(
-          onTap: () {
-            setState(() {
-              _onItemTapped(2);
-            });
-
-            Get.to(() => CamScreen());
-          },
-          child: Padding(
-            padding: EdgeInsets.only(top: 10),
-            child: Container(
-                height: 80.h,
-                width: 80.w,
-                decoration: BoxDecoration(
-                  // border: Border.all(color: Colors.white),
-                  shape: BoxShape.circle,
-                ),
-                child: Container(
-                  child: Image.asset(
-                    "assets/images/Group 1382.png",
-                    scale: 3.5,
+        floatingActionButton: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xff1CC8FB),
+                Color(0xff004DF2),
+              ],
+            ),
+          ),
+          child: FloatingActionButton(
+            backgroundColor: Colors.transparent,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => CameraCamera(
+                    onFile: (file) {
+                      photos.add(file);
+                      //When take foto you should close camera
+                      Navigator.pop(context);
+                      setState(() {});
+                    },
                   ),
-                )),
+                ),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(),
+              child: Icon(
+                Icons.camera_alt_rounded,
+              ),
+            ),
+            // child: Container(
+            //   child: Image.asset("assets/images/Group 1382.png"),
+            // )
+            // Container(
+            //   // height: 150.h,
+            //   // width: 150.w,
+            //   decoration: BoxDecoration(
+            //       // border: Border.all(color: Colors.white),
+            //       // shape: BoxShape.circle,
+            //       image: DecorationImage(
+            //     fit: BoxFit.cover,
+            //     image: AssetImage(
+            //       "assets/images/Group 1382.png",
+            //     ),
+            //   )),
+            //   // child: Container(
+            //   //   child: Image.asset(
+            //   //     "assets/images/Group 1382.png",
+            //   //   ),
+            //   // ),
+            // ),
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -105,11 +175,11 @@ class _MainScreenState extends State<MainScreen> {
                 // topRight: Radius.circular(70),
                 ),
             gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
               colors: [
-                Color(0xff004DF2),
                 Color(0xff1CC8FB),
+                Color(0xff004DF2),
               ],
             ),
           ),
@@ -134,14 +204,14 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon awesome-home.png",
-                          color: bottomcontroller.navigationBarIndexValue == 0 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 0 ? Colors.white : Color(0xff80c1fa),
                         ),
                       ),
                       Text(
                         "Home",
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: bottomcontroller.navigationBarIndexValue == 0 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 0 ? Colors.white : Color(0xff80c1fa),
                         ),
                       )
                     ],
@@ -161,7 +231,7 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon material-rss-feed.png",
-                          color: bottomcontroller.navigationBarIndexValue == 1 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 1 ? Colors.white : Color(0xff80c1fa),
                         ),
                       ),
                     ),
@@ -169,7 +239,7 @@ class _MainScreenState extends State<MainScreen> {
                       "Feeds",
                       style: TextStyle(
                         fontSize: 12.sp,
-                        color: bottomcontroller.navigationBarIndexValue == 1 ? Colors.white : Colors.grey.withOpacity(0.7),
+                        color: bottomcontroller.navigationBarIndexValue == 1 ? Colors.white : Color(0xff80c1fa),
                       ),
                     )
                   ],
@@ -178,9 +248,26 @@ class _MainScreenState extends State<MainScreen> {
                   width: 60.w,
                 ),
                 GestureDetector(
+//                   onTap: () =>
+
+//                   Navigator.push(
+//                     context,
+//                     MaterialPageRoute(
+
+//                       builder: (_) => CameraCamera(
+//                         onFile: (file) {
+//                           photos.add(file);
+// //When take foto you should close camera
+//                           Navigator.pop(context);
+//                           setState(() {});
+//                         },
+//                       ),
+//                     ),
+
+//                   ),
                   onTap: () {
                     setState(() {
-                      _onItemTapped(3);
+                      _onItemTapped(2);
                     });
                   },
                   child: Column(
@@ -191,14 +278,14 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon awesome-history.png",
-                          color: bottomcontroller.navigationBarIndexValue == 3 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 2 ? Colors.white : Color(0xff80c1fa),
                         ),
                       ),
                       Text(
                         "History",
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: bottomcontroller.navigationBarIndexValue == 3 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 2 ? Colors.white : Color(0xff80c1fa),
                         ),
                       )
                     ],
@@ -231,7 +318,7 @@ class _MainScreenState extends State<MainScreen> {
                               children: [
                                 Container(
                                   width: 427.w,
-                                  height: 247.h,
+                                  height: 280.h,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(15.r),
@@ -389,7 +476,12 @@ class _MainScreenState extends State<MainScreen> {
                                               height: 1,
                                               color: Colors.grey,
                                             ),
-                                            Positioned(
+                                            GestureDetector(
+                                              behavior: HitTestBehavior.translucent,
+                                              onTap: () {
+                                                Get.toNamed("/SPOTIFYScreen");
+                                              },
+                                              child: Positioned(
                                                 top: -20,
                                                 child: Container(
                                                   width: 142.w,
@@ -421,9 +513,12 @@ class _MainScreenState extends State<MainScreen> {
                                                       ],
                                                     ),
                                                   ),
-                                                ))
+                                                ),
+                                              ),
+                                            )
                                           ],
-                                        )
+                                        ),
+                                        20.verticalSpace,
                                       ],
                                     ),
                                   ),
@@ -447,14 +542,14 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon awesome-spotify.png",
-                          color: bottomcontroller.navigationBarIndexValue == 4 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 4 ? Colors.white : Color(0xff80c1fa),
                         ),
                       ),
                       Text(
                         "Spotify",
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: bottomcontroller.navigationBarIndexValue == 4 ? Colors.white : Colors.grey.withOpacity(0.7),
+                          color: bottomcontroller.navigationBarIndexValue == 4 ? Colors.white : Color(0xff80c1fa),
                         ),
                       )
                     ],

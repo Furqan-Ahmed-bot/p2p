@@ -2,6 +2,8 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:p2ptraffic/Home/BottomController.dart';
+import 'package:p2ptraffic/Home/Navbar.dart';
 
 class HELPAndFEEDBACKScreen extends StatefulWidget {
   const HELPAndFEEDBACKScreen({super.key});
@@ -101,34 +103,41 @@ class _HELPAndFEEDBACKStateScreen extends State<HELPAndFEEDBACKScreen> {
                 33.verticalSpace,
                 Imgss(),
                 42.verticalSpace,
-                Container(
-                  width: 387.w,
-                  height: 60.h,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color(0xff1CC8FB),
-                        Color(0xff004DF2),
-                      ],
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 0),
+                GestureDetector(
+                  onTap: () {
+                    final bottomcontroller = Get.put(BottomController());
+                    bottomcontroller.navBarChange(0);
+                    Get.to(() => MainScreen());
+                  },
+                  child: Container(
+                    width: 387.w,
+                    height: 60.h,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Color(0xff1CC8FB),
+                          Color(0xff004DF2),
+                        ],
                       ),
-                    ],
-                    borderRadius: BorderRadius.circular(30.r),
-                  ),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Submit",
-                          style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 0),
                         ),
                       ],
+                      borderRadius: BorderRadius.circular(30.r),
+                    ),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Submit",
+                            style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

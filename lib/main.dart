@@ -31,6 +31,7 @@ import 'package:p2ptraffic/Home/Profile.dart';
 import 'package:p2ptraffic/Home/SHARELIVELOCATION.dart';
 import 'package:p2ptraffic/Home/Search.dart';
 import 'package:p2ptraffic/Home/Setting.dart';
+import 'package:p2ptraffic/Home/Spotify.dart';
 import 'package:p2ptraffic/Home/Subscribe.dart';
 import 'package:p2ptraffic/Home/Subscribtions.dart';
 import 'package:p2ptraffic/Home/Terms&Conditions.dart';
@@ -47,6 +48,7 @@ import 'package:p2ptraffic/auth/Verification.dart';
 import 'package:p2ptraffic/auth/VerificationSignup.dart';
 
 import 'Home/EditProfile.dart';
+import 'Home/SettingPaymentmethods.dart';
 import 'Home/drawer.dart';
 import 'Home/mymap.dart';
 
@@ -231,6 +233,14 @@ class _MyAppState extends State<MyApp> {
             GetPage(
               name: '/CamScreen',
               page: (() => CamScreen()),
+            ),
+            GetPage(
+              name: '/SPOTIFYScreen',
+              page: (() => SPOTIFYScreen()),
+            ),
+            GetPage(
+              name: '/SettingsPaymentmethodsScreen',
+              page: (() => SettingsPaymentmethodsScreen()),
             ),
           ],
         );

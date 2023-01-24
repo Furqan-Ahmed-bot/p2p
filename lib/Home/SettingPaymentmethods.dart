@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-class PAYMENTMETHODScreen extends StatefulWidget {
-  const PAYMENTMETHODScreen({super.key});
+class SettingsPaymentmethodsScreen extends StatefulWidget {
+  const SettingsPaymentmethodsScreen({super.key});
 
   @override
-  State<PAYMENTMETHODScreen> createState() => _PAYMENTMETHODScreenState();
+  State<SettingsPaymentmethodsScreen> createState() => _SettingsPaymentmethodsScreenState();
 }
 
-class _PAYMENTMETHODScreenState extends State<PAYMENTMETHODScreen> {
+class _SettingsPaymentmethodsScreenState extends State<SettingsPaymentmethodsScreen> {
   bool _value = false;
   bool _value1 = false;
   bool _value2 = false;
@@ -356,7 +356,7 @@ class _PAYMENTMETHODScreenState extends State<PAYMENTMETHODScreen> {
                 380.verticalSpace,
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed("/PayNowScreen");
+                    Get.back();
                   },
                   child: Container(
                     width: 388.w,
@@ -382,7 +382,7 @@ class _PAYMENTMETHODScreenState extends State<PAYMENTMETHODScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Pay Now",
+                            "Save",
                             style: TextStyle(color: Colors.white, fontSize: 18.sp),
                           ),
                         ],

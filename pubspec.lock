@@ -29,6 +29,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
+  camera:
+    dependency: transitive
+    description:
+      name: camera
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.1+7"
+  camera_camera:
+    dependency: "direct main"
+    description:
+      name: camera_camera
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
+  camera_platform_interface:
+    dependency: transitive
+    description:
+      name: camera_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.3.4"
   carousel_slider:
     dependency: "direct main"
     description:
@@ -64,6 +85,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
+  cross_file:
+    dependency: transitive
+    description:
+      name: cross_file
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.3+2"
   crypto:
     dependency: transitive
     description:
@@ -158,6 +186,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.3"
+  font_awesome_flutter:
+    dependency: transitive
+    description:
+      name: font_awesome_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "9.2.0"
   get:
     dependency: "direct main"
     description:
@@ -228,6 +263,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.4"
+  matcher:
+    dependency: transitive
+    description:
+      name: matcher
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.12.14"
   material_color_utilities:
     dependency: transitive
     description:
@@ -319,6 +361,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.3"
+  pedantic:
+    dependency: transitive
+    description:
+      name: pedantic
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.11.1"
   percent_indicator:
     dependency: "direct main"
     description:
@@ -347,6 +396,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.4"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.2.1"
+  rxdart:
+    dependency: transitive
+    description:
+      name: rxdart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.26.0"
   scrollable_clean_calendar:
     dependency: "direct main"
     description:
@@ -373,6 +436,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.0"
+  stack_trace:
+    dependency: transitive
+    description:
+      name: stack_trace
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.11.0"
   stream_transform:
     dependency: transitive
     description:
