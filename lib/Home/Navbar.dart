@@ -103,19 +103,7 @@ class _MainScreenState extends State<MainScreen> {
           child: FloatingActionButton(
             backgroundColor: Colors.transparent,
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => CameraCamera(
-                    onFile: (file) {
-                      photos.add(file);
-                      //When take foto you should close camera
-                      Navigator.pop(context);
-                      setState(() {});
-                    },
-                  ),
-                ),
-              );
+       
             },
             child: Container(
               decoration: BoxDecoration(),

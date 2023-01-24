@@ -17,6 +17,7 @@ import 'package:p2ptraffic/Home/FeedUpdatesDetails.dart';
 import 'package:p2ptraffic/Home/Feeds.dart';
 
 import 'package:p2ptraffic/Home/Friends.dart';
+import 'package:p2ptraffic/Home/FriendsRequests.dart';
 import 'package:p2ptraffic/Home/HELP&FEEDBACK.dart';
 import 'package:p2ptraffic/Home/History.dart';
 import 'package:p2ptraffic/Home/MartinProfile.dart';
@@ -71,8 +72,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) {
         return GetMaterialApp(
           theme: ThemeData(
-            textTheme:
-                GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+            textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
           ),
           debugShowCheckedModeBanner: false,
           // home: SplashScreen(),
@@ -241,6 +241,10 @@ class _MyAppState extends State<MyApp> {
             GetPage(
               name: '/SettingsPaymentmethodsScreen',
               page: (() => SettingsPaymentmethodsScreen()),
+            ),
+            GetPage(
+              name: '/FriendRequestsScreen',
+              page: (() => FriendRequestsScreen()),
             ),
           ],
         );

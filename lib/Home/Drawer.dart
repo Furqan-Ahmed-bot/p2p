@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:p2ptraffic/Home/BottomController.dart';
 import 'package:p2ptraffic/Home/DrawerProfile.dart';
 import 'package:p2ptraffic/Home/Friends.dart';
+import 'package:p2ptraffic/Home/FriendsRequests.dart';
 import 'package:p2ptraffic/Home/HELP&FEEDBACK.dart';
 import 'package:p2ptraffic/Home/Notifications.dart';
 import 'package:p2ptraffic/Home/Profile.dart';
@@ -262,6 +263,29 @@ class DrawerScreen extends StatelessWidget {
                         },
                         child: Text(
                           "Friends",
+                          style: TextStyle(color: Colors.white, fontSize: 15),
+                        ),
+                      ),
+                    ),
+                  ),
+                  5.verticalSpace,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 35),
+                    child: ListTile(
+                      visualDensity: VisualDensity(vertical: -4),
+                      leading: ImageIcon(
+                        AssetImage(
+                          "assets/images/Icon awesome-user-friends.png",
+                        ),
+                        size: 20,
+                        color: Colors.white,
+                      ),
+                      title: GestureDetector(
+                        onTap: () {
+                          Get.to(() => FriendRequestsScreen());
+                        },
+                        child: Text(
+                          "Friends Request",
                           style: TextStyle(color: Colors.white, fontSize: 15),
                         ),
                       ),

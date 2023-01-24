@@ -1522,69 +1522,6 @@ class _DrawerProfileScreenState extends State<DrawerProfileScreen> {
                           ),
                         )
 
-                        // 30.verticalSpace,
-                        // 54.verticalSpace,
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //   children: [
-                        //     GestureDetector(
-                        //       onTap: () {
-                        //         Get.back();
-                        //       },
-                        //       child: Container(
-                        //         width: 172.w,
-                        //         height: 64.h,
-                        //         decoration: BoxDecoration(
-                        //           borderRadius: BorderRadius.only(
-                        //             topLeft: Radius.circular(0.r),
-                        //             bottomLeft: Radius.circular(18.r),
-                        //           ),
-                        //           color: Color(0xffDCE3EE),
-                        //         ),
-                        //         child: Center(
-                        //           child: Text(
-                        //             "Yes",
-                        //             style: TextStyle(color: Colors.white),
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ),
-                        //     // Container(
-                        //     //   color: Color(0xffDCE3EE),
-                        //     //   height: 64.h,
-                        //     //   width: 1.6.w,
-                        //     // ),
-                        //     GestureDetector(
-                        //       onTap: () {
-                        //         Get.back();
-                        //       },
-                        //       child: Container(
-                        //         width: 170.w,
-                        //         height: 64.h,
-                        //         decoration: BoxDecoration(
-                        //           borderRadius: BorderRadius.only(
-                        //             topRight: Radius.circular(0.r),
-                        //             bottomRight: Radius.circular(18.r),
-                        //           ),
-                        //           gradient: LinearGradient(
-                        //             begin: Alignment.bottomRight,
-                        //             end: Alignment.bottomLeft,
-                        //             colors: [
-                        //               Color(0xff1CC8FB),
-                        //               Color(0xff004DF2),
-                        //             ],
-                        //           ),
-                        //         ),
-                        //         child: Center(
-                        //           child: Text(
-                        //             "No",
-                        //             style: TextStyle(color: Colors.white),
-                        //           ),
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ],
-                        // )
                       ])
                     ],
                   ),

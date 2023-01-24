@@ -97,7 +97,8 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
                         //   ),
                         // ],
                         ),
-                    child: OTPTextField(
+                    child:
+                     OTPTextField(
                       onChanged: (value) {
                         setState(() {});
                       },
