@@ -69,11 +69,12 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) {
         return GetMaterialApp(
           theme: ThemeData(
-            textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+            textTheme:
+                GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
           ),
           debugShowCheckedModeBanner: false,
           // home: SplashScreen(),
-          initialRoute: '/MainScreen',
+          initialRoute: '/SplashScreen',
           getPages: [
             GetPage(
               name: '/Mymap',
