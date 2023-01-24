@@ -204,14 +204,18 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon awesome-home.png",
-                          color: bottomcontroller.navigationBarIndexValue == 0 ? Colors.white : Color(0xff80c1fa),
+                          color: bottomcontroller.navigationBarIndexValue == 0
+                              ? Colors.white
+                              : Color(0xff80c1fa),
                         ),
                       ),
                       Text(
                         "Home",
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: bottomcontroller.navigationBarIndexValue == 0 ? Colors.white : Color(0xff80c1fa),
+                          color: bottomcontroller.navigationBarIndexValue == 0
+                              ? Colors.white
+                              : Color(0xff80c1fa),
                         ),
                       )
                     ],
@@ -231,7 +235,9 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon material-rss-feed.png",
-                          color: bottomcontroller.navigationBarIndexValue == 1 ? Colors.white : Color(0xff80c1fa),
+                          color: bottomcontroller.navigationBarIndexValue == 1
+                              ? Colors.white
+                              : Color(0xff80c1fa),
                         ),
                       ),
                     ),
@@ -239,7 +245,9 @@ class _MainScreenState extends State<MainScreen> {
                       "Feeds",
                       style: TextStyle(
                         fontSize: 12.sp,
-                        color: bottomcontroller.navigationBarIndexValue == 1 ? Colors.white : Color(0xff80c1fa),
+                        color: bottomcontroller.navigationBarIndexValue == 1
+                            ? Colors.white
+                            : Color(0xff80c1fa),
                       ),
                     )
                   ],
@@ -278,14 +286,18 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon awesome-history.png",
-                          color: bottomcontroller.navigationBarIndexValue == 2 ? Colors.white : Color(0xff80c1fa),
+                          color: bottomcontroller.navigationBarIndexValue == 2
+                              ? Colors.white
+                              : Color(0xff80c1fa),
                         ),
                       ),
                       Text(
                         "History",
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: bottomcontroller.navigationBarIndexValue == 2 ? Colors.white : Color(0xff80c1fa),
+                          color: bottomcontroller.navigationBarIndexValue == 2
+                              ? Colors.white
+                              : Color(0xff80c1fa),
                         ),
                       )
                     ],
@@ -311,7 +323,8 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                       context: context,
                       builder: (context) => StatefulBuilder(
-                        builder: (BuildContext context, StateSetter setState /*You can rename this!*/) {
+                        builder: (BuildContext context,
+                            StateSetter setState /*You can rename this!*/) {
                           return SingleChildScrollView(
                             // controller: ModalScrollController.of(context),
                             child: Column(
@@ -334,7 +347,8 @@ class _MainScreenState extends State<MainScreen> {
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     child: ListView(
                                       children: [
                                         Column(
@@ -348,12 +362,17 @@ class _MainScreenState extends State<MainScreen> {
                                                 height: 18.h,
                                                 decoration: BoxDecoration(
                                                   border: Border.all(
-                                                    color: Color(0xff01023163).withOpacity(0.06),
+                                                    color: Color(0xff01023163)
+                                                        .withOpacity(0.06),
                                                   ),
-                                                  color: Color(0xff002B7A).withOpacity(0.4),
-                                                  borderRadius: BorderRadius.only(
-                                                    bottomLeft: Radius.circular(15.r),
-                                                    bottomRight: Radius.circular(15.r),
+                                                  color: Color(0xff002B7A)
+                                                      .withOpacity(0.4),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(15.r),
+                                                    bottomRight:
+                                                        Radius.circular(15.r),
                                                   ),
                                                 ),
                                                 child: Image.asset(
@@ -378,7 +397,9 @@ class _MainScreenState extends State<MainScreen> {
                                                     Container(
                                                       child: Text(
                                                         "Spotify",
-                                                        style: TextStyle(color: Colors.white, fontSize: 20.sp),
+                                                        style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 20.sp),
                                                       ),
                                                     ),
                                                   ],
@@ -401,7 +422,8 @@ class _MainScreenState extends State<MainScreen> {
                                         Container(
                                           width: 280.w,
                                           child: ProgressBar(
-                                            timeLabelType: TimeLabelType.totalTime,
+                                            timeLabelType:
+                                                TimeLabelType.totalTime,
                                             baseBarColor: Color(0xffFFFFFF),
                                             timeLabelTextStyle: TextStyle(
                                               color: Colors.transparent,
@@ -412,7 +434,8 @@ class _MainScreenState extends State<MainScreen> {
                                             // buffered: Duration(milliseconds: 2000),
                                             total: Duration(milliseconds: 50),
                                             onSeek: (duration) {
-                                              print('User selected a new time: $duration');
+                                              print(
+                                                  'User selected a new time: $duration');
                                             },
                                           ),
                                         ),
@@ -421,11 +444,13 @@ class _MainScreenState extends State<MainScreen> {
                                             Container(
                                               width: 63.w,
                                               height: 63.h,
-                                              child: Image.asset("assets/images/NoPath - Copy (14).png"),
+                                              child: Image.asset(
+                                                  "assets/images/NoPath - Copy (14).png"),
                                             ),
                                             20.horizontalSpace,
                                             Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Text(
                                                   "Stuck With You",
@@ -450,19 +475,22 @@ class _MainScreenState extends State<MainScreen> {
                                             Container(
                                               width: 13.w,
                                               height: 13.h,
-                                              child: Image.asset("assets/images/Icon ionic-md-skip-forward-1.png"),
+                                              child: Image.asset(
+                                                  "assets/images/Icon ionic-md-skip-forward-1.png"),
                                             ),
                                             16.horizontalSpace,
                                             Container(
                                               width: 46.w,
                                               height: 46.h,
-                                              child: Image.asset("assets/images/Group 1439.png"),
+                                              child: Image.asset(
+                                                  "assets/images/Group 1439.png"),
                                             ),
                                             16.horizontalSpace,
                                             Container(
                                               width: 13.w,
                                               height: 13.h,
-                                              child: Image.asset("assets/images/Icon ionic-md-skip-forward.png"),
+                                              child: Image.asset(
+                                                  "assets/images/Icon ionic-md-skip-forward.png"),
                                             ),
                                           ],
                                         ),
@@ -477,41 +505,42 @@ class _MainScreenState extends State<MainScreen> {
                                               color: Colors.grey,
                                             ),
                                             GestureDetector(
-                                              behavior: HitTestBehavior.translucent,
+                                              behavior:
+                                                  HitTestBehavior.translucent,
                                               onTap: () {
                                                 Get.toNamed("/SPOTIFYScreen");
                                               },
-                                              child: Positioned(
-                                                top: -20,
-                                                child: Container(
-                                                  width: 142.w,
-                                                  height: 37.h,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xff002B7A).withOpacity(0.7),
-                                                    borderRadius: BorderRadius.circular(20),
+                                              child: Container(
+                                                width: 142.w,
+                                                height: 37.h,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xff002B7A)
+                                                      .withOpacity(0.7),
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                ),
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                    horizontal: 15,
                                                   ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.symmetric(
-                                                      horizontal: 15,
-                                                    ),
-                                                    child: Row(
-                                                      children: [
-                                                        Container(
-                                                          child: Image.asset(
-                                                            "assets/images/Icon awesome-spotifyGreen.png",
-                                                            scale: 5,
-                                                          ),
+                                                  child: Row(
+                                                    children: [
+                                                      Container(
+                                                        child: Image.asset(
+                                                          "assets/images/Icon awesome-spotifyGreen.png",
+                                                          scale: 5,
                                                         ),
-                                                        5.horizontalSpace,
-                                                        Text(
-                                                          "Open Spotify",
-                                                          style: TextStyle(
-                                                            fontSize: 12.sp,
-                                                            color: Colors.white,
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
+                                                      ),
+                                                      5.horizontalSpace,
+                                                      Text(
+                                                        "Open Spotify",
+                                                        style: TextStyle(
+                                                          fontSize: 12.sp,
+                                                          color: Colors.white,
+                                                        ),
+                                                      )
+                                                    ],
                                                   ),
                                                 ),
                                               ),
@@ -542,14 +571,18 @@ class _MainScreenState extends State<MainScreen> {
                         height: 22.5.h,
                         child: Image.asset(
                           "assets/images/Icon awesome-spotify.png",
-                          color: bottomcontroller.navigationBarIndexValue == 4 ? Colors.white : Color(0xff80c1fa),
+                          color: bottomcontroller.navigationBarIndexValue == 4
+                              ? Colors.white
+                              : Color(0xff80c1fa),
                         ),
                       ),
                       Text(
                         "Spotify",
                         style: TextStyle(
                           fontSize: 12.sp,
-                          color: bottomcontroller.navigationBarIndexValue == 4 ? Colors.white : Color(0xff80c1fa),
+                          color: bottomcontroller.navigationBarIndexValue == 4
+                              ? Colors.white
+                              : Color(0xff80c1fa),
                         ),
                       )
                     ],
