@@ -439,7 +439,7 @@ class _PRELOGINStateScreen extends State<PRELOGINScreen> {
                                 child: Center(
                                   child: Text(
                                     "Decline",
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(color: Colors.black),
                                   ),
                                 ),
                               ),

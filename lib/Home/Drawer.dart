@@ -275,7 +275,7 @@ class DrawerScreen extends StatelessWidget {
                       visualDensity: VisualDensity(vertical: -4),
                       leading: ImageIcon(
                         AssetImage(
-                          "assets/images/Icon awesome-user-friends.png",
+                          "assets/images/Icon ionic-ios-add-circle.png",
                         ),
                         size: 20,
                         color: Colors.white,

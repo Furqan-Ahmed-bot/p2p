@@ -1241,8 +1241,8 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "Yes",
-                                    style: TextStyle(color: Colors.white),
+                                    "No",
+                                    style: TextStyle(color: Colors.black),
                                   ),
                                 ),
                               ),
@@ -1275,7 +1275,7 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "No",
+                                    "Yes",
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 ),

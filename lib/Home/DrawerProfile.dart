@@ -1261,7 +1261,7 @@ class _DrawerProfileScreenState extends State<DrawerProfileScreen> {
                                 child: Center(
                                   child: Text(
                                     "No",
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(color: Colors.black),
                                   ),
                                 ),
                               ),
@@ -1521,7 +1521,6 @@ class _DrawerProfileScreenState extends State<DrawerProfileScreen> {
                             ],
                           ),
                         )
-
                       ])
                     ],
                   ),

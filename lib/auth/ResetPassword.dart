@@ -123,7 +123,6 @@ class _RESETPASSWORDScreenState extends State<RESETPASSWORDScreen> {
       height: 55.h,
       decoration: BoxDecoration(
         color: Colors.white,
-     
         border: Border.all(color: Color(0xffDCDFE2), width: 2.sp),
         borderRadius: BorderRadius.circular(30.r),
       ),
@@ -178,6 +177,7 @@ class _RESETPASSWORDScreenState extends State<RESETPASSWORDScreen> {
         borderRadius: BorderRadius.circular(30.r),
       ),
       child: TextFormField(
+        obscureText: true,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(left: 30, top: 10),
           hintText: txt,

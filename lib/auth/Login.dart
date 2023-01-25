@@ -120,8 +120,7 @@ class _LOGINScreenState extends State<LOGINScreen> {
                       bottomcontroller.navBarChange(0);
                       Get.to(() => MainScreen());
                     },
-                    child:
-                     Container(
+                    child: Container(
                       width: 348.w,
                       height: 60.h,
                       decoration: BoxDecoration(
@@ -194,8 +193,7 @@ class _LOGINScreenState extends State<LOGINScreen> {
   TextField(
     txt,
   ) {
-    return 
-    Container(
+    return Container(
       width: 348.w,
       height: 55.h,
       decoration: BoxDecoration(
@@ -253,6 +251,7 @@ class _LOGINScreenState extends State<LOGINScreen> {
         borderRadius: BorderRadius.circular(30.r),
       ),
       child: TextFormField(
+        obscureText: true,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(left: 30, top: 10),
           hintText: txt,

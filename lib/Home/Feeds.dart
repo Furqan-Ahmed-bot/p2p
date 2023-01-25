@@ -1169,7 +1169,7 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
                                 child: Center(
                                   child: Text(
                                     "No",
-                                    style: TextStyle(color: Colors.white),
+                                    style: TextStyle(color: Colors.black),
                                   ),
                                 ),
                               ),

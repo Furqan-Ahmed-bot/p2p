@@ -258,6 +258,7 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
         borderRadius: BorderRadius.circular(30.r),
       ),
       child: TextFormField(
+        obscureText: true,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(left: 30, top: 10),
           hintText: txt,

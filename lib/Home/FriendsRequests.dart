@@ -121,7 +121,7 @@ class _FriendRequestsScreenState extends State<FriendRequestsScreen> {
               ),
             ],
           ),
-          50.horizontalSpace,
+          80.horizontalSpace,
           Row(
             children: [
               GestureDetector(
