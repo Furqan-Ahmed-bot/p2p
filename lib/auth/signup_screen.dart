@@ -56,7 +56,7 @@ class _SIGNUPScreenState extends State<SignupScreen> {
           padding: EdgeInsets.all(20.r),
           child: GestureDetector(
             onTap: () {
-              Get.toNamed("/LOGINScreen");
+              Get.to(() => LoginScreen());
             },
             child: RichText(
               textAlign: TextAlign.center,
