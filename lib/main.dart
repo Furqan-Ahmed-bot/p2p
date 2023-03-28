@@ -2,10 +2,8 @@ import 'dart:async';
 
 import 'Home/Feeds.dart';
 import 'Home/MartinProfile.dart';
-import 'auth/forgot_password.dart';
-import 'auth/prelogin_screen.dart';
 import 'auth/reset_password_screen.dart';
-import 'auth/signup_screen.dart';
+
 import 'export_all.dart';
 
 void main() {

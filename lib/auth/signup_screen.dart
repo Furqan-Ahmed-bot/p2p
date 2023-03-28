@@ -20,12 +20,7 @@ class _SIGNUPScreenState extends State<SignupScreen> {
     return Container(
       height: Get.height,
       width: Get.width,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/Mask Group 3.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
+      decoration: pageDecoration,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -82,37 +77,39 @@ class _SIGNUPScreenState extends State<SignupScreen> {
             ),
           ),
         ),
-        body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
-          children: [
-            78.verticalSpace,
-            Container(
-              width: 184.w,
-              height: 66.h,
-              child: Image.asset("assets/images/Group 1370.png"),
-            ),
-            119.verticalSpace,
-            CustomTextFieldWidget(
-                labelText: "Email/Phone", controller: emailPhoneController),
-            20.verticalSpace,
-            CustomTextFieldWidget(
-              labelText: "Password",
-              controller: passwordController,
-              isPassword: true,
-            ),
-            20.verticalSpace,
-            CustomTextFieldWidget(
-              labelText: "Confirm Password",
-              controller: confirmPasswordController,
-              isPassword: true,
-            ),
-            50.verticalSpace,
-            CustomButtonWidget(
-                text: 'Signup',
-                onTap: () {
-                  Get.toNamed("/VERIFICATIONSignupScreen");
-                }),
-          ],
+        body: DisAllowIndicatorWidget(
+          child: ListView(
+            padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
+            children: [
+              78.verticalSpace,
+              Container(
+                width: 184.w,
+                height: 66.h,
+                child: Image.asset("assets/images/Group 1370.png"),
+              ),
+              119.verticalSpace,
+              CustomTextFieldWidget(
+                  labelText: "Email/Phone", controller: emailPhoneController),
+              20.verticalSpace,
+              CustomTextFieldWidget(
+                labelText: "Password",
+                controller: passwordController,
+                isPassword: true,
+              ),
+              20.verticalSpace,
+              CustomTextFieldWidget(
+                labelText: "Confirm Password",
+                controller: confirmPasswordController,
+                isPassword: true,
+              ),
+              50.verticalSpace,
+              CustomButtonWidget(
+                  text: 'Signup',
+                  onTap: () {
+                    Get.toNamed("/VERIFICATIONSignupScreen");
+                  }),
+            ],
+          ),
         ),
       ),
     );

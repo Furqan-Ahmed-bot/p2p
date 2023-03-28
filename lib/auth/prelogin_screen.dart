@@ -1,6 +1,7 @@
 
 import '../export_all.dart';
 
+
 class PreLoginScreen extends StatefulWidget {
   const PreLoginScreen({super.key});
 
@@ -74,58 +75,56 @@ class _PRELOGINStateScreen extends State<PreLoginScreen> {
             onTap: () {
               Get.toNamed('/SignupScreen');
             },
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RichText(
-                  text: const TextSpan(
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      color: Colors.black,
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'Dont have an account? ',
-                          style: TextStyle(color: Colors.white, fontSize: 14)),
-                      TextSpan(
-                          text: 'Signup',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                            color: Colors.white,
-                            decoration: TextDecoration.underline,
-                          )),
-                    ],
-                  ),
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: const TextSpan(
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
                 ),
-              ],
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'Dont have an account? ',
+                      style: TextStyle(color: Colors.white, fontSize: 14)),
+                  TextSpan(
+                      text: 'Signup',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: Colors.white,
+                        decoration: TextDecoration.underline,
+                      )),
+                ],
+              ),
             ),
           ),
         ),
-        body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 40.r),
-          physics: const NeverScrollableScrollPhysics(),
-          children: [
-            78.verticalSpace,
-            Container(
-              width: 184.w,
-              height: 66.h,
-              child: Image.asset("assets/images/Group 1370.png"),
-            ),
-            119.verticalSpace,
-            ListView.separated(
-              itemBuilder: (context, index) => PreLoginButtonWidget(
-                text: preloginOptionList[index]['text'],
-                color: preloginOptionList[index]['color'],
-                iconPath: preloginOptionList[index]['icon'],
-                onTap: preloginOptionList[index]['route'],
+        body: DisAllowIndicatorWidget(
+          child: ListView(
+            padding: EdgeInsets.symmetric(horizontal: 40.r),
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              78.verticalSpace,
+              Container(
+                width: 184.w,
+                height: 66.h,
+                child: Image.asset("assets/images/Group 1370.png"),
               ),
-              separatorBuilder: (context, index) => 15.verticalSpace,
-              itemCount: preloginOptionList.length,
-              shrinkWrap: true,
-            )
-          ],
+              119.verticalSpace,
+              ListView.separated(
+                physics: const  NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) => PreLoginButtonWidget(
+                  text: preloginOptionList[index]['text'],
+                  color: preloginOptionList[index]['color'],
+                  iconPath: preloginOptionList[index]['icon'],
+                  onTap: preloginOptionList[index]['route'],
+                ),
+                separatorBuilder: (context, index) => 15.verticalSpace,
+                itemCount: preloginOptionList.length,
+                shrinkWrap: true,
+              )
+            ],
+          ),
         ),
       ),
     );

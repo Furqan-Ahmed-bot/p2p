@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:p2ptraffic/auth/prelogin_screen.dart';
+import 'package:p2ptraffic/export_all.dart';
 
 class FORGOTPASSWORDScreen extends StatefulWidget {
   const FORGOTPASSWORDScreen({super.key});
@@ -13,17 +10,13 @@ class FORGOTPASSWORDScreen extends StatefulWidget {
 class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
   bool isChecked = false;
   bool isChecked2 = false;
+  final userNamePhoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
       height: Get.height,
       width: Get.width,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/Mask Group 3.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
+      decoration: pageDecoration,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -43,96 +36,64 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
           automaticallyImplyLeading: false,
           title: Text(
             "FORGOT PASSWORD",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16.sp),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 16.sp),
           ),
           centerTitle: true,
         ),
-        body: Container(
-          width: double.infinity,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  78.verticalSpace,
-                  Container(
-                    width: 184.w,
-                    height: 66.h,
-                    child: Image.asset("assets/images/Group 1370.png"),
-                  ),
-                  119.verticalSpace,
-                  Names("Username / Phone"),
-                  5.verticalSpace,
-                  TextField(),
-                  50.verticalSpace,
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed("/VERIFICATIONScreen");
-                    },
-                    child: Container(
-                      width: 348.w,
-                      height: 60.h,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomRight,
-                          end: Alignment.bottomLeft,
-                          colors: [
-                            Color(0xff1CC8FB),
-                            Color(0xff004DF2),
-                          ],
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 0),
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(30.r),
-                      ),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Continue",
-                              style: TextStyle(color: Colors.white, fontSize: 18.sp),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  351.verticalSpace,
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed("/LOGINScreen");
-                    },
-                    child: Container(
-                      child: Center(
-                        child: RichText(
-                          text: const TextSpan(
-                            style: TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.black,
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(text: 'Already have an account? ', style: TextStyle(color: Colors.white, fontSize: 14)),
-                              TextSpan(
-                                  text: 'Login',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    decoration: TextDecoration.underline,
-                                  )),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.all(20.r),
+          child: GestureDetector(
+            onTap: () {
+              Get.to(() => LoginScreen());
+            },
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: const TextSpan(
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'Already have an account? ',
+                      style: TextStyle(color: Colors.white, fontSize: 14)),
+                  TextSpan(
+                      text: 'Login',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: Colors.white,
+                        decoration: TextDecoration.underline,
+                      )),
                 ],
               ),
             ),
+          ),
+        ),
+        body: DisAllowIndicatorWidget(
+          child: ListView(
+            padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
+            children: [
+              78.verticalSpace,
+              Container(
+                width: 184.w,
+                height: 66.h,
+                child: Image.asset("assets/images/Group 1370.png"),
+              ),
+              119.verticalSpace,
+              CustomTextFieldWidget(
+                  labelText: 'Username / Phone',
+                  controller: userNamePhoneController),
+              50.verticalSpace,
+              CustomButtonWidget(
+                  text: "Continue",
+                  onTap: () {
+                    Get.toNamed("/VERIFICATIONScreen");
+                  }),
+            ],
           ),
         ),
       ),
@@ -223,5 +184,3 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
     );
   }
 }
-
-

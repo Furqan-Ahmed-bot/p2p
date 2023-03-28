@@ -39,7 +39,6 @@ export '../auth/forgot_password.dart';
 export 'package:p2ptraffic/auth/prelogin_screen.dart';
 export 'package:p2ptraffic/auth/signup_screen.dart';
 
-
 //PACKAGES
 export 'package:flutter/material.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,8 +53,8 @@ export '../Home/BottomController.dart';
 
 //PROVIDER
 
-
 //WIDGETS
 export 'package:p2ptraffic/widgets.dart/button_widget.dart';
 export 'package:p2ptraffic/widgets.dart/prelogin_button.dart';
 export '../widgets.dart/textfield_widget.dart';
+export '../widgets.dart/disallow_indicator_widget.dart';
