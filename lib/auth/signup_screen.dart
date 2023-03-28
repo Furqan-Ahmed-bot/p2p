@@ -4,14 +4,14 @@ import '../export_all.dart';
 
 
 
-class SIGNUPScreen extends StatefulWidget {
-  const SIGNUPScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<SIGNUPScreen> createState() => _SIGNUPScreenState();
+  State<SignupScreen> createState() => _SIGNUPScreenState();
 }
 
-class _SIGNUPScreenState extends State<SIGNUPScreen> {
+class _SIGNUPScreenState extends State<SignupScreen> {
   bool isChecked = false;
   bool isChecked2 = false;
   @override
@@ -277,9 +277,4 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
   }
 }
 
-class AlwaysActiveBorderSide extends MaterialStateBorderSide {
-  @override
-  BorderSide? resolve(_) => const BorderSide(
-        color: Color(0xff1CC8FB),
-      );
-}
+

@@ -5,7 +5,8 @@ class PreLoginButtonWidget extends StatelessWidget {
   final String? text;
   final String? iconPath;
   final Color? color;
-  const PreLoginButtonWidget({super.key, this.onTap, this.text, this.color, this.iconPath});
+  const PreLoginButtonWidget(
+      {super.key, this.onTap, this.text, this.color, this.iconPath});
 
   @override
   Widget build(BuildContext context) {
@@ -17,36 +18,28 @@ class PreLoginButtonWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           border: Border.all(color: Color(0xffC6C8D2)),
-          // boxShadow: [
-          //   BoxShadow(
-          //     // color: Colors.grey.withOpacity(0.5),
-          //     // spreadRadius: 5,
-          //     // blurRadius: 0,
-          //     offset: Offset(0, 0), // changes position of shadow
-          //   ),
-          // ],
-          // border: Border.all(color: Colors.white, width: 3.sp),
           borderRadius: BorderRadius.circular(30.r),
         ),
         child: Center(
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 17),
-                child: Container(
-                  width: 16.w,
-                  height: 13.h,
-                  child: Image.asset(
-                    iconPath!,
-                    color: Colors.white,
-                  ),
+              Container(
+                alignment: Alignment.centerRight,
+                constraints: BoxConstraints(
+                    minWidth: Get.width * 0.12, maxWidth: Get.width * 0.20),
+                child: SvgPicture.asset(
+                  iconPath!,
                 ),
               ),
+              20.horizontalSpace,
               // SizedBox(width: 17.h),
-              Text(
-                text!,
-                style: TextStyle(color: Colors.white, fontSize: 18.sp),
+              Expanded(
+                child: Text(
+                  text!,
+                  style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                ),
               ),
             ],
           ),

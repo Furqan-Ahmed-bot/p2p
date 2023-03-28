@@ -35,6 +35,9 @@ export 'Home/EditProfile.dart';
 export 'Home/SettingPaymentmethods.dart';
 export 'Home/drawer.dart';
 export 'Home/mymap.dart';
+export '../auth/forgot_password.dart';
+export 'package:p2ptraffic/auth/prelogin_screen.dart';
+export 'package:p2ptraffic/auth/signup_screen.dart';
 
 
 //PACKAGES
@@ -42,7 +45,7 @@ export 'package:flutter/material.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:get/get.dart';
 export 'package:google_fonts/google_fonts.dart';
-
+export 'package:flutter_svg/flutter_svg.dart';
 //UTILS
 export './utils/global.dart';
 
@@ -53,3 +56,6 @@ export '../Home/BottomController.dart';
 
 
 //WIDGETS
+export 'package:p2ptraffic/widgets.dart/button_widget.dart';
+export 'package:p2ptraffic/widgets.dart/prelogin_button.dart';
+export '../widgets.dart/textfield_widget.dart';

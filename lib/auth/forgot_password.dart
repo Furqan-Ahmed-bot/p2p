@@ -224,9 +224,4 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
   }
 }
 
-class AlwaysActiveBorderSide extends MaterialStateBorderSide {
-  @override
-  BorderSide? resolve(_) => const BorderSide(
-        color: Color(0xff1CC8FB),
-      );
-}
+

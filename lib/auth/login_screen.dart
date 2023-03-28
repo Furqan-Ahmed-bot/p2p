@@ -4,28 +4,25 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LOGINScreenState();
+  State<LoginScreen> createState() => LoginScreenState();
 }
 
-class _LOGINScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
   bool isChecked = false;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
       height: Get.height,
       width: Get.width,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/Mask Group 3.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
+      decoration: pageDecoration,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           leading: GestureDetector(
             onTap: () {
-              Get.toNamed("/PRELOGINScreen");
+              Get.to(() => PreLoginScreen());
             },
             child: Container(
               child: Image.asset(
@@ -46,148 +43,125 @@ class _LOGINScreenState extends State<LoginScreen> {
           ),
           centerTitle: true,
         ),
-        body: Container(
-          width: double.infinity,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  78.verticalSpace,
-                  Container(
-                    width: 184.w,
-                    height: 66.h,
-                    child: Image.asset("assets/images/Group 1370.png"),
-                  ),
-                  119.verticalSpace,
-                  Names("Email Adress"),
-                  4.verticalSpace,
-                  TextField("martin.smith@email.com"),
-                  20.verticalSpace,
-                  Names("Password"),
-                  4.verticalSpace,
-                  TextField1("Martinsmith@80**"),
-                  35.verticalSpace,
-                  Row(
-                    children: [
-                      Container(
-                        height: 20.h,
-                        width: 210.w,
-                        child: Row(
-                          children: [
-                            Checkbox(
-                                side: AlwaysActiveBorderSide2(),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.r),
-                                ),
-                                checkColor: Colors.black,
-                                activeColor: Colors.white,
-                                value: isChecked,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    isChecked = value!;
-                                  });
-                                }),
-                            Text(
-                              "Remember Me",
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                color: Colors.white,
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Get.toNamed("/FORGOTPASSWORDScreen");
-                        },
-                        child: Text(
-                          "Forgot Password?",
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => SignupScreen());
+                },
+                child: RichText(
+                  text: const TextSpan(
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Dont have an account? ',
+                          style: TextStyle(color: Colors.white, fontSize: 14)),
+                      TextSpan(
+                          text: 'Signup',
                           style: TextStyle(
-                              color: Colors.white,
-                              decoration: TextDecoration.underline),
-                        ),
-                      ),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                            color: Colors.white,
+                            decoration: TextDecoration.underline,
+                          )),
                     ],
                   ),
-                  51.verticalSpace,
-                  GestureDetector(
-                    onTap: () {
-                      final bottomcontroller = Get.put(BottomController());
-                      bottomcontroller.navBarChange(0);
-                      Get.to(() => MainScreen());
-                    },
-                    child: Container(
-                      width: 348.w,
-                      height: 60.h,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomRight,
-                          end: Alignment.bottomLeft,
-                          colors: [
-                            Color(0xff1CC8FB),
-                            Color(0xff004DF2),
-                          ],
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 0),
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(30.r),
-                      ),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Login",
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: 18.sp),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  130.verticalSpace,
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed("/SIGNUPScreen");
-                    },
-                    child: Container(
-                      child: Center(
-                        child: RichText(
-                          text: const TextSpan(
-                            style: TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.black,
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                  text: 'Dont have an account? ',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 14)),
-                              TextSpan(
-                                  text: 'Signup',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    decoration: TextDecoration.underline,
-                                  )),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
+        ),
+        body: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 40.r),
+          // physics: NeverScrollableScrollPhysics(),
+          children: [
+            78.verticalSpace,
+            Container(
+              width: 184.w,
+              height: 66.h,
+              child: Image.asset("assets/images/Group 1370.png"),
+            ),
+            119.verticalSpace,
+            CustomTextFieldWidget(
+              controller: emailController,
+              hintText: "martin.smith@email.com",
+              labelText: "Email Adress",
+            ),
+            20.verticalSpace,
+            CustomTextFieldWidget(
+              controller: passwordController,
+              labelText: "Password",
+              isPassword: true,
+            ),
+            35.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Checkbox(
+                        visualDensity: const VisualDensity(horizontal: -4.0),
+                        side: AlwaysActiveBorderSide2(),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.r),
+                        ),
+                        checkColor: Colors.black,
+                        fillColor: MaterialStateProperty.resolveWith<Color>(
+                            (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.disabled)) {
+                            return Colors.white;
+                          }
+                          return Colors.white;
+                        }),
+
+                        // activeColor: Colors.white,
+                        value: isChecked,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            isChecked = value!;
+                          });
+                        }),
+                    Text(
+                      "Remember Me",
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        color: Colors.white,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ],
+                ),
+                TextButton(
+                  onPressed: () {
+                    // Get.toNamed("/FORGOTPASSWORDScreen");
+                    Get.to(() => FORGOTPASSWORDScreen());
+                  },
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                        color: Colors.white,
+                        decoration: TextDecoration.underline),
+                  ),
+                ),
+              ],
+            ),
+            51.verticalSpace,
+            CustomButtonWidget(
+                text: "Login",
+                onTap: () {
+                  final bottomcontroller = Get.put(BottomController());
+                  bottomcontroller.navBarChange(0);
+                  Get.to(() => MainScreen());
+                })
+          ],
         ),
       ),
     );

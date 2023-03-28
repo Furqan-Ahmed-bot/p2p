@@ -50,8 +50,8 @@ class _MyAppState extends State<MyApp> {
               page: (() => LoginScreen()),
             ),
             GetPage(
-              name: '/SIGNUPScreen',
-              page: (() => SIGNUPScreen()),
+              name: '/SignupScreen',
+              page: (() => SignupScreen()),
             ),
             GetPage(
               name: '/FORGOTPASSWORDScreen',

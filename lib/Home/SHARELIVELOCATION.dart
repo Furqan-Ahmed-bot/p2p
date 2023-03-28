@@ -40,7 +40,7 @@ class _SHARELIVELOCATIONsCREENState extends State<SHARELIVELOCATIONsCREEN> {
       controller = CameraController(cameras[0], ResolutionPreset.max);
 //cameras[0] = first camera, change to 1 to another camera
 
-      controller!.initialize().then((_) {
+      controller.initialize().then((_) {
         if (!mounted) {
           return;
         }
