@@ -1,7 +1,3 @@
-
-
-
-
 import '../export_all.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,7 +8,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LOGINScreenState extends State<LoginScreen> {
-
+  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,7 +39,10 @@ class _LOGINScreenState extends State<LoginScreen> {
           automaticallyImplyLeading: false,
           title: Text(
             "LOGIN",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16.sp),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 16.sp),
           ),
           centerTitle: true,
         ),
@@ -106,7 +105,9 @@ class _LOGINScreenState extends State<LoginScreen> {
                         },
                         child: Text(
                           "Forgot Password?",
-                          style: TextStyle(color: Colors.white, decoration: TextDecoration.underline),
+                          style: TextStyle(
+                              color: Colors.white,
+                              decoration: TextDecoration.underline),
                         ),
                       ),
                     ],
@@ -143,7 +144,8 @@ class _LOGINScreenState extends State<LoginScreen> {
                           children: [
                             Text(
                               "Login",
-                              style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 18.sp),
                             ),
                           ],
                         ),
@@ -164,7 +166,10 @@ class _LOGINScreenState extends State<LoginScreen> {
                               color: Colors.black,
                             ),
                             children: <TextSpan>[
-                              TextSpan(text: 'Dont have an account? ', style: TextStyle(color: Colors.white, fontSize: 14)),
+                              TextSpan(
+                                  text: 'Dont have an account? ',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 14)),
                               TextSpan(
                                   text: 'Signup',
                                   style: TextStyle(
@@ -266,5 +271,3 @@ class _LOGINScreenState extends State<LoginScreen> {
     );
   }
 }
-
-
