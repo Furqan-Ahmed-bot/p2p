@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../export_all.dart';
 
-
-
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
@@ -44,146 +42,73 @@ class _SIGNUPScreenState extends State<SignupScreen> {
           automaticallyImplyLeading: false,
           title: Text(
             "SIGNUP",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16.sp),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 16.sp),
           ),
           centerTitle: true,
         ),
-        body: Container(
-          width: double.infinity,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  78.verticalSpace,
-                  Container(
-                    width: 184.w,
-                    height: 66.h,
-                    child: Image.asset("assets/images/Group 1370.png"),
-                  ),
-                  119.verticalSpace,
-                  Names("Email/Phone"),
-                  4.verticalSpace,
-                  TextField("martin.smith@email.com"),
-                  20.verticalSpace,
-                  Names("Password"),
-                  4.verticalSpace,
-                  TextField1("Martinsmith@80**", "assets/images/Icon ionic-md-eye-off.png"),
-                  20.verticalSpace,
-                  Names("Confirm Password"),
-                  4.verticalSpace,
-                  TextField1("Martinsmith@80**", "assets/images/Icon ionic-md-eye.png"),
-                  50.verticalSpace,
-                  // Row(
-                  //   children: [
-                  //     Container(
-                  //       height: 20.h,
-                  //       width: 210.w,
-                  //       child: Row(
-                  //         children: [
-                  //           Checkbox(
-                  //               side: AlwaysActiveBorderSide(),
-                  //               shape: RoundedRectangleBorder(
-                  //                 borderRadius: BorderRadius.circular(5.r),
-                  //               ),
-                  //               checkColor: Colors.black,
-                  //               activeColor: Colors.white,
-                  //               value: isChecked,
-                  //               onChanged: (bool? value) {
-                  //                 setState(() {
-                  //                   isChecked = value!;
-                  //                 });
-                  //               }),
-                  //           Text(
-                  //             "Remember Me",
-                  //             style: TextStyle(
-                  //               fontSize: 14.sp,
-                  //               color: Colors.white,
-                  //               decoration: TextDecoration.underline,
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //     TextButton(
-                  //       onPressed: null,
-                  //       child: Text(
-                  //         "Forgot Password?",
-                  //         style: TextStyle(color: Colors.white, decoration: TextDecoration.underline),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed("/VERIFICATIONSignupScreen");
-                    },
-                    child: Container(
-                      width: 348.w,
-                      height: 60.h,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomRight,
-                          end: Alignment.bottomLeft,
-                          colors: [
-                            Color(0xff1CC8FB),
-                            Color(0xff004DF2),
-                          ],
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 0),
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(30.r),
-                      ),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Signup",
-                              style: TextStyle(color: Colors.white, fontSize: 18.sp),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  130.verticalSpace,
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed("/LOGINScreen");
-                    },
-                    child: Container(
-                      child: Center(
-                        child: RichText(
-                          text: const TextSpan(
-                            style: TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.black,
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(text: 'Already have an account? ', style: TextStyle(color: Colors.white, fontSize: 14)),
-                              TextSpan(
-                                  text: 'Login',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    decoration: TextDecoration.underline,
-                                  )),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.all(20.r),
+          child: GestureDetector(
+            onTap: () {
+              Get.toNamed("/LOGINScreen");
+            },
+            child: RichText(
+              textAlign: TextAlign.center,
+              text: const TextSpan(
+                style: TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.black,
+                ),
+                children: <TextSpan>[
+                  TextSpan(
+                      text: 'Already have an account? ',
+                      style: TextStyle(color: Colors.white, fontSize: 14)),
+                  TextSpan(
+                      text: 'Login',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        color: Colors.white,
+                        decoration: TextDecoration.underline,
+                      )),
                 ],
               ),
             ),
           ),
+        ),
+        body: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
+          children: [
+            78.verticalSpace,
+            Container(
+              width: 184.w,
+              height: 66.h,
+              child: Image.asset("assets/images/Group 1370.png"),
+            ),
+            119.verticalSpace,
+            Names("Email/Phone"),
+            4.verticalSpace,
+            TextField("martin.smith@email.com"),
+            20.verticalSpace,
+            Names("Password"),
+            4.verticalSpace,
+            TextField1(
+                "Martinsmith@80**", "assets/images/Icon ionic-md-eye-off.png"),
+            20.verticalSpace,
+            Names("Confirm Password"),
+            4.verticalSpace,
+            TextField1(
+                "Martinsmith@80**", "assets/images/Icon ionic-md-eye.png"),
+            50.verticalSpace,
+            CustomButtonWidget(
+                text: 'Signup',
+                onTap: () {
+                  Get.toNamed("/VERIFICATIONSignupScreen");
+                }),
+          ],
         ),
       ),
     );
@@ -276,5 +201,3 @@ class _SIGNUPScreenState extends State<SignupScreen> {
     );
   }
 }
-
-
