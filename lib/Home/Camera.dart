@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:p2ptraffic/Home/BottomController.dart';
 import 'package:p2ptraffic/Home/Navbar.dart';
-import 'package:p2ptraffic/auth/PreLogin.dart';
+import 'package:p2ptraffic/auth/prelogin_screen.dart';
 
 class CamScreen extends StatefulWidget {
   const CamScreen({super.key});

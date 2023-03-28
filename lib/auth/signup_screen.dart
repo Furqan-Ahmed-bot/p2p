@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:p2ptraffic/auth/PreLogin.dart';
 
-class FORGOTPASSWORDScreen extends StatefulWidget {
-  const FORGOTPASSWORDScreen({super.key});
+import '../export_all.dart';
+
+
+
+class SIGNUPScreen extends StatefulWidget {
+  const SIGNUPScreen({super.key});
 
   @override
-  State<FORGOTPASSWORDScreen> createState() => _FORGOTPASSWORDScreenState();
+  State<SIGNUPScreen> createState() => _SIGNUPScreenState();
 }
 
-class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
+class _SIGNUPScreenState extends State<SIGNUPScreen> {
   bool isChecked = false;
   bool isChecked2 = false;
   @override
@@ -42,7 +43,7 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
           elevation: 0,
           automaticallyImplyLeading: false,
           title: Text(
-            "FORGOT PASSWORD",
+            "SIGNUP",
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16.sp),
           ),
           centerTitle: true,
@@ -61,13 +62,62 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
                     child: Image.asset("assets/images/Group 1370.png"),
                   ),
                   119.verticalSpace,
-                  Names("Username / Phone"),
-                  5.verticalSpace,
-                  TextField(),
+                  Names("Email/Phone"),
+                  4.verticalSpace,
+                  TextField("martin.smith@email.com"),
+                  20.verticalSpace,
+                  Names("Password"),
+                  4.verticalSpace,
+                  TextField1("Martinsmith@80**", "assets/images/Icon ionic-md-eye-off.png"),
+                  20.verticalSpace,
+                  Names("Confirm Password"),
+                  4.verticalSpace,
+                  TextField1("Martinsmith@80**", "assets/images/Icon ionic-md-eye.png"),
                   50.verticalSpace,
+                  // Row(
+                  //   children: [
+                  //     Container(
+                  //       height: 20.h,
+                  //       width: 210.w,
+                  //       child: Row(
+                  //         children: [
+                  //           Checkbox(
+                  //               side: AlwaysActiveBorderSide(),
+                  //               shape: RoundedRectangleBorder(
+                  //                 borderRadius: BorderRadius.circular(5.r),
+                  //               ),
+                  //               checkColor: Colors.black,
+                  //               activeColor: Colors.white,
+                  //               value: isChecked,
+                  //               onChanged: (bool? value) {
+                  //                 setState(() {
+                  //                   isChecked = value!;
+                  //                 });
+                  //               }),
+                  //           Text(
+                  //             "Remember Me",
+                  //             style: TextStyle(
+                  //               fontSize: 14.sp,
+                  //               color: Colors.white,
+                  //               decoration: TextDecoration.underline,
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //     TextButton(
+                  //       onPressed: null,
+                  //       child: Text(
+                  //         "Forgot Password?",
+                  //         style: TextStyle(color: Colors.white, decoration: TextDecoration.underline),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed("/VERIFICATIONScreen");
+                      Get.toNamed("/VERIFICATIONSignupScreen");
                     },
                     child: Container(
                       width: 348.w,
@@ -93,7 +143,7 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Continue",
+                              "Signup",
                               style: TextStyle(color: Colors.white, fontSize: 18.sp),
                             ),
                           ],
@@ -101,7 +151,7 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
                       ),
                     ),
                   ),
-                  351.verticalSpace,
+                  130.verticalSpace,
                   GestureDetector(
                     onTap: () {
                       Get.toNamed("/LOGINScreen");
@@ -139,7 +189,9 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
     );
   }
 
-  TextField() {
+  TextField(
+    txt,
+  ) {
     return Container(
       width: 348.w,
       height: 55.h,
@@ -159,7 +211,7 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
       child: TextFormField(
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(left: 30),
-          // hintText: txt,
+          hintText: txt,
           hintStyle: TextStyle(color: Colors.black, fontSize: 16.sp),
           border: InputBorder.none,
         ),
@@ -173,7 +225,7 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 50),
+          padding: const EdgeInsets.only(left: 55),
           child: Text(
             txt,
             style: TextStyle(
@@ -207,6 +259,7 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
         borderRadius: BorderRadius.circular(30.r),
       ),
       child: TextFormField(
+        obscureText: true,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(left: 30, top: 10),
           hintText: txt,

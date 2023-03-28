@@ -1,18 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:p2ptraffic/auth/PreLogin.dart';
 
-class SIGNUPScreen extends StatefulWidget {
-  const SIGNUPScreen({super.key});
+
+
+
+import '../export_all.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<SIGNUPScreen> createState() => _SIGNUPScreenState();
+  State<LoginScreen> createState() => _LOGINScreenState();
 }
 
-class _SIGNUPScreenState extends State<SIGNUPScreen> {
-  bool isChecked = false;
-  bool isChecked2 = false;
+class _LOGINScreenState extends State<LoginScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +29,7 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
         appBar: AppBar(
           leading: GestureDetector(
             onTap: () {
-              Get.back();
+              Get.toNamed("/PRELOGINScreen");
             },
             child: Container(
               child: Image.asset(
@@ -42,7 +42,7 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
           elevation: 0,
           automaticallyImplyLeading: false,
           title: Text(
-            "SIGNUP",
+            "LOGIN",
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16.sp),
           ),
           centerTitle: true,
@@ -61,62 +61,62 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
                     child: Image.asset("assets/images/Group 1370.png"),
                   ),
                   119.verticalSpace,
-                  Names("Email/Phone"),
+                  Names("Email Adress"),
                   4.verticalSpace,
                   TextField("martin.smith@email.com"),
                   20.verticalSpace,
                   Names("Password"),
                   4.verticalSpace,
-                  TextField1("Martinsmith@80**", "assets/images/Icon ionic-md-eye-off.png"),
-                  20.verticalSpace,
-                  Names("Confirm Password"),
-                  4.verticalSpace,
-                  TextField1("Martinsmith@80**", "assets/images/Icon ionic-md-eye.png"),
-                  50.verticalSpace,
-                  // Row(
-                  //   children: [
-                  //     Container(
-                  //       height: 20.h,
-                  //       width: 210.w,
-                  //       child: Row(
-                  //         children: [
-                  //           Checkbox(
-                  //               side: AlwaysActiveBorderSide(),
-                  //               shape: RoundedRectangleBorder(
-                  //                 borderRadius: BorderRadius.circular(5.r),
-                  //               ),
-                  //               checkColor: Colors.black,
-                  //               activeColor: Colors.white,
-                  //               value: isChecked,
-                  //               onChanged: (bool? value) {
-                  //                 setState(() {
-                  //                   isChecked = value!;
-                  //                 });
-                  //               }),
-                  //           Text(
-                  //             "Remember Me",
-                  //             style: TextStyle(
-                  //               fontSize: 14.sp,
-                  //               color: Colors.white,
-                  //               decoration: TextDecoration.underline,
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //     TextButton(
-                  //       onPressed: null,
-                  //       child: Text(
-                  //         "Forgot Password?",
-                  //         style: TextStyle(color: Colors.white, decoration: TextDecoration.underline),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
-
+                  TextField1("Martinsmith@80**"),
+                  35.verticalSpace,
+                  Row(
+                    children: [
+                      Container(
+                        height: 20.h,
+                        width: 210.w,
+                        child: Row(
+                          children: [
+                            Checkbox(
+                                side: AlwaysActiveBorderSide2(),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5.r),
+                                ),
+                                checkColor: Colors.black,
+                                activeColor: Colors.white,
+                                value: isChecked,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    isChecked = value!;
+                                  });
+                                }),
+                            Text(
+                              "Remember Me",
+                              style: TextStyle(
+                                fontSize: 14.sp,
+                                color: Colors.white,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Get.toNamed("/FORGOTPASSWORDScreen");
+                        },
+                        child: Text(
+                          "Forgot Password?",
+                          style: TextStyle(color: Colors.white, decoration: TextDecoration.underline),
+                        ),
+                      ),
+                    ],
+                  ),
+                  51.verticalSpace,
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed("/VERIFICATIONSignupScreen");
+                      final bottomcontroller = Get.put(BottomController());
+                      bottomcontroller.navBarChange(0);
+                      Get.to(() => MainScreen());
                     },
                     child: Container(
                       width: 348.w,
@@ -142,7 +142,7 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Signup",
+                              "Login",
                               style: TextStyle(color: Colors.white, fontSize: 18.sp),
                             ),
                           ],
@@ -153,7 +153,7 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
                   130.verticalSpace,
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed("/LOGINScreen");
+                      Get.toNamed("/SIGNUPScreen");
                     },
                     child: Container(
                       child: Center(
@@ -164,9 +164,9 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
                               color: Colors.black,
                             ),
                             children: <TextSpan>[
-                              TextSpan(text: 'Already have an account? ', style: TextStyle(color: Colors.white, fontSize: 14)),
+                              TextSpan(text: 'Dont have an account? ', style: TextStyle(color: Colors.white, fontSize: 14)),
                               TextSpan(
-                                  text: 'Login',
+                                  text: 'Signup',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 14,
@@ -196,14 +196,6 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
       height: 55.h,
       decoration: BoxDecoration(
         color: Colors.white,
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.grey.withOpacity(0.2),
-        //     spreadRadius: 5,
-        //     blurRadius: 7,
-        //     offset: Offset(0, 3), // changes position of shadow
-        //   ),
-        // ],
         border: Border.all(color: Color(0xffDCDFE2), width: 2.sp),
         borderRadius: BorderRadius.circular(30.r),
       ),
@@ -239,7 +231,6 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
 
   TextField1(
     txt,
-    Img,
   ) {
     return Container(
       width: 348.w,
@@ -264,7 +255,7 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
           hintText: txt,
           suffixIcon: Container(
             child: Image.asset(
-              Img,
+              "assets/images/Icon ionic-md-eye-off.png",
               scale: 5,
             ),
           ),
@@ -276,9 +267,4 @@ class _SIGNUPScreenState extends State<SIGNUPScreen> {
   }
 }
 
-class AlwaysActiveBorderSide extends MaterialStateBorderSide {
-  @override
-  BorderSide? resolve(_) => const BorderSide(
-        color: Color(0xff1CC8FB),
-      );
-}
+

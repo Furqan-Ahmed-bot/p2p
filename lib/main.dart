@@ -1,57 +1,12 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
-// ignore: depend_on_referenced_packages
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:p2ptraffic/Home/Camera.dart';
-import 'package:p2ptraffic/Home/CheckOut.dart';
-import 'package:p2ptraffic/Home/ChnageSettings.dart';
-import 'package:p2ptraffic/Home/DrawerProfile.dart';
-import 'package:p2ptraffic/Home/FeedUpdatesDetails.dart';
-import 'package:p2ptraffic/Home/Feeds.dart';
-
-import 'package:p2ptraffic/Home/Friends.dart';
-import 'package:p2ptraffic/Home/FriendsRequests.dart';
-import 'package:p2ptraffic/Home/HELP&FEEDBACK.dart';
-import 'package:p2ptraffic/Home/History.dart';
-import 'package:p2ptraffic/Home/MartinProfile.dart';
-import 'package:p2ptraffic/Home/Navbar.dart';
-import 'package:p2ptraffic/Home/Notifications.dart';
-import 'package:p2ptraffic/Home/POST.dart';
-import 'package:p2ptraffic/Home/PayNow.dart';
-import 'package:p2ptraffic/Home/PaymentMethod.dart';
-import 'package:p2ptraffic/Home/Paymentmethhod.dart';
-import 'package:p2ptraffic/Home/PrivacyPolicy.dart';
-import 'package:p2ptraffic/Home/Profile.dart';
-import 'package:p2ptraffic/Home/SHARELIVELOCATION.dart';
-import 'package:p2ptraffic/Home/Search.dart';
-import 'package:p2ptraffic/Home/Setting.dart';
-import 'package:p2ptraffic/Home/Spotify.dart';
-import 'package:p2ptraffic/Home/Subscribe.dart';
-import 'package:p2ptraffic/Home/Subscribtions.dart';
-import 'package:p2ptraffic/Home/Terms&Conditions.dart';
-import 'package:p2ptraffic/Home/TrafficUpdates.dart';
-import 'package:p2ptraffic/Home/UpdatesDetails.dart';
-import 'package:p2ptraffic/Home/homeS.dart';
-import 'package:p2ptraffic/auth/CreateProfile.dart';
-import 'package:p2ptraffic/auth/ForgotPassword.dart';
-import 'package:p2ptraffic/auth/Login.dart';
-import 'package:p2ptraffic/auth/PreLogin.dart';
-import 'package:p2ptraffic/auth/ResetPassword.dart';
-import 'package:p2ptraffic/auth/Signup.dart';
-import 'package:p2ptraffic/auth/Verification.dart';
-import 'package:p2ptraffic/auth/VerificationSignup.dart';
-
-import 'Home/EditProfile.dart';
-import 'Home/SettingPaymentmethods.dart';
-import 'Home/drawer.dart';
-import 'Home/mymap.dart';
+import 'Home/Feeds.dart';
+import 'Home/MartinProfile.dart';
+import 'auth/forgot_password.dart';
+import 'auth/prelogin_screen.dart';
+import 'auth/reset_password_screen.dart';
+import 'auth/signup_screen.dart';
+import 'export_all.dart';
 
 void main() {
   runApp(const MyApp());
@@ -87,12 +42,12 @@ class _MyAppState extends State<MyApp> {
               page: (() => SplashScreen()),
             ),
             GetPage(
-              name: '/PRELOGINScreen',
-              page: (() => PRELOGINScreen()),
+              name: '/PreLoginScreen',
+              page: (() => PreLoginScreen()),
             ),
             GetPage(
-              name: '/LOGINScreen',
-              page: (() => LOGINScreen()),
+              name: '/LoginScreen',
+              page: (() => LoginScreen()),
             ),
             GetPage(
               name: '/SIGNUPScreen',
@@ -263,7 +218,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () => Get.toNamed('/PRELOGINScreen'));
+    Timer(Duration(seconds: 3), () => Get.toNamed('/PreLoginScreen'));
   }
 
   @override

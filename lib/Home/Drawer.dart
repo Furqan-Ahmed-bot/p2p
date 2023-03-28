@@ -1,18 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:p2ptraffic/Home/BottomController.dart';
-import 'package:p2ptraffic/Home/DrawerProfile.dart';
-import 'package:p2ptraffic/Home/Friends.dart';
-import 'package:p2ptraffic/Home/FriendsRequests.dart';
-import 'package:p2ptraffic/Home/HELP&FEEDBACK.dart';
-import 'package:p2ptraffic/Home/Notifications.dart';
-import 'package:p2ptraffic/Home/Profile.dart';
-import 'package:p2ptraffic/Home/Setting.dart';
-import 'package:p2ptraffic/Home/Subscribtions.dart';
-import 'package:p2ptraffic/auth/Login.dart';
 
-import 'Navbar.dart';
+
+
+
+import '../export_all.dart';
+
 import 'Spotify.dart';
 
 class DrawerScreen extends StatelessWidget {
@@ -435,7 +426,7 @@ class DrawerScreen extends StatelessWidget {
                           ),
                           title: GestureDetector(
                             onTap: () {
-                              Get.to(() => LOGINScreen());
+                              Get.to(() => LoginScreen());
                             },
                             child: Text(
                               "Signout",
