@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../export_all.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -12,6 +10,11 @@ class SignupScreen extends StatefulWidget {
 class _SIGNUPScreenState extends State<SignupScreen> {
   bool isChecked = false;
   bool isChecked2 = false;
+  final TextEditingController emailPhoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -89,19 +92,20 @@ class _SIGNUPScreenState extends State<SignupScreen> {
               child: Image.asset("assets/images/Group 1370.png"),
             ),
             119.verticalSpace,
-            Names("Email/Phone"),
-            4.verticalSpace,
-            TextField("martin.smith@email.com"),
+            CustomTextFieldWidget(
+                labelText: "Email/Phone", controller: emailPhoneController),
             20.verticalSpace,
-            Names("Password"),
-            4.verticalSpace,
-            TextField1(
-                "Martinsmith@80**", "assets/images/Icon ionic-md-eye-off.png"),
+            CustomTextFieldWidget(
+              labelText: "Password",
+              controller: passwordController,
+              isPassword: true,
+            ),
             20.verticalSpace,
-            Names("Confirm Password"),
-            4.verticalSpace,
-            TextField1(
-                "Martinsmith@80**", "assets/images/Icon ionic-md-eye.png"),
+            CustomTextFieldWidget(
+              labelText: "Confirm Password",
+              controller: confirmPasswordController,
+              isPassword: true,
+            ),
             50.verticalSpace,
             CustomButtonWidget(
                 text: 'Signup',
