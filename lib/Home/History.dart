@@ -4,111 +4,18 @@ import 'package:get/get.dart';
 
 import 'Drawer.dart';
 
-class HISTORYScreen extends StatefulWidget {
-  const HISTORYScreen({super.key});
+class HistoryScreen extends StatefulWidget {
+  const HistoryScreen({super.key});
 
   @override
-  State<HISTORYScreen> createState() => _HISTORYScreenState();
+  State<HistoryScreen> createState() => HistoryScreenState();
 }
 
-class _HISTORYScreenState extends State<HISTORYScreen> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
+class HistoryScreenState extends State<HistoryScreen> {
+  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      // extendBodyBehindAppBar: true,
-      key: _key,
-      drawer: DrawerScreen(),
-      appBar: AppBar(
-        title: Text(
-          "HISTORY",
-          style: TextStyle(fontSize: 16.sp),
-        ),
-        centerTitle: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(18),
-          ),
-        ),
-        elevation: 0,
-        leading: GestureDetector(
-          onTap: () {
-            _key.currentState!.openDrawer();
-          },
-          child: Container(
-              child: Image.asset(
-            "assets/images/Group 16.png",
-            scale: 4,
-          )),
-        ),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            ),
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [
-                Color(0xff004DF2),
-                Color(0xff1CC8FB),
-              ],
-            ),
-            // backgroundBlendMode: BlendMode.colorBurn,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: GestureDetector(
-              onTap: () {
-                Get.toNamed("/NOTIFICATIONSScreen");
-              },
-              child: Container(
-                child: Image.asset(
-                  "assets/images/Group 1377.png",
-                  scale: 4,
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
-      body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Column(
-              children: [
-                22.verticalSpace,
-                Cont(),
-                15.verticalSpace,
-                Cont2(),
-                15.verticalSpace,
-                Cont(),
-                15.verticalSpace,
-                Cont2(),
-                15.verticalSpace,
-                Cont(),
-                15.verticalSpace,
-                Cont2(),
-                15.verticalSpace,
-                Cont(),
-                15.verticalSpace,
-                Cont2(),
-                15.verticalSpace,
-                Cont(),
-                15.verticalSpace,
-                Cont2(),
-                50.verticalSpace,
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+    return ListView.separated(itemBuilder: (context, index) => Cont(), separatorBuilder: (context, index) => 15.verticalSpace, itemCount: 10);
   }
 
   Cont() {

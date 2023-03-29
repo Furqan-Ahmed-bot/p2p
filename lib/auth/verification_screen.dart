@@ -1,11 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:otp_text_field/otp_field.dart';
-import 'package:otp_text_field/otp_field_style.dart';
-import 'package:otp_text_field/style.dart';
-import 'package:circular_countdown_timer/circular_countdown_timer.dart';
-import 'package:p2ptraffic/auth/reset_password_screen.dart';
+
+
 import 'package:p2ptraffic/export_all.dart';
 
 class VerificationScreen extends StatefulWidget {

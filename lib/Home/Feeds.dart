@@ -1,22 +1,20 @@
 import 'dart:async';
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:p2ptraffic/Home/Drawer.dart';
-import 'package:p2ptraffic/main.dart';
 
-class FEEDSScreen extends StatefulWidget {
-  const FEEDSScreen({super.key});
+
+class FeedsScreen extends StatefulWidget {
+  const FeedsScreen({super.key});
 
   @override
-  State<FEEDSScreen> createState() => _FEEDSScreenState();
+  State<FeedsScreen> createState() => FeedsScreenState();
 }
 
-class _FEEDSScreenState extends State<FEEDSScreen> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
+class FeedsScreenState extends State<FeedsScreen> {
+
   bool _value = false;
   bool _value1 = false;
   bool _value2 = false;
@@ -24,8 +22,8 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
 
   final Completer<GoogleMapController> _mapcontroller = Completer();
   static const CameraPosition _center = CameraPosition(target: LatLng(40.721424, -73.873540), zoom: 15);
-  final List<Marker> _marker = [];
-  final List<Marker> _branch = const [
+  final List<Marker> marker = [];
+  final List<Marker> branch = const [
     Marker(
       markerId: MarkerId("1"),
       position: LatLng(40.721424, -73.873540),
@@ -42,744 +40,660 @@ class _FEEDSScreenState extends State<FEEDSScreen> {
   ];
   @override
   void initState() {
-// TODO: implement initState
+    marker.addAll(branch);
     super.initState();
-    _marker.addAll(_branch);
+   
   }
 
   @override
   Widget build(BuildContext context) {
-    final infoWindow = InfoWindow(
-      title: 'My InfoWindow',
-      snippet: 'This is my InfoWindow',
-    );
+    
 
 // Add the InfoWindow to a list of InfoWindows
-    final infoWindows = <InfoWindow>[infoWindow];
+   
 
-    _marker.addAll(_branch);
-    return Scaffold(
-      key: _key,
-      drawer: DrawerScreen(),
-      backgroundColor: Colors.white,
-      // extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: Text(
-          "FEEDS",
-          style: TextStyle(fontSize: 16.sp),
-        ),
-        centerTitle: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(18),
-          ),
-        ),
-        elevation: 0,
-        leading: GestureDetector(
-          onTap: () {
-            _key.currentState!.openDrawer();
-          },
-          child: Container(
-              child: Image.asset(
-            "assets/images/Group 16.png",
-            scale: 4,
-          )),
-        ),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            ),
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [
-                Color(0xff004DF2),
-                Color(0xff1CC8FB),
-              ],
-            ),
-            // backgroundBlendMode: BlendMode.colorBurn,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed("/SEARCHScreen");
-                  },
-                  child: Container(
-                    child: Image.asset(
-                      "assets/images/Icon feather-search.png",
-                      scale: 4,
-                    ),
-                  ),
-                ),
-                8.horizontalSpace,
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed("/NOTIFICATIONSScreen");
-                  },
-                  child: Container(
-                    child: Image.asset(
-                      "assets/images/Group 1377.png",
-                      scale: 4,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-      body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                22.verticalSpace,
+    marker.addAll(branch);
+    return ListView(
+        padding: EdgeInsets.symmetric(horizontal: 20.r),
+      children: [
+        22.verticalSpace,
 
-                Container(
-                  width: 388.w,
-                  height: 392,
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      20.verticalSpace,
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 47.w,
-                              height: 47.h,
-                              child: Image.asset("assets/images/1.png"),
-                            ),
-                            6.horizontalSpace,
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Martin Smith",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
-                                ),
-                                Text(
-                                  "50min ago",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
-                                ),
-                                15.verticalSpace,
-                                Text(
-                                  "Lorem ipsum dolor sit amet.",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                ),
-                              ],
-                            ),
-                            DropdownButton<String>(
-                              dropdownColor: Color(0xffDFE1EC),
-                              menuMaxHeight: 120.h,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(
-                                  10,
-                                ),
-                                topLeft: Radius.circular(
-                                  10,
-                                ),
-                                bottomRight: Radius.circular(
-                                  10,
-                                ),
-                              ),
-                              onTap: () {},
-                              underline: Container(),
-                              items: <String>['Report', 'Block'].map((String value) {
-                                return DropdownMenuItem<String>(
-                                  // alignment: AlignmentDirectional.Cen,
-                                  onTap: () {},
-                                  value: value,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        width: 13.w,
-                                        height: 13.h,
-                                        child: Image.asset(
-                                            value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
-                                      ),
-                                      8.horizontalSpace,
-                                      Text(
-                                        value,
-                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              }).toList(),
-                              onChanged: (value) {
-                                print("value is : " + value.toString());
-                                if (value.toString() == "Report") {
-                                  Report();
-                                } else {
-                                  Block();
-                                }
-                              },
-                              icon: Padding(
-                                padding: const EdgeInsets.only(bottom: 30),
-                                child: Icon(
-                                  Icons.more_vert,
-                                  size: 25,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      30.verticalSpace,
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              children: [
-                                Container(
-                                  child: Image.asset(
-                                    "assets/images/Icon material-location-on.png",
-                                    scale: 5,
-                                  ),
-                                ),
-                                10.horizontalSpace,
-                                Container(
-                                  child: Text(
-                                    "Lorem ipsum dolor sit amet.",
-                                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          10.verticalSpace,
-                          GestureDetector(
-                            onTap: () {
-                              Get.toNamed("/FeedUPDATESDETAILSScreen");
-                            },
-                            child: Container(
-                              child: Image.asset(
-                                "assets/images/Rectangle 1339.png",
-                                scale: 1,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                15.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        Container(
+          width: 388.w,
+          height: 392,
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              20.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    Container(
+                      width: 47.w,
+                      height: 47.h,
+                      child: Image.asset("assets/images/1.png"),
+                    ),
+                    6.horizontalSpace,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          child: Icon(
-                            Icons.thumb_up,
-                            color: Color(0xff21CDFB),
-                          ),
+                        Text(
+                          "Martin Smith",
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
                         ),
-                        7.horizontalSpace,
-                        Container(
-                          child: Text(
-                            "Like",
-                            style: TextStyle(fontSize: 14.sp),
-                          ),
-                        )
+                        Text(
+                          "50min ago",
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
+                        ),
+                        15.verticalSpace,
+                        Text(
+                          "Lorem ipsum dolor sit amet.",
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                        ),
                       ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed("/FeedUPDATESDETAILSScreen");
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                              child: Image.asset(
-                            "assets/images/Icon awesome-comment-dots.png",
-                            scale: 5,
-                          )),
-                          7.horizontalSpace,
-                          Container(
-                            child: Text(
-                              "326 Comments",
-                              style: TextStyle(fontSize: 14.sp),
-                            ),
-                          )
-                        ],
+                    DropdownButton<String>(
+                      dropdownColor: Color(0xffDFE1EC),
+                      menuMaxHeight: 120.h,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(
+                          10,
+                        ),
+                        topLeft: Radius.circular(
+                          10,
+                        ),
+                        bottomRight: Radius.circular(
+                          10,
+                        ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Share();
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                              child: Image.asset(
-                            "assets/images/Icon awesome-share.png",
-                            scale: 5,
-                          )),
-                          7.horizontalSpace,
-                          Container(
-                            child: Text(
-                              "Share",
-                              style: TextStyle(fontSize: 14.sp),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                15.verticalSpace,
-
-                Dividerr(),
-
-                20.verticalSpace,
-                Column(
-                  children: [
-                    20.verticalSpace,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: 47.w,
-                            height: 47.h,
-                            child: Image.asset("assets/images/1.png"),
-                          ),
-                          6.horizontalSpace,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                      onTap: () {},
+                      underline: Container(),
+                      items: <String>['Report', 'Block'].map((String value) {
+                        return DropdownMenuItem<String>(
+                          // alignment: AlignmentDirectional.Cen,
+                          onTap: () {},
+                          value: value,
+                          child: Row(
                             children: [
-                              Text(
-                                "Martin Smith",
-                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
+                              Container(
+                                width: 13.w,
+                                height: 13.h,
+                                child: Image.asset(
+                                    value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
                               ),
+                              8.horizontalSpace,
                               Text(
-                                "50min ago",
-                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
-                              ),
-                              15.verticalSpace,
-                              Text(
-                                "Lorem ipsum dolor sit amet.",
-                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                                value,
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
                               ),
                             ],
                           ),
-                          DropdownButton<String>(
-                            dropdownColor: Color(0xffDFE1EC),
-                            menuMaxHeight: 120.h,
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(
-                                10,
-                              ),
-                              topLeft: Radius.circular(
-                                10,
-                              ),
-                              bottomRight: Radius.circular(
-                                10,
-                              ),
-                            ),
-                            onTap: () {},
-                            underline: Container(),
-                            items: <String>['Report', 'Block'].map((String value) {
-                              return DropdownMenuItem<String>(
-                                // alignment: AlignmentDirectional.Cen,
-                                onTap: () {},
-                                value: value,
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 13.w,
-                                      height: 13.h,
-                                      child: Image.asset(
-                                          value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
-                                    ),
-                                    8.horizontalSpace,
-                                    Text(
-                                      value,
-                                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }).toList(),
-                            onChanged: (value) {
-                              print("value is : " + value.toString());
-                              if (value.toString() == "Report") {
-                                Report();
-                              } else {
-                                Block();
-                              }
-                            },
-                            icon: Padding(
-                              padding: const EdgeInsets.only(bottom: 30),
-                              child: Icon(
-                                Icons.more_vert,
-                                size: 25,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    30.verticalSpace,
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              children: [
-                                Container(
-                                  child: Image.asset(
-                                    "assets/images/Icon material-location-on.png",
-                                    scale: 5,
-                                  ),
-                                ),
-                                10.horizontalSpace,
-                                Container(
-                                  child: Text(
-                                    "Lorem ipsum dolor sit amet.",
-                                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Stack(
-                      children: [
-                        Container(
-                          width: 388.w,
-                          height: 369.h,
-                          child: GoogleMap(
-                            compassEnabled: true,
-                            myLocationButtonEnabled: true,
-                            zoomGesturesEnabled: true,
-                            initialCameraPosition: _center,
-                            markers: Set<Marker>.of(_marker),
-                            onMapCreated: (GoogleMapController controller) {
-                              _mapcontroller.complete(controller);
-                            },
-                          ),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        print("value is : " + value.toString());
+                        if (value.toString() == "Report") {
+                          Report();
+                        } else {
+                          Block();
+                        }
+                      },
+                      icon: Padding(
+                        padding: const EdgeInsets.only(bottom: 30),
+                        child: Icon(
+                          Icons.more_vert,
+                          size: 25,
+                          color: Colors.grey,
                         ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
-                17.verticalSpace,
-
-                15.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
+              ),
+              30.verticalSpace,
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
                       children: [
                         Container(
-                          child: Icon(
-                            Icons.thumb_up,
-                            color: Color(0xff21CDFB),
+                          child: Image.asset(
+                            "assets/images/Icon material-location-on.png",
+                            scale: 5,
                           ),
                         ),
-                        7.horizontalSpace,
+                        10.horizontalSpace,
                         Container(
                           child: Text(
-                            "Like",
-                            style: TextStyle(fontSize: 14.sp),
+                            "Lorem ipsum dolor sit amet.",
+                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
                           ),
-                        )
+                        ),
                       ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed("/FeedUPDATESDETAILSScreen");
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                              child: Image.asset(
-                            "assets/images/Icon awesome-comment-dots.png",
-                            scale: 5,
-                          )),
-                          7.horizontalSpace,
-                          Container(
-                            child: Text(
-                              "326 Comments",
-                              style: TextStyle(fontSize: 14.sp),
-                            ),
-                          )
-                        ],
+                  ),
+                  10.verticalSpace,
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed("/FeedUPDATESDETAILSScreen");
+                    },
+                    child: Container(
+                      child: Image.asset(
+                        "assets/images/Rectangle 1339.png",
+                        scale: 1,
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Share();
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                              child: Image.asset(
-                            "assets/images/Icon awesome-share.png",
-                            scale: 5,
-                          )),
-                          7.horizontalSpace,
-                          Container(
-                            child: Text(
-                              "Share",
-                              style: TextStyle(fontSize: 14.sp),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-                15.verticalSpace,
-                Dividerr(), 22.verticalSpace,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        15.verticalSpace,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
                 Container(
-                  width: 388.w,
-                  height: 392,
-                  decoration: BoxDecoration(boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
+                  child: Icon(
+                    Icons.thumb_up,
+                    color: Color(0xff21CDFB),
+                  ),
+                ),
+                7.horizontalSpace,
+                Container(
+                  child: Text(
+                    "Like",
+                    style: TextStyle(fontSize: 14.sp),
+                  ),
+                )
+              ],
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed("/FeedUPDATESDETAILSScreen");
+              },
+              child: Row(
+                children: [
+                  Container(
+                      child: Image.asset(
+                    "assets/images/Icon awesome-comment-dots.png",
+                    scale: 5,
+                  )),
+                  7.horizontalSpace,
+                  Container(
+                    child: Text(
+                      "326 Comments",
+                      style: TextStyle(fontSize: 14.sp),
                     ),
-                  ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                  )
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Share();
+              },
+              child: Row(
+                children: [
+                  Container(
+                      child: Image.asset(
+                    "assets/images/Icon awesome-share.png",
+                    scale: 5,
+                  )),
+                  7.horizontalSpace,
+                  Container(
+                    child: Text(
+                      "Share",
+                      style: TextStyle(fontSize: 14.sp),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+        15.verticalSpace,
+
+        VerticalDivider(
+          color:  Color(0xff3A3A3A).withOpacity(0.2),
+        ),
+
+        20.verticalSpace,
+        Column(
+          children: [
+            20.verticalSpace,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: 47.w,
+                    height: 47.h,
+                    child: Image.asset("assets/images/1.png"),
+                  ),
+                  6.horizontalSpace,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      20.verticalSpace,
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: 47.w,
-                              height: 47.h,
-                              child: Image.asset("assets/images/1.png"),
-                            ),
-                            6.horizontalSpace,
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Martin Smith",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
-                                ),
-                                Text(
-                                  "50min ago",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
-                                ),
-                                15.verticalSpace,
-                                Text(
-                                  "Lorem ipsum dolor sit amet.",
-                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                ),
-                              ],
-                            ),
-                            DropdownButton<String>(
-                              dropdownColor: Color(0xffDFE1EC),
-                              menuMaxHeight: 120.h,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(
-                                  10,
-                                ),
-                                topLeft: Radius.circular(
-                                  10,
-                                ),
-                                bottomRight: Radius.circular(
-                                  10,
-                                ),
-                              ),
-                              onTap: () {},
-                              underline: Container(),
-                              items: <String>['Report', 'Block'].map((String value) {
-                                return DropdownMenuItem<String>(
-                                  // alignment: AlignmentDirectional.Cen,
-                                  onTap: () {},
-                                  value: value,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        width: 13.w,
-                                        height: 13.h,
-                                        child: Image.asset(
-                                            value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
-                                      ),
-                                      8.horizontalSpace,
-                                      Text(
-                                        value,
-                                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              }).toList(),
-                              onChanged: (value) {
-                                print("value is : " + value.toString());
-                                if (value.toString() == "Report") {
-                                  Report();
-                                } else {
-                                  Block();
-                                }
-                              },
-                              icon: Padding(
-                                padding: const EdgeInsets.only(bottom: 30),
-                                child: Icon(
-                                  Icons.more_vert,
-                                  size: 25,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                      Text(
+                        "Martin Smith",
+                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
                       ),
-                      30.verticalSpace,
-                      Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              children: [
-                                Container(
-                                  child: Image.asset(
-                                    "assets/images/Icon material-location-on.png",
-                                    scale: 5,
-                                  ),
-                                ),
-                                10.horizontalSpace,
-                                Container(
-                                  child: Text(
-                                    "Lorem ipsum dolor sit amet.",
-                                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          10.verticalSpace,
-                          Image.asset(
-                            "assets/images/Rectangle 1339.png",
-                            scale: 1,
-                          ),
-                        ],
+                      Text(
+                        "50min ago",
+                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
+                      ),
+                      15.verticalSpace,
+                      Text(
+                        "Lorem ipsum dolor sit amet.",
+                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
                       ),
                     ],
                   ),
-                ),
-                15.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
+                  DropdownButton<String>(
+                    dropdownColor: Color(0xffDFE1EC),
+                    menuMaxHeight: 120.h,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(
+                        10,
+                      ),
+                      topLeft: Radius.circular(
+                        10,
+                      ),
+                      bottomRight: Radius.circular(
+                        10,
+                      ),
+                    ),
+                    onTap: () {},
+                    underline: Container(),
+                    items: <String>['Report', 'Block'].map((String value) {
+                      return DropdownMenuItem<String>(
+                        // alignment: AlignmentDirectional.Cen,
+                        onTap: () {},
+                        value: value,
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 13.w,
+                              height: 13.h,
+                              child: Image.asset(
+                                  value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
+                            ),
+                            8.horizontalSpace,
+                            Text(
+                              value,
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+                            ),
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      print("value is : " + value.toString());
+                      if (value.toString() == "Report") {
+                        Report();
+                      } else {
+                        Block();
+                      }
+                    },
+                    icon: Padding(
+                      padding: const EdgeInsets.only(bottom: 30),
+                      child: Icon(
+                        Icons.more_vert,
+                        size: 25,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            30.verticalSpace,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
                       children: [
                         Container(
-                          child: Icon(
-                            Icons.thumb_up,
-                            color: Color(0xff21CDFB),
+                          child: Image.asset(
+                            "assets/images/Icon material-location-on.png",
+                            scale: 5,
                           ),
                         ),
-                        7.horizontalSpace,
+                        10.horizontalSpace,
                         Container(
                           child: Text(
-                            "Like",
-                            style: TextStyle(fontSize: 14.sp),
+                            "Lorem ipsum dolor sit amet.",
+                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
                           ),
-                        )
+                        ),
                       ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed("/FeedUPDATESDETAILSScreen");
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                              child: Image.asset(
-                            "assets/images/Icon awesome-comment-dots.png",
-                            scale: 5,
-                          )),
-                          7.horizontalSpace,
-                          Container(
-                            child: Text(
-                              "326 Comments",
-                              style: TextStyle(fontSize: 14.sp),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Share();
-                      },
-                      child: Row(
-                        children: [
-                          Container(
-                              child: Image.asset(
-                            "assets/images/Icon awesome-share.png",
-                            scale: 5,
-                          )),
-                          7.horizontalSpace,
-                          Container(
-                            child: Text(
-                              "Share",
-                              style: TextStyle(fontSize: 14.sp),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
+                  ),
+                ],
+              ),
+            ),
+            Stack(
+              children: [
+                Container(
+                  width: 388.w,
+                  height: 369.h,
+                  child: GoogleMap(
+                    compassEnabled: true,
+                    myLocationButtonEnabled: true,
+                    zoomGesturesEnabled: true,
+                    initialCameraPosition: _center,
+                    markers: Set<Marker>.of(marker),
+                    onMapCreated: (GoogleMapController controller) {
+                      _mapcontroller.complete(controller);
+                    },
+                  ),
                 ),
-                15.verticalSpace,
-
-                Dividerr(),
-
-                120.verticalSpace,
-
-                // Dividerr()
               ],
             ),
+          ],
+        ),
+        17.verticalSpace,
+
+        15.verticalSpace,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Container(
+                  child: Icon(
+                    Icons.thumb_up,
+                    color: Color(0xff21CDFB),
+                  ),
+                ),
+                7.horizontalSpace,
+                Container(
+                  child: Text(
+                    "Like",
+                    style: TextStyle(fontSize: 14.sp),
+                  ),
+                )
+              ],
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed("/FeedUPDATESDETAILSScreen");
+              },
+              child: Row(
+                children: [
+                  Container(
+                      child: Image.asset(
+                    "assets/images/Icon awesome-comment-dots.png",
+                    scale: 5,
+                  )),
+                  7.horizontalSpace,
+                  Container(
+                    child: Text(
+                      "326 Comments",
+                      style: TextStyle(fontSize: 14.sp),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Share();
+              },
+              child: Row(
+                children: [
+                  Container(
+                      child: Image.asset(
+                    "assets/images/Icon awesome-share.png",
+                    scale: 5,
+                  )),
+                  7.horizontalSpace,
+                  Container(
+                    child: Text(
+                      "Share",
+                      style: TextStyle(fontSize: 14.sp),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+        15.verticalSpace,
+        Dividerr(), 22.verticalSpace,
+        Container(
+          width: 388.w,
+          height: 392,
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              20.verticalSpace,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: 47.w,
+                      height: 47.h,
+                      child: Image.asset("assets/images/1.png"),
+                    ),
+                    6.horizontalSpace,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Martin Smith",
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
+                        ),
+                        Text(
+                          "50min ago",
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
+                        ),
+                        15.verticalSpace,
+                        Text(
+                          "Lorem ipsum dolor sit amet.",
+                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                        ),
+                      ],
+                    ),
+                    DropdownButton<String>(
+                      dropdownColor: Color(0xffDFE1EC),
+                      menuMaxHeight: 120.h,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(
+                          10,
+                        ),
+                        topLeft: Radius.circular(
+                          10,
+                        ),
+                        bottomRight: Radius.circular(
+                          10,
+                        ),
+                      ),
+                      onTap: () {},
+                      underline: Container(),
+                      items: <String>['Report', 'Block'].map((String value) {
+                        return DropdownMenuItem<String>(
+                          // alignment: AlignmentDirectional.Cen,
+                          onTap: () {},
+                          value: value,
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 13.w,
+                                height: 13.h,
+                                child: Image.asset(
+                                    value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
+                              ),
+                              8.horizontalSpace,
+                              Text(
+                                value,
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+                              ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (value) {
+                        print("value is : " + value.toString());
+                        if (value.toString() == "Report") {
+                          Report();
+                        } else {
+                          Block();
+                        }
+                      },
+                      icon: Padding(
+                        padding: const EdgeInsets.only(bottom: 30),
+                        child: Icon(
+                          Icons.more_vert,
+                          size: 25,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              30.verticalSpace,
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Row(
+                      children: [
+                        Container(
+                          child: Image.asset(
+                            "assets/images/Icon material-location-on.png",
+                            scale: 5,
+                          ),
+                        ),
+                        10.horizontalSpace,
+                        Container(
+                          child: Text(
+                            "Lorem ipsum dolor sit amet.",
+                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  10.verticalSpace,
+                  Image.asset(
+                    "assets/images/Rectangle 1339.png",
+                    scale: 1,
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
-      ),
-    );
+        15.verticalSpace,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Container(
+                  child: Icon(
+                    Icons.thumb_up,
+                    color: Color(0xff21CDFB),
+                  ),
+                ),
+                7.horizontalSpace,
+                Container(
+                  child: Text(
+                    "Like",
+                    style: TextStyle(fontSize: 14.sp),
+                  ),
+                )
+              ],
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.toNamed("/FeedUPDATESDETAILSScreen");
+              },
+              child: Row(
+                children: [
+                  Container(
+                      child: Image.asset(
+                    "assets/images/Icon awesome-comment-dots.png",
+                    scale: 5,
+                  )),
+                  7.horizontalSpace,
+                  Container(
+                    child: Text(
+                      "326 Comments",
+                      style: TextStyle(fontSize: 14.sp),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                Share();
+              },
+              child: Row(
+                children: [
+                  Container(
+                      child: Image.asset(
+                    "assets/images/Icon awesome-share.png",
+                    scale: 5,
+                  )),
+                  7.horizontalSpace,
+                  Container(
+                    child: Text(
+                      "Share",
+                      style: TextStyle(fontSize: 14.sp),
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
+        15.verticalSpace,
+
+        Dividerr(),
+
+        120.verticalSpace,
+
+        // Dividerr()
+      ],
+    )
+   ;
   }
 
   Report() {

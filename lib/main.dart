@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'Home/Feeds.dart';
 import 'Home/MartinProfile.dart';
-import 'auth/reset_password_screen.dart';
+
 
 import 'export_all.dart';
 
@@ -59,10 +59,7 @@ class _MyAppState extends State<MyApp> {
               name: '/VerificationScreen',
               page: (() => VerificationScreen()),
             ),
-            GetPage(
-              name: '/VERIFICATIONSignupScreen',
-              page: (() => VERIFICATIONSignupScreen()),
-            ),
+            
             GetPage(
               name: '/ResetPasswordScreen',
               page: (() => ResetPasswordScreen()),
@@ -137,7 +134,7 @@ class _MyAppState extends State<MyApp> {
             ),
             GetPage(
               name: '/HISTORYScreen',
-              page: (() => HISTORYScreen()),
+              page: (() => HistoryScreen()),
             ),
             GetPage(
               name: '/DrawerScreen',
@@ -145,7 +142,7 @@ class _MyAppState extends State<MyApp> {
             ),
             GetPage(
               name: '/FEEDSScreen',
-              page: (() => FEEDSScreen()),
+              page: (() => FeedsScreen()),
             ),
             GetPage(
               name: '/FeedUPDATESDETAILSScreen',
