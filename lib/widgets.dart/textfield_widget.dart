@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:p2ptraffic/export_all.dart';
 
 class CustomTextFieldWidget extends StatefulWidget {
@@ -5,9 +6,15 @@ class CustomTextFieldWidget extends StatefulWidget {
   final TextEditingController controller;
   final String? hintText;
   final bool? isPassword;
+  final TextInputType? keyboardType;
+  final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
   const CustomTextFieldWidget(
       {super.key,
       required this.labelText,
+      this.validator,
+      this.inputFormatters,
+      this.keyboardType,
       this.hintText,
       required this.controller,
       this.isPassword = false});
@@ -36,8 +43,11 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
         ),
         4.verticalSpace,
         TextFormField(
+          keyboardType: widget.keyboardType,
           controller: widget.controller,
           obscureText: widget.isPassword! ? obsureText : false,
+          inputFormatters: widget.inputFormatters,
+          validator: widget.validator,
           decoration: InputDecoration(
               suffixIcon: widget.isPassword!
                   ? IconButton(
@@ -55,7 +65,7 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
               fillColor: Colors.white,
               contentPadding: EdgeInsets.only(left: 20.r),
               hintText: widget.hintText,
-              hintStyle: TextStyle(color: Colors.black, fontSize: 16.sp),
+              hintStyle: TextStyle(fontSize: 16.sp),
               border: textFieldDecoration,
               enabledBorder: textFieldDecoration,
               errorBorder: textFieldDecoration,

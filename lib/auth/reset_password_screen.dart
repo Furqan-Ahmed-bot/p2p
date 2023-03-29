@@ -1,29 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:p2ptraffic/auth/prelogin_screen.dart';
+import '../export_all.dart';
 
-class RESETPASSWORDScreen extends StatefulWidget {
-  const RESETPASSWORDScreen({super.key});
+class ResetPasswordScreen extends StatefulWidget {
+  const ResetPasswordScreen({super.key});
 
   @override
-  State<RESETPASSWORDScreen> createState() => _RESETPASSWORDScreenState();
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }
 
-class _RESETPASSWORDScreenState extends State<RESETPASSWORDScreen> {
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   bool isChecked = false;
   bool isChecked2 = false;
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmNewPasswordController =
+      TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
       height: Get.height,
       width: Get.width,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/Mask Group 3.png"),
-          fit: BoxFit.cover,
-        ),
-      ),
+      decoration: pageDecoration,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -43,73 +38,39 @@ class _RESETPASSWORDScreenState extends State<RESETPASSWORDScreen> {
           automaticallyImplyLeading: false,
           title: Text(
             "RESET PASSWORD",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16.sp),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 16.sp),
           ),
           centerTitle: true,
         ),
-        body: Container(
-          width: double.infinity,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  78.verticalSpace,
-                  Container(
-                    width: 184.w,
-                    height: 66.h,
-                    child: Image.asset("assets/images/Group 1370.png"),
-                  ),
-                  119.verticalSpace,
-                  Names("Password"),
-                  4.verticalSpace,
-                  TextField1("Martinsmith@80**", "assets/images/Icon ionic-md-eye-off.png"),
-                  20.verticalSpace,
-                  Names("Confirm New Password"),
-                  4.verticalSpace,
-                  TextField1("Martinsmith@80**", "assets/images/Icon ionic-md-eye-off.png"),
-                  50.verticalSpace,
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed("/LOGINScreen");
-                    },
-                    child: Container(
-                      width: 348.w,
-                      height: 60.h,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomRight,
-                          end: Alignment.bottomLeft,
-                          colors: [
-                            Color(0xff1CC8FB),
-                            Color(0xff004DF2),
-                          ],
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(0, 0),
-                          ),
-                        ],
-                        borderRadius: BorderRadius.circular(30.r),
-                      ),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Reset",
-                              style: TextStyle(color: Colors.white, fontSize: 18.sp),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  130.verticalSpace,
-                ],
-              ),
+        body: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
+          children: [
+            78.verticalSpace,
+            Image.asset(
+              "assets/images/Group 1370.png",
+              width: 184.r,
+              height: 66.r,
             ),
-          ),
+            119.verticalSpace,
+            CustomTextFieldWidget(
+                isPassword: true,
+                labelText: "Password",
+                controller: passwordController),
+            20.verticalSpace,
+            CustomTextFieldWidget(
+                isPassword: true,
+                labelText: "Confirm New Password",
+                controller: confirmNewPasswordController),
+            50.verticalSpace,
+            CustomButtonWidget(
+                text: 'Reset',
+                onTap: () {
+                  Get.to(() => LoginScreen());
+                })
+          ],
         ),
       ),
     );

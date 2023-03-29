@@ -91,7 +91,8 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
               CustomButtonWidget(
                   text: "Continue",
                   onTap: () {
-                    Get.toNamed("/VERIFICATIONScreen");
+                    forgotPassword = true;
+                    Get.toNamed("/VerificationScreen");
                   }),
             ],
           ),

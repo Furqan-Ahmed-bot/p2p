@@ -56,20 +56,20 @@ class _MyAppState extends State<MyApp> {
               page: (() => FORGOTPASSWORDScreen()),
             ),
             GetPage(
-              name: '/VERIFICATIONScreen',
-              page: (() => VERIFICATIONScreen()),
+              name: '/VerificationScreen',
+              page: (() => VerificationScreen()),
             ),
             GetPage(
               name: '/VERIFICATIONSignupScreen',
               page: (() => VERIFICATIONSignupScreen()),
             ),
             GetPage(
-              name: '/RESETPASSWORDScreen',
-              page: (() => RESETPASSWORDScreen()),
+              name: '/ResetPasswordScreen',
+              page: (() => ResetPasswordScreen()),
             ),
             GetPage(
-              name: '/CREATEPROFILEScreen',
-              page: (() => CREATEPROFILEScreen()),
+              name: '/CreateProfileScreen',
+              page: (() => CreateProfileScreen()),
             ),
             GetPage(
               name: '/SETTINGSScreen',

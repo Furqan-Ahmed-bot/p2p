@@ -106,7 +106,8 @@ class _SIGNUPScreenState extends State<SignupScreen> {
               CustomButtonWidget(
                   text: 'Signup',
                   onTap: () {
-                    Get.toNamed("/VERIFICATIONSignupScreen");
+                    forgotPassword = false;
+                    Get.to(() => const VerificationScreen());
                   }),
             ],
           ),

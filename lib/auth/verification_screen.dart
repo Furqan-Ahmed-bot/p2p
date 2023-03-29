@@ -5,21 +5,24 @@ import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:p2ptraffic/auth/reset_password_screen.dart';
+import 'package:p2ptraffic/export_all.dart';
 
-class VERIFICATIONScreen extends StatefulWidget {
-  const VERIFICATIONScreen({super.key});
+class VerificationScreen extends StatefulWidget {
+  const VerificationScreen({super.key});
 
   @override
-  State<VERIFICATIONScreen> createState() => _VERIFICATIONScreenState();
+  State<VerificationScreen> createState() => VerificationScreenState();
 }
 
-class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
-  CountDownController _CountDownController = CountDownController();
-  void initState() {
-// TODO: implement initState
-    super.initState();
-    _CountDownController = CountDownController();
-  }
+class VerificationScreenState extends State<VerificationScreen> {
+  final CountDownController countDownController = CountDownController();
+  final OtpFieldController otpFieldController = OtpFieldController();
+  // void initState() {
+
+  //   super.initState();
+  //   countDownController = CountDownController();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +54,10 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
           automaticallyImplyLeading: false,
           title: Text(
             "VERIFICATION",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16.sp),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 16.sp),
           ),
           centerTitle: true,
         ),
@@ -65,15 +71,14 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
               child: Column(
                 children: [
                   78.verticalSpace,
-                  Container(
-                    width: 184.w,
-                    height: 66.h,
-                    child: Image.asset("assets/images/Group 1370.png"),
+                  Image.asset(
+                    "assets/images/Group 1370.png",
+                    width: 184.r,
+                    height: 66.r,
                   ),
                   119.verticalSpace,
                   Container(
                     width: 346.w,
-                    height: 75.h,
                     child: Text(
                       textAlign: TextAlign.center,
                       "We have sent you an email containing 6 digits verification code. Please enter the code to verify your identity",
@@ -97,12 +102,12 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
                         //   ),
                         // ],
                         ),
-                    child:
-                     OTPTextField(
+                    child: OTPTextField(
                       onChanged: (value) {
                         setState(() {});
                       },
-                      // controller: otpController,
+
+                      controller: otpFieldController,
                       otpFieldStyle: OtpFieldStyle(
                           disabledBorderColor: Color(0xff1CC8FB),
                           focusBorderColor: Color(0xff1CC8FB),
@@ -118,12 +123,14 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
                       fieldWidth: 49.w,
 
                       style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 28.sp,
                       ),
                       textFieldAlignment: MainAxisAlignment.spaceBetween,
                       fieldStyle: FieldStyle.box,
                       onCompleted: (pin) {
-                        Get.toNamed("/RESETPASSWORDScreen");
+                        forgotPassword
+                            ? Get.to(() => const ResetPasswordScreen())
+                            : Get.to(() => const CreateProfileScreen());
                         print("Completed: " + pin);
                       },
                     ),
@@ -132,7 +139,7 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
                   // 155.verticalSpace,
                   // GestureDetector(
                   //   onTap: () {
-                  //     Get.toNamed("/RESETPASSWORDScreen");
+                  //     Get.toNamed("/ResetPasswordScreen");
                   //   },
                   //   child: Container(
                   //     child: Image.asset(
@@ -142,62 +149,65 @@ class _VERIFICATIONScreenState extends State<VERIFICATIONScreen> {
                   //   ),
                   // ),
                   // 105.verticalSpace,
-                  GestureDetector(
-                    onTap: () {
-                      Get.toNamed("/RESETPASSWORDScreen");
-                    },
-                    child: CircularCountDownTimer(
-                      duration: 3,
-                      initialDuration: 0,
-                      controller: _CountDownController,
-                      width: MediaQuery.of(context).size.width / 3,
-                      height: MediaQuery.of(context).size.height / 3,
-                      ringColor: Colors.transparent,
-                      ringGradient: null,
-                      fillColor: Color(0xff21CDFB),
+                  CircularCountDownTimer(
+                    duration: 3,
+                    initialDuration: 0,
+                    controller: countDownController,
+                    width: MediaQuery.of(context).size.width / 3,
+                    height: MediaQuery.of(context).size.height / 3,
+                    ringColor: Colors.transparent,
+                    ringGradient: null,
+                    fillColor: Color(0xff21CDFB),
 
-                      // fillGradient: LinearGradient(colors: [Color(0xff21CDFB), Color(0xff010118)]),
-                      backgroundGradient: LinearGradient(colors: [Color(0xff21CDFB), Color(0xff004DF2)]),
-                      strokeWidth: 5.0,
-                      strokeCap: StrokeCap.round,
-                      textStyle: TextStyle(fontSize: 15.0, color: Colors.white, fontWeight: FontWeight.bold),
-                      textFormat: CountdownTextFormat.MM_SS,
-                      isReverse: false,
-                      isReverseAnimation: false,
-                      isTimerTextShown: true,
-                      autoStart: true,
-                      onStart: () {
-                        print('Countdown Started');
-                      },
-                      onComplete: () {
-                        Get.toNamed("/RESETPASSWORDScreen");
-                        setState(() {
-                          // resend = 1;
-                        });
-                      },
-                    ),
+                    // fillGradient: LinearGradient(colors: [Color(0xff21CDFB), Color(0xff010118)]),
+                    backgroundGradient: LinearGradient(
+                        colors: [Color(0xff21CDFB), Color(0xff004DF2)]),
+                    strokeWidth: 5.0,
+                    strokeCap: StrokeCap.round,
+                    textStyle: TextStyle(
+                        fontSize: 15.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                    textFormat: CountdownTextFormat.MM_SS,
+                    isReverse: false,
+                    isReverseAnimation: false,
+                    isTimerTextShown: true,
+                    autoStart: true,
+                    onStart: () {
+                      print('Countdown Started');
+                    },
+                    onComplete: () {
+                      countDownController.reset();
+                      setState(() {
+                        // resend = 1;
+                      });
+                    },
                   ),
 
-                  Container(
-                    child: Center(
-                      child: RichText(
-                        text: const TextSpan(
-                          style: TextStyle(
-                            fontSize: 14.0,
-                            color: Colors.black,
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(text: 'Code didnt received? ', style: TextStyle(color: Colors.white, fontSize: 14)),
-                            TextSpan(
-                                text: 'Resend',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  // decoration: TextDecoration.underline,
-                                )),
-                          ],
+                  GestureDetector(
+                    onTap: () {
+                      countDownController.reset();
+                    },
+                    child: RichText(
+                      text: const TextSpan(
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.black,
                         ),
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: 'Code didnt received? ',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 14)),
+                          TextSpan(
+                              text: 'Resend',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                                color: Colors.white,
+                                // decoration: TextDecoration.underline,
+                              )),
+                        ],
                       ),
                     ),
                   ),

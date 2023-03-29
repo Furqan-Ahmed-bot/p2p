@@ -16,7 +16,7 @@ class VERIFICATIONSignupScreen extends StatefulWidget {
 class _VERIFICATIONSignupScreenState extends State<VERIFICATIONSignupScreen> {
   CountDownController _CountDownController = CountDownController();
   void initState() {
-// TODO: implement initState
+
     super.initState();
     _CountDownController = CountDownController();
   }
@@ -139,7 +139,7 @@ class _VERIFICATIONSignupScreenState extends State<VERIFICATIONSignupScreen> {
                   105.verticalSpace,
                   // GestureDetector(
                   //   onTap: () {
-                  //     Get.toNamed("/RESETPASSWORDScreen");
+                  //     Get.toNamed("/ResetPasswordScreen");
                   //   },
                   //   child: CircularCountDownTimer(
                   //     duration: 60,

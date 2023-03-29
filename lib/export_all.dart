@@ -45,6 +45,7 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:get/get.dart';
 export 'package:google_fonts/google_fonts.dart';
 export 'package:flutter_svg/flutter_svg.dart';
+export 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 //UTILS
 export './utils/global.dart';
 
@@ -58,3 +59,4 @@ export 'package:p2ptraffic/widgets.dart/button_widget.dart';
 export 'package:p2ptraffic/widgets.dart/prelogin_button.dart';
 export '../widgets.dart/textfield_widget.dart';
 export '../widgets.dart/disallow_indicator_widget.dart';
+export '../widgets.dart/dropdown_widget.dart';

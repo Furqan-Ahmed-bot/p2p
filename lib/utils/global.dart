@@ -1,5 +1,7 @@
 import '../export_all.dart';
 
+bool forgotPassword = false;
+
 class AlwaysActiveBorderSide extends MaterialStateBorderSide {
   @override
   BorderSide? resolve(_) => const BorderSide(
