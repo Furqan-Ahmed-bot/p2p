@@ -61,6 +61,7 @@ dependencies:
   camera_camera: ^2.0.2
   flutter_svg: ^2.0.4
   flutter_multi_formatter: ^2.10.2
+  file_picker: ^5.2.6
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

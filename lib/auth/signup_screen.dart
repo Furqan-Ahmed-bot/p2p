@@ -14,6 +14,7 @@ class _SIGNUPScreenState extends State<SignupScreen> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -78,126 +79,68 @@ class _SIGNUPScreenState extends State<SignupScreen> {
           ),
         ),
         body: DisAllowIndicatorWidget(
-          child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
-            children: [
-              78.verticalSpace,
-              Container(
-                width: 184.w,
-                height: 66.h,
-                child: Image.asset("assets/images/Group 1370.png"),
-              ),
-              119.verticalSpace,
-              CustomTextFieldWidget(
-                  labelText: "Email/Phone", controller: emailPhoneController),
-              20.verticalSpace,
-              CustomTextFieldWidget(
-                labelText: "Password",
-                controller: passwordController,
-                isPassword: true,
-              ),
-              20.verticalSpace,
-              CustomTextFieldWidget(
-                labelText: "Confirm Password",
-                controller: confirmPasswordController,
-                isPassword: true,
-              ),
-              50.verticalSpace,
-              CustomButtonWidget(
-                  text: 'Signup',
-                  onTap: () {
-                    forgotPassword = false;
-                    Get.to(() => const VerificationScreen());
-                  }),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  TextField(
-    txt,
-  ) {
-    return Container(
-      width: 348.w,
-      height: 55.h,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.grey.withOpacity(0.2),
-        //     spreadRadius: 5,
-        //     blurRadius: 7,
-        //     offset: Offset(0, 3), // changes position of shadow
-        //   ),
-        // ],
-        border: Border.all(color: Color(0xffDCDFE2), width: 2.sp),
-        borderRadius: BorderRadius.circular(30.r),
-      ),
-      child: TextFormField(
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 30),
-          hintText: txt,
-          hintStyle: TextStyle(color: Colors.black, fontSize: 16.sp),
-          border: InputBorder.none,
-        ),
-      ),
-    );
-  }
-
-  Names(
-    txt,
-  ) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 55),
-          child: Text(
-            txt,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14.sp,
+          child: Form(
+            key: formKey,
+            child: ListView(
+              padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
+              children: [
+                78.verticalSpace,
+                Container(
+                  width: 184.w,
+                  height: 66.h,
+                  child: Image.asset("assets/images/Group 1370.png"),
+                ),
+                119.verticalSpace,
+                CustomTextFieldWidget(
+                  labelText: "Email / Phone",
+                  controller: emailPhoneController,
+                  validator: (txt) {
+                    if (txt!.isEmpty) {
+                      return "* Required";
+                    } else if (!(isEmail(txt.toString()))) {
+                      return "* Please enter valid email address";
+                    } else
+                      return null;
+                  },
+                ),
+                20.verticalSpace,
+                CustomTextFieldWidget(
+                  labelText: "Password",
+                  controller: passwordController,
+                  isPassword: true,
+                  validator: (txt) {
+                    if (txt!.isEmpty) {
+                      return "* Required";
+                    } else
+                      return null;
+                  },
+                ),
+                20.verticalSpace,
+                CustomTextFieldWidget(
+                    labelText: "Confirm Password",
+                    controller: confirmPasswordController,
+                    isPassword: true,
+                    validator: (txt) {
+                      if (txt!.isEmpty) {
+                        return "* Required";
+                      } else if (txt.toString() !=
+                          passwordController.text.toString()) {
+                        return "* Please enter correct password";
+                      } else
+                        return null;
+                    }),
+                50.verticalSpace,
+                CustomButtonWidget(
+                    text: 'Signup',
+                    onTap: () {
+                      if (formKey.currentState!.validate()) {
+                        forgotPassword = false;
+                        Get.to(() => const VerificationScreen());
+                      }
+                    }),
+              ],
             ),
           ),
-        )
-      ],
-    );
-  }
-
-  TextField1(
-    txt,
-    Img,
-  ) {
-    return Container(
-      width: 348.w,
-      height: 55.h,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.grey.withOpacity(0.2),
-        //     spreadRadius: 5,
-        //     blurRadius: 7,
-        //     offset: Offset(0, 3), // changes position of shadow
-        //   ),
-        // ],
-        border: Border.all(color: Color(0xffDCDFE2), width: 2.sp),
-        borderRadius: BorderRadius.circular(30.r),
-      ),
-      child: TextFormField(
-        obscureText: true,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 30, top: 10),
-          hintText: txt,
-          suffixIcon: Container(
-            child: Image.asset(
-              Img,
-              scale: 5,
-            ),
-          ),
-          hintStyle: TextStyle(color: Colors.black, fontSize: 16.sp),
-          border: InputBorder.none,
         ),
       ),
     );

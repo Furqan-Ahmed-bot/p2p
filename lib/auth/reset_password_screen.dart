@@ -13,6 +13,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmNewPasswordController =
       TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,32 +46,55 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           ),
           centerTitle: true,
         ),
-        body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
-          children: [
-            78.verticalSpace,
-            Image.asset(
-              "assets/images/Group 1370.png",
-              width: 184.r,
-              height: 66.r,
+        body: Form(
+          key: formKey,
+          child: DisAllowIndicatorWidget(
+            child: ListView(
+              padding: EdgeInsets.symmetric(horizontal: 40.r, vertical: 20.r),
+              children: [
+                78.verticalSpace,
+                Image.asset(
+                  "assets/images/Group 1370.png",
+                  width: 184.r,
+                  height: 66.r,
+                ),
+                119.verticalSpace,
+                CustomTextFieldWidget(
+                  isPassword: true,
+                  labelText: "Password",
+                  controller: passwordController,
+                  validator: (txt) {
+                    if (txt!.isEmpty) {
+                      return "* Required";
+                    } else
+                      return null;
+                  },
+                ),
+                20.verticalSpace,
+                CustomTextFieldWidget(
+                    isPassword: true,
+                    labelText: "Confirm New Password",
+                    controller: confirmNewPasswordController,
+                    validator: (txt) {
+                      if (txt!.isEmpty) {
+                        return "* Required";
+                      } else if (txt.toString() !=
+                          passwordController.text.toString()) {
+                        return "* Please enter correct password";
+                      } else
+                        return null;
+                    }),
+                50.verticalSpace,
+                CustomButtonWidget(
+                    text: 'Reset',
+                    onTap: () {
+                      if (formKey.currentState!.validate()) {
+                        Get.to(() => LoginScreen());
+                      }
+                    })
+              ],
             ),
-            119.verticalSpace,
-            CustomTextFieldWidget(
-                isPassword: true,
-                labelText: "Password",
-                controller: passwordController),
-            20.verticalSpace,
-            CustomTextFieldWidget(
-                isPassword: true,
-                labelText: "Confirm New Password",
-                controller: confirmNewPasswordController),
-            50.verticalSpace,
-            CustomButtonWidget(
-                text: 'Reset',
-                onTap: () {
-                  Get.to(() => LoginScreen());
-                })
-          ],
+          ),
         ),
       ),
     );

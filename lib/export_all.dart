@@ -46,6 +46,7 @@ export 'package:get/get.dart';
 export 'package:google_fonts/google_fonts.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
+export 'package:file_picker/file_picker.dart';
 //UTILS
 export './utils/global.dart';
 

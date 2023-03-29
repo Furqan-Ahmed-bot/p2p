@@ -252,3 +252,12 @@ final OutlineInputBorder textFieldDecoration = OutlineInputBorder(
     borderRadius: BorderRadius.horizontal(
         left: Radius.circular(30.r), right: Radius.circular(30.r)),
     borderSide: BorderSide(color: Color(0xffDCDFE2), width: 2));
+
+bool isEmail(String em) {
+
+  String p = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+
+  RegExp regExp = new RegExp(p);
+
+  return regExp.hasMatch(em);
+}
