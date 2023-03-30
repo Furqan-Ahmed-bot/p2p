@@ -1,16 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import '../export_all.dart';
 
-class SEARCHScreen extends StatefulWidget {
-  const SEARCHScreen({super.key});
+class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
 
   @override
-  State<SEARCHScreen> createState() => _SEARCHScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _SEARCHScreenState extends State<SEARCHScreen> {
+class _SearchScreenState extends State<SearchScreen> {
+  final searchTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,18 +20,7 @@ class _SEARCHScreenState extends State<SEARCHScreen> {
           style: TextStyle(fontSize: 16.sp),
         ),
         centerTitle: true,
-        // shape: RoundedRectangleBorder(
-        //   borderRadius: BorderRadius.vertical(
-        //     bottom: Radius.circular(30),
-        //   ),
-        // ),
         elevation: 0,
-        // leading: Container(
-        //   child: Image.asset(
-        //     "assets/images/Icon ionic-ios-arrow-round-back.png",
-        //     scale: 5,
-        //   ),
-        // ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10),
@@ -71,7 +58,10 @@ class _SEARCHScreenState extends State<SEARCHScreen> {
             child: Column(
               children: [
                 20.verticalSpace,
-                TextField("Search here"),
+                SearchTextFieldWidget(
+                  controller: searchTextController,
+                  hintText: "Search here...",
+                ),
                 33.verticalSpace,
                 martin("assets/images/1.png"),
                 20.verticalSpace,
@@ -151,28 +141,6 @@ class _SEARCHScreenState extends State<SEARCHScreen> {
           color: Color(0xff707070),
         ),
       ],
-    );
-  }
-
-  TextField(
-    txt,
-  ) {
-    return Container(
-      width: 388.w,
-      height: 51.h,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Color(0xff707070), width: 2.sp),
-        borderRadius: BorderRadius.circular(30.r),
-      ),
-      child: TextFormField(
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 30),
-          hintText: txt,
-          hintStyle: TextStyle(color: Color(0xff010231).withOpacity(0.2), fontSize: 16.sp),
-          border: InputBorder.none,
-        ),
-      ),
     );
   }
 }

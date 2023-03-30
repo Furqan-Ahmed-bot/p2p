@@ -3,7 +3,6 @@ import 'dart:async';
 import 'Home/Feeds.dart';
 import 'Home/MartinProfile.dart';
 
-
 import 'export_all.dart';
 
 void main() {
@@ -25,7 +24,8 @@ class _MyAppState extends State<MyApp> {
       builder: (context, child) {
         return GetMaterialApp(
           theme: ThemeData(
-            textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+            textTheme:
+                GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
           ),
           debugShowCheckedModeBanner: false,
           // home: SplashScreen(),
@@ -59,7 +59,6 @@ class _MyAppState extends State<MyApp> {
               name: '/VerificationScreen',
               page: (() => VerificationScreen()),
             ),
-            
             GetPage(
               name: '/ResetPasswordScreen',
               page: (() => ResetPasswordScreen()),
@@ -102,7 +101,7 @@ class _MyAppState extends State<MyApp> {
             ),
             GetPage(
               name: '/SEARCHScreen',
-              page: (() => SEARCHScreen()),
+              page: (() => SearchScreen()),
             ),
             GetPage(
               name: '/SUBSCRIPTIONScreen',
@@ -174,7 +173,7 @@ class _MyAppState extends State<MyApp> {
             ),
             GetPage(
               name: '/SHARELIVELOCATIONsCREEN',
-              page: (() => SHARELIVELOCATIONsCREEN()),
+              page: (() => ShareLiveLocationScreen()),
             ),
             GetPage(
               name: '/POSTScreen',

@@ -167,15 +167,15 @@ function1(BuildContext context) {
                       ),
                       85.verticalSpace,
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
                             onTap: () {
                               Get.back();
                             },
                             child: Container(
-                              width: 171.w,
+                              width: Get.width * 0.39,
                               height: 64.h,
+                              alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(0.r),
@@ -183,25 +183,23 @@ function1(BuildContext context) {
                                 ),
                                 color: Color(0xffDCE3EE),
                               ),
-                              child: Center(
-                                child: Text(
-                                  "Decline",
-                                  style: TextStyle(color: Colors.black),
-                                ),
+                              child: Text(
+                                "Decline",
+                                style: TextStyle(color: Colors.black),
                               ),
                             ),
                           ),
-                          Container(
+                          VerticalDivider(
+                            width: 0.7,
+                            thickness: 0.3,
                             color: Color(0xffDCE3EE),
-                            height: 64.h,
-                            width: 1.6.w,
                           ),
                           GestureDetector(
                             onTap: () {
                               Get.toNamed("/LoginScreen");
                             },
                             child: Container(
-                              width: 170.w,
+                              width: Get.width * 0.38,
                               height: 64.h,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(
@@ -254,8 +252,8 @@ final OutlineInputBorder textFieldDecoration = OutlineInputBorder(
     borderSide: BorderSide(color: Color(0xffDCDFE2), width: 2));
 
 bool isEmail(String em) {
-
-  String p = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+  String p =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
 
   RegExp regExp = new RegExp(p);
 
