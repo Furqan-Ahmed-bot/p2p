@@ -33,22 +33,14 @@ class _MymapState extends State<Mymap> {
   ];
   @override
   void initState() {
-// TODO: implement initState
-    super.initState();
     _marker.addAll(_branch);
+    super.initState();
+    
   }
 
   @override
   Widget build(BuildContext context) {
-    final infoWindow = InfoWindow(
-      title: 'My InfoWindow',
-      snippet: 'This is my InfoWindow',
-    );
-
-// Add the InfoWindow to a list of InfoWindows
-    final infoWindows = <InfoWindow>[infoWindow];
-
-    _marker.addAll(_branch);
+    
     return Scaffold(
       key: _key,
       backgroundColor: Colors.transparent,

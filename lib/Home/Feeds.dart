@@ -1,10 +1,6 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:p2ptraffic/Home/Drawer.dart';
 
+import '../export_all.dart';
 
 class FeedsScreen extends StatefulWidget {
   const FeedsScreen({super.key});

@@ -61,7 +61,7 @@ export '../utils/dummy.dart';
 
 //CONTROLLER
 export 'package:p2ptraffic/Home/BottomController.dart';
-
+export 'package:p2ptraffic/controller/upload_traffice_controller.dart';
 export 'package:p2ptraffic/Home/CameraController.dart';
 
 //PROVIDER

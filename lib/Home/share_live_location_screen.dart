@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:math' as math;
+import 'package:intl/intl.dart';
 
 import '../export_all.dart';
 
@@ -16,32 +18,10 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
   late CameraController controller; //controller for camera
   XFile? image;
   File? imageFile;
-
+  final uploatTrafficImageController = Get.put(UploadTrafficeImages());
+  final TextEditingController captionTextController = TextEditingController();
+  final TextEditingController selectTimeController = TextEditingController();
   var photos; //for caputred image
-
-  @override
-  // void initState() {
-  //   startCamera();
-  //   super.initState();
-  // }
-
-  void startCamera() async {
-    cameras = await availableCameras();
-    if (cameras != null) {
-      controller = CameraController(cameras[0], ResolutionPreset.max);
-//cameras[0] = first camera, change to 1 to another camera
-
-      controller.initialize().then((_) {
-        if (!mounted) {
-          return;
-        }
-        setState(() {});
-      });
-    } else {
-      print("NO any camera found");
-    }
-  }
-
   final Completer<GoogleMapController> _mapcontroller = Completer();
   static const CameraPosition _center =
       CameraPosition(target: LatLng(40.721424, -73.873540), zoom: 15);
@@ -65,10 +45,26 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
 
   @override
   void initState() {
-// TODO: implement initState
+    _marker.addAll(_branch);
     startCamera();
     super.initState();
-    _marker.addAll(_branch);
+  }
+
+  void startCamera() async {
+    cameras = await availableCameras();
+    if (cameras != null) {
+      controller = CameraController(cameras[0], ResolutionPreset.max);
+//cameras[0] = first camera, change to 1 to another camera
+
+      controller.initialize().then((_) {
+        if (!mounted) {
+          return;
+        }
+        setState(() {});
+      });
+    } else {
+      print("NO any camera found");
+    }
   }
 
   @override
@@ -116,342 +112,362 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              22.verticalSpace,
-              Stack(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 483.h,
-                    child: GoogleMap(
-                      compassEnabled: true,
-                      myLocationButtonEnabled: true,
-                      zoomGesturesEnabled: true,
-                      initialCameraPosition: _center,
-                      markers: Set<Marker>.of(_marker),
-                      onMapCreated: (GoogleMapController controller) {
-                        _mapcontroller.complete(controller);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              20.verticalSpace,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 15.w,
-                    height: 21.h,
-                    child: Image.asset(
-                        "assets/images/Icon material-location-onn.png"),
-                  ),
-                  15.horizontalSpace,
-                  Text("20 Cooper Square, New York"),
-                ],
-              ),
-              26.verticalSpace,
-              GridView.builder(
-                shrinkWrap: true,
-                itemCount: trafficPictureImages.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    childAspectRatio: 1,
-                    crossAxisSpacing: 13.5,
-                    mainAxisSpacing: 18.5),
-                itemBuilder: (context, index) => Stack(
-                  children: [
-                    Container(
-                      width: 117.w,
-                      height: 125.h,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.r),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.3),
-                                blurRadius: 4)
-                          ]),
-                    ),
-                    Positioned(
-                        top: 0,
-                        left: 93,
-                        child: Container(
-                          width: 21.w,
-                          height: 21.h,
-                          child: Image.asset("assets/images/Group 1005.png"),
-                        )),
-                  ],
-                ),
-              ),
-              15.verticalSpace,
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => CameraCamera(
-                        onFile: (file) {
-                          photos.add(file);
-                          //When take foto you should close camera
-                          Navigator.pop(context);
-                          setState(() {});
-                        },
-                      ),
-                    ),
-                  );
+      body: DisAllowIndicatorWidget(
+        child: ListView(
+          children: [
+            Container(
+              width: double.infinity,
+              height: 483.h,
+              child: GoogleMap(
+                compassEnabled: true,
+                myLocationButtonEnabled: true,
+                zoomGesturesEnabled: true,
+                initialCameraPosition: _center,
+                markers: Set<Marker>.of(_marker),
+                onMapCreated: (GoogleMapController controller) {
+                  _mapcontroller.complete(controller);
                 },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+              ),
+            ),
+            ListView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.all(20.r),
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
+                      width: 15.w,
+                      height: 21.h,
                       child: Image.asset(
-                        "assets/images/Group 16588.png",
-                        scale: 4,
-                      ),
+                          "assets/images/Icon material-location-onn.png"),
                     ),
-                    8.horizontalSpace,
-                    Text(
-                      "More Photo",
-                      style: TextStyle(
-                        fontSize: 12.sp,
-                      ),
-                    )
+                    15.horizontalSpace,
+                    Text("20 Cooper Square, New York"),
                   ],
                 ),
-              ),
-              29.verticalSpace,
-              Row(
-                children: [
-                  Text(
-                    "Caption",
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      color: Color(0xff010231),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                ],
-              ),
-              20.verticalSpace,
-              Container(
-                width: 388.w,
-                height: 89.h,
-                decoration: BoxDecoration(
-                  color: Color(0xffEAEAEE),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff66708026).withOpacity(0.06),
-                      spreadRadius: 0,
-                      blurRadius: 2,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                  borderRadius: BorderRadius.circular(5.r),
-                ),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(
-                      left: 20,
-                    ),
-                    hintText: "Write Caption",
-                    // suffixIcon: Container(
-                    //   child: Image.asset(
-                    //     "assets/images/Icon ionic-md-eye-off.png",
-                    //     scale: 5,
-                    //   ),
-                    // ),
-                    hintStyle:
-                        TextStyle(color: Color(0xff878B9E), fontSize: 15.sp),
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
-              29.verticalSpace,
-              Row(
-                children: [
-                  Text(
-                    "Past Availabilty",
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      color: Color(0xff010231),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              20.verticalSpace,
-              Container(
-                width: 388.w,
-                height: 56.h,
-                decoration: BoxDecoration(
-                  color: Color(0xffEAEAEE),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff66708026).withOpacity(0.06),
-                      spreadRadius: 0,
-                      blurRadius: 2,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                  borderRadius: BorderRadius.circular(5.r),
-                ),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(
-                      top: 15,
-                      left: 20,
-                    ),
-                    hintText: "Select Time",
-                    suffixIcon: Container(
-                      child: Image.asset(
-                        "assets/images/Icon ionic-ios-arrow-down.png",
-                        scale: 4,
-                      ),
-                    ),
-                    hintStyle:
-                        TextStyle(color: Color(0xff878B9E), fontSize: 15.sp),
-                    border: InputBorder.none,
-                  ),
-                ),
-              ),
-              29.verticalSpace,
-              Row(
-                children: [
-                  Text(
-                    "Tag People",
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      color: Color(0xff010231),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              29.verticalSpace,
-              Container(
-                width: 388.w,
-                height: 56.h,
-                decoration: BoxDecoration(
-                  color: Color(0xffEAEAEE),
-                  borderRadius: BorderRadius.circular(
-                    5,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 140.w,
-                        height: 36.h,
-                        decoration: BoxDecoration(
-                            color: Color(0xff878B9E).withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(
-                              20,
-                            )),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "William Smith",
-                                style: TextStyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w600),
+                26.verticalSpace,
+                GetBuilder(
+                    init: uploatTrafficImageController,
+                    builder: (controller) {
+                      return uploatTrafficImageController
+                                  .trafficImages.length !=
+                              0
+                          ? GridView.builder(
+                              shrinkWrap: true,
+                              padding: EdgeInsets.zero,
+                              itemCount: controller.trafficImages.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 3,
+                                      childAspectRatio: 1,
+                                      crossAxisSpacing: 19.5,
+                                      mainAxisSpacing: 12.5),
+                              itemBuilder: (context, index) => Stack(
+                                clipBehavior: Clip.none,
+                                children: [
+                                  Container(
+                                    width: 117.w,
+                                    height: 125.h,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(10.r),
+                                        image: controller.trafficImages[index]
+                                                .contains('http')
+                                            ? DecorationImage(
+                                                image: NetworkImage(controller
+                                                    .trafficImages[index]
+                                                    .toString()),
+                                                fit: BoxFit.cover)
+                                            : DecorationImage(
+                                                image: FileImage(File(controller
+                                                    .trafficImages[index])),
+                                                fit: BoxFit.cover),
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.3),
+                                              blurRadius: 4)
+                                        ]),
+                                  ),
+                                  Positioned(
+                                      top: -5,
+                                      right: -1,
+                                      child: GestureDetector(
+                                        onTap: () =>
+                                            uploatTrafficImageController
+                                                .removeImage(index),
+                                        child: Container(
+                                          width: 21.r,
+                                          height: 21.r,
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Colors.white),
+                                          child: Icon(
+                                            Icons.cancel,
+                                            color: Colors.red,
+                                            size: 21.r,
+                                          ),
+                                        ),
+                                      )),
+                                ],
                               ),
-                              Container(
-                                child: Image.asset(
-                                  "assets/images/redcross.png",
-                                  scale: 5,
-                                ),
-                              )
-                            ],
-                          ),
+                            )
+                          : SizedBox.shrink();
+                    }),
+                15.verticalSpace,
+                GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => CameraCamera(
+                          onFile: (file) {
+                            uploatTrafficImageController.addImage(file.path);
+                            // photos.add(file);
+                            //When take foto you should close camera
+                            Navigator.pop(context);
+                            setState(() {});
+                          },
                         ),
                       ),
-                      10.horizontalSpace,
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
                       Container(
-                        width: 100.w,
-                        height: 36.h,
-                        decoration: BoxDecoration(
-                            color: Color(0xff878B9E).withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(
-                              20,
-                            )),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Amelia",
-                                style: TextStyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              Container(
-                                child: Image.asset(
-                                  "assets/images/redcross.png",
-                                  scale: 5,
-                                ),
-                              )
-                            ],
-                          ),
+                        child: Image.asset(
+                          "assets/images/Group 16588.png",
+                          scale: 4,
+                        ),
+                      ),
+                      8.horizontalSpace,
+                      Text(
+                        "More Photo",
+                        style: TextStyle(
+                          fontSize: 12.sp,
                         ),
                       )
                     ],
                   ),
                 ),
-              ),
-              30.verticalSpace,
-              GestureDetector(
-                onTap: () {
-                  final bottomcontroller = Get.put(BottomController());
-                  bottomcontroller.navBarChange(1);
-                  Get.to(() => MainScreen());
-                },
-                child: Container(
-                  width: 388.w,
-                  height: 60.h,
+                29.verticalSpace,
+                Text(
+                  "Caption",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: Color(0xff010231),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                20.verticalSpace,
+                Container(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color(0xff1CC8FB),
-                        Color(0xff004DF2),
-                      ],
-                    ),
+                    color: Color(0xffEAEAEE),
                     boxShadow: [
                       BoxShadow(
-                        offset: Offset(0, 0),
+                        color: Color(0xff66708026).withOpacity(0.06),
+                        spreadRadius: 0,
+                        blurRadius: 2,
+                        offset: Offset(0, 3), // changes position of shadow
                       ),
                     ],
-                    borderRadius: BorderRadius.circular(30.r),
+                    borderRadius: BorderRadius.circular(5.r),
                   ),
-                  child: Center(
+                  child: TextFormField(
+                    maxLines: 3,
+                    style: TextStyle(fontSize: 15.sp),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.all(
+                        20.r,
+                      ),
+                      hintText: "Write Caption",
+                      helperMaxLines: 3,
+                      hintStyle:
+                          TextStyle(color: Color(0xff878B9E), fontSize: 15.sp),
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+                29.verticalSpace,
+                Text(
+                  "Past Availabilty",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: Color(0xff010231),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                20.verticalSpace,
+                Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xffEAEAEE),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xff66708026).withOpacity(0.06),
+                        spreadRadius: 0,
+                        blurRadius: 2,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(5.r),
+                  ),
+                  child: TextFormField(
+                    maxLines: 1,
+                    readOnly: true,
+                    textAlignVertical: TextAlignVertical.center,
+                    controller: selectTimeController,
+                    style: TextStyle(fontSize: 14.sp),
+                    onTap: () async {
+                      TimeOfDay? pickedTime = await showTimePicker(
+                        initialTime: TimeOfDay.now(),
+                        context: context,
+                      );
+
+                      if (pickedTime != null) {
+                        print(pickedTime.format(context)); //output 10:51 PM
+                        DateTime parsedTime = DateFormat.jm()
+                            .parse(pickedTime.format(context).toString());
+                        //converting to DateTime so that we can further format on different pattern.
+                        print(parsedTime); //output 1970-01-01 22:53:00.000
+                        // String formattedTime =
+                        //     DateFormat('HH:mm').format(parsedTime);
+                        // print(formattedTime); //output 14:59:00
+                        //DateFormat() is from intl package, you can format the time on any pattern you need.
+
+                        setState(() {
+                          selectTimeController.text = pickedTime
+                              .format(context); //set the value of text field.
+                        });
+                      } else {
+                        print("Time is not selected");
+                      }
+                    },
+                    decoration: InputDecoration(
+                      isDense: true,
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: 20.r, vertical: 17.r),
+                      hintText: "Select Time",
+                      suffixIcon: Transform.rotate(
+                          angle: (538.7 * math.pi / 360),
+                          child: Icon(
+                            Icons.arrow_back_ios_new,
+                            color: Color(0xff010231),
+                            size: 18.r,
+                          )),
+                      hintStyle:
+                          TextStyle(color: Color(0xff878B9E), fontSize: 15.sp),
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+                29.verticalSpace,
+                Row(
+                  children: [
+                    Text(
+                      "Tag People",
+                      style: TextStyle(
+                        fontSize: 20.sp,
+                        color: Color(0xff010231),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                29.verticalSpace,
+                Container(
+                  width: 388.w,
+                  height: 56.h,
+                  decoration: BoxDecoration(
+                    color: Color(0xffEAEAEE),
+                    borderRadius: BorderRadius.circular(
+                      5,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "Post",
-                          style:
-                              TextStyle(color: Colors.white, fontSize: 18.sp),
+                        Container(
+                          width: 140.w,
+                          height: 36.h,
+                          decoration: BoxDecoration(
+                              color: Color(0xff878B9E).withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(
+                                20,
+                              )),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "William Smith",
+                                  style: TextStyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Container(
+                                  child: Image.asset(
+                                    "assets/images/redcross.png",
+                                    scale: 5,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                         ),
+                        10.horizontalSpace,
+                        Container(
+                          width: 100.w,
+                          height: 36.h,
+                          decoration: BoxDecoration(
+                              color: Color(0xff878B9E).withOpacity(0.5),
+                              borderRadius: BorderRadius.circular(
+                                20,
+                              )),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Amelia",
+                                  style: TextStyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Container(
+                                  child: Image.asset(
+                                    "assets/images/redcross.png",
+                                    scale: 5,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
                 ),
-              ),
-              20.verticalSpace,
-            ],
-          ),
+                30.verticalSpace,
+                CustomButtonWidget(
+                    text: 'Post',
+                    onTap: () {
+                      final bottomcontroller = Get.put(BottomController());
+                      bottomcontroller.navBarChange(1);
+                      Get.to(() => MainScreen());
+                    }),
+                20.verticalSpace,
+              ],
+            ),
+          ],
         ),
       ),
     );

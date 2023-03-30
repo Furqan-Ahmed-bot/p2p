@@ -1,12 +1,10 @@
 import 'dart:async';
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:p2ptraffic/Home/Drawer.dart';
-import 'package:p2ptraffic/main.dart';
 
 class MartinProfileScreen extends StatefulWidget {
   const MartinProfileScreen({super.key});
@@ -42,22 +40,13 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
   ];
   @override
   void initState() {
-// TODO: implement initState
+     _marker.addAll(_branch);
     super.initState();
-    _marker.addAll(_branch);
+   
   }
 
   @override
   Widget build(BuildContext context) {
-    final infoWindow = InfoWindow(
-      title: 'My InfoWindow',
-      snippet: 'This is my InfoWindow',
-    );
-
-// Add the InfoWindow to a list of InfoWindows
-    final infoWindows = <InfoWindow>[infoWindow];
-
-    _marker.addAll(_branch);
     return Scaffold(
       key: _key,
       drawer: DrawerScreen(),
