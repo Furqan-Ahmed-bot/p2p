@@ -55,6 +55,9 @@ export 'package:circular_countdown_timer/circular_countdown_timer.dart';
 export 'package:google_maps_flutter/google_maps_flutter.dart';
 export 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 export 'package:camera_camera/camera_camera.dart';
+
+export 'package:textfield_tags/textfield_tags.dart';
+
 //UTILS
 export './utils/global.dart';
 export '../utils/dummy.dart';

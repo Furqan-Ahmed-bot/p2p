@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:math' as math;
-import 'package:intl/intl.dart';
 
 import '../export_all.dart';
 
@@ -21,6 +20,8 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
   final uploatTrafficImageController = Get.put(UploadTrafficeImages());
   final TextEditingController captionTextController = TextEditingController();
   final TextEditingController selectTimeController = TextEditingController();
+  final TextfieldTagsController tagController = TextfieldTagsController();
+  double? _distanceToField;
   var photos; //for caputred image
   final Completer<GoogleMapController> _mapcontroller = Completer();
   static const CameraPosition _center =
@@ -124,9 +125,9 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
                 zoomGesturesEnabled: true,
                 initialCameraPosition: _center,
                 markers: Set<Marker>.of(_marker),
-                onMapCreated: (GoogleMapController controller) {
-                  _mapcontroller.complete(controller);
-                },
+                // onMapCreated: (GoogleMapController controller) {
+                //   _mapcontroller.complete(controller);
+                // },
               ),
             ),
             ListView(
@@ -156,6 +157,7 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
                               0
                           ? GridView.builder(
                               shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
                               padding: EdgeInsets.zero,
                               itemCount: controller.trafficImages.length,
                               gridDelegate:
@@ -331,10 +333,11 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
 
                       if (pickedTime != null) {
                         print(pickedTime.format(context)); //output 10:51 PM
-                        DateTime parsedTime = DateFormat.jm()
-                            .parse(pickedTime.format(context).toString());
+                        // DateTime parsedTime = DateFormat.jm()
+                        //     .parse(pickedTime.format(context).toString());
                         //converting to DateTime so that we can further format on different pattern.
-                        print(parsedTime); //output 1970-01-01 22:53:00.000
+                        // print(parsedTime);
+                        //output 1970-01-01 22:53:00.000
                         // String formattedTime =
                         //     DateFormat('HH:mm').format(parsedTime);
                         // print(formattedTime); //output 14:59:00
@@ -367,94 +370,121 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
                   ),
                 ),
                 29.verticalSpace,
-                Row(
-                  children: [
-                    Text(
-                      "Tag People",
-                      style: TextStyle(
-                        fontSize: 20.sp,
-                        color: Color(0xff010231),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+                Text(
+                  "Tag People",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    color: Color(0xff010231),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 29.verticalSpace,
-                Container(
-                  width: 388.w,
-                  height: 56.h,
-                  decoration: BoxDecoration(
-                    color: Color(0xffEAEAEE),
-                    borderRadius: BorderRadius.circular(
-                      5,
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 140.w,
-                          height: 36.h,
-                          decoration: BoxDecoration(
-                              color: Color(0xff878B9E).withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(
-                                20,
-                              )),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "William Smith",
-                                  style: TextStyle(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                Container(
-                                  child: Image.asset(
-                                    "assets/images/redcross.png",
-                                    scale: 5,
-                                  ),
-                                )
-                              ],
+                TextFieldTags(
+                  textfieldTagsController: tagController,
+                  initialTags: const ['William Smith', 'Amelia'],
+                  textSeparators: const [' ', ','],
+                  letterCase: LetterCase.normal,
+                  validator: (String tag) {
+                    if (tag == 'php') {
+                      return 'No, please just no';
+                    } else if (tagController.getTags!.contains(tag)) {
+                      return 'you already entered that';
+                    }
+                    return null;
+                  },
+                  inputfieldBuilder:
+                      (context, tec, fn, error, onChanged, onSubmitted) {
+                    return ((context, sc, tags, onTagDelete) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: Color(0xffEAEAEE),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xff66708026).withOpacity(0.06),
+                              spreadRadius: 0,
+                              blurRadius: 2,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
                             ),
-                          ),
+                          ],
+                          borderRadius: BorderRadius.circular(5.r),
                         ),
-                        10.horizontalSpace,
-                        Container(
-                          width: 100.w,
-                          height: 36.h,
-                          decoration: BoxDecoration(
-                              color: Color(0xff878B9E).withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(
-                                20,
-                              )),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Amelia",
-                                  style: TextStyle(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                Container(
-                                  child: Image.asset(
-                                    "assets/images/redcross.png",
-                                    scale: 5,
-                                  ),
-                                )
-                              ],
-                            ),
+                        child: TextField(
+                          controller: tec,
+                          focusNode: fn,
+                          style: TextStyle(
+                              fontSize: 12.sp, fontWeight: FontWeight.w600),
+                          decoration: InputDecoration(
+                            isDense: true,
+                            border: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 25.r, vertical: 18.r),
+                            hintText:
+                                tagController.hasTags ? '' : "Enter tag...",
+                            errorText: error,
+                            prefixIconConstraints: BoxConstraints(
+                                maxWidth: Get.width, minWidth: Get.width * 0.1),
+                            prefixIcon: tags.isNotEmpty
+                                ? SingleChildScrollView(
+                                    controller: sc,
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                        children: tags.map((String tag) {
+                                      return Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(20.0),
+                                          ),
+                                          color: Color(0xff878B9E)
+                                              .withOpacity(0.5),
+                                        ),
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: 10.r),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10.0, vertical: 5.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            InkWell(
+                                              child: Text(
+                                                '$tag',
+                                                style: TextStyle(
+                                                    fontSize: 12.sp,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              onTap: () {
+                                                print("$tag selected");
+                                              },
+                                            ),
+                                            const SizedBox(width: 4.0),
+                                            InkWell(
+                                              child: Icon(
+                                                Icons.cancel,
+                                                size: 22.r,
+                                                color: Color.fromARGB(
+                                                    255, 230, 9, 9),
+                                              ),
+                                              onTap: () {
+                                                onTagDelete(tag);
+                                              },
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    }).toList()),
+                                  )
+                                : null,
                           ),
-                        )
-                      ],
-                    ),
-                  ),
+                          onChanged: onChanged,
+                          onSubmitted: onSubmitted,
+                        ),
+                      );
+                    });
+                  },
                 ),
                 30.verticalSpace,
                 CustomButtonWidget(
