@@ -57,6 +57,7 @@ export 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 export 'package:camera_camera/camera_camera.dart';
 //UTILS
 export './utils/global.dart';
+export '../utils/dummy.dart';
 
 //CONTROLLER
 export 'package:p2ptraffic/Home/BottomController.dart';

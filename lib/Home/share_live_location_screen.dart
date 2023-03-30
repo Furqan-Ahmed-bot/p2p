@@ -122,25 +122,21 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
           child: Column(
             children: [
               22.verticalSpace,
-              Column(
+              Stack(
                 children: [
-                  Stack(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 483.h,
-                        child: GoogleMap(
-                          compassEnabled: true,
-                          myLocationButtonEnabled: true,
-                          zoomGesturesEnabled: true,
-                          initialCameraPosition: _center,
-                          markers: Set<Marker>.of(_marker),
-                          onMapCreated: (GoogleMapController controller) {
-                            _mapcontroller.complete(controller);
-                          },
-                        ),
-                      ),
-                    ],
+                  Container(
+                    width: double.infinity,
+                    height: 483.h,
+                    child: GoogleMap(
+                      compassEnabled: true,
+                      myLocationButtonEnabled: true,
+                      zoomGesturesEnabled: true,
+                      initialCameraPosition: _center,
+                      markers: Set<Marker>.of(_marker),
+                      onMapCreated: (GoogleMapController controller) {
+                        _mapcontroller.complete(controller);
+                      },
+                    ),
                   ),
                 ],
               ),
@@ -159,7 +155,39 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
                 ],
               ),
               26.verticalSpace,
-              Imgss(),
+              GridView.builder(
+                shrinkWrap: true,
+                itemCount: trafficPictureImages.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    childAspectRatio: 1,
+                    crossAxisSpacing: 13.5,
+                    mainAxisSpacing: 18.5),
+                itemBuilder: (context, index) => Stack(
+                  children: [
+                    Container(
+                      width: 117.w,
+                      height: 125.h,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10.r),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                blurRadius: 4)
+                          ]),
+                    ),
+                    Positioned(
+                        top: 0,
+                        left: 93,
+                        child: Container(
+                          width: 21.w,
+                          height: 21.h,
+                          child: Image.asset("assets/images/Group 1005.png"),
+                        )),
+                  ],
+                ),
+              ),
               15.verticalSpace,
               GestureDetector(
                 onTap: () {
