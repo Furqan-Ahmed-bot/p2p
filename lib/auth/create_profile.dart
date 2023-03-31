@@ -17,7 +17,9 @@ class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
   final formKey = GlobalKey<FormState>();
   File? selectFile;
   uploadProfileImage() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.image
+    );
     if (result != null) {
       selectFile = File(result.files.single.path!);
       setState(() {});

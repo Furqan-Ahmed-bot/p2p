@@ -11,6 +11,7 @@ class _SIGNUPScreenState extends State<SignupScreen> {
   bool isChecked = false;
   bool isChecked2 = false;
   final TextEditingController emailPhoneController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
@@ -99,6 +100,17 @@ class _SIGNUPScreenState extends State<SignupScreen> {
                       return "* Required";
                     } else if (!(isEmail(txt.toString()))) {
                       return "* Please enter valid email address";
+                    } else
+                      return null;
+                  },
+                ),
+                20.verticalSpace,
+                CustomTextFieldWidget(
+                  labelText: "Username",
+                  controller: userNameController,
+                  validator: (txt) {
+                    if (txt!.isEmpty) {
+                      return "* Required";
                     } else
                       return null;
                   },
