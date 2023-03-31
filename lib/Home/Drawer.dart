@@ -164,6 +164,7 @@ class DrawerScreen extends StatelessWidget {
                                   final bottomcontroller =
                                       Get.put(BottomController());
                                   bottomcontroller.navBarChange(0);
+                                  Get.close(1);
                                   Get.to(() => MainScreen());
                                 },
                                 child: Text(
@@ -209,6 +210,7 @@ class DrawerScreen extends StatelessWidget {
                                   final bottomcontroller =
                                       Get.put(BottomController());
                                   bottomcontroller.navBarChange(1);
+                                  Get.close(1);
                                   Get.to(() => MainScreen());
                                 },
                                 child: Text(
@@ -230,7 +232,7 @@ class DrawerScreen extends StatelessWidget {
                               ),
                               title: GestureDetector(
                                 onTap: () {
-                                  Get.to(() => SPOTIFYScreen());
+                                  Get.to(() => SpotifScreen());
                                 },
                                 child: Text(
                                   "Spotify",

@@ -8,6 +8,13 @@ class FriendRequestsScreen extends StatefulWidget {
 }
 
 class _FriendRequestsScreenState extends State<FriendRequestsScreen> {
+  final List<FriendRequestsUserDataModel> friendRequestList = [
+    FriendRequestsUserDataModel('Martin', user1, 'New York', false),
+    FriendRequestsUserDataModel('Martin', user2, 'New York', false),
+    FriendRequestsUserDataModel('Martin', user3, 'New York', false),
+    FriendRequestsUserDataModel('Martin', user4, 'New York', false),
+    FriendRequestsUserDataModel('Martin', user5, 'New York', false),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,123 +60,92 @@ class _FriendRequestsScreenState extends State<FriendRequestsScreen> {
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
+      body: DisAllowIndicatorWidget(
+        child: ListView.separated(
+          itemCount: friendRequestList.length,
+          padding: EdgeInsets.all(20.r),
+          itemBuilder: (context, index) => ListTile(
+            horizontalTitleGap: 30.0,
+            visualDensity: const VisualDensity(
+              horizontal: -4.0,
+            ),
+            contentPadding: EdgeInsets.zero,
+            leading: Container(
+              height: 60.r,
+              width: 60.r,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xff00DBFA),
+                  border: Border.all(
+                      color: Color(0xff00DBFA),
+                      width: 1,
+                      strokeAlign: BorderSide.strokeAlignOutside),
+                  image: DecorationImage(
+                      image: NetworkImage(friendRequestList[index].userImage),
+                      fit: BoxFit.cover)),
+            ),
+            title: Text(
+              friendRequestList[index].userName,
+              style: TextStyle(fontSize: 18.sp, color: Color(0xff3A3A3A)),
+            ),
+            subtitle: Text(
+              friendRequestList[index].city,
+              style: TextStyle(fontSize: 14.sp, color: Color(0xff3A3A3A)),
+            ),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                28.verticalSpace,
-                martin("assets/images/1.png"),
-                20.verticalSpace,
-                Dividerr(),
-                20.verticalSpace,
-                martin("assets/images/2.png"),
-                20.verticalSpace,
-                Dividerr(),
-                20.verticalSpace,
-                martin("assets/images/3.png"),
-                20.verticalSpace,
-                Dividerr(),
-                20.verticalSpace,
-                martin("assets/images/4.png"),
-                20.verticalSpace,
-                Dividerr(),
-                20.verticalSpace,
-                martin("assets/images/5.png"),
-                20.verticalSpace,
-                Dividerr(),
+                GestureDetector(
+                  onTap: () {
+                    Rejected();
+                  },
+                  child: Container(
+                    height: 26.h,
+                    width: 50.w,
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        )),
+                    child: Center(
+                      child: Text(
+                        "Reject",
+                        style: TextStyle(
+                          fontSize: 10.sp,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                10.horizontalSpace,
+                GestureDetector(
+                  onTap: () {
+                    Accepted();
+                  },
+                  child: Container(
+                    height: 26.h,
+                    width: 50.w,
+                    decoration: BoxDecoration(
+                        color: Color(0xff00E5FE),
+                        borderRadius: BorderRadius.circular(
+                          20,
+                        )),
+                    child: Center(
+                      child: Text(
+                        "Accept",
+                        style: TextStyle(
+                          fontSize: 10.sp,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
+          separatorBuilder: (context, index) => Dividerr(),
         ),
-      ),
-    );
-  }
-
-  martin(
-    img,
-  ) {
-    return GestureDetector(
-      onTap: () {
-        Get.toNamed("/MartinProfileScreen");
-      },
-      child: Row(
-        children: [
-          Container(
-            height: 60.h,
-            width: 60.w,
-            child: Image.asset(
-              img,
-            ),
-          ),
-          22.horizontalSpace,
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Martin Smith",
-                style: TextStyle(fontSize: 18.sp, color: Color(0xff3A3A3A)),
-              ),
-              Text(
-                "New York",
-                style: TextStyle(fontSize: 14.sp, color: Color(0xff3A3A3A)),
-              ),
-            ],
-          ),
-          80.horizontalSpace,
-          Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Rejected();
-                },
-                child: Container(
-                  height: 26.h,
-                  width: 50.w,
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      )),
-                  child: Center(
-                    child: Text(
-                      "Reject",
-                      style: TextStyle(
-                        fontSize: 10.sp,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              10.horizontalSpace,
-              GestureDetector(
-                onTap: () {
-                  Accepted();
-                },
-                child: Container(
-                  height: 26.h,
-                  width: 50.w,
-                  decoration: BoxDecoration(
-                      color: Color(0xff00E5FE),
-                      borderRadius: BorderRadius.circular(
-                        20,
-                      )),
-                  child: Center(
-                    child: Text(
-                      "Accept",
-                      style: TextStyle(
-                        fontSize: 10.sp,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }
@@ -193,8 +169,10 @@ class _FriendRequestsScreenState extends State<FriendRequestsScreen> {
                 Container(
                   width: 388.w,
                   height: 200.h,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.white), borderRadius: BorderRadius.circular(10.r), color: Color(0xffFFFFFF)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10.r),
+                      color: Color(0xffFFFFFF)),
                   child: Container(
                     width: 500.w,
                     height: 100.h,
@@ -234,8 +212,10 @@ class _FriendRequestsScreenState extends State<FriendRequestsScreen> {
                 Container(
                   width: 388.w,
                   height: 200.h,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.white), borderRadius: BorderRadius.circular(10.r), color: Color(0xffFFFFFF)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10.r),
+                      color: Color(0xffFFFFFF)),
                   child: Container(
                     width: 500.w,
                     height: 100.h,
@@ -267,4 +247,14 @@ class _FriendRequestsScreenState extends State<FriendRequestsScreen> {
       ],
     );
   }
+}
+
+class FriendRequestsUserDataModel {
+  String userName;
+  String userImage;
+  String city;
+  bool requestStatus;
+
+  FriendRequestsUserDataModel(
+      this.userName, this.userImage, this.city, this.requestStatus);
 }

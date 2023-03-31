@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+
+
+
+import '../export_all.dart';
 
 class SettingsPaymentmethodsScreen extends StatefulWidget {
   const SettingsPaymentmethodsScreen({super.key});
@@ -60,6 +60,13 @@ class _SettingsPaymentmethodsScreenState extends State<SettingsPaymentmethodsScr
           ),
         ),
       ),
+      // bottomNavigationBar: Padding(
+      //   padding: EdgeInsets.all(20.r),
+      //   child: CustomButtonWidget(
+      //     onTap: ,
+      //     text: 'Pay Now',
+      //   ),
+      // ),
       body: Container(
         width: double.infinity,
         child: SingleChildScrollView(

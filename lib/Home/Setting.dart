@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:p2ptraffic/export_all.dart';
 
 class SETTINGSScreen extends StatefulWidget {
   const SETTINGSScreen({super.key});
@@ -57,40 +58,39 @@ class _SETTINGSScreenState extends State<SETTINGSScreen> {
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-            child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Column(
-            children: [
-              20.verticalSpace,
-              Cupertino(),
-              10.verticalSpace,
-              Drop("Changes Password", "assets/images/Icon ionic-ios-lock.png", () {
-                Get.toNamed("/ChnageSETTINGSScreen");
-              }),
-              10.verticalSpace,
-              Drop("Card Details", "assets/images/Icon metro-credit-card.png", () {
-                Get.toNamed("/SettingsPaymentmethodsScreen");
-              }),
-              10.verticalSpace,
-              Drop("Terms & Conditions", "assets/images/Group 976.png", () {
-                Get.toNamed("/TERMSAndCONDITIONSScreen");
-              }),
-              10.verticalSpace,
-              Drop("Privacy Policy", "assets/images/Group 977.png", () {
-                Get.toNamed("/PRIVACYPOLICYScreen");
-              }),
-            ],
-          ),
-        )),
+      body: DisAllowIndicatorWidget(
+        child: ListView(
+          padding: EdgeInsets.all(20.r),
+          children: [
+            20.verticalSpace,
+            Cupertino(),
+            10.verticalSpace,
+            Drop("Changes Password", "assets/images/Icon ionic-ios-lock.png",
+                () {
+              Get.toNamed("/ChnageSETTINGSScreen");
+            }),
+            10.verticalSpace,
+            Drop("Card Details", "assets/images/Icon metro-credit-card.png",
+                () {
+              Get.toNamed("/SettingsPaymentmethodsScreen");
+            }),
+            10.verticalSpace,
+            Drop("Terms & Conditions", "assets/images/Group 976.png", () {
+              Get.toNamed("/TERMSAndCONDITIONSScreen");
+            }),
+            10.verticalSpace,
+            Drop("Privacy Policy", "assets/images/Group 977.png", () {
+              Get.toNamed("/PRIVACYPOLICYScreen");
+            }),
+          ],
+        ),
       ),
     );
   }
 
   Cupertino() {
     return Container(
+      padding: EdgeInsets.only(left: 20.r),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -104,38 +104,37 @@ class _SETTINGSScreenState extends State<SETTINGSScreen> {
         border: Border.all(color: Color(0xffD5DEEB), width: 1.sp),
         borderRadius: BorderRadius.circular(15.r),
       ),
-      width: 388.w,
       height: 56.h,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Container(
-              child: Image.asset(
-                "assets/images/Icon ionic-ios-notifications.png",
-                scale: 5,
-              ),
+      child: Row(
+        children: [
+          Container(
+            child: Image.asset(
+              "assets/images/Icon ionic-ios-notifications.png",
+              scale: 5,
             ),
-            20.horizontalSpace,
-            Text(
-              "Notifications",
-              style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.normal),
+          ),
+          20.horizontalSpace,
+          Text(
+            "Notifications",
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+                fontWeight: FontWeight.normal),
+          ),
+          150.horizontalSpace,
+          Transform.scale(
+            scale: 0.5,
+            child: CupertinoSwitch(
+              activeColor: Color(0xffAAEC09),
+              onChanged: (value) {
+                setState(() {
+                  switchnot = value;
+                });
+              },
+              value: switchnot,
             ),
-            150.horizontalSpace,
-            Transform.scale(
-              scale: 0.7,
-              child: CupertinoSwitch(
-                activeColor: Color(0xffAAEC09),
-                onChanged: (value) {
-                  setState(() {
-                    switchnot = value;
-                  });
-                },
-                value: switchnot,
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
@@ -148,7 +147,7 @@ class _SETTINGSScreenState extends State<SETTINGSScreen> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-          width: 388.w,
+          padding: EdgeInsets.only(left: 20.r),
           height: 56.h,
           decoration: BoxDecoration(
             color: Colors.white,
@@ -163,22 +162,19 @@ class _SETTINGSScreenState extends State<SETTINGSScreen> {
             border: Border.all(color: Color(0xffD5DEEB), width: 1.sp),
             borderRadius: BorderRadius.circular(15.r),
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                Container(
-                  child: Image.asset(
-                    Img,
-                    scale: 5,
-                  ),
+          child: Row(
+            children: [
+              Container(
+                child: Image.asset(
+                  Img,
+                  scale: 5,
                 ),
-                20.horizontalSpace,
-                Text(
-                  txt,
-                ),
-              ],
-            ),
+              ),
+              20.horizontalSpace,
+              Text(
+                txt,
+              ),
+            ],
           )),
     );
   }

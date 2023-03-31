@@ -36,6 +36,11 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     startCamera();
+    Future.delayed(Duration.zero, () {
+      if (bottomcontroller.navigationBarIndexValue == 3) {
+        spotifyBottomSheetOpen();
+      }
+    });
     super.initState();
   }
 
@@ -58,6 +63,242 @@ class _MainScreenState extends State<MainScreen> {
 
   void _onItemTapped(int index) {
     bottomcontroller.navBarChange(index);
+  }
+
+  void spotifyBottomSheetOpen() {
+    showModalBottomSheet(
+      enableDrag: true,
+      clipBehavior: Clip.hardEdge,
+      isDismissible: true,
+      isScrollControlled: true,
+      barrierColor: Colors.transparent,
+      elevation: 15,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(15.r),
+          topRight: Radius.circular(15.r),
+        ),
+      ),
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (BuildContext context,
+            StateSetter setState /*You can rename this!*/) {
+          return SingleChildScrollView(
+            // controller: ModalScrollController.of(context),
+            child: Column(
+              children: [
+                Container(
+                  width: 427.w,
+                  height: 280.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15.r),
+                      topRight: Radius.circular(15.r),
+                    ),
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomRight,
+                      end: Alignment.bottomLeft,
+                      colors: [
+                        Color(0xff1CC8FB),
+                        Color(0xff004DF2),
+                      ],
+                    ),
+                  ),
+                  child: ListView(
+                    padding: EdgeInsets.symmetric(horizontal: 20.r),
+                    children: [
+                      Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Get.back();
+                            },
+                            child: Container(
+                              width: 101.w,
+                              height: 18.h,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Color(0xff01023163).withOpacity(0.06),
+                                ),
+                                color: Color(0xff002B7A).withOpacity(0.4),
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(15.r),
+                                  bottomRight: Radius.circular(15.r),
+                                ),
+                              ),
+                              child: Image.asset(
+                                "assets/images/Icon ionic-ios-arrow-down-1.png",
+                                scale: 5,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          23.verticalSpace,
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    child: Image.asset(
+                                      "assets/images/Icon awesome-spotifyGreen.png",
+                                      scale: 5,
+                                    ),
+                                  ),
+                                  11.horizontalSpace,
+                                  Container(
+                                    child: Text(
+                                      "Spotify",
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20.sp),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              255.horizontalSpace,
+                              GestureDetector(
+                                onTap: () {
+                                  Get.back();
+                                },
+                                child: Icon(
+                                  Icons.close,
+                                  color: Colors.white,
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                      10.verticalSpace,
+                      Container(
+                        width: 280.w,
+                        child: ProgressBar(
+                          timeLabelType: TimeLabelType.totalTime,
+                          baseBarColor: Color(0xffFFFFFF),
+                          timeLabelTextStyle: TextStyle(
+                            color: Colors.transparent,
+                          ),
+                          thumbColor: Color(0xff3E40D3),
+                          progressBarColor: Color(0xff3E40D3),
+                          progress: Duration(milliseconds: 5),
+                          // buffered: Duration(milliseconds: 2000),
+                          total: Duration(milliseconds: 50),
+                          onSeek: (duration) {
+                            print('User selected a new time: $duration');
+                          },
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            width: 63.w,
+                            height: 63.h,
+                            child: Image.asset(
+                                "assets/images/NoPath - Copy (14).png"),
+                          ),
+                          20.horizontalSpace,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Stuck With You",
+                                style: TextStyle(
+                                  fontSize: 20.sp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              3.verticalSpace,
+                              Text(
+                                "Justin Bieber",
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w100,
+                                ),
+                              ),
+                            ],
+                          ),
+                          30.horizontalSpace,
+                          Container(
+                            width: 13.w,
+                            height: 13.h,
+                            child: Image.asset(
+                                "assets/images/Icon ionic-md-skip-forward-1.png"),
+                          ),
+                          16.horizontalSpace,
+                          Container(
+                            width: 46.w,
+                            height: 46.h,
+                            child: Image.asset("assets/images/Group 1439.png"),
+                          ),
+                          16.horizontalSpace,
+                          Container(
+                            width: 13.w,
+                            height: 13.h,
+                            child: Image.asset(
+                                "assets/images/Icon ionic-md-skip-forward.png"),
+                          ),
+                        ],
+                      ),
+                      30.verticalSpace,
+                      Stack(
+                        alignment: Alignment.center,
+                        clipBehavior: Clip.none,
+                        children: [
+                          Container(
+                            width: 350.w,
+                            height: 1,
+                            color: Colors.grey,
+                          ),
+                          GestureDetector(
+                            behavior: HitTestBehavior.translucent,
+                            onTap: () {
+                              Get.toNamed("/SPOTIFYScreen");
+                            },
+                            child: Container(
+                              width: 142.w,
+                              height: 37.h,
+                              decoration: BoxDecoration(
+                                color: Color(0xff002B7A).withOpacity(0.7),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 15,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Image.asset(
+                                        "assets/images/Icon awesome-spotifyGreen.png",
+                                        scale: 5,
+                                      ),
+                                    ),
+                                    5.horizontalSpace,
+                                    Text(
+                                      "Open Spotify",
+                                      style: TextStyle(
+                                        fontSize: 12.sp,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      20.verticalSpace,
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 
   @override
@@ -242,242 +483,7 @@ class _MainScreenState extends State<MainScreen> {
           _onItemTapped(index);
         });
         if (index == 3) {
-          showModalBottomSheet(
-            enableDrag: true,
-            clipBehavior: Clip.hardEdge,
-            isDismissible: true,
-            isScrollControlled: true,
-            barrierColor: Colors.transparent,
-            elevation: 15,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15.r),
-                topRight: Radius.circular(15.r),
-              ),
-            ),
-            context: context,
-            builder: (context) => StatefulBuilder(
-              builder: (BuildContext context,
-                  StateSetter setState /*You can rename this!*/) {
-                return SingleChildScrollView(
-                  // controller: ModalScrollController.of(context),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 427.w,
-                        height: 280.h,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15.r),
-                            topRight: Radius.circular(15.r),
-                          ),
-                          gradient: LinearGradient(
-                            begin: Alignment.bottomRight,
-                            end: Alignment.bottomLeft,
-                            colors: [
-                              Color(0xff1CC8FB),
-                              Color(0xff004DF2),
-                            ],
-                          ),
-                        ),
-                        child: ListView(
-                          padding: EdgeInsets.symmetric(horizontal: 20.r),
-                          children: [
-                            Column(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Get.back();
-                                  },
-                                  child: Container(
-                                    width: 101.w,
-                                    height: 18.h,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Color(0xff01023163)
-                                            .withOpacity(0.06),
-                                      ),
-                                      color: Color(0xff002B7A).withOpacity(0.4),
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(15.r),
-                                        bottomRight: Radius.circular(15.r),
-                                      ),
-                                    ),
-                                    child: Image.asset(
-                                      "assets/images/Icon ionic-ios-arrow-down-1.png",
-                                      scale: 5,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                                23.verticalSpace,
-                                Row(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          child: Image.asset(
-                                            "assets/images/Icon awesome-spotifyGreen.png",
-                                            scale: 5,
-                                          ),
-                                        ),
-                                        11.horizontalSpace,
-                                        Container(
-                                          child: Text(
-                                            "Spotify",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20.sp),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    255.horizontalSpace,
-                                    GestureDetector(
-                                      onTap: () {
-                                        Get.back();
-                                      },
-                                      child: Icon(
-                                        Icons.close,
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                            10.verticalSpace,
-                            Container(
-                              width: 280.w,
-                              child: ProgressBar(
-                                timeLabelType: TimeLabelType.totalTime,
-                                baseBarColor: Color(0xffFFFFFF),
-                                timeLabelTextStyle: TextStyle(
-                                  color: Colors.transparent,
-                                ),
-                                thumbColor: Color(0xff3E40D3),
-                                progressBarColor: Color(0xff3E40D3),
-                                progress: Duration(milliseconds: 5),
-                                // buffered: Duration(milliseconds: 2000),
-                                total: Duration(milliseconds: 50),
-                                onSeek: (duration) {
-                                  print('User selected a new time: $duration');
-                                },
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  width: 63.w,
-                                  height: 63.h,
-                                  child: Image.asset(
-                                      "assets/images/NoPath - Copy (14).png"),
-                                ),
-                                20.horizontalSpace,
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Stuck With You",
-                                      style: TextStyle(
-                                        fontSize: 20.sp,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    3.verticalSpace,
-                                    Text(
-                                      "Justin Bieber",
-                                      style: TextStyle(
-                                        fontSize: 16.sp,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w100,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                30.horizontalSpace,
-                                Container(
-                                  width: 13.w,
-                                  height: 13.h,
-                                  child: Image.asset(
-                                      "assets/images/Icon ionic-md-skip-forward-1.png"),
-                                ),
-                                16.horizontalSpace,
-                                Container(
-                                  width: 46.w,
-                                  height: 46.h,
-                                  child: Image.asset(
-                                      "assets/images/Group 1439.png"),
-                                ),
-                                16.horizontalSpace,
-                                Container(
-                                  width: 13.w,
-                                  height: 13.h,
-                                  child: Image.asset(
-                                      "assets/images/Icon ionic-md-skip-forward.png"),
-                                ),
-                              ],
-                            ),
-                            30.verticalSpace,
-                            Stack(
-                              alignment: Alignment.center,
-                              clipBehavior: Clip.none,
-                              children: [
-                                Container(
-                                  width: 350.w,
-                                  height: 1,
-                                  color: Colors.grey,
-                                ),
-                                GestureDetector(
-                                  behavior: HitTestBehavior.translucent,
-                                  onTap: () {
-                                    Get.toNamed("/SPOTIFYScreen");
-                                  },
-                                  child: Container(
-                                    width: 142.w,
-                                    height: 37.h,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xff002B7A).withOpacity(0.7),
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 15,
-                                      ),
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            child: Image.asset(
-                                              "assets/images/Icon awesome-spotifyGreen.png",
-                                              scale: 5,
-                                            ),
-                                          ),
-                                          5.horizontalSpace,
-                                          Text(
-                                            "Open Spotify",
-                                            style: TextStyle(
-                                              fontSize: 12.sp,
-                                              color: Colors.white,
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            20.verticalSpace,
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          );
+          spotifyBottomSheetOpen();
         }
         // Get.to(() => MainScreen());
       },

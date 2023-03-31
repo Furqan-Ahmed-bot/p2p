@@ -108,8 +108,8 @@ class _MyAppState extends State<MyApp> {
               page: (() => SUBSCRIPTIONScreen()),
             ),
             GetPage(
-              name: '/PAYMENTMETHODScreen',
-              page: (() => PAYMENTMETHODScreen()),
+              name: '/PaymentMethodScreen',
+              page: (() => PaymentMethodScreen()),
             ),
             GetPage(
               name: '/ChnageSETTINGSScreen',
@@ -185,7 +185,7 @@ class _MyAppState extends State<MyApp> {
             ),
             GetPage(
               name: '/SPOTIFYScreen',
-              page: (() => SPOTIFYScreen()),
+              page: (() => SpotifScreen()),
             ),
             GetPage(
               name: '/SettingsPaymentmethodsScreen',

@@ -1,5 +1,3 @@
-
-
 import '../export_all.dart';
 
 class CHECKOUTScreen extends StatefulWidget {
@@ -77,7 +75,8 @@ class _CHECKOUTScreenState extends State<CHECKOUTScreen> {
                           children: [
                             Text(
                               "Gold Package",
-                              style: TextStyle(fontSize: 22.sp, color: Colors.black),
+                              style: TextStyle(
+                                  fontSize: 22.sp, color: Colors.black),
                             ),
                             Container(
                               child: Image.asset(
@@ -172,7 +171,7 @@ class _CHECKOUTScreenState extends State<CHECKOUTScreen> {
                       418.verticalSpace,
                       GestureDetector(
                         onTap: () {
-                          Get.toNamed("/PAYMENTMETHODScreen");
+                          Get.to(() => PaymentMethodScreen());
                         },
                         child: Container(
                           width: 388.w,
@@ -199,7 +198,8 @@ class _CHECKOUTScreenState extends State<CHECKOUTScreen> {
                               children: [
                                 Text(
                                   "Checkout",
-                                  style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18.sp),
                                 ),
                               ],
                             ),
