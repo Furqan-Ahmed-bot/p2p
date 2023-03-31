@@ -173,7 +173,7 @@ function1(BuildContext context) {
                               Get.back();
                             },
                             child: Container(
-                              width: Get.width * 0.39,
+                              width: Get.width * 0.398,
                               height: 64.h,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
@@ -199,7 +199,7 @@ function1(BuildContext context) {
                               Get.toNamed("/LoginScreen");
                             },
                             child: Container(
-                              width: Get.width * 0.38,
+                              width: Get.width * 0.398,
                               height: 64.h,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.only(

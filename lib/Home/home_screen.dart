@@ -33,9 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   @override
   void initState() {
-     _marker.addAll(_branch);
+    _marker.addAll(_branch);
     super.initState();
-   
   }
 
   @override
@@ -165,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Get.toNamed("/TRAFFICUPDATESScreen");
             },
             child: Container(
-              width: 124.w,
+              width: 130.w,
               height: 64.h,
               padding: EdgeInsets.symmetric(horizontal: 10.r),
               decoration: BoxDecoration(
