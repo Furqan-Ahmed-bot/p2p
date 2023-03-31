@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:io';
+
 import '../export_all.dart';
 
 class HelpAndFeedbackScreen extends StatefulWidget {
@@ -10,6 +13,8 @@ class HelpAndFeedbackScreen extends StatefulWidget {
 class HelpAndFeedbackScreenState extends State<HelpAndFeedbackScreen> {
   final TextEditingController subjectTextController = TextEditingController();
   final TextEditingController messageTextController = TextEditingController();
+  final UploadImageController imageController =
+      Get.put(UploadImageController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,25 +71,87 @@ class HelpAndFeedbackScreenState extends State<HelpAndFeedbackScreen> {
               maxLines: 12,
               controller: messageTextController),
           33.verticalSpace,
-        GetBuilder(
-
-          builder: (context) {
-            return GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              clipBehavior: Clip.none,
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-              
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 4,
-                        childAspectRatio: Get.width / (Get.height / 1.6),
-                        crossAxisSpacing: 20.5,
-                        mainAxisSpacing: 20.5),
-                   itemBuilder: (context, index) => Text('asf'),);
-          }
-        ),
-        42.verticalSpace,
-        CustomButtonWidget(
+          GetBuilder(
+              init: imageController,
+              builder: (context) {
+                return GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  clipBehavior: Clip.none,
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  itemCount: imageController.uploadImage.length + 1,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      childAspectRatio: Get.width / (Get.height / 1.9),
+                      crossAxisSpacing: 10.5,
+                      mainAxisSpacing: 10.5),
+                  itemBuilder: (context, index) => index !=
+                          imageController.uploadImage.length
+                      ? Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            Container(
+                              // width: 87.r,
+                              // height: 97.r,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8.r),
+                                  image: imageController.uploadImage[index]!
+                                          .contains('http')
+                                      ? DecorationImage(
+                                          image: NetworkImage(imageController
+                                              .uploadImage[index]!),
+                                          fit: BoxFit.cover)
+                                      : DecorationImage(
+                                          image: FileImage(File(imageController
+                                              .uploadImage[index]!)),
+                                          fit: BoxFit.cover)),
+                            ),
+                            Positioned(
+                                top: -3,
+                                right: -3,
+                                child: Container(
+                                  width: 21.w,
+                                  height: 21.h,
+                                  child: Image.asset(
+                                      "assets/images/Group 1005.png"),
+                                )),
+                          ],
+                        )
+                      : GestureDetector(
+                          onTap: () async {
+                            FilePickerResult? result = await FilePicker.platform
+                                .pickFiles(allowMultiple: true);
+                            if (result != null) {
+                              List<File> files = result.paths
+                                  .map((path) => File(path!))
+                                  .toList();
+                              for (var element in files) {
+                                imageController
+                                    .addImage(element.path.toString());
+                              }
+                              log(files.toString());
+                            }
+                          },
+                          child: DottedBorder(
+                            borderType: BorderType.RRect,
+                            radius: Radius.circular(8.r),
+                            dashPattern: [5, 4],
+                            color: Colors.grey,
+                            strokeWidth: 2,
+                            child: Center(
+                              child: Container(
+                                child: Image.asset(
+                                  "assets/images/Icon ionic-ios-add-circle.png",
+                                  height: 29.h,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                );
+              }),
+          42.verticalSpace,
+          CustomButtonWidget(
               text: "Submit",
               onTap: () {
                 final bottomcontroller = Get.put(BottomController());
@@ -95,105 +162,10 @@ class HelpAndFeedbackScreenState extends State<HelpAndFeedbackScreen> {
       ),
     );
   }
-
-  Imgss() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Stack(
-              children: [
-                Container(
-                  width: 87.w,
-                  height: 97.h,
-                  child: Image.asset(
-                    "assets/images/NoPath - Copy (29).png",
-                  ),
-                ),
-                Positioned(
-                    top: 0,
-                    left: 65,
-                    child: Container(
-                      width: 21.w,
-                      height: 21.h,
-                      child: Image.asset("assets/images/Group 1005.png"),
-                    )),
-              ],
-            ),
-            Stack(
-              children: [
-                Container(
-                  width: 87.w,
-                  height: 97.h,
-                  child: Image.asset(
-                    "assets/images/NoPath - Copy (30).png",
-                  ),
-                ),
-                Positioned(
-                    top: 0,
-                    left: 65,
-                    child: Container(
-                      width: 21.w,
-                      height: 21.h,
-                      child: Image.asset("assets/images/Group 1005.png"),
-                    )),
-              ],
-            ),
-            Stack(
-              children: [
-                Container(
-                  width: 87.w,
-                  height: 97.h,
-                  child: Image.asset(
-                    "assets/images/NoPath - Copy (32).png",
-                  ),
-                ),
-                Positioned(
-                    top: 0,
-                    left: 65,
-                    child: Container(
-                      width: 21.w,
-                      height: 21.h,
-                      child: Image.asset("assets/images/Group 1005.png"),
-                    )),
-              ],
-            ),
-            Container(
-              width: 87.w,
-              height: 97.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.r),
-              ),
-              child: DottedBorder(
-                borderType: BorderType.RRect,
-                radius: Radius.circular(2.r),
-                dashPattern: [3, 8],
-                color: Colors.grey,
-                strokeWidth: 2,
-                child: Center(
-                  child: Container(
-                    child: Image.asset(
-                      "assets/images/Icon ionic-ios-add-circle.png",
-                      height: 29.h,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        )
-      ],
-    );
-  }
 }
 
-class UploadImage extends GetxController {
-  List uploadImage = [
-    "assets/images/NoPath - Copy (29).png",
-    "assets/images/NoPath - Copy (30).png",
-    "assets/images/NoPath - Copy (32).png"
-  ];
+class UploadImageController extends GetxController {
+  List uploadImage = [...trafficPictureImages];
 
   addImage(String path) {
     uploadImage.add(path);
