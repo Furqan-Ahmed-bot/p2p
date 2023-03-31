@@ -109,11 +109,16 @@ class HelpAndFeedbackScreenState extends State<HelpAndFeedbackScreen> {
                             Positioned(
                                 top: -3,
                                 right: -3,
-                                child: Container(
-                                  width: 21.w,
-                                  height: 21.h,
-                                  child: Image.asset(
-                                      "assets/images/Group 1005.png"),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    imageController.removeImage(index);
+                                  },
+                                  child: Container(
+                                    width: 21.w,
+                                    height: 21.h,
+                                    child: Image.asset(
+                                        "assets/images/Group 1005.png"),
+                                  ),
                                 )),
                           ],
                         )
