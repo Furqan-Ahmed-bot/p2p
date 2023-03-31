@@ -1,17 +1,16 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import '../export_all.dart';
 
-class SUBSCRIPTIONScreen extends StatefulWidget {
-  const SUBSCRIPTIONScreen({super.key});
+class SubscritionScreen extends StatefulWidget {
+  const SubscritionScreen({super.key});
 
   @override
-  State<SUBSCRIPTIONScreen> createState() => _SUBSCRIPTIONScreenState();
+  State<SubscritionScreen> createState() => SubscritionScreenState();
 }
 
-class _SUBSCRIPTIONScreenState extends State<SUBSCRIPTIONScreen> {
+class SubscritionScreenState extends State<SubscritionScreen> {
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: Colors.white,
       // extendBodyBehindAppBar: true,
@@ -96,42 +95,9 @@ class _SUBSCRIPTIONScreenState extends State<SUBSCRIPTIONScreen> {
                 14.verticalSpace,
                 Dividerr(),
                 320.verticalSpace,
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed("/SUBSCRIBEScreen");
-                  },
-                  child: Container(
-                    width: 388.w,
-                    height: 60.h,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Color(0xff1CC8FB),
-                          Color(0xff004DF2),
-                        ],
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0, 0),
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(30.r),
-                    ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Upgrade",
-                            style: TextStyle(color: Colors.white, fontSize: 18.sp),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                CustomButtonWidget(
+                    text: 'Upgrade',
+                    onTap: () => Get.to(() => SubscritionPackageCardScreen())),
               ],
             ),
           ),

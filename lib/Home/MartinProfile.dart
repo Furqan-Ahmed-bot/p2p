@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:p2ptraffic/Home/Drawer.dart';
+import 'package:p2ptraffic/export_all.dart';
 
 class MartinProfileScreen extends StatefulWidget {
   const MartinProfileScreen({super.key});
@@ -21,13 +22,15 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
   bool _value3 = false;
 
   final Completer<GoogleMapController> _mapcontroller = Completer();
-  static const CameraPosition _center = CameraPosition(target: LatLng(40.721424, -73.873540), zoom: 15);
+  static const CameraPosition _center =
+      CameraPosition(target: LatLng(40.721424, -73.873540), zoom: 15);
   final List<Marker> _marker = [];
   final List<Marker> _branch = const [
     Marker(
       markerId: MarkerId("1"),
       position: LatLng(40.721424, -73.873540),
-      infoWindow: InfoWindow(title: "My Location110 W 3rd St, New York, NY 10012"),
+      infoWindow:
+          InfoWindow(title: "My Location110 W 3rd St, New York, NY 10012"),
     ),
     Marker(
       markerId: MarkerId("2"),
@@ -40,16 +43,15 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
   ];
   @override
   void initState() {
-     _marker.addAll(_branch);
+    _marker.addAll(_branch);
     super.initState();
-   
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
-      drawer: DrawerScreen(),
+
       backgroundColor: Colors.white,
       // extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -113,538 +115,332 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
         //   ),
         // ],
       ),
-      body: Container(
+      body: DisAllowIndicatorWidget(
         // width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              22.verticalSpace,
-              Container(
-                width: 388.w,
-                height: 115.h,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10.r),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: 85.w,
-                            height: 85.h,
-                            child: Image.asset("assets/images/4.png"),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "Martin Smith",
-                                    style: TextStyle(color: Color(0xff3A3A3A), fontSize: 20.sp),
-                                  ),
-                                  79.horizontalSpace,
-                                  Text(
-                                    "Friend",
-                                    style: TextStyle(color: Color(0xff878B9E), fontSize: 12.sp),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                "22 - Female",
-                                style: TextStyle(color: Color(0xff3A3A3A), fontSize: 16.sp),
-                              ),
-                              Text(
-                                "New York",
-                                style: TextStyle(color: Color(0xff3A3A3A), fontSize: 16.sp),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ],
+        child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 20.r),
+          children: [
+            Container(
+              width: 388.w,
+              padding: EdgeInsets.all(10.r),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.r),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3), // changes position of shadow
                   ),
-                ),
+                ],
               ),
-              22.verticalSpace,
-              Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * 0.7,
-                child: SingleChildScrollView(
-                  child: Column(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        width: 388.w,
-                        height: 392,
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-
-                            spreadRadius: 5,
-
-                            blurRadius: 7,
-
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            20.verticalSpace,
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: 47.w,
-                                    height: 47.h,
-                                    child: Image.asset("assets/images/4.png"),
-                                  ),
-                                  5.horizontalSpace,
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Martin Smith",
-                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
-                                      ),
-                                      Text(
-                                        "50min ago",
-                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
-                                      ),
-                                      15.verticalSpace,
-                                      Text(
-                                        "Lorem ipsum dolor sit amet.",
-                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                      ),
-                                    ],
-                                  ),
-                                  DropdownButton<String>(
-                                    dropdownColor: Color(0xffDFE1EC),
-                                    menuMaxHeight: 120.h,
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(
-                                        10,
-                                      ),
-                                      topLeft: Radius.circular(
-                                        10,
-                                      ),
-                                      bottomRight: Radius.circular(
-                                        10,
-                                      ),
-                                    ),
-                                    onTap: () {},
-                                    underline: Container(),
-                                    items: <String>['Report', 'Block'].map((String value) {
-                                      return DropdownMenuItem<String>(
-                                        // alignment: AlignmentDirectional.Cen,
-                                        onTap: () {},
-                                        value: value,
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              width: 13.w,
-                                              height: 13.h,
-                                              child: Image.asset(value == 'Report'
-                                                  ? "assets/images/Icon material-report.png"
-                                                  : "assets/images/Icon metro-blocked.png"),
-                                            ),
-                                            8.horizontalSpace,
-                                            Text(
-                                              value,
-                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }).toList(),
-                                    onChanged: (value) {
-                                      print("value is : " + value.toString());
-                                      if (value.toString() == "Report") {
-                                        Report();
-                                      } else {
-                                        Block();
-                                      }
-                                    },
-                                    icon: Padding(
-                                      padding: const EdgeInsets.only(bottom: 30),
-                                      child: Icon(
-                                        Icons.more_vert,
-                                        size: 25,
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            30.verticalSpace,
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        child: Image.asset(
-                                          "assets/images/Icon material-location-on.png",
-                                          scale: 5,
-                                        ),
-                                      ),
-                                      10.horizontalSpace,
-                                      Container(
-                                        child: Text(
-                                          "Lorem ipsum dolor sit amet.",
-                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                10.verticalSpace,
-                                GestureDetector(
-                                  // onTap: () {
-
-                                  //   Get.toNamed("/FeedUPDATESDETAILSScreen");
-
-                                  // },
-
-                                  child: Container(
-                                    child: Image.asset(
-                                      "assets/images/Rectangle 1339.png",
-                                      scale: 1,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                        width: 85.w,
+                        height: 85.h,
+                        child: Image.asset("assets/images/4.png"),
                       ),
-                      15.verticalSpace,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             children: [
-                              Container(
-                                child: Icon(
-                                  Icons.thumb_up,
-                                  color: Color(0xff21CDFB),
-                                ),
+                              Text(
+                                "Martin Smith",
+                                style: TextStyle(
+                                    color: Color(0xff3A3A3A), fontSize: 20.sp),
                               ),
-                              7.horizontalSpace,
-                              Container(
-                                child: Text(
-                                  "Like",
-                                  style: TextStyle(fontSize: 14.sp),
-                                ),
-                              )
+                              79.horizontalSpace,
+                              Text(
+                                "Friend",
+                                style: TextStyle(
+                                    color: Color(0xff878B9E), fontSize: 12.sp),
+                              ),
                             ],
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.toNamed("/FeedUPDATESDETAILSScreen");
-                            },
+                          Text(
+                            "22 - Female",
+                            style: TextStyle(
+                                color: Color(0xff3A3A3A), fontSize: 16.sp),
+                          ),
+                          Text(
+                            "New York",
+                            style: TextStyle(
+                                color: Color(0xff3A3A3A), fontSize: 16.sp),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            22.verticalSpace,
+            Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.7,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      width: 388.w,
+                      height: 392,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+
+                              spreadRadius: 5,
+
+                              blurRadius: 7,
+
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          20.verticalSpace,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                    child: Image.asset(
-                                  "assets/images/Icon awesome-comment-dots.png",
-                                  scale: 5,
-                                )),
-                                7.horizontalSpace,
-                                Container(
-                                  child: Text(
-                                    "326 Comments",
-                                    style: TextStyle(fontSize: 14.sp),
+                                  width: 47.w,
+                                  height: 47.h,
+                                  child: Image.asset("assets/images/4.png"),
+                                ),
+                                5.horizontalSpace,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Martin Smith",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16.sp),
+                                    ),
+                                    Text(
+                                      "50min ago",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 12.sp),
+                                    ),
+                                    15.verticalSpace,
+                                    Text(
+                                      "Lorem ipsum dolor sit amet.",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 14.sp),
+                                    ),
+                                  ],
+                                ),
+                                DropdownButton<String>(
+                                  dropdownColor: Color(0xffDFE1EC),
+                                  menuMaxHeight: 120.h,
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(
+                                      10,
+                                    ),
+                                    topLeft: Radius.circular(
+                                      10,
+                                    ),
+                                    bottomRight: Radius.circular(
+                                      10,
+                                    ),
                                   ),
-                                )
+                                  onTap: () {},
+                                  underline: Container(),
+                                  items: <String>['Report', 'Block']
+                                      .map((String value) {
+                                    return DropdownMenuItem<String>(
+                                      // alignment: AlignmentDirectional.Cen,
+                                      onTap: () {},
+                                      value: value,
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            width: 13.w,
+                                            height: 13.h,
+                                            child: Image.asset(value == 'Report'
+                                                ? "assets/images/Icon material-report.png"
+                                                : "assets/images/Icon metro-blocked.png"),
+                                          ),
+                                          8.horizontalSpace,
+                                          Text(
+                                            value,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14.sp),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }).toList(),
+                                  onChanged: (value) {
+                                    print("value is : " + value.toString());
+                                    if (value.toString() == "Report") {
+                                      Report();
+                                    } else {
+                                      Block();
+                                    }
+                                  },
+                                  icon: Padding(
+                                    padding: const EdgeInsets.only(bottom: 30),
+                                    child: Icon(
+                                      Icons.more_vert,
+                                      size: 25,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Share();
-                            },
-                            child: Row(
-                              children: [
-                                Container(
-                                    child: Image.asset(
-                                  "assets/images/Icon awesome-share.png",
-                                  scale: 5,
-                                )),
-                                7.horizontalSpace,
-                                Container(
-                                  child: Text(
-                                    "Share",
-                                    style: TextStyle(fontSize: 14.sp),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      15.verticalSpace,
-                      Dividerr(),
-                      20.verticalSpace,
-                      Column(
-                        children: [
-                          20.verticalSpace,
+                          30.verticalSpace,
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              20.verticalSpace,
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 15),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: 47.w,
-                                      height: 47.h,
-                                      child: Image.asset("assets/images/4.png"),
-                                    ),
-                                    5.horizontalSpace,
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Martin Smith",
-                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
-                                        ),
-                                        Text(
-                                          "50min ago",
-                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
-                                        ),
-                                        15.verticalSpace,
-                                        Text(
-                                          "Lorem ipsum dolor sit amet.",
-                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                        ),
-                                      ],
-                                    ),
-                                    DropdownButton<String>(
-                                      dropdownColor: Color(0xffDFE1EC),
-                                      menuMaxHeight: 120.h,
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(
-                                          10,
-                                        ),
-                                        topLeft: Radius.circular(
-                                          10,
-                                        ),
-                                        bottomRight: Radius.circular(
-                                          10,
-                                        ),
+                                      child: Image.asset(
+                                        "assets/images/Icon material-location-on.png",
+                                        scale: 5,
                                       ),
-                                      onTap: () {},
-                                      underline: Container(),
-                                      items: <String>['Report', 'Block'].map((String value) {
-                                        return DropdownMenuItem<String>(
-                                          // alignment: AlignmentDirectional.Cen,
-                                          onTap: () {},
-                                          value: value,
-                                          child: Row(
-                                            children: [
-                                              Container(
-                                                width: 13.w,
-                                                height: 13.h,
-                                                child: Image.asset(value == 'Report'
-                                                    ? "assets/images/Icon material-report.png"
-                                                    : "assets/images/Icon metro-blocked.png"),
-                                              ),
-                                              8.horizontalSpace,
-                                              Text(
-                                                value,
-                                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      }).toList(),
-                                      onChanged: (value) {
-                                        print("value is : " + value.toString());
-                                        if (value.toString() == "Report") {
-                                          Report();
-                                        } else {
-                                          Block();
-                                        }
-                                      },
-                                      icon: Padding(
-                                        padding: const EdgeInsets.only(bottom: 30),
-                                        child: Icon(
-                                          Icons.more_vert,
-                                          size: 25,
-                                          color: Colors.grey,
-                                        ),
+                                    ),
+                                    10.horizontalSpace,
+                                    Container(
+                                      child: Text(
+                                        "Lorem ipsum dolor sit amet.",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 14.sp),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                              30.verticalSpace,
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        child: Image.asset(
-                                          "assets/images/Icon material-location-on.png",
-                                          scale: 5,
-                                        ),
-                                      ),
-                                      10.horizontalSpace,
-                                      Container(
-                                        child: Text(
-                                          "Lorem ipsum dolor sit amet.",
-                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                        ),
-                                      ),
-                                    ],
+                              10.verticalSpace,
+                              GestureDetector(
+                                // onTap: () {
+
+                                //   Get.toNamed("/FeedUPDATESDETAILSScreen");
+
+                                // },
+
+                                child: Container(
+                                  child: Image.asset(
+                                    "assets/images/Rectangle 1339.png",
+                                    scale: 1,
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Stack(
-                            children: [
-                              Container(
-                                width: 388.w,
-                                height: 369.h,
-                                child: GoogleMap(
-                                  compassEnabled: true,
-                                  myLocationButtonEnabled: true,
-                                  zoomGesturesEnabled: true,
-                                  initialCameraPosition: _center,
-                                  markers: Set<Marker>.of(_marker),
-                                  onMapCreated: (GoogleMapController controller) {
-                                    _mapcontroller.complete(controller);
-                                  },
                                 ),
                               ),
                             ],
                           ),
                         ],
                       ),
-                      17.verticalSpace,
-                      15.verticalSpace,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
+                    ),
+                    15.verticalSpace,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              child: Icon(
+                                Icons.thumb_up,
+                                color: Color(0xff21CDFB),
+                              ),
+                            ),
+                            7.horizontalSpace,
+                            Container(
+                              child: Text(
+                                "Like",
+                                style: TextStyle(fontSize: 14.sp),
+                              ),
+                            )
+                          ],
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed("/FeedUPDATESDETAILSScreen");
+                          },
+                          child: Row(
                             children: [
                               Container(
-                                child: Icon(
-                                  Icons.thumb_up,
-                                  color: Color(0xff21CDFB),
-                                ),
-                              ),
+                                  child: Image.asset(
+                                "assets/images/Icon awesome-comment-dots.png",
+                                scale: 5,
+                              )),
                               7.horizontalSpace,
                               Container(
                                 child: Text(
-                                  "Like",
+                                  "326 Comments",
                                   style: TextStyle(fontSize: 14.sp),
                                 ),
                               )
                             ],
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.toNamed("/FeedUPDATESDETAILSScreen");
-                            },
-                            child: Row(
-                              children: [
-                                Container(
-                                    child: Image.asset(
-                                  "assets/images/Icon awesome-comment-dots.png",
-                                  scale: 5,
-                                )),
-                                7.horizontalSpace,
-                                Container(
-                                  child: Text(
-                                    "326 Comments",
-                                    style: TextStyle(fontSize: 14.sp),
-                                  ),
-                                )
-                              ],
-                            ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Share();
+                          },
+                          child: Row(
+                            children: [
+                              Container(
+                                  child: Image.asset(
+                                "assets/images/Icon awesome-share.png",
+                                scale: 5,
+                              )),
+                              7.horizontalSpace,
+                              Container(
+                                child: Text(
+                                  "Share",
+                                  style: TextStyle(fontSize: 14.sp),
+                                ),
+                              )
+                            ],
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Share();
-                            },
-                            child: Row(
-                              children: [
-                                Container(
-                                    child: Image.asset(
-                                  "assets/images/Icon awesome-share.png",
-                                  scale: 5,
-                                )),
-                                7.horizontalSpace,
-                                Container(
-                                  child: Text(
-                                    "Share",
-                                    style: TextStyle(fontSize: 14.sp),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      15.verticalSpace,
-                      Dividerr(),
-                      22.verticalSpace,
-                      Container(
-                        width: 388.w,
-                        height: 392,
-                        decoration: BoxDecoration(boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-
-                            spreadRadius: 5,
-
-                            blurRadius: 7,
-
-                            offset: Offset(0, 3), // changes position of shadow
-                          ),
-                        ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
-                        child: Column(
+                        )
+                      ],
+                    ),
+                    15.verticalSpace,
+                    Dividerr(),
+                    20.verticalSpace,
+                    Column(
+                      children: [
+                        20.verticalSpace,
+                        Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             20.verticalSpace,
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
@@ -654,20 +450,30 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                                   ),
                                   5.horizontalSpace,
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Martin Smith",
-                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16.sp),
                                       ),
                                       Text(
                                         "50min ago",
-                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 12.sp),
                                       ),
                                       15.verticalSpace,
                                       Text(
                                         "Lorem ipsum dolor sit amet.",
-                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 14.sp),
                                       ),
                                     ],
                                   ),
@@ -687,7 +493,8 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                                     ),
                                     onTap: () {},
                                     underline: Container(),
-                                    items: <String>['Report', 'Block'].map((String value) {
+                                    items: <String>['Report', 'Block']
+                                        .map((String value) {
                                       return DropdownMenuItem<String>(
                                         // alignment: AlignmentDirectional.Cen,
                                         onTap: () {},
@@ -697,14 +504,17 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                                             Container(
                                               width: 13.w,
                                               height: 13.h,
-                                              child: Image.asset(value == 'Report'
+                                              child: Image.asset(value ==
+                                                      'Report'
                                                   ? "assets/images/Icon material-report.png"
                                                   : "assets/images/Icon metro-blocked.png"),
                                             ),
                                             8.horizontalSpace,
                                             Text(
                                               value,
-                                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14.sp),
                                             ),
                                           ],
                                         ),
@@ -719,7 +529,8 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                                       }
                                     },
                                     icon: Padding(
-                                      padding: const EdgeInsets.only(bottom: 30),
+                                      padding:
+                                          const EdgeInsets.only(bottom: 30),
                                       child: Icon(
                                         Icons.more_vert,
                                         size: 25,
@@ -731,114 +542,364 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                               ),
                             ),
                             30.verticalSpace,
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        child: Image.asset(
-                                          "assets/images/Icon material-location-on.png",
-                                          scale: 5,
-                                        ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 15),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Image.asset(
+                                        "assets/images/Icon material-location-on.png",
+                                        scale: 5,
                                       ),
-                                      10.horizontalSpace,
-                                      Container(
-                                        child: Text(
-                                          "Lorem ipsum dolor sit amet.",
-                                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
-                                        ),
+                                    ),
+                                    10.horizontalSpace,
+                                    Container(
+                                      child: Text(
+                                        "Lorem ipsum dolor sit amet.",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 14.sp),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                                10.verticalSpace,
-                                Image.asset(
-                                  "assets/images/Rectangle 1339.png",
-                                  scale: 1,
-                                ),
-                              ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Stack(
+                          children: [
+                            Container(
+                              width: 388.w,
+                              height: 369.h,
+                              child: GoogleMap(
+                                compassEnabled: true,
+                                myLocationButtonEnabled: true,
+                                zoomGesturesEnabled: true,
+                                initialCameraPosition: _center,
+                                markers: Set<Marker>.of(_marker),
+                                onMapCreated: (GoogleMapController controller) {
+                                  _mapcontroller.complete(controller);
+                                },
+                              ),
                             ),
                           ],
                         ),
-                      ),
-                      15.verticalSpace,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
+                      ],
+                    ),
+                    17.verticalSpace,
+                    15.verticalSpace,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              child: Icon(
+                                Icons.thumb_up,
+                                color: Color(0xff21CDFB),
+                              ),
+                            ),
+                            7.horizontalSpace,
+                            Container(
+                              child: Text(
+                                "Like",
+                                style: TextStyle(fontSize: 14.sp),
+                              ),
+                            )
+                          ],
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed("/FeedUPDATESDETAILSScreen");
+                          },
+                          child: Row(
                             children: [
                               Container(
-                                child: Icon(
-                                  Icons.thumb_up,
-                                  color: Color(0xff21CDFB),
-                                ),
-                              ),
+                                  child: Image.asset(
+                                "assets/images/Icon awesome-comment-dots.png",
+                                scale: 5,
+                              )),
                               7.horizontalSpace,
                               Container(
                                 child: Text(
-                                  "Like",
+                                  "326 Comments",
                                   style: TextStyle(fontSize: 14.sp),
                                 ),
                               )
                             ],
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.toNamed("/FeedUPDATESDETAILSScreen");
-                            },
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Share();
+                          },
+                          child: Row(
+                            children: [
+                              Container(
+                                  child: Image.asset(
+                                "assets/images/Icon awesome-share.png",
+                                scale: 5,
+                              )),
+                              7.horizontalSpace,
+                              Container(
+                                child: Text(
+                                  "Share",
+                                  style: TextStyle(fontSize: 14.sp),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    15.verticalSpace,
+                    Dividerr(),
+                    22.verticalSpace,
+                    Container(
+                      width: 388.w,
+                      height: 392,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+
+                              spreadRadius: 5,
+
+                              blurRadius: 7,
+
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          20.verticalSpace,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                    child: Image.asset(
-                                  "assets/images/Icon awesome-comment-dots.png",
-                                  scale: 5,
-                                )),
-                                7.horizontalSpace,
-                                Container(
-                                  child: Text(
-                                    "326 Comments",
-                                    style: TextStyle(fontSize: 14.sp),
+                                  width: 47.w,
+                                  height: 47.h,
+                                  child: Image.asset("assets/images/4.png"),
+                                ),
+                                5.horizontalSpace,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Martin Smith",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16.sp),
+                                    ),
+                                    Text(
+                                      "50min ago",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 12.sp),
+                                    ),
+                                    15.verticalSpace,
+                                    Text(
+                                      "Lorem ipsum dolor sit amet.",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 14.sp),
+                                    ),
+                                  ],
+                                ),
+                                DropdownButton<String>(
+                                  dropdownColor: Color(0xffDFE1EC),
+                                  menuMaxHeight: 120.h,
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(
+                                      10,
+                                    ),
+                                    topLeft: Radius.circular(
+                                      10,
+                                    ),
+                                    bottomRight: Radius.circular(
+                                      10,
+                                    ),
                                   ),
-                                )
+                                  onTap: () {},
+                                  underline: Container(),
+                                  items: <String>['Report', 'Block']
+                                      .map((String value) {
+                                    return DropdownMenuItem<String>(
+                                      // alignment: AlignmentDirectional.Cen,
+                                      onTap: () {},
+                                      value: value,
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            width: 13.w,
+                                            height: 13.h,
+                                            child: Image.asset(value == 'Report'
+                                                ? "assets/images/Icon material-report.png"
+                                                : "assets/images/Icon metro-blocked.png"),
+                                          ),
+                                          8.horizontalSpace,
+                                          Text(
+                                            value,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14.sp),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  }).toList(),
+                                  onChanged: (value) {
+                                    print("value is : " + value.toString());
+                                    if (value.toString() == "Report") {
+                                      Report();
+                                    } else {
+                                      Block();
+                                    }
+                                  },
+                                  icon: Padding(
+                                    padding: const EdgeInsets.only(bottom: 30),
+                                    child: Icon(
+                                      Icons.more_vert,
+                                      size: 25,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Share();
-                            },
-                            child: Row(
-                              children: [
-                                Container(
-                                    child: Image.asset(
-                                  "assets/images/Icon awesome-share.png",
-                                  scale: 5,
-                                )),
-                                7.horizontalSpace,
-                                Container(
-                                  child: Text(
-                                    "Share",
-                                    style: TextStyle(fontSize: 14.sp),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
+                          30.verticalSpace,
+                          Column(
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 15),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      child: Image.asset(
+                                        "assets/images/Icon material-location-on.png",
+                                        scale: 5,
+                                      ),
+                                    ),
+                                    10.horizontalSpace,
+                                    Container(
+                                      child: Text(
+                                        "Lorem ipsum dolor sit amet.",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.normal,
+                                            fontSize: 14.sp),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              10.verticalSpace,
+                              Image.asset(
+                                "assets/images/Rectangle 1339.png",
+                                scale: 1,
+                              ),
+                            ],
+                          ),
                         ],
                       ),
-                      15.verticalSpace,
-                      Dividerr(),
-                      50.verticalSpace,
-                    ],
-                  ),
+                    ),
+                    15.verticalSpace,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              child: Icon(
+                                Icons.thumb_up,
+                                color: Color(0xff21CDFB),
+                              ),
+                            ),
+                            7.horizontalSpace,
+                            Container(
+                              child: Text(
+                                "Like",
+                                style: TextStyle(fontSize: 14.sp),
+                              ),
+                            )
+                          ],
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed("/FeedUPDATESDETAILSScreen");
+                          },
+                          child: Row(
+                            children: [
+                              Container(
+                                  child: Image.asset(
+                                "assets/images/Icon awesome-comment-dots.png",
+                                scale: 5,
+                              )),
+                              7.horizontalSpace,
+                              Container(
+                                child: Text(
+                                  "326 Comments",
+                                  style: TextStyle(fontSize: 14.sp),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Share();
+                          },
+                          child: Row(
+                            children: [
+                              Container(
+                                  child: Image.asset(
+                                "assets/images/Icon awesome-share.png",
+                                scale: 5,
+                              )),
+                              7.horizontalSpace,
+                              Container(
+                                child: Text(
+                                  "Share",
+                                  style: TextStyle(fontSize: 14.sp),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    15.verticalSpace,
+                    Dividerr(),
+                    50.verticalSpace,
+                  ],
                 ),
               ),
+            ),
 
-              // Dividerr()
-            ],
-          ),
+            // Dividerr()
+          ],
         ),
       ),
     );
@@ -863,8 +924,10 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                 Container(
                   width: 388.w,
                   height: 477.h,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.white), borderRadius: BorderRadius.circular(10.r), color: Color(0xffFFFFFF)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10.r),
+                      color: Color(0xffFFFFFF)),
                   child: ListView(
                     children: [
                       Container(
@@ -965,7 +1028,9 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                                     children: [
                                       Text(
                                         "Submit",
-                                        style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18.sp),
                                       ),
                                     ],
                                   ),
@@ -1005,8 +1070,12 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                   child: Container(
                     height: 12,
                     width: 12,
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, border: Border.all(color: _value ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color:
+                                _value ? Color(0xff6A6A6A) : Color(0xff6A6A6A),
+                            width: 1)),
                     child: Icon(
                       Icons.circle_rounded,
                       color: _value ? Color(0xff303030) : Colors.white,
@@ -1038,8 +1107,12 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                   child: Container(
                     height: 12,
                     width: 12,
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, border: Border.all(color: _value1 ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color:
+                                _value1 ? Color(0xff6A6A6A) : Color(0xff6A6A6A),
+                            width: 1)),
                     child: Icon(
                       Icons.circle_rounded,
                       color: _value1 ? Color(0xff303030) : Colors.white,
@@ -1071,8 +1144,12 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                   child: Container(
                     height: 12,
                     width: 12,
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, border: Border.all(color: _value2 ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color:
+                                _value2 ? Color(0xff6A6A6A) : Color(0xff6A6A6A),
+                            width: 1)),
                     child: Icon(
                       Icons.circle_rounded,
                       color: _value2 ? Color(0xff303030) : Colors.white,
@@ -1105,8 +1182,12 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                   child: Container(
                     height: 12,
                     width: 12,
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, border: Border.all(color: _value3 ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color:
+                                _value3 ? Color(0xff6A6A6A) : Color(0xff6A6A6A),
+                            width: 1)),
                     child: Icon(
                       Icons.circle_rounded,
                       color: _value3 ? Color(0xff303030) : Colors.white,
@@ -1147,8 +1228,10 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                 Container(
                   width: 388.w,
                   height: 249.h,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.white), borderRadius: BorderRadius.circular(10.r), color: Color(0xffFFFFFF)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10.r),
+                      color: Color(0xffFFFFFF)),
                   child: ListView(
                     children: [
                       Container(
@@ -1206,7 +1289,8 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                           child: Text(
                             "Are you sure you want to block Post of this user?",
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16.sp, color: Colors.black),
+                            style:
+                                TextStyle(fontSize: 16.sp, color: Colors.black),
                           ),
                         ),
                         // 30.verticalSpace,
@@ -1303,8 +1387,10 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                 Container(
                   width: 388.w,
                   height: 423.h,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.white), borderRadius: BorderRadius.circular(10.r), color: Color(0xffFFFFFF)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10.r),
+                      color: Color(0xffFFFFFF)),
                   child: ListView(
                     children: [
                       Container(
@@ -1365,7 +1451,8 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                                 height: 82.h,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
-                                    border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                                    border: Border.all(
+                                        color: Colors.grey.withOpacity(0.2)),
                                     borderRadius: BorderRadius.circular(10)),
                                 child: TextFormField(
                                   style: TextStyle(
@@ -1377,10 +1464,12 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                                     disabledBorder: InputBorder.none,
                                     errorBorder: InputBorder.none,
                                     border: InputBorder.none,
-                                    contentPadding: EdgeInsets.only(left: 25, top: 9),
+                                    contentPadding:
+                                        EdgeInsets.only(left: 25, top: 9),
                                     // labelText: "Type a message",
                                     hintText: "Search here",
-                                    floatingLabelBehavior: FloatingLabelBehavior.auto,
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.auto,
                                     labelStyle: TextStyle(
                                       fontSize: 14.sp,
                                       color: Color(0xffA7B1BF),
@@ -1439,11 +1528,14 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                                   ),
                                   child: Center(
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(
                                           "Submit",
-                                          style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18.sp),
                                         ),
                                       ],
                                     ),
@@ -1462,7 +1554,9 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                                 children: [
                                   Text(
                                     "Share to",
-                                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.sp),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18.sp),
                                   )
                                 ],
                               ),
@@ -1477,14 +1571,21 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                               SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Horizontalgoing("assets/images/Icon ionic-logo-whatsapp.png"),
-                                    Horizontalgoing("assets/images/Icon awesome-facebook-f.png"),
-                                    Horizontalgoing("assets/images/Icon simple-wechat.png"),
-                                    Horizontalgoing("assets/images/Icon feather-instagram.png"),
-                                    Horizontalgoing("assets/images/Icon awesome-twitter.png"),
-                                    Horizontalgoing("assets/images/Icon ionic-logo-whatsapp.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon ionic-logo-whatsapp.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon awesome-facebook-f.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon simple-wechat.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon feather-instagram.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon awesome-twitter.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon ionic-logo-whatsapp.png"),
                                   ],
                                 ),
                               ),

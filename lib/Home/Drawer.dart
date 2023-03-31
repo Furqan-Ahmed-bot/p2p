@@ -316,7 +316,7 @@ class DrawerScreen extends StatelessWidget {
                               ),
                               title: GestureDetector(
                                 onTap: () {
-                                  Get.to(() => SUBSCRIPTIONScreen());
+                                  Get.to(() => SubscritionScreen());
                                 },
                                 child: Text(
                                   "My Subscription",
@@ -339,7 +339,8 @@ class DrawerScreen extends StatelessWidget {
                                 onTap: () {
                                   final bottomcontroller =
                                       Get.put(BottomController());
-                                  bottomcontroller.navBarChange(3);
+                                  bottomcontroller.navBarChange(2);
+                                  Get.close(1);
                                   Get.to(() => MainScreen());
                                 },
                                 child: Text(

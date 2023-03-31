@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:p2ptraffic/export_all.dart';
 
 class NOTIFICATIONSScreen extends StatefulWidget {
   const NOTIFICATIONSScreen({super.key});
@@ -55,24 +56,11 @@ class _NOTIFICATIONSScreenState extends State<NOTIFICATIONSScreen> {
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                Notificationss(),
-                Notificationss(),
-                Notificationss(),
-                Notificationss(),
-                Notificationss(),
-                Notificationss(),
-                Notificationss(),
-                Notificationss(),
-              ],
-            ),
-          ),
+      body: DisAllowIndicatorWidget(
+        child: ListView.builder(
+          padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 10.r),
+          itemCount: 10,
+          itemBuilder: (context, index) => Notificationss(),
         ),
       ),
     );
@@ -103,7 +91,8 @@ class _NOTIFICATIONSScreenState extends State<NOTIFICATIONSScreen> {
             ),
             Text(
               "16 min. ago",
-              style: TextStyle(color: Color(0xff3A3A3A).withOpacity(0.6), fontSize: 11.sp),
+              style: TextStyle(
+                  color: Color(0xff3A3A3A).withOpacity(0.6), fontSize: 11.sp),
             ),
           ],
         ),

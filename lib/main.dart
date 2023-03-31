@@ -104,8 +104,8 @@ class _MyAppState extends State<MyApp> {
               page: (() => SearchScreen()),
             ),
             GetPage(
-              name: '/SUBSCRIPTIONScreen',
-              page: (() => SUBSCRIPTIONScreen()),
+              name: '/SubscritionScreen',
+              page: (() => SubscritionScreen()),
             ),
             
             GetPage(
@@ -154,8 +154,8 @@ class _MyAppState extends State<MyApp> {
               page: (() => EditProfileScreen()),
             ),
             GetPage(
-              name: '/SUBSCRIBEScreen',
-              page: (() => SUBSCRIBEScreen()),
+              name: '/SubscritionPackageCardScreen',
+              page: (() => SubscritionPackageCardScreen()),
             ),
             GetPage(
               name: '/PayNowScreen',

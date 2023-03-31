@@ -25,10 +25,13 @@ class _CHECKOUTScreenState extends State<CHECKOUTScreen> {
           ),
         ),
         elevation: 0,
-        leading: Container(
-          child: Image.asset(
-            "assets/images/Icon ionic-ios-arrow-round-back.png",
-            scale: 5,
+        leading: GestureDetector(
+          onTap: () => Get.back(),
+          child: Container(
+            child: Image.asset(
+              "assets/images/Icon ionic-ios-arrow-round-back.png",
+              scale: 5,
+            ),
           ),
         ),
         flexibleSpace: Container(
@@ -172,8 +175,8 @@ class _CHECKOUTScreenState extends State<CHECKOUTScreen> {
                       GestureDetector(
                         onTap: () {
                           Get.to(() => PaymentMethodScreen(
-                            payButtonText: 'Pay Now',
-                          ));
+                                payButtonText: 'Pay Now',
+                              ));
                         },
                         child: Container(
                           width: 388.w,

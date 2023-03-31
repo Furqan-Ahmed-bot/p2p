@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+
+import 'package:p2ptraffic/export_all.dart';
 
 class PROFILE2Screen extends StatefulWidget {
   const PROFILE2Screen({super.key});
@@ -55,169 +54,163 @@ class _PROFIL2EScreenState extends State<PROFILE2Screen> {
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Column(
-              children: [
-                75.verticalSpace,
-                Container(
-                  width: 143.w,
-                  height: 143.h,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color(0xff004DF2),
-                        Color(0xff1CC8FB),
-                      ],
-                    ),
-                  ),
-                  child: Image.asset(
-                    "assets/images/NoPath.png",
-                    scale: 4.3,
-                  ),
-                ),
-                27.verticalSpace,
-                Text(
-                  "Julie Smith",
-                  style: TextStyle(
-                    color: Color(
-                      0xff3A3A3A,
-                    ),
-                    fontSize: 25.sp,
-                  ),
-                ),
-                27.verticalSpace,
-                contts(
-                  "assets/images/Icon material-email.png",
-                  "Julie.smith@domain.com",
-                ),
-                15.verticalSpace,
-                contts(
-                  "assets/images/Icon feather-phone.png",
-                  "+1 234 567890",
-                ),
-                15.verticalSpace,
-                contts(
-                  "assets/images/Icon awesome-transgender.png",
-                  "Female",
-                ),
-                15.verticalSpace,
-                contts(
-                  "assets/images/Icon material-location-onn.png",
-                  "20 Cooper Square",
-                ),
-                15.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 188.w,
-                      height: 55.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color.fromRGBO(255, 0, 0, 0.06),
-                            spreadRadius: 0,
-                            blurRadius: 7,
-                            offset: Offset(0, 1), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          20.horizontalSpace,
-                          10.horizontalSpace,
-                          Text(
-                            "New York",
-                            style: TextStyle(
-                              color: Color(0xff0C0D26),
-                              fontSize: 16.sp,
-                            ),
-                          ),
-                          65.horizontalSpace,
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 188.w,
-                      height: 55.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color.fromRGBO(255, 0, 0, 0.06),
-                            spreadRadius: 0,
-                            blurRadius: 7,
-                            offset: Offset(0, 1), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          20.horizontalSpace,
-                          10.horizontalSpace,
-                          Text(
-                            "NY",
-                            style: TextStyle(
-                              color: Color(0xff0C0D26),
-                              fontSize: 16.sp,
-                            ),
-                          ),
-                          // 65.horizontalSpace,
-                        ],
-                      ),
-                    ),
+      body: DisAllowIndicatorWidget(
+        child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 20.r),
+          children: [
+            Container(
+              width: 143.w,
+              height: 143.h,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  begin: Alignment.bottomRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Color(0xff004DF2),
+                    Color(0xff1CC8FB),
                   ],
                 ),
-                50.verticalSpace,
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed("/EditProfileScreen");
-                  },
-                  child: Container(
-                    width: 387.w,
-                    height: 60.h,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Color(0xff1CC8FB),
-                          Color(0xff004DF2),
-                        ],
+              ),
+              child: Image.asset(
+                "assets/images/NoPath.png",
+                scale: 4.3,
+              ),
+            ),
+            27.verticalSpace,
+            Text(
+              "Julie Smith",
+              style: TextStyle(
+                color: Color(
+                  0xff3A3A3A,
+                ),
+                fontSize: 25.sp,
+              ),
+            ),
+            27.verticalSpace,
+            contts(
+              "assets/images/Icon material-email.png",
+              "Julie.smith@domain.com",
+            ),
+            15.verticalSpace,
+            contts(
+              "assets/images/Icon feather-phone.png",
+              "+1 234 567890",
+            ),
+            15.verticalSpace,
+            contts(
+              "assets/images/Icon awesome-transgender.png",
+              "Female",
+            ),
+            15.verticalSpace,
+            contts(
+              "assets/images/Icon material-location-onn.png",
+              "20 Cooper Square",
+            ),
+            15.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: 188.w,
+                  height: 55.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(255, 0, 0, 0.06),
+                        spreadRadius: 0,
+                        blurRadius: 7,
+                        offset: Offset(0, 1), // changes position of shadow
                       ),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0, 0),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      20.horizontalSpace,
+                      10.horizontalSpace,
+                      Text(
+                        "New York",
+                        style: TextStyle(
+                          color: Color(0xff0C0D26),
+                          fontSize: 16.sp,
                         ),
-                      ],
-                      borderRadius: BorderRadius.circular(30.r),
-                    ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Edit Profile",
-                            style: TextStyle(color: Colors.white, fontSize: 18.sp),
-                          ),
-                        ],
                       ),
-                    ),
+                      65.horizontalSpace,
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 188.w,
+                  height: 55.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color.fromRGBO(255, 0, 0, 0.06),
+                        spreadRadius: 0,
+                        blurRadius: 7,
+                        offset: Offset(0, 1), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      20.horizontalSpace,
+                      10.horizontalSpace,
+                      Text(
+                        "NY",
+                        style: TextStyle(
+                          color: Color(0xff0C0D26),
+                          fontSize: 16.sp,
+                        ),
+                      ),
+                      // 65.horizontalSpace,
+                    ],
                   ),
                 ),
               ],
             ),
-          ),
+            50.verticalSpace,
+            GestureDetector(
+              onTap: () {
+                Get.toNamed("/EditProfileScreen");
+              },
+              child: Container(
+                width: 387.w,
+                height: 60.h,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Color(0xff1CC8FB),
+                      Color(0xff004DF2),
+                    ],
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 0),
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(30.r),
+                ),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Edit Profile",
+                        style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
