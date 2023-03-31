@@ -382,7 +382,7 @@ class DrawerScreen extends StatelessWidget {
                               ),
                               title: GestureDetector(
                                 onTap: () {
-                                  Get.to(() => HELPAndFEEDBACKScreen());
+                                  Get.to(() => HelpAndFeedbackScreen());
                                 },
                                 child: Text(
                                   "Help & Feedback",

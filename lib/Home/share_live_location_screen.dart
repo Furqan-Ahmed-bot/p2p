@@ -21,9 +21,9 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
   final TextEditingController captionTextController = TextEditingController();
   final TextEditingController selectTimeController = TextEditingController();
   final TextfieldTagsController tagController = TextfieldTagsController();
-  double? _distanceToField;
+  double? distanceToField;
   var photos; //for caputred image
-  final Completer<GoogleMapController> _mapcontroller = Completer();
+  final Completer<GoogleMapController> mapcontroller = Completer();
   static const CameraPosition _center =
       CameraPosition(target: LatLng(40.721424, -73.873540), zoom: 15);
   final List<Marker> _marker = [];
@@ -268,34 +268,13 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
                   ),
                 ),
                 20.verticalSpace,
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color(0xffEAEAEE),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xff66708026).withOpacity(0.06),
-                        spreadRadius: 0,
-                        blurRadius: 2,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(5.r),
-                  ),
-                  child: TextFormField(
+                CustomTextFieldWidget2(
+                    hintText: "Write Caption",
                     maxLines: 3,
-                    style: TextStyle(fontSize: 15.sp),
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(
-                        20.r,
-                      ),
-                      hintText: "Write Caption",
-                      helperMaxLines: 3,
-                      hintStyle:
-                          TextStyle(color: Color(0xff878B9E), fontSize: 15.sp),
-                      border: InputBorder.none,
+                    contentPadding: EdgeInsets.all(
+                      20.r,
                     ),
-                  ),
-                ),
+                    controller: captionTextController),
                 29.verticalSpace,
                 Text(
                   "Past Availabilty",
@@ -306,68 +285,44 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
                   ),
                 ),
                 20.verticalSpace,
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color(0xffEAEAEE),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xff66708026).withOpacity(0.06),
-                        spreadRadius: 0,
-                        blurRadius: 2,
-                        offset: Offset(0, 3), // changes position of shadow
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(5.r),
-                  ),
-                  child: TextFormField(
-                    maxLines: 1,
-                    readOnly: true,
-                    textAlignVertical: TextAlignVertical.center,
-                    controller: selectTimeController,
-                    style: TextStyle(fontSize: 14.sp),
-                    onTap: () async {
-                      TimeOfDay? pickedTime = await showTimePicker(
-                        initialTime: TimeOfDay.now(),
-                        context: context,
-                      );
+                CustomTextFieldWidget2(
+                  controller: selectTimeController,
+                  maxLines: 1,
+                  hintText: "Select Time",
+                  readOnly: true,
+                  onTap: () async {
+                    TimeOfDay? pickedTime = await showTimePicker(
+                      initialTime: TimeOfDay.now(),
+                      context: context,
+                    );
 
-                      if (pickedTime != null) {
-                        print(pickedTime.format(context)); //output 10:51 PM
-                        // DateTime parsedTime = DateFormat.jm()
-                        //     .parse(pickedTime.format(context).toString());
-                        //converting to DateTime so that we can further format on different pattern.
-                        // print(parsedTime);
-                        //output 1970-01-01 22:53:00.000
-                        // String formattedTime =
-                        //     DateFormat('HH:mm').format(parsedTime);
-                        // print(formattedTime); //output 14:59:00
-                        //DateFormat() is from intl package, you can format the time on any pattern you need.
+                    if (pickedTime != null) {
+                      print(pickedTime.format(context)); //output 10:51 PM
+                      // DateTime parsedTime = DateFormat.jm()
+                      //     .parse(pickedTime.format(context).toString());
+                      //converting to DateTime so that we can further format on different pattern.
+                      // print(parsedTime);
+                      //output 1970-01-01 22:53:00.000
+                      // String formattedTime =
+                      //     DateFormat('HH:mm').format(parsedTime);
+                      // print(formattedTime); //output 14:59:00
+                      //DateFormat() is from intl package, you can format the time on any pattern you need.
 
-                        setState(() {
-                          selectTimeController.text = pickedTime
-                              .format(context); //set the value of text field.
-                        });
-                      } else {
-                        print("Time is not selected");
-                      }
-                    },
-                    decoration: InputDecoration(
-                      isDense: true,
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: 20.r, vertical: 17.r),
-                      hintText: "Select Time",
-                      suffixIcon: Transform.rotate(
-                          angle: (538.7 * math.pi / 360),
-                          child: Icon(
-                            Icons.arrow_back_ios_new,
-                            color: Color(0xff010231),
-                            size: 18.r,
-                          )),
-                      hintStyle:
-                          TextStyle(color: Color(0xff878B9E), fontSize: 15.sp),
-                      border: InputBorder.none,
-                    ),
-                  ),
+                      setState(() {
+                        selectTimeController.text = pickedTime
+                            .format(context); //set the value of text field.
+                      });
+                    } else {
+                      print("Time is not selected");
+                    }
+                  },
+                  suffixIcon: Transform.rotate(
+                      angle: (538.7 * math.pi / 360),
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        color: Color(0xff010231),
+                        size: 18.r,
+                      )),
                 ),
                 29.verticalSpace,
                 Text(

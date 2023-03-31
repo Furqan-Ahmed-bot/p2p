@@ -171,7 +171,9 @@ class _CHECKOUTScreenState extends State<CHECKOUTScreen> {
                       418.verticalSpace,
                       GestureDetector(
                         onTap: () {
-                          Get.to(() => PaymentMethodScreen());
+                          Get.to(() => PaymentMethodScreen(
+                            payButtonText: 'Pay Now',
+                          ));
                         },
                         child: Container(
                           width: 388.w,

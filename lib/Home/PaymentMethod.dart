@@ -1,17 +1,14 @@
 import '../export_all.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
-  const PaymentMethodScreen({super.key});
+  final String payButtonText;
+  const PaymentMethodScreen({super.key, required this.payButtonText});
 
   @override
   State<PaymentMethodScreen> createState() => _PaymentMethodScreenState();
 }
 
 class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
-  bool _value = false;
-  bool _value1 = false;
-  bool _value2 = false;
-  bool _value3 = false;
   final List<PaymentDataModel> paymentOptionList = [
     PaymentDataModel(
         "assets/images/Rectangle 364.png", "456751******4566", false),
@@ -68,8 +65,8 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(20.r),
         child: CustomButtonWidget(
-          onTap: () => Get.toNamed("/PayNowScreen"),
-          text: 'Pay Now',
+          onTap: () => widget.payButtonText ==  'Pay Now' ? Get.toNamed("/PayNowScreen") : Get.close(1),
+          text: widget.payButtonText,
         ),
       ),
       body: DisAllowIndicatorWidget(
@@ -96,7 +93,6 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                         ],
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
                             onTap: () {
@@ -143,13 +139,16 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                               fontSize: 17.sp,
                             ),
                           ),
-                          65.horizontalSpace,
-                          Container(
-                            width: 15.w,
-                            height: 19.h,
-                            child: Image.asset(
-                                "assets/images/Icon material-delete-forever.png"),
-                          )
+                          Spacer(),
+                          IconButton(
+                              onPressed: () {
+                                paymentOptionList.removeAt(index);
+                                setState(() {});
+                              },
+                              icon: Icon(
+                                Icons.delete_forever,
+                                color: Color(0xffC6C8D2),
+                              ))
                         ],
                       ),
                     ),
@@ -181,124 +180,9 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                 ),
               ],
             ),
-            // 380.verticalSpace,
-            // GestureDetector(
-            //   onTap: () {
-            //     Get.toNamed("/PayNowScreen");
-            //   },
-            //   child: Container(
-            //     width: 388.w,
-            //     height: 60.h,
-            //     decoration: BoxDecoration(
-            //       gradient: LinearGradient(
-            //         begin: Alignment.bottomRight,
-            //         end: Alignment.bottomLeft,
-            //         colors: [
-            //           Color(0xff1CC8FB),
-            //           Color(0xff004DF2),
-            //         ],
-            //       ),
-            //       boxShadow: [
-            //         BoxShadow(
-            //           offset: Offset(0, 0),
-            //         ),
-            //       ],
-            //       borderRadius: BorderRadius.circular(30.r),
-            //     ),
-            //     child: Center(
-            //       child: Row(
-            //         mainAxisAlignment: MainAxisAlignment.center,
-            //         children: [
-            //           Text(
-            //             "Pay Now",
-            //             style: TextStyle(color: Colors.white, fontSize: 18.sp),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),
-    );
-  }
-
-  paymentt(
-    img,
-  ) {
-    return Column(
-      children: [
-        Container(
-          width: 388.w,
-          height: 57,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Color.fromRGBO(255, 0, 0, 0.06),
-                spreadRadius: 0,
-                blurRadius: 7,
-                offset: Offset(0, 1), // changes position of shadow
-              ),
-            ],
-          ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      _value = !_value;
-                    });
-                  },
-                  child: Container(
-                    height: 25,
-                    width: 25,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                            color:
-                                _value ? Color(0xff6A6A6A) : Color(0xff6A6A6A),
-                            width: 1)),
-                    child: Icon(
-                      Icons.circle_rounded,
-                      color: _value ? Color(0xff303030) : Colors.white,
-                      size: 18,
-                    ),
-                  ),
-                ),
-                20.horizontalSpace,
-                Container(
-                  width: 32.w,
-                  height: 25.h,
-                  child: Image.asset(
-                    img,
-                  ),
-                ),
-                29.horizontalSpace,
-                Text(
-                  "456751******4566",
-                  style: TextStyle(
-                    color: Color(0xff878B9E),
-                    fontSize: 17.sp,
-                  ),
-                ),
-                65.horizontalSpace,
-                Container(
-                  width: 15.w,
-                  height: 19.h,
-                  child: Image.asset(
-                      "assets/images/Icon material-delete-forever.png"),
-                )
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

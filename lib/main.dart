@@ -107,18 +107,12 @@ class _MyAppState extends State<MyApp> {
               name: '/SUBSCRIPTIONScreen',
               page: (() => SUBSCRIPTIONScreen()),
             ),
-            GetPage(
-              name: '/PaymentMethodScreen',
-              page: (() => PaymentMethodScreen()),
-            ),
+            
             GetPage(
               name: '/ChnageSETTINGSScreen',
               page: (() => ChnageSETTINGSScreen()),
             ),
-            GetPage(
-              name: '/HELPAndFEEDBACKScreen',
-              page: (() => HELPAndFEEDBACKScreen()),
-            ),
+           
             GetPage(
               name: '/PROFILE2Screen',
               page: (() => PROFILE2Screen()),
@@ -187,10 +181,7 @@ class _MyAppState extends State<MyApp> {
               name: '/SPOTIFYScreen',
               page: (() => SpotifScreen()),
             ),
-            GetPage(
-              name: '/SettingsPaymentmethodsScreen',
-              page: (() => SettingsPaymentmethodsScreen()),
-            ),
+            
             GetPage(
               name: '/FriendRequestsScreen',
               page: (() => FriendRequestsScreen()),

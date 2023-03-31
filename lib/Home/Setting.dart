@@ -72,7 +72,7 @@ class _SETTINGSScreenState extends State<SETTINGSScreen> {
             10.verticalSpace,
             Drop("Card Details", "assets/images/Icon metro-credit-card.png",
                 () {
-              Get.toNamed("/SettingsPaymentmethodsScreen");
+              Get.to(() => PaymentMethodScreen(payButtonText: 'Save'));
             }),
             10.verticalSpace,
             Drop("Terms & Conditions", "assets/images/Group 976.png", () {

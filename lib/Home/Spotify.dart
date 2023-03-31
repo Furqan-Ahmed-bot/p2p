@@ -188,7 +188,7 @@ class _SpotifScreenState extends State<SpotifScreen> {
               child: GridView.builder(
                 padding: EdgeInsets.only(top: 20.r, bottom: 230),
                 itemCount: songList.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     childAspectRatio: Get.width / (Get.height / 1.6),
                     crossAxisSpacing: 20.5,
