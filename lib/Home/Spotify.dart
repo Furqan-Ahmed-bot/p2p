@@ -33,6 +33,7 @@ class _SpotifScreenState extends State<SpotifScreen> {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -187,9 +188,9 @@ class _SpotifScreenState extends State<SpotifScreen> {
               child: GridView.builder(
                 padding: EdgeInsets.only(top: 20.r, bottom: 230),
                 itemCount: songList.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 0.95,
+                    childAspectRatio: Get.width / (Get.height / 1.6),
                     crossAxisSpacing: 20.5,
                     mainAxisSpacing: 20.5),
                 itemBuilder: (context, index) => GestureDetector(
@@ -200,6 +201,7 @@ class _SpotifScreenState extends State<SpotifScreen> {
                   },
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
                         width: 183.w,
@@ -214,116 +216,27 @@ class _SpotifScreenState extends State<SpotifScreen> {
                         ),
                       ),
                       10.verticalSpace,
-                      Text(
-                        songList[index].songTitle,
-                        style: TextStyle(
-                            fontSize: 14.sp, fontWeight: FontWeight.w600),
+                      FittedBox(
+                        child: Text(
+                          songList[index].songTitle,
+                          style: TextStyle(
+                              fontSize: 14.sp, fontWeight: FontWeight.w600),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ],
                   ),
                 ),
               ),
             )
-            // Boxss(
-            //     "assets/images/NoPath - Copy (16).png",
-            //     "assets/images/NoPath - Copy (44).png",
-            //     "Feelin' Good",
-            //     "Feel good with positively",
-            //     "Peaceful Piano",
-            //     "Relax and induge with"),
-            // 17.verticalSpace,
-
-            // Boxss(
-            //     "assets/images/NoPath - Copy (21).png",
-            //     "assets/images/NoPath - Copy (23).png",
-            //     "Feelin' Good",
-            //     "Feel good with positively",
-            //     "ABCDEFU",
-            //     "Relax and induge with"),
-            // 17.verticalSpace,
-            // Boxss(
-            //     "assets/images/NoPath - Copy (26).png",
-            //     "assets/images/NoPath - Copy (28).png",
-            //     "Feelin' Good",
-            //     "",
-            //     "ABCDEFU",
-            //     ""),
+            
           ],
         ),
       ),
     );
   }
 
-  Boxss(
-    Img1,
-    Img2,
-    ftxt,
-    ftxt2,
-    stxt,
-    stxt2,
-  ) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          children: [
-            Container(
-              width: 183.w,
-              height: 182.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.r),
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                child: Image.asset(
-                  Img1,
-                ),
-              ),
-            ),
-            10.verticalSpace,
-            Text(
-              ftxt,
-              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600),
-            ),
-            Text(
-              ftxt2,
-              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600),
-            )
-          ],
-        ),
-        Column(
-          children: [
-            Container(
-              width: 183.w,
-              height: 182.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(4.r),
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  Get.back();
-                },
-                child: Image.asset(
-                  Img2,
-                ),
-              ),
-            ),
-            10.verticalSpace,
-            Text(
-              stxt,
-              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600),
-            ),
-            Text(
-              stxt2,
-              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600),
-            )
-          ],
-        ),
-      ],
-    );
-  }
+ 
 }
 
 class SpotifyPlaylistModel {
