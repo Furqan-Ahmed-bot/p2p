@@ -11,15 +11,15 @@ class CreateProfileScreen extends StatefulWidget {
 
 class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
   final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController countryController = TextEditingController();
   final TextEditingController cityController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   File? selectFile;
   uploadProfileImage() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.image
-    );
+    FilePickerResult? result =
+        await FilePicker.platform.pickFiles(type: FileType.image);
     if (result != null) {
       selectFile = File(result.files.single.path!);
       setState(() {});
@@ -155,6 +155,17 @@ class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
                   },
                 ),
                 20.verticalSpace,
+                20.verticalSpace,
+                CustomTextFieldWidget(
+                  labelText: "Username",
+                  controller: userNameController,
+                  validator: (txt) {
+                    if (txt!.isEmpty) {
+                      return "* Required";
+                    } else
+                      return null;
+                  },
+                ),
                 DropdownWigdet(
                   labelText: 'Gender',
                   hintText: 'Select Gender',
@@ -250,9 +261,14 @@ class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
                     text: 'Create',
                     onTap: () {
                       if (formKey.currentState!.validate()) {
-                        final bottomcontroller = Get.put(BottomController());
-                        bottomcontroller.navBarChange(0);
-                        Get.to(() => MainScreen());
+                        var data = {
+                          'fullName': fullNameController.text,
+                          'userName': userNameController.text,
+                          'phoneNumber': phoneNumberController.text,
+                          'country': countryController.text,
+                          'city': cityController.text,
+                          'state': 
+                        };
                       } else if (selectFile == null) {
                         Get.snackbar('Error', 'Please upload profile picture',
                             colorText: Colors.white);

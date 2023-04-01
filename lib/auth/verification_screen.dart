@@ -1,4 +1,4 @@
-
+import 'dart:developer';
 
 import 'package:p2ptraffic/export_all.dart';
 
@@ -122,10 +122,15 @@ class VerificationScreenState extends State<VerificationScreen> {
                       textFieldAlignment: MainAxisAlignment.spaceBetween,
                       fieldStyle: FieldStyle.box,
                       onCompleted: (pin) {
-                        forgotPassword
-                            ? Get.to(() => const ResetPasswordScreen())
-                            : Get.to(() => const CreateProfileScreen());
                         print("Completed: " + pin);
+                        var data = {
+                          "email": email,
+                          "otp": pin,
+                          "deviceToken": deviceToken,
+                          "deviceType": deviceType
+                        };
+                        // log(data.toString());
+                        ApiService().otpCall(context, data);
                       },
                     ),
                   ),
@@ -144,7 +149,7 @@ class VerificationScreenState extends State<VerificationScreen> {
                   // ),
                   // 105.verticalSpace,
                   CircularCountDownTimer(
-                    duration: 3,
+                    duration: 4,
                     initialDuration: 0,
                     controller: countDownController,
                     width: MediaQuery.of(context).size.width / 3,
@@ -180,7 +185,8 @@ class VerificationScreenState extends State<VerificationScreen> {
 
                   GestureDetector(
                     onTap: () {
-                      countDownController.reset();
+                      var data = {"email": email};
+                      ApiService().resendOtpCall(context, data);
                     },
                     child: RichText(
                       text: const TextSpan(

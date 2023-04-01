@@ -78,3 +78,7 @@ export '../widgets.dart/textfield_widget.dart';
 export '../widgets.dart/disallow_indicator_widget.dart';
 export '../widgets.dart/dropdown_widget.dart';
 export '../widgets.dart/search_textfield_widget.dart';
+
+
+//SERVICE
+export 'package:p2ptraffic/service/api_service.dart';

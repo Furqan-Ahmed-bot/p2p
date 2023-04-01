@@ -1,4 +1,4 @@
-import 'package:p2ptraffic/service/api_service.dart';
+
 
 import '../export_all.dart';
 
@@ -13,7 +13,6 @@ class _SIGNUPScreenState extends State<SignupScreen> {
   bool isChecked = false;
   bool isChecked2 = false;
   final TextEditingController emailPhoneController = TextEditingController();
-  final TextEditingController userNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
@@ -106,17 +105,7 @@ class _SIGNUPScreenState extends State<SignupScreen> {
                       return null;
                   },
                 ),
-                // 20.verticalSpace,
-                // CustomTextFieldWidget(
-                //   labelText: "Username",
-                //   controller: userNameController,
-                //   validator: (txt) {
-                //     if (txt!.isEmpty) {
-                //       return "* Required";
-                //     } else
-                //       return null;
-                //   },
-                // ),
+                
                 20.verticalSpace,
                 CustomTextFieldWidget(
                   labelText: "Password",
@@ -155,6 +144,7 @@ class _SIGNUPScreenState extends State<SignupScreen> {
                           "deviceToken": deviceToken,
                           "deviceType": deviceType
                         };
+                        email = emailPhoneController.text.trim();
                         ApiService().callRegister(context, data);
                         // Get.to(() => const VerificationScreen());
                       }
