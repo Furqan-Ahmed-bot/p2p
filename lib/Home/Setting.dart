@@ -121,7 +121,7 @@ class _SETTINGSScreenState extends State<SETTINGSScreen> {
                 fontSize: 15,
                 fontWeight: FontWeight.normal),
           ),
-          150.horizontalSpace,
+          Spacer(),
           Transform.scale(
             scale: 0.5,
             child: CupertinoSwitch(

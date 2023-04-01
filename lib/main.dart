@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'Home/Feeds.dart';
 import 'Home/MartinProfile.dart';
@@ -107,12 +108,10 @@ class _MyAppState extends State<MyApp> {
               name: '/SubscritionScreen',
               page: (() => SubscritionScreen()),
             ),
-            
             GetPage(
               name: '/ChnageSETTINGSScreen',
               page: (() => ChnageSETTINGSScreen()),
             ),
-           
             GetPage(
               name: '/PROFILE2Screen',
               page: (() => PROFILE2Screen()),
@@ -181,7 +180,6 @@ class _MyAppState extends State<MyApp> {
               name: '/SPOTIFYScreen',
               page: (() => SpotifScreen()),
             ),
-            
             GetPage(
               name: '/FriendRequestsScreen',
               page: (() => FriendRequestsScreen()),
@@ -203,6 +201,12 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
+    if (Platform.isAndroid) {
+      deviceType = "android";
+    } else if (Platform.isIOS) {
+      deviceType = "ios";
+    }
+    deviceToken = "abcdedf";
     Timer(Duration(seconds: 3), () => Get.toNamed('/PreLoginScreen'));
   }
 

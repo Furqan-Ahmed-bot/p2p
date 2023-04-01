@@ -1,3 +1,5 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../export_all.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -10,10 +12,16 @@ class LoginScreen extends StatefulWidget {
 class LoginScreenState extends State<LoginScreen> {
   bool isChecked = false;
   final TextEditingController emailController =
-      TextEditingController(text: 'jone@yopmail.com');
+      TextEditingController();
   final TextEditingController passwordController =
-      TextEditingController(text: '12345678');
+      TextEditingController();
   final formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    loadUserEmailPassword();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -123,34 +131,42 @@ class LoginScreenState extends State<LoginScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Checkbox(
-                            visualDensity:
-                                const VisualDensity(horizontal: -4.0),
-                            side: AlwaysActiveBorderSide2(),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.r),
-                            ),
-                            checkColor: Colors.black,
-                            fillColor: MaterialStateProperty.resolveWith<Color>(
-                                (Set<MaterialState> states) {
-                              if (states.contains(MaterialState.disabled)) {
-                                return Colors.white;
-                              }
+                          visualDensity: const VisualDensity(horizontal: -4.0),
+                          side: AlwaysActiveBorderSide2(),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.r),
+                          ),
+                          checkColor: Colors.black,
+                          fillColor: MaterialStateProperty.resolveWith<Color>(
+                              (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.disabled)) {
                               return Colors.white;
-                            }),
+                            }
+                            return Colors.white;
+                          }),
 
-                            // activeColor: Colors.white,
-                            value: isChecked,
-                            onChanged: (bool? value) {
-                              setState(() {
-                                isChecked = value!;
-                              });
-                            }),
+                          // activeColor: Colors.white,
+                          value: isChecked,
+                          onChanged: (value) {
+                            isChecked = value!;
+                            SharedPreferences.getInstance().then(
+                              (prefs) {
+                                prefs.setBool("remember_me", value);
+                                prefs.setString('email', emailController.text);
+                                prefs.setString(
+                                    'password', passwordController.text);
+                              },
+                            );
+                            setState(() {
+                              isChecked = value;
+                            });
+                          },
+                        ),
                         Text(
                           "Remember Me",
                           style: TextStyle(
                             fontSize: 14.sp,
                             color: Colors.white,
-                            decoration: TextDecoration.underline,
                           ),
                         ),
                       ],
@@ -185,5 +201,40 @@ class LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void handleRemeberme(bool value) {
+    print("Handle Rember Me");
+    isChecked = value;
+    SharedPreferences.getInstance().then(
+      (prefs) {
+        prefs.setBool("remember_me", value);
+        prefs.setString('email', emailController.text);
+        prefs.setString('password', passwordController.text);
+      },
+    );
+    setState(() {
+      isChecked = value;
+    });
+  }
+
+  void loadUserEmailPassword() async {
+    print("Load Email");
+    try {
+      SharedPreferences _prefs = await SharedPreferences.getInstance();
+      var email = _prefs.getString("email") ?? "";
+      var password = _prefs.getString("password") ?? "";
+      var remeberMe = _prefs.getBool("remember_me") ?? false;
+
+      if (remeberMe) {
+        setState(() {
+          isChecked = true;
+        });
+        emailController.text = email;
+        passwordController.text = password;
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }

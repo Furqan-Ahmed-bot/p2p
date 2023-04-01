@@ -1,3 +1,5 @@
+import 'package:p2ptraffic/service/api_service.dart';
+
 import '../export_all.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -104,17 +106,17 @@ class _SIGNUPScreenState extends State<SignupScreen> {
                       return null;
                   },
                 ),
-                20.verticalSpace,
-                CustomTextFieldWidget(
-                  labelText: "Username",
-                  controller: userNameController,
-                  validator: (txt) {
-                    if (txt!.isEmpty) {
-                      return "* Required";
-                    } else
-                      return null;
-                  },
-                ),
+                // 20.verticalSpace,
+                // CustomTextFieldWidget(
+                //   labelText: "Username",
+                //   controller: userNameController,
+                //   validator: (txt) {
+                //     if (txt!.isEmpty) {
+                //       return "* Required";
+                //     } else
+                //       return null;
+                //   },
+                // ),
                 20.verticalSpace,
                 CustomTextFieldWidget(
                   labelText: "Password",
@@ -147,7 +149,14 @@ class _SIGNUPScreenState extends State<SignupScreen> {
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         forgotPassword = false;
-                        Get.to(() => const VerificationScreen());
+                        var data = {
+                          "email": emailPhoneController.text.trim(),
+                          "password": passwordController.text.trim(),
+                          "deviceToken": deviceToken,
+                          "deviceType": deviceType
+                        };
+                        ApiService().callRegister(context, data);
+                        // Get.to(() => const VerificationScreen());
                       }
                     }),
               ],

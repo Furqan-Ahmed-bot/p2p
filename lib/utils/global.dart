@@ -168,24 +168,25 @@ function1(BuildContext context) {
                       85.verticalSpace,
                       Row(
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              Get.back();
-                            },
-                            child: Container(
-                              width: Get.width * 0.398,
-                              height: 64.h,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(0.r),
-                                  bottomLeft: Radius.circular(18.r),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.back();
+                              },
+                              child: Container(
+                                height: 64.h,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(0.r),
+                                    bottomLeft: Radius.circular(18.r),
+                                  ),
+                                  color: Color(0xffDCE3EE),
                                 ),
-                                color: Color(0xffDCE3EE),
-                              ),
-                              child: Text(
-                                "Decline",
-                                style: TextStyle(color: Colors.black),
+                                child: Text(
+                                  "Decline",
+                                  style: TextStyle(color: Colors.black),
+                                ),
                               ),
                             ),
                           ),
@@ -194,31 +195,32 @@ function1(BuildContext context) {
                             thickness: 0.3,
                             color: Color(0xffDCE3EE),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.toNamed("/LoginScreen");
-                            },
-                            child: Container(
-                              width: Get.width * 0.398,
-                              height: 64.h,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(0.r),
-                                  bottomRight: Radius.circular(18.r),
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.toNamed("/LoginScreen");
+                              },
+                              child: Container(
+                                height: 64.h,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(0.r),
+                                    bottomRight: Radius.circular(18.r),
+                                  ),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.bottomRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Color(0xff1CC8FB),
+                                      Color(0xff004DF2),
+                                    ],
+                                  ),
                                 ),
-                                gradient: LinearGradient(
-                                  begin: Alignment.bottomRight,
-                                  end: Alignment.bottomLeft,
-                                  colors: [
-                                    Color(0xff1CC8FB),
-                                    Color(0xff004DF2),
-                                  ],
-                                ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Accept",
-                                  style: TextStyle(color: Colors.white),
+                                child: Center(
+                                  child: Text(
+                                    "Accept",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ),
@@ -259,3 +261,11 @@ bool isEmail(String em) {
 
   return regExp.hasMatch(em);
 }
+
+const spinkit = SpinKitRotatingCircle(
+  color: Colors.white,
+  size: 50.0,
+);
+
+String? deviceType;
+String? deviceToken;

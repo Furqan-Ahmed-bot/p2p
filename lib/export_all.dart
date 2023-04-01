@@ -57,6 +57,7 @@ export '../widgets.dart/secondary_textfield_widget.dart';
 export 'package:textfield_tags/textfield_tags.dart';
 export 'package:dotted_border/dotted_border.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
+export 'package:flutter_spinkit/flutter_spinkit.dart';
 
 
 //UTILS

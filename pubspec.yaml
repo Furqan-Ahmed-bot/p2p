@@ -64,6 +64,10 @@ dependencies:
   file_picker: ^5.2.6
   textfield_tags: ^2.0.2
   smooth_page_indicator: ^1.0.1
+  shared_preferences: ^2.1.0
+  flutter_spinkit: ^5.1.0
+  firebase_core: ^2.4.1
+  firebase_messaging: ^14.2.1 
   
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
