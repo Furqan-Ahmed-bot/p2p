@@ -154,8 +154,7 @@ class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
                       return null;
                   },
                 ),
-                20.verticalSpace,
-                20.verticalSpace,
+                20.verticalSpace,    
                 CustomTextFieldWidget(
                   labelText: "Username",
                   controller: userNameController,
@@ -166,6 +165,7 @@ class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
                       return null;
                   },
                 ),
+                20.verticalSpace,
                 DropdownWigdet(
                   labelText: 'Gender',
                   hintText: 'Select Gender',
@@ -251,7 +251,9 @@ class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
                             child: Text(value),
                           );
                         }).toList(),
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          stateValue = value;
+                        },
                       ),
                     )
                   ],
@@ -267,7 +269,7 @@ class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
                           'phoneNumber': phoneNumberController.text,
                           'country': countryController.text,
                           'city': cityController.text,
-                          'state': 
+                          'state': stateValue
                         };
                       } else if (selectFile == null) {
                         Get.snackbar('Error', 'Please upload profile picture',
