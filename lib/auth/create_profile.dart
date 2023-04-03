@@ -154,7 +154,7 @@ class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
                       return null;
                   },
                 ),
-                20.verticalSpace,    
+                20.verticalSpace,
                 CustomTextFieldWidget(
                   labelText: "Username",
                   controller: userNameController,
@@ -263,15 +263,17 @@ class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
                     text: 'Create',
                     onTap: () {
                       if (formKey.currentState!.validate()) {
-                        var data = {
+                        final Map<String, String> data = {
                           'fullName': fullNameController.text,
                           'userName': userNameController.text,
-                          'gender' : genderValue,
+                          'gender': genderValue.toString(),
                           'phoneNumber': phoneNumberController.text,
                           'country': countryController.text,
                           'city': cityController.text,
-                          'state': stateValue
+                          'state': stateValue.toString()
                         };
+                        ApiService()
+                            .callCreateProfile(context, data, selectFile!);
                       } else if (selectFile == null) {
                         Get.snackbar('Error', 'Please upload profile picture',
                             colorText: Colors.white);

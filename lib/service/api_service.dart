@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:developer';
+import 'dart:io';
 import 'package:http_parser/http_parser.dart';
 
 import 'package:http/http.dart' as http;
@@ -103,6 +105,11 @@ class ApiService {
             ],
           ),
           colorText: Colors.white);
+      authToken = res_data['data']['authToken'];
+      refreshToken = res_data['data']['refreshToken'];
+      log(authToken.toString() + '\n');
+      log(refreshToken.toString() + '\n');
+
       forgotPassword
           ? Get.to(() => const ResetPasswordScreen())
           : Get.to(() => const CreateProfileScreen());
@@ -185,14 +192,14 @@ class ApiService {
   }
 
   //CREATE PROFILE API
-  callCreateProfile(context, data, file) async {
+  callCreateProfile(context, data, File file) async {
     showDialog(
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
           return spinkit;
         });
-    final uri = Uri.parse('${apiGlobal}profile');
+    final uri = Uri.parse('${apiGlobal}/profile');
     try {
       var request = http.MultipartRequest('POST', uri);
       final headers = {
@@ -203,46 +210,51 @@ class ApiService {
         'extname': file.path.split('.').last.toString()
       };
 
-      request.fields["fullName"] = data["fullName"].toString();
-      request.fields["userName"] = data["userName"].toString();
-      request.fields["phoneNumber"] = data["phoneNumber"].toString();
-      request.fields["country"] = data["country"].toString();
-      request.fields["city"] = data["city"].toString();
-      request.fields["state"] = data["state"].toString();
+      request.fields.addAll(data);
 
-      if (file != null) {
-        var multipartFile = await http.MultipartFile.fromPath(
-          'image',
-          file.path,
-          filename: file.path.split('/').last,
-         
-          contentType: MediaType('image', file.path.split('.').last.toString()), //${file.path.split('.').last}
-        );
-        request.files.add(multipartFile);
-      
-      }
+      var multipartFile = await http.MultipartFile.fromPath(
+        'image',
+        file.path,
+        filename: file.path.split('/').last,
 
+        contentType: MediaType(
+            'image',
+            file.path
+                .split('.')
+                .last
+                .toString()), //${file.path.split('.').last}
+      );
+      request.files.add(multipartFile);
+      log('Before add header');
       request.headers.addAll(headers);
-      var response = await request.send();
+      log('After add header');
 
-      final res = await http.Response.fromStream(response);
-      var res_data = json.decode(res.body.toString());
-     
+      // var response = await request.send();
+      log('After send request');
 
-      if (res_data['status'] == true) {
+      final http.StreamedResponse res = await request.send();
+      ;
+      // var res_data = json.decode(res.body.toString());
+
+      if (res.statusCode == 200) {
         Get.back();
         print("PRofile picture" + file.toString());
-        print("CreateProfile" + res_data.toString());
+        print("CreateProfile" + res.toString());
         final bottomcontroller = Get.put(BottomController());
-                        bottomcontroller.navBarChange(0);
-                        Get.to(() => MainScreen());
+        bottomcontroller.navBarChange(0);
+        Get.to(() => MainScreen());
       } else {
-        Get.snackbar(
-          'Error',
-          res_data['message'],
-          snackPosition: SnackPosition.TOP,
-          colorText: Colors.green,
-        );
+        Get.snackbar('Error', 'Error',
+            snackPosition: SnackPosition.TOP,
+            colorText: Colors.white,
+            backgroundGradient: LinearGradient(
+              begin: Alignment.bottomRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Color(0xff1CC8FB),
+                Color(0xff004DF2),
+              ],
+            ));
       }
     } catch (e) {
       // log(e.toString());
@@ -250,7 +262,14 @@ class ApiService {
         'Error',
         e.toString(),
         snackPosition: SnackPosition.TOP,
-        backgroundColor: Colors.green,
+        backgroundGradient: LinearGradient(
+          begin: Alignment.bottomRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xff1CC8FB),
+            Color(0xff004DF2),
+          ],
+        ),
         colorText: Colors.white,
       );
     }
