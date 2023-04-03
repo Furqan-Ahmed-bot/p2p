@@ -201,12 +201,13 @@ class ApiService {
         });
     final uri = Uri.parse('${apiGlobal}/profile');
     try {
-      var request = http.MultipartRequest('POST', uri);
+      var request = http.MultipartRequest('PUT', uri);
       final headers = {
         'Authorization': authToken.toString(),
         'refreshtoken': refreshToken.toString(),
         'Content-Type': 'multipart/form-data',
-        'deviceToken': deviceToken.toString(),
+        'deviceToken':
+            'cId-jMeQQhK00FUbT8tWZz:APA91bEHBz43zo2_JKjuTTsW2tqFa46q1VW0vG9LFhE75W39n8fUZlksVJutff9ZlxRQtksMhuOoVt6Q05dhrYSmS9OIcRyIQa6LuoldNoTHaU07nYR8K3x-m2l64ESyknOF4wK4PymE',
         'extname': file.path.split('.').last.toString()
       };
 
@@ -229,22 +230,21 @@ class ApiService {
       request.headers.addAll(headers);
       log('After add header');
 
-      // var response = await request.send();
-      log('After send request');
+      request.headers.addAll(headers);
+      var response = await request.send();
 
-      final http.StreamedResponse res = await request.send();
-      ;
-      // var res_data = json.decode(res.body.toString());
+      final res = await http.Response.fromStream(response);
+      var res_data = json.decode(res.body.toString());
 
-      if (res.statusCode == 200) {
+      if (res_data['status'] == 200) {
         Get.back();
-        print("PRofile picture" + file.toString());
-        print("CreateProfile" + res.toString());
+
         final bottomcontroller = Get.put(BottomController());
         bottomcontroller.navBarChange(0);
         Get.to(() => MainScreen());
       } else {
-        Get.snackbar('Error', 'Error',
+        Get.back();
+        Get.snackbar('Error', res_data['message'],
             snackPosition: SnackPosition.TOP,
             colorText: Colors.white,
             backgroundGradient: LinearGradient(
