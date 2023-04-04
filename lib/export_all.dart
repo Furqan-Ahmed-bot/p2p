@@ -60,6 +60,7 @@ export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:flutter_spinkit/flutter_spinkit.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
+export 'package:geolocator/geolocator.dart';
 
 
 //UTILS

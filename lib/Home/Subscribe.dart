@@ -138,8 +138,8 @@ class _SubscritionPackageCardScreenState
                       color: Color(0xffFFFFFF)),
                   child: ListView(children: [
                     Container(
-                      width: 322.w,
                       height: 93.h,
+                      padding: EdgeInsets.all(15.r),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
@@ -164,7 +164,8 @@ class _SubscritionPackageCardScreenState
                     ),
                     ListView.separated(
                         shrinkWrap: true,
-                        padding: EdgeInsets.symmetric(vertical: 20.r),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 20.r, horizontal: 10.r),
                         itemBuilder: (context, index) => Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -177,13 +178,14 @@ class _SubscritionPackageCardScreenState
                                   SizedBox(
                                     width: 14.h,
                                   ),
-                                  Container(
-                                    width: 250.w,
+                                  Expanded(
+                                    // width: 322.w,
                                     child: Text(
                                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ",
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                           fontSize: 14.sp, color: Colors.black),
+                                      // overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
                                 ]),
@@ -193,7 +195,7 @@ class _SubscritionPackageCardScreenState
                       child: Text.rich(TextSpan(children: [
                         WidgetSpan(
                           child: Transform.translate(
-                            offset: const Offset(0.0, -28.0),
+                            offset: const Offset(0.0, -12.0),
                             child: Text(
                               '\$',
                               style: TextStyle(
@@ -205,7 +207,7 @@ class _SubscritionPackageCardScreenState
                             text: price.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
-                                fontSize: 70,
+                                fontSize: 50.sp,
                                 color: Color(0xff878B9E)))
                       ])),
                     ),

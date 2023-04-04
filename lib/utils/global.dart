@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import '../export_all.dart';
 
 bool forgotPassword = false;
@@ -274,3 +276,5 @@ String? email;
 String? authToken;
 String? refreshToken;
 String otpId = "";
+var latitude;
+var longitude;

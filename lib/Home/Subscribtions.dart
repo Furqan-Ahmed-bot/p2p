@@ -10,7 +10,6 @@ class SubscritionScreen extends StatefulWidget {
 class SubscritionScreenState extends State<SubscritionScreen> {
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Colors.white,
       // extendBodyBehindAppBar: true,
@@ -54,53 +53,49 @@ class SubscritionScreenState extends State<SubscritionScreen> {
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Column(
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(20.r),
+        child: CustomButtonWidget(
+            text: 'Upgrade',
+            onTap: () => Get.to(() => SubscritionPackageCardScreen())),
+      ),
+      body: DisAllowIndicatorWidget(
+        child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 20.r),
+          children: [
+            Row(
               children: [
-                17.verticalSpace,
-                Row(
-                  children: [
-                    Text(
-                      "Subscription Details",
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        color: Color(0xff010231),
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
+                Text(
+                  "Subscription Details",
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    color: Color(0xff010231),
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                25.verticalSpace,
-                Dividerr(),
-                textt("Package", "Gold Package"),
-                14.verticalSpace,
-                Dividerr(),
-                textt("Validity", "6 Months"),
-                14.verticalSpace,
-                Dividerr(),
-                textt("Subscribe", "Nov 05, 2022"),
-                14.verticalSpace,
-                Dividerr(),
-                textt("Expire", "Nov 04, 2023"),
-                14.verticalSpace,
-                Dividerr(),
-                textt("Price", "\$100"),
-                14.verticalSpace,
-                Dividerr(),
-                textt("Payment Method", "Apple Pay"),
-                14.verticalSpace,
-                Dividerr(),
-                320.verticalSpace,
-                CustomButtonWidget(
-                    text: 'Upgrade',
-                    onTap: () => Get.to(() => SubscritionPackageCardScreen())),
               ],
             ),
-          ),
+            25.verticalSpace,
+            Dividerr(),
+            textt("Package", "Gold Package"),
+            14.verticalSpace,
+            Dividerr(),
+            textt("Validity", "6 Months"),
+            14.verticalSpace,
+            Dividerr(),
+            textt("Subscribe", "Nov 05, 2022"),
+            14.verticalSpace,
+            Dividerr(),
+            textt("Expire", "Nov 04, 2023"),
+            14.verticalSpace,
+            Dividerr(),
+            textt("Price", "\$100"),
+            14.verticalSpace,
+            Dividerr(),
+            textt("Payment Method", "Apple Pay"),
+            14.verticalSpace,
+            Dividerr(),
+          ],
         ),
       ),
     );
