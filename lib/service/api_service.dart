@@ -256,6 +256,7 @@ class ApiService {
             ));
       }
     } catch (e) {
+      Get.back();
       // log(e.toString());
       Get.snackbar(
         'Error',
@@ -276,6 +277,13 @@ class ApiService {
 
   ///LOGIN API
   callLogin(context, data) async {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return spinkit;
+        });
+
     final uri = Uri.parse('${apiGlobal}/login');
     final headers = {'Content-Type': 'application/json'};
     String jsonBody = json.encode(data);
@@ -290,7 +298,7 @@ class ApiService {
       if (response.statusCode == 301) {
         authToken = res_data['data']['authToken'];
         refreshToken = res_data['data']['refreshToken'];
-
+        Get.back();
         Get.to(() => const CreateProfileScreen());
         return;
       } else if (res_data['status'] == true) {
@@ -300,19 +308,8 @@ class ApiService {
         final bottomcontroller = Get.put(BottomController());
         bottomcontroller.navBarChange(0);
         Get.to(() => MainScreen());
-        Get.snackbar('Success', res_data['message'],
-            snackPosition: SnackPosition.TOP,
-            backgroundGradient: LinearGradient(
-              begin: Alignment.bottomRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Color(0xff1CC8FB),
-                Color(0xff004DF2),
-              ],
-            ));
-
-        Get.to(() => MainScreen());
       } else if (!res_data['status'] == true) {
+        Get.back();
         Get.snackbar('Error', res_data['message'],
             snackPosition: SnackPosition.TOP,
             colorText: Colors.white,

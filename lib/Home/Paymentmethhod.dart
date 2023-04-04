@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+import 'package:p2ptraffic/export_all.dart';
 
 class PAYMENTMETHODDScreen extends StatefulWidget {
   const PAYMENTMETHODDScreen({super.key});
@@ -57,97 +55,58 @@ class _PAYMENTMETHODStateDScreen extends State<PAYMENTMETHODDScreen> {
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                7.verticalSpace,
-                TextField("Card Holder Name"),
-                10.verticalSpace,
-                TextField("Card Number"),
-                10.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(20.r),
+        child: CustomButtonWidget(text: 'Add Card', onTap: () => Get.close(1)),
+      ),
+      body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 20.r),
+        physics: const NeverScrollableScrollPhysics(),
+        children: [
+          TextField("Card Holder Name"),
+          10.verticalSpace,
+          TextField("Card Number"),
+          10.verticalSpace,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Text(
-                            "Exp Date",
-                            style: TextStyle(color: Color(0xff878B9E)),
-                          ),
-                        ),
-                        5.verticalSpace,
-                        sTextField("10 / 25"),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        "Exp Date",
+                        style: TextStyle(color: Color(0xff878B9E)),
+                      ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Text(
-                            "CVV",
-                            style: TextStyle(color: Color(0xff878B9E)),
-                          ),
-                        ),
-                        5.verticalSpace,
-                        sTextField(""),
-                      ],
-                    ),
+                    5.verticalSpace,
+                    sTextField("10 / 25"),
                   ],
                 ),
-                30.verticalSpace,
-                Cupertino(),
-                400.verticalSpace,
-                GestureDetector(
-                  onTap: () {
-                    Get.back();
-                    // final bottomcontroller = Get.put(BottomController());
-                    // bottomcontroller.navBarChange(0);
-                    // Get.to(() => MainScreen());
-                  },
-                  child: Container(
-                    width: 388.w,
-                    height: 60.h,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Color(0xff1CC8FB),
-                          Color(0xff004DF2),
-                        ],
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0, 0),
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(30.r),
-                    ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Add Card",
-                            style: TextStyle(color: Colors.white, fontSize: 18.sp),
-                          ),
-                        ],
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        "CVV",
+                        style: TextStyle(color: Color(0xff878B9E)),
                       ),
                     ),
-                  ),
+                    5.verticalSpace,
+                    sTextField(""),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ),
+          30.verticalSpace,
+          Cupertino(),
+        ],
       ),
     );
   }
@@ -217,7 +176,10 @@ class _PAYMENTMETHODStateDScreen extends State<PAYMENTMETHODDScreen> {
           children: [
             Text(
               "Save card details",
-              style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.normal),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 17,
+                  fontWeight: FontWeight.normal),
             ),
             Transform.scale(
               scale: 0.7,
@@ -241,8 +203,8 @@ class _PAYMENTMETHODStateDScreen extends State<PAYMENTMETHODDScreen> {
     txt,
   ) {
     return Container(
-      width: 191.w,
       height: 57.h,
+      // width: Get.width * 0.43,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
