@@ -53,6 +53,7 @@ class _ShareLiveLocationScreenState extends State<ShareLiveLocationScreen> {
 
   void startCamera() async {
     cameras = await availableCameras();
+    // ignore: unnecessary_null_comparison
     if (cameras != null) {
       controller = CameraController(cameras[0], ResolutionPreset.max);
 //cameras[0] = first camera, change to 1 to another camera

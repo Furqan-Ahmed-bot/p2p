@@ -1,12 +1,17 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
+
+
 
 import 'Home/Feeds.dart';
 import 'Home/MartinProfile.dart';
 
 import 'export_all.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -201,6 +206,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
+    FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance; // Change here
+    _firebaseMessaging.getToken().then((token) {
+      deviceToken = token!;
+      log('DEVICE TOKEN: $deviceToken');
+    });
     if (Platform.isAndroid) {
       deviceType = "android";
     } else if (Platform.isIOS) {

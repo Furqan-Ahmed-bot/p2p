@@ -28,11 +28,7 @@ class _SpotifScreenState extends State<SpotifScreen> {
     SpotifyPlaylistModel('I Love You So',
         'https://i.scdn.co/image/ab67616d0000b2739214ff0109a0e062f8a6cf0f')
   ];
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  
 
   @override
   Widget build(BuildContext context) {

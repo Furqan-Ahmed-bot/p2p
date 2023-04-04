@@ -1,10 +1,4 @@
 import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:p2ptraffic/Home/Drawer.dart';
 import 'package:p2ptraffic/export_all.dart';
 
 class MartinProfileScreen extends StatefulWidget {
