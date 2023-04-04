@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 import '../export_all.dart';
 
-String apiGlobal = "https://p2p-api.thesuitchstaging.com:2700";
+final String apiGlobal = "https://p2p-api.thesuitchstaging.com:2700";
 // String imageGlobal = "https://api1.jumppace.com:3060";
 // String apiUrl = "wss://api1.jumppace.com:3060/";
 
@@ -109,7 +109,7 @@ class ApiService {
       refreshToken = res_data['data']['refreshToken'];
       log(authToken.toString() + '\n');
       log(refreshToken.toString() + '\n');
-
+      otpId = forgotPassword ? res_data['data']['otpId'] : '';
       forgotPassword
           ? Get.to(() => const ResetPasswordScreen())
           : Get.to(() => const CreateProfileScreen());
@@ -206,8 +206,7 @@ class ApiService {
         'Authorization': authToken.toString(),
         'refreshtoken': refreshToken.toString(),
         'Content-Type': 'multipart/form-data',
-        'deviceToken':
-            'cId-jMeQQhK00FUbT8tWZz:APA91bEHBz43zo2_JKjuTTsW2tqFa46q1VW0vG9LFhE75W39n8fUZlksVJutff9ZlxRQtksMhuOoVt6Q05dhrYSmS9OIcRyIQa6LuoldNoTHaU07nYR8K3x-m2l64ESyknOF4wK4PymE',
+        'deviceToken': deviceToken.toString(),
         'extname': file.path.split('.').last.toString()
       };
 
@@ -258,6 +257,238 @@ class ApiService {
       }
     } catch (e) {
       // log(e.toString());
+      Get.snackbar(
+        'Error',
+        e.toString(),
+        snackPosition: SnackPosition.TOP,
+        backgroundGradient: LinearGradient(
+          begin: Alignment.bottomRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xff1CC8FB),
+            Color(0xff004DF2),
+          ],
+        ),
+        colorText: Colors.white,
+      );
+    }
+  }
+
+  ///LOGIN API
+  callLogin(context, data) async {
+    final uri = Uri.parse('${apiGlobal}/login');
+    final headers = {'Content-Type': 'application/json'};
+    String jsonBody = json.encode(data);
+
+    http.Response response = await http.post(
+      uri,
+      headers: headers,
+      body: jsonBody,
+    );
+    var res_data = json.decode(response.body.toString());
+    try {
+      if (response.statusCode == 301) {
+        authToken = res_data['data']['authToken'];
+        refreshToken = res_data['data']['refreshToken'];
+
+        Get.to(() => const CreateProfileScreen());
+        return;
+      } else if (res_data['status'] == true) {
+        Get.back();
+        log('Login ${res_data.toString()}');
+
+        final bottomcontroller = Get.put(BottomController());
+        bottomcontroller.navBarChange(0);
+        Get.to(() => MainScreen());
+        Get.snackbar('Success', res_data['message'],
+            snackPosition: SnackPosition.TOP,
+            backgroundGradient: LinearGradient(
+              begin: Alignment.bottomRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Color(0xff1CC8FB),
+                Color(0xff004DF2),
+              ],
+            ));
+
+        Get.to(() => MainScreen());
+      } else if (!res_data['status'] == true) {
+        Get.back();
+
+        Get.snackbar('Error', res_data['message'],
+            snackPosition: SnackPosition.TOP,
+            colorText: Colors.white,
+            backgroundGradient: LinearGradient(
+              begin: Alignment.bottomRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Color(0xff1CC8FB),
+                Color(0xff004DF2),
+              ],
+            ));
+      }
+    } catch (e) {
+      log(e.toString());
+      Get.snackbar(
+        'Error',
+        e.toString(),
+        snackPosition: SnackPosition.TOP,
+        backgroundGradient: LinearGradient(
+          begin: Alignment.bottomRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xff1CC8FB),
+            Color(0xff004DF2),
+          ],
+        ),
+        colorText: Colors.white,
+      );
+    }
+  }
+
+  ///FORGOT PASSWORD API
+  callForgetPassword(context, data) async {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return spinkit;
+        });
+
+    final uri = Uri.parse('${apiGlobal}/forget_password');
+    final headers = {'Content-Type': 'application/json'};
+    String jsonBody = json.encode(data);
+
+    http.Response response = await http.post(
+      uri,
+      headers: headers,
+      body: jsonBody,
+    );
+    var res_data = json.decode(response.body.toString());
+    try {
+      if (res_data['status']) {
+        Get.back();
+        log('ForgetPass ${res_data.toString()}');
+
+        // refreshToken = res_data['data']['refreshToken'];
+        Get.snackbar(
+          'Success',
+          res_data['message'],
+          snackPosition: SnackPosition.TOP,
+          backgroundGradient: LinearGradient(
+            begin: Alignment.bottomRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color(0xff1CC8FB),
+              Color(0xff004DF2),
+            ],
+          ),
+          colorText: Colors.white,
+        );
+        forgotPassword = true;
+        Get.to(() => VerificationScreen());
+      }
+      if (!res_data['status']) {
+        Get.back();
+
+        Get.snackbar(
+          'Error',
+          res_data['message'],
+          snackPosition: SnackPosition.TOP,
+          backgroundGradient: LinearGradient(
+            begin: Alignment.bottomRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color(0xff1CC8FB),
+              Color(0xff004DF2),
+            ],
+          ),
+          colorText: Colors.white,
+        );
+      }
+    } catch (e) {
+      log(e.toString());
+      Get.snackbar(
+        'Error',
+        e.toString(),
+        snackPosition: SnackPosition.TOP,
+        backgroundGradient: LinearGradient(
+          begin: Alignment.bottomRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xff1CC8FB),
+            Color(0xff004DF2),
+          ],
+        ),
+        colorText: Colors.white,
+      );
+    }
+  }
+
+  ///RESET PASSWORD API
+   callResetPassword(context, data) async {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return spinkit;
+        });
+
+    final uri = Uri.parse('${apiGlobal}/resetpassword');
+    final headers = {
+      'Authorization': authToken.toString(),
+      'refreshtoken': refreshToken.toString(),
+      'Content-Type': 'application/json',
+    };
+    String jsonBody = json.encode(data);
+
+    http.Response response = await http.post(
+      uri,
+      headers: headers,
+      body: jsonBody,
+    );
+    var res_data = json.decode(response.body.toString());
+    try {
+      if (res_data['status']) {
+        Get.back();
+        
+
+        Get.snackbar(
+          'Success',
+          res_data['message'],
+          snackPosition: SnackPosition.TOP,
+         backgroundGradient: LinearGradient(
+          begin: Alignment.bottomRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xff1CC8FB),
+            Color(0xff004DF2),
+          ],
+        ),
+        colorText: Colors.white,
+        );
+        Get.to(() => LoginScreen());
+      }
+      if (!res_data['status']) {
+        Get.back();
+
+        Get.snackbar(
+          'Error',
+          res_data['message'],
+          snackPosition: SnackPosition.TOP,
+          backgroundGradient: LinearGradient(
+          begin: Alignment.bottomRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xff1CC8FB),
+            Color(0xff004DF2),
+          ],
+        ),
+        colorText: Colors.white,
+        );
+      }
+    } catch (e) {
+      log(e.toString());
       Get.snackbar(
         'Error',
         e.toString(),

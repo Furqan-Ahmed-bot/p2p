@@ -91,8 +91,11 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
               CustomButtonWidget(
                   text: "Continue",
                   onTap: () {
-                    forgotPassword = true;
-                    Get.toNamed("/VerificationScreen");
+                    final Map<String, String> data = {
+                      "email": userNamePhoneController.text.trim()
+                    };
+                    email = userNamePhoneController.text.trim();
+                    ApiService().callForgetPassword(context, data);
                   }),
             ],
           ),

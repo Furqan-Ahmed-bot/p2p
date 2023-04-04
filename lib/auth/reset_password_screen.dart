@@ -89,7 +89,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     text: 'Reset',
                     onTap: () {
                       if (formKey.currentState!.validate()) {
-                        Get.to(() => LoginScreen());
+                        final Map<String, String> data = {
+                          "otpId": otpId,
+                          // "email": email.toString(),
+                          "password": passwordController.text.trim(),
+                          "deviceToken": deviceToken,
+                          "deviceType": deviceType.toString()
+                        };
+                        ApiService().resendOtpCall(context, data);
+                        // Get.to(() => LoginScreen());
                       }
                     })
               ],
@@ -99,7 +107,4 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       ),
     );
   }
-
-
 }
-

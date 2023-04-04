@@ -268,7 +268,9 @@ const spinkit = SpinKitRotatingCircle(
 );
 
 String? deviceType;
-String? deviceToken;
+String deviceToken =
+    'cId-jMeQQhK00FUbT8tWZz:APA91bEHBz43zo2_JKjuTTsW2tqFa46q1VW0vG9LFhE75W39n8fUZlksVJutff9ZlxRQtksMhuOoVt6Q05dhrYSmS9OIcRyIQa6LuoldNoTHaU07nYR8K3x-m2l64ESyknOF4wK4PymE';
 String? email;
 String? authToken;
 String? refreshToken;
+String otpId = "";

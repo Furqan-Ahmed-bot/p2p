@@ -11,10 +11,8 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen> {
   bool isChecked = false;
-  final TextEditingController emailController =
-      TextEditingController();
-  final TextEditingController passwordController =
-      TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   @override
   void initState() {
@@ -190,9 +188,14 @@ class LoginScreenState extends State<LoginScreen> {
                     text: "Login",
                     onTap: () {
                       if (formKey.currentState!.validate()) {
-                        final bottomcontroller = Get.put(BottomController());
-                        bottomcontroller.navBarChange(0);
-                        Get.to(() => MainScreen());
+                      
+                        final Map<String, String> data = {
+                          "email": emailController.text.trim(),
+                          "password": passwordController.text.trim(),
+                          "deviceType": deviceType.toString(),
+                          "deviceToken": deviceToken.toString()
+                        };
+                        ApiService().callLogin(context, data);
                       }
                     })
               ],
