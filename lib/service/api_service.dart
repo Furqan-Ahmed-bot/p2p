@@ -313,8 +313,6 @@ class ApiService {
 
         Get.to(() => MainScreen());
       } else if (!res_data['status'] == true) {
-        Get.back();
-
         Get.snackbar('Error', res_data['message'],
             snackPosition: SnackPosition.TOP,
             colorText: Colors.white,
@@ -426,7 +424,7 @@ class ApiService {
   }
 
   ///RESET PASSWORD API
-   callResetPassword(context, data) async {
+  callResetPassword(context, data) async {
     showDialog(
         context: context,
         barrierDismissible: false,
@@ -451,21 +449,20 @@ class ApiService {
     try {
       if (res_data['status']) {
         Get.back();
-        
 
         Get.snackbar(
           'Success',
           res_data['message'],
           snackPosition: SnackPosition.TOP,
-         backgroundGradient: LinearGradient(
-          begin: Alignment.bottomRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            Color(0xff1CC8FB),
-            Color(0xff004DF2),
-          ],
-        ),
-        colorText: Colors.white,
+          backgroundGradient: LinearGradient(
+            begin: Alignment.bottomRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color(0xff1CC8FB),
+              Color(0xff004DF2),
+            ],
+          ),
+          colorText: Colors.white,
         );
         Get.to(() => LoginScreen());
       }
@@ -477,14 +474,14 @@ class ApiService {
           res_data['message'],
           snackPosition: SnackPosition.TOP,
           backgroundGradient: LinearGradient(
-          begin: Alignment.bottomRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            Color(0xff1CC8FB),
-            Color(0xff004DF2),
-          ],
-        ),
-        colorText: Colors.white,
+            begin: Alignment.bottomRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color(0xff1CC8FB),
+              Color(0xff004DF2),
+            ],
+          ),
+          colorText: Colors.white,
         );
       }
     } catch (e) {
