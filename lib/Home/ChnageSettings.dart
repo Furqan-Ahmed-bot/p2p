@@ -1,5 +1,3 @@
-
-
 import '../export_all.dart';
 
 class ChnageSETTINGSScreen extends StatefulWidget {
@@ -10,6 +8,10 @@ class ChnageSETTINGSScreen extends StatefulWidget {
 }
 
 class _ChnageSETTINGSScreenState extends State<ChnageSETTINGSScreen> {
+  final existingPasswordController = TextEditingController();
+  final newPasswordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,61 +57,30 @@ class _ChnageSETTINGSScreenState extends State<ChnageSETTINGSScreen> {
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Column(
-              children: [
-                17.verticalSpace,
-                TextField1("Existing Passsword"),
-                15.verticalSpace,
-                TextField1("New Password"),
-                15.verticalSpace,
-                TextField1("Confirm New Password"),
-                50.verticalSpace,
-                GestureDetector(
-                  onTap: () {
-                    final bottomcontroller = Get.put(BottomController());
-                    bottomcontroller.navBarChange(0);
-                    Get.to(() => MainScreen());
-                  },
-                  child: Container(
-                    width: 388.w,
-                    height: 60.h,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Color(0xff1CC8FB),
-                          Color(0xff004DF2),
-                        ],
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0, 0),
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(30.r),
-                    ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Change",
-                            style: TextStyle(color: Colors.white, fontSize: 18.sp),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+      body: DisAllowIndicatorWidget(
+        child: ListView(
+          padding: EdgeInsets.all(20.r),
+          children: [
+            CustomTextFieldWidget2(
+                hintText: 'Existing Passsword',
+                controller: existingPasswordController),
+            // TextField1("Existing Passsword"),
+            15.verticalSpace,
+            CustomTextFieldWidget2(
+                hintText: 'New Password', controller: newPasswordController),
+            15.verticalSpace,
+            CustomTextFieldWidget2(
+                hintText: 'Confirm New Password',
+                controller: confirmPasswordController),
+            50.verticalSpace,
+            CustomButtonWidget(
+                text: 'Change',
+                onTap: () {
+                  final bottomcontroller = Get.put(BottomController());
+                  bottomcontroller.navBarChange(0);
+                  Get.to(() => MainScreen());
+                })
+          ],
         ),
       ),
     );
