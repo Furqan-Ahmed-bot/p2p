@@ -12,8 +12,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> key = GlobalKey();
 
   final Completer<GoogleMapController> _mapcontroller = Completer();
-  static const CameraPosition _center =
-      CameraPosition(target: LatLng(40.721424, -73.873540), zoom: 15);
+  static CameraPosition _center =
+      CameraPosition(target: LatLng(latitude, longitude), zoom: 15);
   final List<Marker> _marker = [];
   final List<Marker> _branch = const [
     Marker(
