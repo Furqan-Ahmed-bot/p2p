@@ -10,7 +10,7 @@ export 'package:p2ptraffic/Home/Setting.dart';
 export 'package:p2ptraffic/Home/Subscribtions.dart';
 export 'package:p2ptraffic/Home/Camera.dart';
 export 'package:p2ptraffic/Home/CheckOut.dart';
-export 'package:p2ptraffic/Home/ChnageSettings.dart';
+export 'package:p2ptraffic/Home/ChangeSettings.dart';
 export 'package:p2ptraffic/Home/FeedUpdatesDetails.dart';
 // export 'package:p2ptraffic/Home/Feeds.dart';
 export 'package:p2ptraffic/Home/History.dart';

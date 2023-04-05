@@ -1,13 +1,13 @@
 import '../export_all.dart';
 
-class ChnageSETTINGSScreen extends StatefulWidget {
-  const ChnageSETTINGSScreen({super.key});
+class ChangeSettingScreen extends StatefulWidget {
+  const ChangeSettingScreen({super.key});
 
   @override
-  State<ChnageSETTINGSScreen> createState() => _ChnageSETTINGSScreenState();
+  State<ChangeSettingScreen> createState() => _ChangeSettingScreenState();
 }
 
-class _ChnageSETTINGSScreenState extends State<ChnageSETTINGSScreen> {
+class _ChangeSettingScreenState extends State<ChangeSettingScreen> {
   final existingPasswordController = TextEditingController();
   final newPasswordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
@@ -86,40 +86,5 @@ class _ChnageSETTINGSScreenState extends State<ChnageSETTINGSScreen> {
     );
   }
 
-  TextField1(
-    txt,
-  ) {
-    return Container(
-      width: 388.w,
-      height: 56.h,
-      decoration: BoxDecoration(
-        color: Color(0xffEAEAEE),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0xff66708026).withOpacity(0.06),
-            spreadRadius: 0,
-            blurRadius: 2,
-            offset: Offset(0, 3), // changes position of shadow
-          ),
-        ],
-        borderRadius: BorderRadius.circular(5.r),
-      ),
-      child: TextFormField(
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(
-            left: 30,
-          ),
-          hintText: txt,
-          // suffixIcon: Container(
-          //   child: Image.asset(
-          //     "assets/images/Icon ionic-md-eye-off.png",
-          //     scale: 5,
-          //   ),
-          // ),
-          hintStyle: TextStyle(color: Color(0xff878B9E), fontSize: 16.sp),
-          border: InputBorder.none,
-        ),
-      ),
-    );
-  }
+  
 }

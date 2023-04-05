@@ -115,7 +115,7 @@ class _MyAppState extends State<MyApp> {
             ),
             GetPage(
               name: '/ChnageSETTINGSScreen',
-              page: (() => ChnageSETTINGSScreen()),
+              page: (() => ChangeSettingScreen()),
             ),
             GetPage(
               name: '/PROFILE2Screen',
