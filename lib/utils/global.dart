@@ -270,6 +270,8 @@ const spinkit = SpinKitRotatingCircle(
 );
 
 String? deviceType;
+String? userName;
+String? userImageUrl;
 String? deviceToken;
 String? email;
 String? authToken;

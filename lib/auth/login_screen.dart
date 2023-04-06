@@ -188,13 +188,13 @@ class LoginScreenState extends State<LoginScreen> {
                     text: "Login",
                     onTap: () {
                       if (formKey.currentState!.validate()) {
-                      
                         final Map<String, String> data = {
                           "email": emailController.text.trim(),
                           "password": passwordController.text.trim(),
                           "deviceType": deviceType.toString(),
                           "deviceToken": deviceToken.toString()
                         };
+                        email = emailController.text.trim();
                         ApiService().callLogin(context, data);
                       }
                     })

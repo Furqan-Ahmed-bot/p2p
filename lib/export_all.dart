@@ -61,6 +61,7 @@ export 'package:flutter_spinkit/flutter_spinkit.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
 export 'package:geolocator/geolocator.dart';
+export 'package:cached_network_image/cached_network_image.dart';
 
 
 //UTILS

@@ -83,28 +83,32 @@ class DrawerScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {},
                   child: Container(
-                    width: 143.w,
-                    height: 143.h,
+                    width: 143.r,
+                    height: 143.r,
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Color(0xff004DF2),
-                          Color(0xff1CC8FB),
-                        ],
-                      ),
-                    ),
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white, width: 2),
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomRight,
+                          end: Alignment.bottomLeft,
+                          colors: [
+                            Color(0xff004DF2),
+                            Color(0xff1CC8FB),
+                          ],
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 1,
+                          )
+                        ]),
                     child: GestureDetector(
                       onTap: () {
                         Get.toNamed("/DrawerProfileScreen");
                       },
-                      child: Container(
-                        child: Image.asset(
-                          "assets/images/NoPath.png",
-                          scale: 4.3,
-                        ),
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            'https://p2p-api.thesuitchstaging.com/${userImageUrl}'),
                       ),
                     ),
                   ),
@@ -113,7 +117,7 @@ class DrawerScreen extends StatelessWidget {
                   height: 21.h,
                 ),
                 Text(
-                  "Martin Smith",
+                  userName.toString(),
                   style: TextStyle(
                     fontSize: 18.sp,
                     color: Color(0xff02045C),
@@ -121,7 +125,7 @@ class DrawerScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "martinSmith@email.com",
+                  email.toString(),
                   style: TextStyle(fontSize: 14.sp, color: Colors.grey),
                 ),
                 SizedBox(height: 20.h),

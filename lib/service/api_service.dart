@@ -235,10 +235,11 @@ class ApiService {
       final res = await http.Response.fromStream(response);
 
       var res_data = json.decode(res.body.toString());
-      log("Error" + res_data['message'].toString());
+
       if (res_data['status'] == true) {
         Get.back();
-
+        userName = res_data['data']['userName'];
+        userImageUrl = res_data['data']['image'];
         final bottomcontroller = Get.put(BottomController());
         bottomcontroller.navBarChange(0);
         Get.to(() => MainScreen());
@@ -305,6 +306,8 @@ class ApiService {
       } else if (res_data['status'] == true) {
         Get.back();
         log('Login ${res_data.toString()}');
+        userName = res_data['data']['userName'];
+        userImageUrl = res_data['data']['image'];
 
         final bottomcontroller = Get.put(BottomController());
         bottomcontroller.navBarChange(0);
