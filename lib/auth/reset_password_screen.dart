@@ -93,7 +93,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           // "otpId": otpId,
                           "email": email.toString(),
                           "password": passwordController.text.trim(),
-                          "deviceToken": deviceToken,
+                          "deviceToken": deviceToken.toString(),
                           "deviceType": deviceType.toString()
                         };
                         ApiService().callResetPassword(context, data);

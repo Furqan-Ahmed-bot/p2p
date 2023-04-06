@@ -185,7 +185,7 @@ class VerificationScreenState extends State<VerificationScreen> {
 
                   GestureDetector(
                     onTap: () {
-                      var data = {"email": email};
+                      var data = {"email": email, 'reason' : 'verification'};
                       ApiService().resendOtpCall(context, data);
                     },
                     child: RichText(

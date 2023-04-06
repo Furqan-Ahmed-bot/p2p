@@ -267,7 +267,7 @@ class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
                           'fullName': fullNameController.text,
                           'userName': userNameController.text,
                           'gender': genderValue.toString(),
-                          'phoneNumber': phoneNumberController.text,
+                          'mobile': phoneNumberController.text,
                           'country': countryController.text,
                           'city': cityController.text,
                           'state': stateValue.toString()

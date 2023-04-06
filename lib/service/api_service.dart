@@ -233,9 +233,10 @@ class ApiService {
       var response = await request.send();
 
       final res = await http.Response.fromStream(response);
-      var res_data = json.decode(res.body.toString());
 
-      if (res_data['status'] == 200) {
+      var res_data = json.decode(res.body.toString());
+      log("Error" + res_data['message'].toString());
+      if (res_data['status'] == true) {
         Get.back();
 
         final bottomcontroller = Get.put(BottomController());
@@ -308,7 +309,7 @@ class ApiService {
         final bottomcontroller = Get.put(BottomController());
         bottomcontroller.navBarChange(0);
         Get.to(() => MainScreen());
-      } else if (!res_data['status'] == true) {
+      } else if (res_data['status'] == false) {
         Get.back();
         Get.snackbar('Error', res_data['message'],
             snackPosition: SnackPosition.TOP,
