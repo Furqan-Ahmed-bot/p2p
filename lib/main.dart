@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
             ),
             GetPage(
               name: '/CHECKOUTScreen',
-              page: (() => CHECKOUTScreen()),
+              page: (() => CheckoutScreen()),
             ),
             GetPage(
               name: '/NOTIFICATIONSScreen',

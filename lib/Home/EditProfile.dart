@@ -1,5 +1,3 @@
-
-
 import '../export_all.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -55,134 +53,48 @@ class _CREATEPROFILEStateScreen extends State<EditProfileScreen> {
           ),
         ),
       ),
-      body: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Column(
+      body: DisAllowIndicatorWidget(
+        child: ListView(
+          padding:
+              EdgeInsets.only(top: 75.r, bottom: 30.r, left: 20.r, right: 20.r),
+          children: [
+            Stack(
               children: [
-                75.verticalSpace,
-                Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomRight,
-                          end: Alignment.bottomLeft,
-                          colors: [
-                            Color(0xff004DF2),
-                            Color(0xff1CC8FB),
-                          ],
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomRight,
+                      end: Alignment.bottomLeft,
+                      colors: [
+                        Color(0xff004DF2),
+                        Color(0xff1CC8FB),
+                      ],
+                    ),
+                  ),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    radius: 70,
+                    // backgroundColor: Color(0xff004DF2),
+                    child: CircleAvatar(
+                      // backgroundColor: Color(0xff21CDFB),
+                      child: Padding(
+                        padding: EdgeInsets.all(0),
+                        child: Image(
+                          image: AssetImage("assets/images/NoPath.png"),
+                          fit: BoxFit.cover,
                         ),
                       ),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        radius: 70,
-                        // backgroundColor: Color(0xff004DF2),
-                        child: CircleAvatar(
-                          // backgroundColor: Color(0xff21CDFB),
-                          child: Padding(
-                            padding: EdgeInsets.all(0),
-                            child: Image(
-                              image: AssetImage("assets/images/NoPath.png"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          radius: 60,
-                        ),
-                      ),
+                      radius: 60,
                     ),
-                    Positioned(
-                      bottom: 10,
-                      right: -20,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                            begin: Alignment.bottomRight,
-                            end: Alignment.bottomLeft,
-                            colors: [
-                              Color(0xff1CC8FB),
-                              Color(0xff004DF2),
-                            ],
-                          ),
-                          border: Border.all(color: Color(0xffF6F6F6)),
-                        ),
-                        height: 40.h,
-                        child: RawMaterialButton(
-                          // highlightColor: Color(0xff21CDFB),
-                          onPressed: () {},
-                          elevation: 1,
-                          // fillColor: Color(0xff21CDFB),
-
-                          child: Image.asset(
-                            "assets/images/Icon ionic-ios-reverse-camera.png",
-                            scale: 4,
-                          ),
-                          // padding: EdgeInsets.all(2),
-                          // shape: CircleBorder(),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-                49.verticalSpace,
-                TextField(
-                  "Julie Smith",
-                  "Full Name",
-                  "assets/images/Icon awesome-user.png",
-                ),
-                20.verticalSpace,
-                TextField(
-                  "Julie.smith@domain.com",
-                  "Email Address",
-                  "assets/images/Icon material-email.png",
-                ),
-                20.verticalSpace,
-                TextField(
-                  "Julie.smith@domain.com",
-                  "Email Address",
-                  "assets/images/Icon feather-phone.png",
-                ),
-                20.verticalSpace,
-                TextFieldDropdown(
-                  "Female",
-                  "Gender",
-                  "assets/images/Icon awesome-transgender.png",
-                ),
-                20.verticalSpace,
-                TextField(
-                  "20 Cooper Square",
-                  "Address",
-                  "assets/images/Icon material-location-onn.png",
-                ),
-                20.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SmallTextField(
-                      "New York",
-                      "City",
-                    ),
-                    SmallTextFieldDropdown(
-                      "State",
-                      "NY",
-                    )
-                  ],
-                ),
-                40.verticalSpace,
-                GestureDetector(
-                  onTap: () {
-                    final bottomcontroller = Get.put(BottomController());
-                    bottomcontroller.navBarChange(0);
-                    Get.to(() => MainScreen());
-                  },
+                Positioned(
+                  bottom: 10,
+                  right: -20,
                   child: Container(
-                    width: 388.w,
-                    height: 60.h,
                     decoration: BoxDecoration(
+                      shape: BoxShape.circle,
                       gradient: LinearGradient(
                         begin: Alignment.bottomRight,
                         end: Alignment.bottomLeft,
@@ -191,29 +103,110 @@ class _CREATEPROFILEStateScreen extends State<EditProfileScreen> {
                           Color(0xff004DF2),
                         ],
                       ),
-                      boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0, 0),
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(30.r),
+                      border: Border.all(color: Color(0xffF6F6F6)),
                     ),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Save",
-                            style: TextStyle(color: Colors.white, fontSize: 18.sp),
-                          ),
-                        ],
+                    height: 40.h,
+                    child: RawMaterialButton(
+                      // highlightColor: Color(0xff21CDFB),
+                      onPressed: () {},
+                      elevation: 1,
+                      // fillColor: Color(0xff21CDFB),
+      
+                      child: Image.asset(
+                        "assets/images/Icon ionic-ios-reverse-camera.png",
+                        scale: 4,
                       ),
+                      // padding: EdgeInsets.all(2),
+                      // shape: CircleBorder(),
                     ),
                   ),
                 ),
               ],
             ),
-          ),
+            49.verticalSpace,
+            TextField(
+              "Julie Smith",
+              "Full Name",
+              "assets/images/Icon awesome-user.png",
+            ),
+            20.verticalSpace,
+            TextField(
+              "Julie.smith@domain.com",
+              "Email Address",
+              "assets/images/Icon material-email.png",
+            ),
+            20.verticalSpace,
+            TextField(
+              "Julie.smith@domain.com",
+              "Email Address",
+              "assets/images/Icon feather-phone.png",
+            ),
+            20.verticalSpace,
+            TextFieldDropdown(
+              "Female",
+              "Gender",
+              "assets/images/Icon awesome-transgender.png",
+            ),
+            20.verticalSpace,
+            TextField(
+              "20 Cooper Square",
+              "Address",
+              "assets/images/Icon material-location-onn.png",
+            ),
+            20.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SmallTextField(
+                  "New York",
+                  "City",
+                ),
+                SmallTextFieldDropdown(
+                  "State",
+                  "NY",
+                )
+              ],
+            ),
+            40.verticalSpace,
+            GestureDetector(
+              onTap: () {
+                final bottomcontroller = Get.put(BottomController());
+                bottomcontroller.navBarChange(0);
+                Get.to(() => MainScreen());
+              },
+              child: Container(
+                width: 388.w,
+                height: 60.h,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Color(0xff1CC8FB),
+                      Color(0xff004DF2),
+                    ],
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 0),
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(30.r),
+                ),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Save",
+                        style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
