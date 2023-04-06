@@ -90,8 +90,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     onTap: () {
                       if (formKey.currentState!.validate()) {
                         final Map<String, String> data = {
-                          // "otpId": otpId,
-                          "email": email.toString(),
+                          "otpId": otpId,
+                          // "email": email.toString(),
                           "password": passwordController.text.trim(),
                           "deviceToken": deviceToken.toString(),
                           "deviceType": deviceType.toString()

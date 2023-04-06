@@ -15,10 +15,12 @@ class _HomeScreenState extends State<HomeScreen> {
   static CameraPosition _center =
       CameraPosition(target: LatLng(latitude, longitude), zoom: 15);
   final List<Marker> _marker = [];
-  final List<Marker> _branch = const [
+  final List<Marker> _branch = [
     Marker(
       markerId: MarkerId("1"),
-      position: LatLng(40.721424, -73.873540),
+      position: LatLng(latitude, longitude),
+
+      // position: LatLng(40.721424, -73.873540),
       infoWindow:
           InfoWindow(title: "My Location110 W 3rd St, New York, NY 10012"),
     ),

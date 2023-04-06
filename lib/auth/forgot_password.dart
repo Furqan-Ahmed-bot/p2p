@@ -92,7 +92,8 @@ class _FORGOTPASSWORDScreenState extends State<FORGOTPASSWORDScreen> {
                   text: "Continue",
                   onTap: () {
                     final Map<String, String> data = {
-                      "email": userNamePhoneController.text.trim()
+                      "email": userNamePhoneController.text.trim(),
+                      "reason": "forgotPassword"
                     };
                     email = userNamePhoneController.text.trim();
                     ApiService().callForgetPassword(context, data);
