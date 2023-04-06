@@ -64,7 +64,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     10,
                   )),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                padding: EdgeInsets.symmetric(horizontal: 10.r),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
