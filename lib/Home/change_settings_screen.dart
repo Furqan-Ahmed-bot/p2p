@@ -85,6 +85,4 @@ class _ChangeSettingScreenState extends State<ChangeSettingScreen> {
       ),
     );
   }
-
-  
 }

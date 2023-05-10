@@ -2,12 +2,12 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:p2ptraffic/home/feeds_screen.dart';
 
-
-import 'Home/Feeds.dart';
-import 'Home/MartinProfile.dart';
+import 'home/MartinProfile.dart';
 
 import 'export_all.dart';
+import 'home/edit_profile_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,161 +34,161 @@ class _MyAppState extends State<MyApp> {
                 GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
           ),
           debugShowCheckedModeBanner: false,
-          // home: SplashScreen(),
-          initialRoute: '/SplashScreen',
+          home: SplashScreen(),
+          // initialRoute: '/SplashScreen',
           getPages: [
-            GetPage(
-              name: '/Mymap',
-              page: (() => Mymap()),
-            ),
-            GetPage(
-              name: '/SplashScreen',
-              page: (() => SplashScreen()),
-            ),
-            GetPage(
-              name: '/PreLoginScreen',
-              page: (() => PreLoginScreen()),
-            ),
-            GetPage(
-              name: '/LoginScreen',
-              page: (() => LoginScreen()),
-            ),
-            GetPage(
-              name: '/SignupScreen',
-              page: (() => SignupScreen()),
-            ),
-            GetPage(
-              name: '/FORGOTPASSWORDScreen',
-              page: (() => FORGOTPASSWORDScreen()),
-            ),
-            GetPage(
-              name: '/VerificationScreen',
-              page: (() => VerificationScreen()),
-            ),
-            GetPage(
-              name: '/ResetPasswordScreen',
-              page: (() => ResetPasswordScreen()),
-            ),
-            GetPage(
-              name: '/CreateProfileScreen',
-              page: (() => CreateProfileScreen()),
-            ),
-            GetPage(
-              name: '/SETTINGSScreen',
-              page: (() => SETTINGSScreen()),
-            ),
-            GetPage(
-              name: '/CHECKOUTScreen',
-              page: (() => CheckoutScreen()),
-            ),
-            GetPage(
-              name: '/NOTIFICATIONSScreen',
-              page: (() => NOTIFICATIONSScreen()),
-            ),
-            GetPage(
-              name: '/TRAFFICUPDATESScreen',
-              page: (() => TRAFFICUPDATESScreen()),
-            ),
-            GetPage(
-              name: '/UPDATESDETAILSScreen',
-              page: (() => UPDATESDETAILSScreen()),
-            ),
-            GetPage(
-              name: '/TERMSAndCONDITIONSScreen',
-              page: (() => TERMSAndCONDITIONSScreen()),
-            ),
-            GetPage(
-              name: '/PRIVACYPOLICYScreen',
-              page: (() => PRIVACYPOLICYScreen()),
-            ),
-            GetPage(
-              name: '/FRIENDSScreen',
-              page: (() => FRIENDSScreen()),
-            ),
-            GetPage(
-              name: '/SEARCHScreen',
-              page: (() => SearchScreen()),
-            ),
-            GetPage(
-              name: '/SubscritionScreen',
-              page: (() => SubscritionScreen()),
-            ),
-            GetPage(
-              name: '/ChnageSETTINGSScreen',
-              page: (() => ChangeSettingScreen()),
-            ),
-            GetPage(
-              name: '/PROFILE2Screen',
-              page: (() => PROFILE2Screen()),
-            ),
-            GetPage(
-              name: '/HomeScreen',
-              page: (() => HomeScreen()),
-            ),
-            GetPage(
-              name: '/MainScreen',
-              page: (() => MainScreen()),
-            ),
-            GetPage(
-              name: '/HISTORYScreen',
-              page: (() => HistoryScreen()),
-            ),
-            GetPage(
-              name: '/DrawerScreen',
-              page: (() => DrawerScreen()),
-            ),
-            GetPage(
-              name: '/FEEDSScreen',
-              page: (() => FeedsScreen()),
-            ),
-            GetPage(
-              name: '/FeedUPDATESDETAILSScreen',
-              page: (() => FeedUPDATESDETAILSScreen()),
-            ),
-            GetPage(
-              name: '/MartinProfileScreen',
-              page: (() => MartinProfileScreen()),
-            ),
-            GetPage(
-              name: '/DrawerProfileScreen',
-              page: (() => DrawerProfileScreen()),
-            ),
-            GetPage(
-              name: '/EditProfileScreen',
-              page: (() => EditProfileScreen()),
-            ),
-            GetPage(
-              name: '/SubscritionPackageCardScreen',
-              page: (() => SubscritionPackageCardScreen()),
-            ),
-            GetPage(
-              name: '/PayNowScreen',
-              page: (() => PayNowScreen()),
-            ),
-            GetPage(
-              name: '/PAYMENTMETHODDScreen',
-              page: (() => PAYMENTMETHODDScreen()),
-            ),
-            GetPage(
-              name: '/SHARELIVELOCATIONsCREEN',
-              page: (() => ShareLiveLocationScreen()),
-            ),
-            GetPage(
-              name: '/POSTScreen',
-              page: (() => POSTScreen()),
-            ),
-            GetPage(
-              name: '/CamScreen',
-              page: (() => CamScreen()),
-            ),
-            GetPage(
-              name: '/SPOTIFYScreen',
-              page: (() => SpotifScreen()),
-            ),
-            GetPage(
-              name: '/FriendRequestsScreen',
-              page: (() => FriendRequestsScreen()),
-            ),
+            // GetPage(
+            //   name: '/Mymap',
+            //   page: (() => Mymap()),
+            // ),
+            // GetPage(
+            //   name: '/SplashScreen',
+            //   page: (() => SplashScreen()),
+            // ),
+            // GetPage(
+            //   name: '/PreLoginScreen',
+            //   page: (() => PreLoginScreen()),
+            // ),
+            // GetPage(
+            //   name: '/LoginScreen',
+            //   page: (() => LoginScreen()),
+            // ),
+            // GetPage(
+            //   name: '/SignupScreen',
+            //   page: (() => SignupScreen()),
+            // ),
+            // GetPage(
+            //   name: '/FORGOTPASSWORDScreen',
+            //   page: (() => FORGOTPASSWORDScreen()),
+            // ),
+            // GetPage(
+            //   name: '/VerificationScreen',
+            //   page: (() => VerificationScreen()),
+            // ),
+            // GetPage(
+            //   name: '/ResetPasswordScreen',
+            //   page: (() => ResetPasswordScreen()),
+            // ),
+            // GetPage(
+            //   name: '/CreateProfileScreen',
+            //   page: (() => CreateProfileScreen()),
+            // ),
+            // GetPage(
+            //   name: '/SETTINGSScreen',
+            //   page: (() => SETTINGSScreen()),
+            // ),
+            // GetPage(
+            //   name: '/CHECKOUTScreen',
+            //   page: (() => CheckoutScreen()),
+            // ),
+            // GetPage(
+            //   name: '/NOTIFICATIONSScreen',
+            //   page: (() => NOTIFICATIONSScreen()),
+            // ),
+            // GetPage(
+            //   name: '/TRAFFICUPDATESScreen',
+            //   page: (() => TRAFFICUPDATESScreen()),
+            // ),
+            // GetPage(
+            //   name: '/UPDATESDETAILSScreen',
+            //   page: (() => UPDATESDETAILSScreen()),
+            // ),
+            // GetPage(
+            //   name: '/TERMSAndCONDITIONSScreen',
+            //   page: (() => TERMSAndCONDITIONSScreen()),
+            // ),
+            // GetPage(
+            //   name: '/PRIVACYPOLICYScreen',
+            //   page: (() => PRIVACYPOLICYScreen()),
+            // ),
+            // GetPage(
+            //   name: '/FRIENDSScreen',
+            //   page: (() => FriendsScreen()),
+            // ),
+            // GetPage(
+            //   name: '/SEARCHScreen',
+            //   page: (() => SearchScreen()),
+            // ),
+            // GetPage(
+            //   name: '/SubscritionScreen',
+            //   page: (() => SubscritionScreen()),
+            // ),
+            // GetPage(
+            //   name: '/ChnageSETTINGSScreen',
+            //   page: (() => ChangeSettingScreen()),
+            // ),
+            // GetPage(
+            //   name: '/PROFILE2Screen',
+            //   page: (() => PROFILE2Screen()),
+            // ),
+            // GetPage(
+            //   name: '/HomeScreen',
+            //   page: (() => HomeScreen()),
+            // ),
+            // GetPage(
+            //   name: '/MainScreen',
+            //   page: (() => MainScreen()),
+            // ),
+            // GetPage(
+            //   name: '/HISTORYScreen',
+            //   page: (() => HistoryScreen()),
+            // ),
+            // GetPage(
+            //   name: '/DrawerScreen',
+            //   page: (() => DrawerScreen()),
+            // ),
+            // GetPage(
+            //   name: '/FEEDSScreen',
+            //   page: (() => FeedsScreen()),
+            // ),
+            // GetPage(
+            //   name: '/FeedUPDATESDETAILSScreen',
+            //   page: (() => FeedUpdateDetailsScreen()),
+            // ),
+            // GetPage(
+            //   name: '/MartinProfileScreen',
+            //   page: (() => MartinProfileScreen()),
+            // ),
+            // GetPage(
+            //   name: '/DrawerProfileScreen',
+            //   page: (() => DrawerProfileScreen()),
+            // ),
+            // GetPage(
+            //   name: '/EditProfileScreen',
+            //   page: (() => EditProfileScreen()),
+            // ),
+            // GetPage(
+            //   name: '/SubscritionPackageCardScreen',
+            //   page: (() => SubscritionPackageCardScreen()),
+            // ),
+            // GetPage(
+            //   name: '/PayNowScreen',
+            //   page: (() => PayNowScreen()),
+            // ),
+            // GetPage(
+            //   name: '/PAYMENTMETHODDScreen',
+            //   page: (() => PAYMENTMETHODDScreen()),
+            // ),
+            // GetPage(
+            //   name: '/SHARELIVELOCATIONsCREEN',
+            //   page: (() => ShareLiveLocationScreen()),
+            // ),
+            // GetPage(
+            //   name: '/POSTScreen',
+            //   page: (() => POSTScreen()),
+            // ),
+            // GetPage(
+            //   name: '/CamScreen',
+            //   page: (() => CamScreen()),
+            // ),
+            // GetPage(
+            //   name: '/SPOTIFYScreen',
+            //   page: (() => SpotifScreen()),
+            // ),
+            // GetPage(
+            //   name: '/FriendRequestsScreen',
+            //   page: (() => FriendRequestsScreen()),
+            // ),
           ],
         );
       },
@@ -206,7 +206,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     _getCurrentPosition();
-    FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance; // Change here
+    FirebaseMessaging _firebaseMessaging =
+        FirebaseMessaging.instance; // Change here
     _firebaseMessaging.getToken().then((token) {
       deviceToken = token!;
       log('DEVICE TOKEN: $deviceToken');
@@ -219,9 +220,8 @@ class _SplashScreenState extends State<SplashScreen> {
     deviceToken = "abcdedf";
     Timer(Duration(seconds: 3), () => Get.toNamed('/PreLoginScreen'));
     super.initState();
-    
   }
-  
+
   Position? _currentPosition;
 
   Future<void> _getCurrentPosition() async {
@@ -267,6 +267,7 @@ class _SplashScreenState extends State<SplashScreen> {
     }
     return true;
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

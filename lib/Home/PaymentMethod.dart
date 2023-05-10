@@ -65,7 +65,9 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(20.r),
         child: CustomButtonWidget(
-          onTap: () => widget.payButtonText ==  'Pay Now' ? Get.toNamed("/PayNowScreen") : Get.close(1),
+          onTap: () => widget.payButtonText == 'Pay Now'
+              ? Get.toNamed("/PayNowScreen")
+              : Get.close(1),
           text: widget.payButtonText,
         ),
       ),

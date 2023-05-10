@@ -111,7 +111,7 @@ class _CREATEPROFILEStateScreen extends State<EditProfileScreen> {
                       onPressed: () {},
                       elevation: 1,
                       // fillColor: Color(0xff21CDFB),
-      
+
                       child: Image.asset(
                         "assets/images/Icon ionic-ios-reverse-camera.png",
                         scale: 4,

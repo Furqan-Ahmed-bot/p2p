@@ -1,13 +1,13 @@
 import '../export_all.dart';
 
-class FRIENDSScreen extends StatefulWidget {
-  const FRIENDSScreen({super.key});
+class FriendsScreen extends StatefulWidget {
+  const FriendsScreen({super.key});
 
   @override
-  State<FRIENDSScreen> createState() => _FRIENDSScreenState();
+  State<FriendsScreen> createState() => _FriendsScreenState();
 }
 
-class _FRIENDSScreenState extends State<FRIENDSScreen> {
+class _FriendsScreenState extends State<FriendsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,12 +55,8 @@ class _FRIENDSScreenState extends State<FRIENDSScreen> {
       ),
       body: DisAllowIndicatorWidget(
         child: ListView(
-          padding: EdgeInsets.only(
-            top: 28.r,
-            bottom: 30.r,
-            left: 20.r,
-            right: 20.r
-          ),
+          padding:
+              EdgeInsets.only(top: 28.r, bottom: 30.r, left: 20.r, right: 20.r),
           children: [
             28.verticalSpace,
             martin("assets/images/1.png"),

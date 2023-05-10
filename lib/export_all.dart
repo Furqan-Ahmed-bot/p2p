@@ -1,38 +1,38 @@
 //SCREENS
-export 'package:p2ptraffic/Home/Navbar.dart';
-export 'package:p2ptraffic/Home/DrawerProfile.dart';
-export 'package:p2ptraffic/Home/Friends.dart';
-export 'package:p2ptraffic/Home/FriendsRequests.dart';
-export 'package:p2ptraffic/Home/help_feedback_screen.dart';
-export 'package:p2ptraffic/Home/Notifications.dart';
+export 'package:p2ptraffic/home/Navbar.dart';
+export 'package:p2ptraffic/home/DrawerProfile.dart';
+export 'package:p2ptraffic/home/friends_screen.dart';
+export 'package:p2ptraffic/home/FriendsRequests.dart';
+export 'package:p2ptraffic/home/help_feedback_screen.dart';
+export 'package:p2ptraffic/home/Notifications.dart';
 export '../auth/login_screen.dart';
-export 'package:p2ptraffic/Home/Setting.dart';
-export 'package:p2ptraffic/Home/Subscribtions.dart';
-export 'package:p2ptraffic/Home/Camera.dart';
-export 'package:p2ptraffic/Home/CheckOut.dart';
-export 'package:p2ptraffic/Home/ChangeSettings.dart';
-export 'package:p2ptraffic/Home/FeedUpdatesDetails.dart';
+export 'package:p2ptraffic/home/Setting.dart';
+export 'package:p2ptraffic/home/Subscribtions.dart';
+export 'package:p2ptraffic/home/camera_screen.dart';
+export 'package:p2ptraffic/home/checkout_screen.dart';
+export 'package:p2ptraffic/home/change_settings_screen.dart';
+export 'package:p2ptraffic/home/feed_update_details_screen.dart';
 // export 'package:p2ptraffic/Home/Feeds.dart';
-export 'package:p2ptraffic/Home/History.dart';
-export 'package:p2ptraffic/Home/POST.dart';
-export 'package:p2ptraffic/Home/PayNow.dart';
-export 'package:p2ptraffic/Home/PaymentMethod.dart';
-export 'package:p2ptraffic/Home/Paymentmethhod.dart';
-export 'package:p2ptraffic/Home/PrivacyPolicy.dart';
-export 'package:p2ptraffic/Home/Profile.dart';
-export 'package:p2ptraffic/Home/share_live_location_screen.dart';
-export 'package:p2ptraffic/Home/Search.dart';
-export 'package:p2ptraffic/Home/Spotify.dart';
-export 'package:p2ptraffic/Home/Subscribe.dart';
-export 'package:p2ptraffic/Home/Terms&Conditions.dart';
-export 'package:p2ptraffic/Home/TrafficUpdates.dart';
-export 'package:p2ptraffic/Home/UpdatesDetails.dart';
-export 'package:p2ptraffic/Home/home_screen.dart';
+export 'package:p2ptraffic/home/History.dart';
+export 'package:p2ptraffic/home/POST.dart';
+export 'package:p2ptraffic/home/PayNow.dart';
+export 'package:p2ptraffic/home/PaymentMethod.dart';
+export 'package:p2ptraffic/home/Paymentmethhod.dart';
+export 'package:p2ptraffic/home/PrivacyPolicy.dart';
+export 'package:p2ptraffic/home/Profile.dart';
+export 'package:p2ptraffic/home/share_live_location_screen.dart';
+export 'package:p2ptraffic/home/Search.dart';
+export 'package:p2ptraffic/home/spotify_screen.dart';
+export 'package:p2ptraffic/home/Subscribe.dart';
+export 'package:p2ptraffic/home/terms_and_conditions_screen.dart';
+export 'package:p2ptraffic/home/traffic_updates_screen.dart';
+export 'package:p2ptraffic/home/UpdatesDetails.dart';
+export 'package:p2ptraffic/home/home_screen.dart';
 export 'package:p2ptraffic/auth/create_profile.dart';
 export 'package:p2ptraffic/auth/verification_screen.dart';
-export 'Home/EditProfile.dart';
+
 export 'Home/drawer.dart';
-export 'Home/mymap.dart';
+export 'home/mymap.dart';
 export '../auth/forgot_password.dart';
 export 'package:p2ptraffic/auth/prelogin_screen.dart';
 export 'package:p2ptraffic/auth/signup_screen.dart';
@@ -63,15 +63,14 @@ export 'package:firebase_messaging/firebase_messaging.dart';
 export 'package:geolocator/geolocator.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 
-
 //UTILS
 export './utils/global.dart';
 export '../utils/dummy.dart';
 
 //CONTROLLER
-export 'package:p2ptraffic/Home/BottomController.dart';
+export 'package:p2ptraffic/home/BottomController.dart';
 export 'package:p2ptraffic/controller/upload_traffice_controller.dart';
-export 'package:p2ptraffic/Home/CameraController.dart';
+export 'package:p2ptraffic/home/CameraController.dart';
 
 //PROVIDER
 
@@ -82,7 +81,6 @@ export '../widgets.dart/textfield_widget.dart';
 export '../widgets.dart/disallow_indicator_widget.dart';
 export '../widgets.dart/dropdown_widget.dart';
 export '../widgets.dart/search_textfield_widget.dart';
-
 
 //SERVICE
 export 'package:p2ptraffic/service/api_service.dart';

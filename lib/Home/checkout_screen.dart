@@ -74,7 +74,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       children: [
                         Text(
                           "Gold Package",
-                          style: TextStyle(fontSize: 22.sp, color: Colors.black),
+                          style:
+                              TextStyle(fontSize: 22.sp, color: Colors.black),
                         ),
                         Container(
                           child: Image.asset(
@@ -198,8 +199,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           children: [
                             Text(
                               "Checkout",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18.sp),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 18.sp),
                             ),
                           ],
                         ),

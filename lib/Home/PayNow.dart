@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:p2ptraffic/Home/BottomController.dart';
-import 'package:p2ptraffic/Home/Navbar.dart';
+import 'package:p2ptraffic/home/BottomController.dart';
+import 'package:p2ptraffic/home/Navbar.dart';
 
 class PayNowScreen extends StatefulWidget {
   const PayNowScreen({super.key});
@@ -88,7 +88,8 @@ class _PayNowStateScreen extends State<PayNowScreen> {
                       children: [
                         Text(
                           "Go Back",
-                          style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 18.sp),
                         ),
                       ],
                     ),

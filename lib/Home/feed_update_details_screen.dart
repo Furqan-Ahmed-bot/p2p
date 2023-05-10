@@ -1,15 +1,16 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class FeedUPDATESDETAILSScreen extends StatefulWidget {
-  const FeedUPDATESDETAILSScreen({super.key});
+class FeedUpdateDetailsScreen extends StatefulWidget {
+  const FeedUpdateDetailsScreen({super.key});
 
   @override
-  State<FeedUPDATESDETAILSScreen> createState() => _UPDATESDETAILSStateScreen();
+  State<FeedUpdateDetailsScreen> createState() => _UPDATESDETAILSStateScreen();
 }
 
-class _UPDATESDETAILSStateScreen extends State<FeedUPDATESDETAILSScreen> {
+class _UPDATESDETAILSStateScreen extends State<FeedUpdateDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -266,7 +267,8 @@ class _UPDATESDETAILSStateScreen extends State<FeedUPDATESDETAILSScreen> {
                   30.verticalSpace,
                   Text(
                     "John Smith",
-                    style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+                    style:
+                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                   ),
                   145.horizontalSpace,
                   Text(
@@ -296,7 +298,8 @@ class _UPDATESDETAILSStateScreen extends State<FeedUPDATESDETAILSScreen> {
                       width: 270.w,
                       child: Text(
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.",
-                        style: TextStyle(fontSize: 12.sp, color: Color(0xff3A3A3A)),
+                        style: TextStyle(
+                            fontSize: 12.sp, color: Color(0xff3A3A3A)),
                       ),
                     ),
                   )
@@ -355,7 +358,8 @@ class _UPDATESDETAILSStateScreen extends State<FeedUPDATESDETAILSScreen> {
                   padding: EdgeInsets.only(right: 10),
                   child: Text(
                     "Martin Smith",
-                    style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+                    style:
+                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                   ),
                 ),
                 120.horizontalSpace,

@@ -1,8 +1,7 @@
 import 'dart:io';
 
-import 'package:p2ptraffic/Home/Feeds.dart';
-
 import '../export_all.dart';
+import 'feeds_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);

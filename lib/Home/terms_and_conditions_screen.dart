@@ -3,15 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:p2ptraffic/widgets.dart/disallow_indicator_widget.dart';
 
-class TERMSAndCONDITIONSScreen extends StatefulWidget {
-  const TERMSAndCONDITIONSScreen({super.key});
+class TermsAndConditionsScreen extends StatefulWidget {
+  const TermsAndConditionsScreen({super.key});
 
   @override
-  State<TERMSAndCONDITIONSScreen> createState() =>
-      _TERMSAndCONDITIONSScreenState();
+  State<TermsAndConditionsScreen> createState() =>
+      _TermsAndConditionsScreenState();
 }
 
-class _TERMSAndCONDITIONSScreenState extends State<TERMSAndCONDITIONSScreen> {
+class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:p2ptraffic/Home/BottomController.dart';
-import 'package:p2ptraffic/Home/Navbar.dart';
+import 'package:p2ptraffic/home/BottomController.dart';
+import 'package:p2ptraffic/home/Navbar.dart';
 
 class POSTScreen extends StatefulWidget {
   const POSTScreen({super.key});
@@ -130,7 +130,8 @@ class _POSTScreenState extends State<POSTScreen> {
                       //     scale: 5,
                       //   ),
                       // ),
-                      hintStyle: TextStyle(color: Color(0xff878B9E), fontSize: 15.sp),
+                      hintStyle:
+                          TextStyle(color: Color(0xff878B9E), fontSize: 15.sp),
                       border: InputBorder.none,
                     ),
                   ),
@@ -177,7 +178,8 @@ class _POSTScreenState extends State<POSTScreen> {
                           scale: 4,
                         ),
                       ),
-                      hintStyle: TextStyle(color: Color(0xff878B9E), fontSize: 15.sp),
+                      hintStyle:
+                          TextStyle(color: Color(0xff878B9E), fontSize: 15.sp),
                       border: InputBorder.none,
                     ),
                   ),
@@ -224,7 +226,9 @@ class _POSTScreenState extends State<POSTScreen> {
                               children: [
                                 Text(
                                   "William Smith",
-                                  style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+                                  style: TextStyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w600),
                                 ),
                                 Container(
                                   child: Image.asset(
@@ -252,7 +256,9 @@ class _POSTScreenState extends State<POSTScreen> {
                               children: [
                                 Text(
                                   "Amelia",
-                                  style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+                                  style: TextStyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w600),
                                 ),
                                 Container(
                                   child: Image.asset(
@@ -288,7 +294,8 @@ class _POSTScreenState extends State<POSTScreen> {
                     Container(
                       width: 15.w,
                       height: 21.h,
-                      child: Image.asset("assets/images/Icon material-location-onn.png"),
+                      child: Image.asset(
+                          "assets/images/Icon material-location-onn.png"),
                     ),
                     15.horizontalSpace,
                     Text("20 Cooper Square, New York"),
@@ -326,7 +333,8 @@ class _POSTScreenState extends State<POSTScreen> {
                         children: [
                           Text(
                             "Post",
-                            style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 18.sp),
                           ),
                         ],
                       ),

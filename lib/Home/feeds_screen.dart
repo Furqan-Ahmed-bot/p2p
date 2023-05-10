@@ -10,20 +10,21 @@ class FeedsScreen extends StatefulWidget {
 }
 
 class FeedsScreenState extends State<FeedsScreen> {
-
   bool _value = false;
   bool _value1 = false;
   bool _value2 = false;
   bool _value3 = false;
 
   final Completer<GoogleMapController> _mapcontroller = Completer();
-  static const CameraPosition _center = CameraPosition(target: LatLng(40.721424, -73.873540), zoom: 15);
+  static const CameraPosition _center =
+      CameraPosition(target: LatLng(40.721424, -73.873540), zoom: 15);
   final List<Marker> marker = [];
   final List<Marker> branch = const [
     Marker(
       markerId: MarkerId("1"),
       position: LatLng(40.721424, -73.873540),
-      infoWindow: InfoWindow(title: "My Location110 W 3rd St, New York, NY 10012"),
+      infoWindow:
+          InfoWindow(title: "My Location110 W 3rd St, New York, NY 10012"),
     ),
     Marker(
       markerId: MarkerId("2"),
@@ -38,19 +39,15 @@ class FeedsScreenState extends State<FeedsScreen> {
   void initState() {
     marker.addAll(branch);
     super.initState();
-   
   }
 
   @override
   Widget build(BuildContext context) {
-    
-
 // Add the InfoWindow to a list of InfoWindows
-   
 
     marker.addAll(branch);
     return ListView(
-        padding: EdgeInsets.symmetric(horizontal: 20.r),
+      padding: EdgeInsets.symmetric(horizontal: 20.r),
       children: [
         22.verticalSpace,
 
@@ -87,16 +84,25 @@ class FeedsScreenState extends State<FeedsScreen> {
                       children: [
                         Text(
                           "Martin Smith",
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.sp),
                         ),
                         Text(
                           "50min ago",
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12.sp),
                         ),
                         15.verticalSpace,
                         Text(
                           "Lorem ipsum dolor sit amet.",
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 14.sp),
                         ),
                       ],
                     ),
@@ -126,13 +132,16 @@ class FeedsScreenState extends State<FeedsScreen> {
                               Container(
                                 width: 13.w,
                                 height: 13.h,
-                                child: Image.asset(
-                                    value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
+                                child: Image.asset(value == 'Report'
+                                    ? "assets/images/Icon material-report.png"
+                                    : "assets/images/Icon metro-blocked.png"),
                               ),
                               8.horizontalSpace,
                               Text(
                                 value,
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.sp),
                               ),
                             ],
                           ),
@@ -175,7 +184,10 @@ class FeedsScreenState extends State<FeedsScreen> {
                         Container(
                           child: Text(
                             "Lorem ipsum dolor sit amet.",
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 14.sp),
                           ),
                         ),
                       ],
@@ -266,7 +278,7 @@ class FeedsScreenState extends State<FeedsScreen> {
         15.verticalSpace,
 
         VerticalDivider(
-          color:  Color(0xff3A3A3A).withOpacity(0.2),
+          color: Color(0xff3A3A3A).withOpacity(0.2),
         ),
 
         20.verticalSpace,
@@ -290,16 +302,25 @@ class FeedsScreenState extends State<FeedsScreen> {
                     children: [
                       Text(
                         "Martin Smith",
-                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.sp),
                       ),
                       Text(
                         "50min ago",
-                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 12.sp),
                       ),
                       15.verticalSpace,
                       Text(
                         "Lorem ipsum dolor sit amet.",
-                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal,
+                            fontSize: 14.sp),
                       ),
                     ],
                   ),
@@ -329,13 +350,15 @@ class FeedsScreenState extends State<FeedsScreen> {
                             Container(
                               width: 13.w,
                               height: 13.h,
-                              child: Image.asset(
-                                  value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
+                              child: Image.asset(value == 'Report'
+                                  ? "assets/images/Icon material-report.png"
+                                  : "assets/images/Icon metro-blocked.png"),
                             ),
                             8.horizontalSpace,
                             Text(
                               value,
-                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 14.sp),
                             ),
                           ],
                         ),
@@ -380,7 +403,10 @@ class FeedsScreenState extends State<FeedsScreen> {
                         Container(
                           child: Text(
                             "Lorem ipsum dolor sit amet.",
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 14.sp),
                           ),
                         ),
                       ],
@@ -511,16 +537,25 @@ class FeedsScreenState extends State<FeedsScreen> {
                       children: [
                         Text(
                           "Martin Smith",
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16.sp),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16.sp),
                         ),
                         Text(
                           "50min ago",
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 12.sp),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 12.sp),
                         ),
                         15.verticalSpace,
                         Text(
                           "Lorem ipsum dolor sit amet.",
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 14.sp),
                         ),
                       ],
                     ),
@@ -550,13 +585,16 @@ class FeedsScreenState extends State<FeedsScreen> {
                               Container(
                                 width: 13.w,
                                 height: 13.h,
-                                child: Image.asset(
-                                    value == 'Report' ? "assets/images/Icon material-report.png" : "assets/images/Icon metro-blocked.png"),
+                                child: Image.asset(value == 'Report'
+                                    ? "assets/images/Icon material-report.png"
+                                    : "assets/images/Icon metro-blocked.png"),
                               ),
                               8.horizontalSpace,
                               Text(
                                 value,
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14.sp),
                               ),
                             ],
                           ),
@@ -599,7 +637,10 @@ class FeedsScreenState extends State<FeedsScreen> {
                         Container(
                           child: Text(
                             "Lorem ipsum dolor sit amet.",
-                            style: TextStyle(color: Colors.black, fontWeight: FontWeight.normal, fontSize: 14.sp),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 14.sp),
                           ),
                         ),
                       ],
@@ -688,8 +729,7 @@ class FeedsScreenState extends State<FeedsScreen> {
 
         // Dividerr()
       ],
-    )
-   ;
+    );
   }
 
   Report() {
@@ -711,8 +751,10 @@ class FeedsScreenState extends State<FeedsScreen> {
                 Container(
                   width: 388.w,
                   height: 477.h,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.white), borderRadius: BorderRadius.circular(10.r), color: Color(0xffFFFFFF)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10.r),
+                      color: Color(0xffFFFFFF)),
                   child: ListView(
                     children: [
                       Container(
@@ -813,7 +855,9 @@ class FeedsScreenState extends State<FeedsScreen> {
                                     children: [
                                       Text(
                                         "Submit",
-                                        style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18.sp),
                                       ),
                                     ],
                                   ),
@@ -853,8 +897,12 @@ class FeedsScreenState extends State<FeedsScreen> {
                   child: Container(
                     height: 12,
                     width: 12,
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, border: Border.all(color: _value ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color:
+                                _value ? Color(0xff6A6A6A) : Color(0xff6A6A6A),
+                            width: 1)),
                     child: Icon(
                       Icons.circle_rounded,
                       color: _value ? Color(0xff303030) : Colors.white,
@@ -886,8 +934,12 @@ class FeedsScreenState extends State<FeedsScreen> {
                   child: Container(
                     height: 12,
                     width: 12,
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, border: Border.all(color: _value1 ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color:
+                                _value1 ? Color(0xff6A6A6A) : Color(0xff6A6A6A),
+                            width: 1)),
                     child: Icon(
                       Icons.circle_rounded,
                       color: _value1 ? Color(0xff303030) : Colors.white,
@@ -919,8 +971,12 @@ class FeedsScreenState extends State<FeedsScreen> {
                   child: Container(
                     height: 12,
                     width: 12,
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, border: Border.all(color: _value2 ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color:
+                                _value2 ? Color(0xff6A6A6A) : Color(0xff6A6A6A),
+                            width: 1)),
                     child: Icon(
                       Icons.circle_rounded,
                       color: _value2 ? Color(0xff303030) : Colors.white,
@@ -953,8 +1009,12 @@ class FeedsScreenState extends State<FeedsScreen> {
                   child: Container(
                     height: 12,
                     width: 12,
-                    decoration:
-                        BoxDecoration(shape: BoxShape.circle, border: Border.all(color: _value3 ? Color(0xff6A6A6A) : Color(0xff6A6A6A), width: 1)),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            color:
+                                _value3 ? Color(0xff6A6A6A) : Color(0xff6A6A6A),
+                            width: 1)),
                     child: Icon(
                       Icons.circle_rounded,
                       color: _value3 ? Color(0xff303030) : Colors.white,
@@ -995,8 +1055,10 @@ class FeedsScreenState extends State<FeedsScreen> {
                 Container(
                   width: 388.w,
                   height: 249.h,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.white), borderRadius: BorderRadius.circular(10.r), color: Color(0xffFFFFFF)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10.r),
+                      color: Color(0xffFFFFFF)),
                   child: ListView(
                     children: [
                       Container(
@@ -1054,7 +1116,8 @@ class FeedsScreenState extends State<FeedsScreen> {
                           child: Text(
                             "Are you sure you want to block Post of this user?",
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16.sp, color: Colors.black),
+                            style:
+                                TextStyle(fontSize: 16.sp, color: Colors.black),
                           ),
                         ),
                         // 30.verticalSpace,
@@ -1151,8 +1214,10 @@ class FeedsScreenState extends State<FeedsScreen> {
                 Container(
                   width: 388.w,
                   height: 423.h,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.white), borderRadius: BorderRadius.circular(10.r), color: Color(0xffFFFFFF)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(10.r),
+                      color: Color(0xffFFFFFF)),
                   child: ListView(
                     children: [
                       Container(
@@ -1213,7 +1278,8 @@ class FeedsScreenState extends State<FeedsScreen> {
                                 height: 82.h,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
-                                    border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                                    border: Border.all(
+                                        color: Colors.grey.withOpacity(0.2)),
                                     borderRadius: BorderRadius.circular(10)),
                                 child: TextFormField(
                                   style: TextStyle(
@@ -1225,10 +1291,12 @@ class FeedsScreenState extends State<FeedsScreen> {
                                     disabledBorder: InputBorder.none,
                                     errorBorder: InputBorder.none,
                                     border: InputBorder.none,
-                                    contentPadding: EdgeInsets.only(left: 25, top: 9),
+                                    contentPadding:
+                                        EdgeInsets.only(left: 25, top: 9),
                                     // labelText: "Type a message",
                                     hintText: "Search here",
-                                    floatingLabelBehavior: FloatingLabelBehavior.auto,
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.auto,
                                     labelStyle: TextStyle(
                                       fontSize: 14.sp,
                                       color: Color(0xffA7B1BF),
@@ -1287,11 +1355,14 @@ class FeedsScreenState extends State<FeedsScreen> {
                                   ),
                                   child: Center(
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(
                                           "Submit",
-                                          style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18.sp),
                                         ),
                                       ],
                                     ),
@@ -1310,7 +1381,9 @@ class FeedsScreenState extends State<FeedsScreen> {
                                 children: [
                                   Text(
                                     "Share to",
-                                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.sp),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18.sp),
                                   )
                                 ],
                               ),
@@ -1325,14 +1398,21 @@ class FeedsScreenState extends State<FeedsScreen> {
                               SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Horizontalgoing("assets/images/Icon ionic-logo-whatsapp.png"),
-                                    Horizontalgoing("assets/images/Icon awesome-facebook-f.png"),
-                                    Horizontalgoing("assets/images/Icon simple-wechat.png"),
-                                    Horizontalgoing("assets/images/Icon feather-instagram.png"),
-                                    Horizontalgoing("assets/images/Icon awesome-twitter.png"),
-                                    Horizontalgoing("assets/images/Icon ionic-logo-whatsapp.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon ionic-logo-whatsapp.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon awesome-facebook-f.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon simple-wechat.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon feather-instagram.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon awesome-twitter.png"),
+                                    Horizontalgoing(
+                                        "assets/images/Icon ionic-logo-whatsapp.png"),
                                   ],
                                 ),
                               ),
