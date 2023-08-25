@@ -2,7 +2,13 @@ import 'dart:async';
 import 'package:p2ptraffic/export_all.dart';
 
 class MartinProfileScreen extends StatefulWidget {
-  const MartinProfileScreen({super.key});
+  final name;
+  final age;
+  final gender;
+  final country;
+
+  MartinProfileScreen(
+      {super.key, this.name, this.age, this.gender, this.country});
 
   @override
   State<MartinProfileScreen> createState() => _MartinProfileScreenState();
@@ -133,12 +139,15 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         width: 85.w,
                         height: 85.h,
                         child: Image.asset("assets/images/4.png"),
+                      ),
+                      SizedBox(
+                        width: 20,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,12 +155,12 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                           Row(
                             children: [
                               Text(
-                                "Martin Smith",
+                                widget.name,
                                 style: TextStyle(
                                     color: Color(0xff3A3A3A), fontSize: 20.sp),
                               ),
                               79.horizontalSpace,
-                              Text(
+                              Text( 
                                 "Friend",
                                 style: TextStyle(
                                     color: Color(0xff878B9E), fontSize: 12.sp),
@@ -159,12 +168,12 @@ class _MartinProfileScreenState extends State<MartinProfileScreen> {
                             ],
                           ),
                           Text(
-                            "22 - Female",
+                            "${widget.age} - ${widget.gender}",
                             style: TextStyle(
                                 color: Color(0xff3A3A3A), fontSize: 16.sp),
                           ),
                           Text(
-                            "New York",
+                            "${widget.country}",
                             style: TextStyle(
                                 color: Color(0xff3A3A3A), fontSize: 16.sp),
                           ),

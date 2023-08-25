@@ -1,5 +1,3 @@
-
-
 import 'package:p2ptraffic/export_all.dart';
 
 class VerificationScreen extends StatefulWidget {
@@ -185,11 +183,11 @@ class VerificationScreenState extends State<VerificationScreen> {
 
                   GestureDetector(
                     onTap: () {
-                      var data = {"email": email, 'reason' : 'verification'};
+                      var data = {"email": email, 'reason': 'forgotPassword'};
                       ApiService().resendOtpCall(context, data);
                     },
                     child: RichText(
-                      text: const TextSpan(
+                      text: const TextSpan( 
                         style: TextStyle(
                           fontSize: 14.0,
                           color: Colors.black,

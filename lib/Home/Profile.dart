@@ -1,5 +1,7 @@
-
 import 'package:p2ptraffic/export_all.dart';
+
+import '../controller/usercontroller.dart';
+import 'edit_profile_screen.dart';
 
 class PROFILE2Screen extends StatefulWidget {
   const PROFILE2Screen({super.key});
@@ -9,6 +11,8 @@ class PROFILE2Screen extends StatefulWidget {
 }
 
 class _PROFIL2EScreenState extends State<PROFILE2Screen> {
+  final usercontroller = Get.put(UserController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,27 +63,58 @@ class _PROFIL2EScreenState extends State<PROFILE2Screen> {
           padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 20.r),
           children: [
             Container(
-              width: 143.w,
-              height: 143.h,
+              width: 143.r,
+              height: 143.r,
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                  begin: Alignment.bottomRight,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                    Color(0xff004DF2),
-                    Color(0xff1CC8FB),
-                  ],
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white, width: 2),
+                  gradient: LinearGradient(
+                    begin: Alignment.bottomRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Color(0xff004DF2),
+                      Color(0xff1CC8FB),
+                    ],
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 1,
+                    )
+                  ]),
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed("/DrawerProfileScreen");
+                },
+                child: CircleAvatar(
+                  child: Container(
+                    width: 143.w,
+                    height: 143.h,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                          begin: Alignment.bottomRight,
+                          end: Alignment.bottomLeft,
+                          colors: [
+                            Color(0xff004DF2),
+                            Color(0xff1CC8FB),
+                          ],
+                        ),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                'https://p2p-api.thesuitchstaging.com:2700/public/uploads/${UserController.user.data!.image}'))),
+                    // child: Image(
+                    //     fit: BoxFit.fill,
+                    //     image: NetworkImage(
+                    //         'https://p2p-api.thesuitchstaging.com:2700/public/uploads/${UserController.user.data!.image}'))
+                  ),
                 ),
-              ),
-              child: Image.asset(
-                "assets/images/NoPath.png",
-                scale: 4.3,
               ),
             ),
             27.verticalSpace,
             Text(
-              "Julie Smith",
+              UserController.user.data!.fullName.toString(),
               style: TextStyle(
                 color: Color(
                   0xff3A3A3A,
@@ -90,23 +125,21 @@ class _PROFIL2EScreenState extends State<PROFILE2Screen> {
             27.verticalSpace,
             contts(
               "assets/images/Icon material-email.png",
-              "Julie.smith@domain.com",
+              email.toString(),
             ),
             15.verticalSpace,
             contts(
               "assets/images/Icon feather-phone.png",
-              "+1 234 567890",
+              UserController.user.data!.mobile.toString(),
             ),
             15.verticalSpace,
             contts(
               "assets/images/Icon awesome-transgender.png",
-              "Female",
+              UserController.user.data!.gender.toString(),
             ),
-            15.verticalSpace,
-            contts(
-              "assets/images/Icon material-location-onn.png",
-              "20 Cooper Square",
-            ),
+            // 15.verticalSpace,
+            // contts("assets/images/Icon material-location-onn.png",
+            //     '${UserAddress}'),
             15.verticalSpace,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,7 +164,7 @@ class _PROFIL2EScreenState extends State<PROFILE2Screen> {
                       20.horizontalSpace,
                       10.horizontalSpace,
                       Text(
-                        "New York",
+                        UserController.user.data!.city.toString(),
                         style: TextStyle(
                           color: Color(0xff0C0D26),
                           fontSize: 16.sp,
@@ -161,7 +194,7 @@ class _PROFIL2EScreenState extends State<PROFILE2Screen> {
                       20.horizontalSpace,
                       10.horizontalSpace,
                       Text(
-                        "NY",
+                        UserController.user.data!.state.toString(),
                         style: TextStyle(
                           color: Color(0xff0C0D26),
                           fontSize: 16.sp,
@@ -176,7 +209,10 @@ class _PROFIL2EScreenState extends State<PROFILE2Screen> {
             50.verticalSpace,
             GestureDetector(
               onTap: () {
-                Get.toNamed("/EditProfileScreen");
+                Get.to(EditProfileScreen(
+                  phone: UserController.user.data!.mobile.toString(),
+                ));
+                //Get.toNamed("/EditProfileScreen");
               },
               child: Container(
                 width: 387.w,
@@ -221,7 +257,7 @@ class _PROFIL2EScreenState extends State<PROFILE2Screen> {
     txt,
   ) {
     return Container(
-      width: 388.w,
+      width: 1.sw,
       height: 57,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -248,14 +284,16 @@ class _PROFIL2EScreenState extends State<PROFILE2Screen> {
               ),
             ),
             10.horizontalSpace,
-            Text(
-              txt,
-              style: TextStyle(
-                color: Color(0xff878B9E),
-                fontSize: 17.sp,
+            Container(
+              width: 0.7.sw,
+              child: Text(
+                txt,
+                style: TextStyle(
+                    color: Color(0xff878B9E),
+                    fontSize: 17.sp,
+                    overflow: TextOverflow.visible),
               ),
             ),
-            65.horizontalSpace,
           ],
         ),
       ),

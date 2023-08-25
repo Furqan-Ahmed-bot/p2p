@@ -262,19 +262,21 @@ class CreateProfileScreenStateScreen extends State<CreateProfileScreen> {
                 CustomButtonWidget(
                     text: 'Create',
                     onTap: () {
-                      if (formKey.currentState!.validate()) {
-                        final Map<String, String> data = {
-                          'fullName': fullNameController.text,
-                          'userName': userNameController.text,
-                          'gender': genderValue.toString(),
-                          'mobile': phoneNumberController.text,
-                          'country': countryController.text,
-                          'city': cityController.text,
-                          'state': stateValue.toString()
-                        };
-                        ApiService()
-                            .callCreateProfile(context, data, selectFile!);
-                      } else if (selectFile == null) {
+                      if (selectFile != null) {
+                        if (formKey.currentState!.validate()) {
+                          final Map<String, String> data = {
+                            'fullName': fullNameController.text,
+                            'userName': userNameController.text,
+                            'gender': genderValue.toString(),
+                            'mobile': phoneNumberController.text,
+                            'country': countryController.text,
+                            'city': cityController.text,
+                            'state': stateValue.toString(),
+                          };
+                          ApiService()
+                              .callCreateProfile(context, data, selectFile!);
+                        }
+                      } else {
                         Get.snackbar('Error', 'Please upload profile picture',
                             colorText: Colors.white);
                       }

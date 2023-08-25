@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import '../export_all.dart';
 
 bool forgotPassword = false;
@@ -200,7 +198,12 @@ function1(BuildContext context) {
                           Expanded(
                             child: GestureDetector(
                               onTap: () {
-                                Get.toNamed("/LoginScreen");
+                                if (isChecked == true && isChecked2 == true) {
+                                  Get.to(() => LoginScreen());
+                                } else {
+                                  Get.snackbar('Error',
+                                      'Please Agree with the following');
+                                }
                               },
                               child: Container(
                                 height: 64.h,
@@ -277,5 +280,6 @@ String? email;
 String? authToken;
 String? refreshToken;
 String otpId = "";
+var UserAddress;
 var latitude;
 var longitude;

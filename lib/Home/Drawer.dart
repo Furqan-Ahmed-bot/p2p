@@ -1,3 +1,4 @@
+import '../controller/usercontroller.dart';
 import '../export_all.dart';
 
 class DrawerScreen extends StatelessWidget {
@@ -7,6 +8,8 @@ class DrawerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final usercontroller = Get.put(UserController());
+
     return SizedBox(
       width: 0.9.sw,
       child: Drawer(
@@ -80,36 +83,51 @@ class DrawerScreen extends StatelessWidget {
                 SizedBox(
                   height: 9.h,
                 ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: 143.r,
-                    height: 143.r,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.white, width: 2),
-                        gradient: LinearGradient(
-                          begin: Alignment.bottomRight,
-                          end: Alignment.bottomLeft,
-                          colors: [
-                            Color(0xff004DF2),
-                            Color(0xff1CC8FB),
-                          ],
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            blurRadius: 1,
-                          )
-                        ]),
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.toNamed("/DrawerProfileScreen");
-                      },
-                      child: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            'https://p2p-api.thesuitchstaging.com/${userImageUrl}'),
+                Container(
+                  width: 143.r,
+                  height: 143.r,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 2),
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Color(0xff004DF2),
+                          Color(0xff1CC8FB),
+                        ],
                       ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          blurRadius: 1,
+                        )
+                      ]),
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.toNamed("/DrawerProfileScreen");
+                    },
+                    child: Container(
+                      width: 143.w,
+                      height: 143.h,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            begin: Alignment.bottomRight,
+                            end: Alignment.bottomLeft,
+                            colors: [
+                              Color(0xff004DF2),
+                              Color(0xff1CC8FB),
+                            ],
+                          ),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                  'https://p2p-api.thesuitchstaging.com:2700/public/uploads/${UserController.user.data!.image}'))),
+                      // child: Image(
+                      //     fit: BoxFit.fill,
+                      //     image: NetworkImage(
+                      //         'https://p2p-api.thesuitchstaging.com:2700/public/uploads/${UserController.user.data!.image}'))
                     ),
                   ),
                 ),
@@ -117,7 +135,7 @@ class DrawerScreen extends StatelessWidget {
                   height: 21.h,
                 ),
                 Text(
-                  userName.toString(),
+                  UserController.user.data!.fullName.toString(),
                   style: TextStyle(
                     fontSize: 18.sp,
                     color: Color(0xff02045C),

@@ -17,7 +17,14 @@ class LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     loadUserEmailPassword();
+    getData();
     super.initState();
+  }
+
+  getData() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    emailController.text = sp.getString("userEmail") ?? '';
+    passwordController.text = sp.getString("userPassword") ?? '';
   }
 
   @override
@@ -192,10 +199,12 @@ class LoginScreenState extends State<LoginScreen> {
                           "email": emailController.text.trim(),
                           "password": passwordController.text.trim(),
                           "deviceType": deviceType.toString(),
-                          "deviceToken": deviceToken.toString()
+                          "deviceToken": deviceToken.toString(),
+                          "long": longitude.toString(),
+                          "lat": latitude.toString()
                         };
                         email = emailController.text.trim();
-                        ApiService().callLogin(context, data);
+                        ApiService().callLogin(context, data, isChecked);
                       }
                     })
               ],

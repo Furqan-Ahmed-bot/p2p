@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class TRAFFICUPDATESScreen extends StatefulWidget {
-  const TRAFFICUPDATESScreen({super.key});
+  var name;
+  TRAFFICUPDATESScreen({this.name});
 
   @override
   State<TRAFFICUPDATESScreen> createState() => _TRAFFICUPDATESStateScreen();
@@ -68,7 +69,10 @@ class _TRAFFICUPDATESStateScreen extends State<TRAFFICUPDATESScreen> {
                     padding: const EdgeInsets.only(left: 6),
                     child: Text(
                       "Location",
-                      style: TextStyle(color: Colors.black, fontSize: 22.sp, fontWeight: FontWeight.w600),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22.sp,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 ],
@@ -101,7 +105,10 @@ class _TRAFFICUPDATESStateScreen extends State<TRAFFICUPDATESScreen> {
                     child: Center(
                       child: Text(
                         "View Map",
-                        style: TextStyle(color: Colors.black, fontSize: 12.sp, fontWeight: FontWeight.w900),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w900),
                       ),
                     ),
                   )
@@ -116,7 +123,10 @@ class _TRAFFICUPDATESStateScreen extends State<TRAFFICUPDATESScreen> {
                     padding: const EdgeInsets.only(left: 6),
                     child: Text(
                       "Updates",
-                      style: TextStyle(color: Colors.black, fontSize: 22.sp, fontWeight: FontWeight.w600),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 22.sp,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 ],
@@ -195,7 +205,8 @@ class _TRAFFICUPDATESStateScreen extends State<TRAFFICUPDATESScreen> {
                   10.verticalSpace,
                   Text(
                     "Martin Smith",
-                    style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+                    style:
+                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                   ),
                   130.horizontalSpace,
                   Text(
@@ -283,7 +294,8 @@ class _TRAFFICUPDATESStateScreen extends State<TRAFFICUPDATESScreen> {
                   10.verticalSpace,
                   Text(
                     "Martin Smith",
-                    style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+                    style:
+                        TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                   ),
                   130.horizontalSpace,
                   Text(

@@ -1,5 +1,3 @@
-
-
 import '../export_all.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -105,7 +103,6 @@ class _SIGNUPScreenState extends State<SignupScreen> {
                       return null;
                   },
                 ),
-                
                 20.verticalSpace,
                 CustomTextFieldWidget(
                   labelText: "Password",
@@ -114,11 +111,15 @@ class _SIGNUPScreenState extends State<SignupScreen> {
                   validator: (txt) {
                     if (txt!.isEmpty) {
                       return "* Required";
+                    } else if (txt.length < 8) {
+                      return "Password should be greater than 8 characters";
                     } else
                       return null;
                   },
                 ),
                 20.verticalSpace,
+
+                
                 CustomTextFieldWidget(
                     labelText: "Confirm Password",
                     controller: confirmPasswordController,
@@ -142,7 +143,9 @@ class _SIGNUPScreenState extends State<SignupScreen> {
                           "email": emailPhoneController.text.trim(),
                           "password": passwordController.text.trim(),
                           "deviceToken": deviceToken,
-                          "deviceType": deviceType
+                          "deviceType": deviceType,
+                          "long": longitude.toString(),
+                          "lat": latitude.toString()
                         };
                         email = emailPhoneController.text.trim();
                         ApiService().callRegister(context, data);

@@ -66,6 +66,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   validator: (txt) {
                     if (txt!.isEmpty) {
                       return "* Required";
+                    } else if (txt.length < 8) {
+                      return "Password should be greater than 8 characters";
                     } else
                       return null;
                   },

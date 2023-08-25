@@ -11,6 +11,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  final uploatTrafficImageController = Get.put(UploadTrafficeImages());
   final bottomcontroller = Get.put(BottomController());
   final GlobalKey<ScaffoldState> formKey = GlobalKey();
   int pageIndex = 0;
@@ -30,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
   XFile? image;
   File? imageFile;
 
-  var photos; //for caputred image
+  List photos = []; //for caputred image
 
   @override
   void initState() {
@@ -368,7 +369,8 @@ class _MainScreenState extends State<MainScreen> {
                   ],
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed("/NOTIFICATIONSScreen");
+                      // Get.toNamed("/NOTIFICATIONSScreen");
+                      Get.to(NOTIFICATIONSScreen());
                     },
                     child: Container(
                       child: Image.asset(
@@ -411,9 +413,12 @@ class _MainScreenState extends State<MainScreen> {
               MaterialPageRoute(
                 builder: (_) => CameraCamera(
                   onFile: (file) {
+                    uploatTrafficImageController.addImage(file.path);
                     photos.add(file);
+
+                    print('photos  ${file.path}');
                     //When take foto you should close camera
-                    Navigator.pop(context);
+                    Get.to(POSTScreen());
                     setState(() {});
                   },
                 ),
